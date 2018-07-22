@@ -4,6 +4,43 @@
 
 All lab assignments are to be done in groups of at most two people.
 
+<h2><font color="blue">Resources required to attempt the labs</font></h2>
+Here we list some instructions to set up the environment
+required to attempt the lab assignments. This environment has already been
+set up in LHC lab 503.  These instructions are useful if you would like
+to set up the environment locally on your laptop or desktop. You need Linux OS to set up the environment.
+
+<ul>
+<li>Install the necessary packages on your system: If you are running Ubuntu, Debian, Mint, or any other Debian derivative: Open a terminal and type:
+<pre>
+$ sudo apt-get -y install openjdk-8-jre build-essential
+</pre>
+If you are running another variant of Linux, ensure that the following
+tools are installed on  your system:
+<ul>
+<li>make</li>
+<li>gdb</li>
+<li>gcc</li>
+<li>g++</li>
+</ul>
+</li>
+<li>Download and install the Qt Creator: Go to <a href=https://www1.qt.io/offline-installers/>the Qt Creator official download site</a> to download this software. Now scroll down to "Linux Host", and chose <b>Qt 5.11.1 for Linux 64-bit (1.2 GB)</b>. (The exact version may change over time, but make sure to choose the Linux 64-bit option). Your download will begin. The file is very large, so it may take some time. It downloads a <code>.run</code> file to your machine. Execute this file to install Qt Creator on your system.
+
+<p><em>Important:</em> For most screens, you must choose default options during installation. But at the screen labeled "<b>Select Components</b>", you <u>must</u> expand the "Qt 5.11.1" tree by clicking the <code>&gt;</code> triangle next to it, and then you must click the checkbox labeled, "<b>(none)</b>". This is absolutely crucial; if you forget to do this, your computer will not be able to compile and run C++ programs.
+</li>
+<li>Try to compile/run a sample project: Let's run a sample Qt Creator
+project that uses the Stanford C++ libraries. We use these C++ libraries in our lab assignments. The Stanford C++ libraries also interact with Java, so if this project runs properly for you, then you will be sure that your Qt Creator and Java JDK are both set up properly. Here's what to do:
+<ul>
+<li> Download the following project ZIP file to your computer: <a href=labs/simple-project.zip>simple-project.zip</a>.</li>
+<li> Un-zip the file's contents to a directory of your choice. After un-zip: you will find a directory named <code>simple-project</code> with several files and folders inside.</li>
+<li>Open the project: In Qt Creator, choose "File" --&gt; "Open File or Project..." or press Ctrl+O. Navigate to the simple-project folder and open the file <code>simple-project.pro</code>.</li>
+<li>Qt Creator will ask you a few questions about how to set up the build process for this project. You can just accept the defaults and click "Configure Project".</li>
+<li>Build it: You should be able to Build (Ctrl+B) y our project in Qt Creator. If it builds properly, your C++ compiler and the Stanford C++ libraries are compiling properly.  You can click the bottom "4 Compile Output" tab if you want to see the progress as it is compiling. (Recommended: In Qt Creator, click Tools → Options → Build &amp; Run, and check the box labeled "Open Compile Output pane when building" to always see this output during compilation).</li>
+<li>Run it: Now that it's built, you should be able to Run (Ctrl+R) your <code>simple-project</code>. This is the part where Java is needed, so if your Java isn't properly installed, this is probably where it will fail. If it runs properly, you will see a window appear with a smiley face. Congratulations, you're done! Now your machine should work just fine for working on our lab assignments.</li>
+</ul>
+</li>
+</ul>
+
 <h2><u><font color="maroon">Lab 1 : TBA</font></u></h2>
 <h3><font color="green">Due date</font></h3>
 TBA
