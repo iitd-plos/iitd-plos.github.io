@@ -17,5 +17,5 @@ LEC: <a href=lec/intro.html>Introduction to Computers</a>
 ==
 LEC: <a href=lec/intro_to_cpp.html>Introduction to C++</a>
 ==
-LEC: <a href=lec/intro_to_cpp.html>Functions and Strings</a>
+LEC: <a href=lec/functions_and_strings.html>Functions and Strings</a>
 ==
