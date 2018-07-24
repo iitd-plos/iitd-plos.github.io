@@ -72,6 +72,32 @@ int main() {
  <li>Main function -- this is the entry point of the program. Should always return an integer (0 = success). Functions do not need to be part of a class in C++.</li>
 </ul>
 
+<h4>Code variables</h4>
+<ul>
+<li>A "variable" is like a box that holds a value.</li>
+<li>x = 7</li>
+<li>This stores the value <code>7</code> into the variable (i.e., box) <code>x</code>.</li>
+<li>Later <code>x</code> in the code retrieves the value from the box.</li>
+<li><code>x</code> becomes a shorthand for <code>7</code> (or whatever is in the box).</li>
+<li>Using <code>=</code> in this way is called "variable assignment".</li>
+</ul>
+
+<h4>Example usage</h4>
+<ul>
+<li>Assign a value into a variable once.</li>
+<li>Then use that variable many times below.</li>
+<li>A convenient shorthand in the code.</li>
+<li>Many languages allow assigning a value to a variable multiple times (mutable variables).</li>
+<li>Some languages allow assigning a value to a variable a single time (immutable variables).</li>
+<li>C++ supports both mutable and immutable variables. Use the <code>const</code> keyword in the "type" of the variable to indicate that it is immutable. For our discussion in the class, we will ignore immutable variables and restrict ourselves to mutable variables.</li>
+</ul>
+<p>Programming with variables
+<pre>
+string name = "Virat";
+cout << "happy birthday to " << name << endl;
+cout << "wish you a long life " << name << endl;
+</pre>
+
 <h4>Familiar syntax</h4>
 <pre>
 int x = 42 + 7 * -5;               // variables, types 
