@@ -15,7 +15,7 @@ EVENT: Oct 22. Return of Minor-2 scripts
 ==
 LEC: <a href=lec/intro.html>Introduction to Computers</a>
 ==
-LEC: <a href=references/karel-the-robot-learns-java.pdf>Introduction to Karel</a>
+LEC: <a href=lec/intro_to_karel.html>Introduction to Karel</a>. Refers to <a href=references/karel-the-robot-learns-java.pdf>this document</a>.
 ==
 LEC: <a href=lec/intro_to_cpp.html>Introduction to C++</a>
 ==
