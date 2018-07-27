@@ -42,17 +42,17 @@
 
 <h4>First C++ program</h4>
 <pre>
-/* 
- * hello.cpp 
- * This program prints a welcome message 
- * to the user. 
- */ 
-#include <iostream> 
-using namespace std; 
-int main() { 
-  cout << "Hello, world!" << endl; 
-  return 0; 
-} 
+/*
+ * hello.cpp
+ * This program prints a welcome message
+ * to the user.
+ */
+#include &lt;iostream&gt;
+using namespace std;
+int main() {
+  cout &lt;&lt; "Hello, world!" &gt;&gt; endl;
+  return 0;
+}
 </pre>
 <ul>
  <li>Program comments. Inline comments can be written using
@@ -94,41 +94,41 @@ int main() {
 <p>Programming with variables
 <pre>
 string name = "Virat";
-cout << "happy birthday to " << name << endl;
-cout << "wish you a long life " << name << endl;
+cout &lt;&lt; "happy birthday to " &lt;&lt; name &lt;&lt; endl;
+cout &lt;&lt; "wish you a long life " &lt;&lt; name &lt;&lt; endl;
 </pre>
 
 <h4>Familiar syntax</h4>
 <pre>
-int x = 42 + 7 * -5;               // variables, types 
+int x = 42 + 7 * -5;               // variables, types
 double pi = 3.14159;
 char c = 'Q';                      /* two comment styles */
-bool b = true; 
-for (int i = 0; i < 10; i++) {     // for loops 
-    if (i % 2 == 0) {              // if statements 
-        x += i; 
-    } 
-} 
-while (x > 0 && c == 'Q' || b) {   // while loops, logic 
-    x = x / 2; 
-    if (x == 42) { return 0; } 
-} 
+bool b = true;
+for (int i = 0; i &lt; 10; i++) {     // for loops
+    if (i % 2 == 0) {              // if statements
+        x += i;
+    }
+}
+while (x &gt; 0 && c == 'Q' || b) {   // while loops, logic
+    x = x / 2;
+    if (x == 42) { return 0; }
+}
 fooBar(x, 17, c);                  // function call
-barBaz("this is a string");        // string usage 
+barBaz("this is a string");        // string usage
 </pre>
 
 <h3>User Input and Output</h3>
 <h4>Console Output</h4>
 <ul>
- <li><pre>cout <<  expression << expression ...</pre></li>
- <li><pre>cout << "You are " << age << " years old!";</pre></li>
+ <li><pre>cout &lt;&lt; expression &gt;&gt; expression ...</pre></li>
+ <li><pre>cout &lt;&lt; "You are " &gt;&gt; age &gt;&gt; " years old!";</pre></li>
  <li><code>endl</code>
   <ul>
    <li>A variable that means "end of line"</li>
    <li>Same as "\n", but more compatible with all operating systems.</li>
   </ul>
  </li>
- <li><pre>cout << "You are " << age << " years old!" << endl;</pre></li>
+ <li><pre>cout &lt;&lt; "You are " &lt;&lt; age &lt;&lt; " years old!" &lt;&lt; endl;</pre></li>
 </ul>
 
 <h4>Helper library (aka Stanford library)</h4>
@@ -195,20 +195,20 @@ Government won!
 
 <p>Code:
 <pre>
-/* This program prints the outcome of a no-confidence motion in the parliament. */ 
-#include <iostream> 
-#include "simpio.h" 
-using namespace std; 
-int main() { 
+/* This program prints the outcome of a no-confidence motion in the parliament. */
+#include &lt;iostream&gt;
+#include "simpio.h"
+using namespace std;
+int main() {
   int government = getInteger("Government (votes against the motion)? ");
   int opposition = getInteger("Opposition (votes for the motion)? ");
-  if (government > opposition) { 
-    cout << "Government won!" << endl; 
-  } else if (opposition > government) { 
-    cout << "Opposition won!" << endl; 
-  } else { 
-    cout << "A tie." << endl; 
-  } 
-  return 0; 
-} 
+  if (government &gt; opposition) {
+    cout &lt;&lt; "Government won!" &lt;&lt; endl;
+  } else if (opposition &gt; government) {
+    cout &lt;&lt; "Opposition won!" &lt;&lt; endl;
+  } else {
+    cout &lt;&lt; "A tie." &lt;&lt; endl;
+  }
+  return 0;
+}
 </pre>
