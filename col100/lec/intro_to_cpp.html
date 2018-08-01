@@ -1,3 +1,17 @@
+<h3>Karel review and a more complex example</h3>
+Abstractions in Karel's world:
+<ul>
+<li>Instructions: <code>move()</code>, <code>pickBeeper()</code>, <code>putBeeper()</code>, <code>turnLeft()</code></li>
+<li>Conditions: <code>frontIsClear()</code>, <code>beeperPresent</code></li>
+<li>Variables, variable assignment and use</li>
+<li>if-then-else, if-then</li>
+<li>for-loop for counting</li>
+<li>while-loop for looping until a condition becomes false</li>
+</ul>
+<h4>Example: moveTillClear()</h4>
+<h4>Example: clearAllTowers()</h4>
+use another abstraction, <code>clearOneTower</code> to implement this function. Can use either top-down or bottom-up design approach.
+
 <h3>We will use C++ examples, why C++?</h3>
 <ul>
  <li>C++ is quite a popular language. Provides a lot of choice to the programmer to choose between safe-programming and fast-programming. This is a tradeoff you may appreciate as you go through more CS courses: you can either be very safe (e.g., riding in a slow train, or walking) or you can be very fast (e.g., riding on a figher jet), but it is often hard to achieve both. But I digress.</li>
@@ -27,7 +41,7 @@
 <ul>
  <li>C++ source code lives in <code>.cpp</code> files
   <ul>
-   <li>Additional declarations can be put "header" <code>.h</code> files.</li>
+   <li>Additional declarations can be put in "header" <code>.h</code> files.</li>
   </ul>
  </li>
  <li>Source code is compiled into binary <em>object</em> files (<code>.o</code>)</li>
@@ -97,118 +111,29 @@ string name = "Virat";
 cout &lt;&lt; "happy birthday to " &lt;&lt; name &lt;&lt; endl;
 cout &lt;&lt; "wish you a long life " &lt;&lt; name &lt;&lt; endl;
 </pre>
+<p>A modern computer has gigabytes of memory, i.e., it has space for billions of these boxes (or variables).</p>
 
-<h4>Familiar syntax</h4>
+<h4>Variable declarations</h4>
 <pre>
-int x = 42 + 7 * -5;               // variables, types
-double pi = 3.14159;
-char c = 'Q';                      /* two comment styles */
-bool b = true;
-for (int i = 0; i &lt; 10; i++) {     // for loops
-    if (i % 2 == 0) {              // if statements
-        x += i;
-    }
-}
-while (x &gt; 0 && c == 'Q' || b) {   // while loops, logic
-    x = x / 2;
-    if (x == 42) { return 0; }
-}
-fooBar(x, 17, c);                  // function call
-barBaz("this is a string");        // string usage
+type name;
+</pre>
+Some example types:
+<ul>
+<li><code>int</code>: integral values, e.g., how many students in the class.</li>
+<li><code>double</code>: decimal values, e.g., what is the average age of the students in the class.</li>
+<li><code>char</code>: characters, e.g., 'a', .., 'z', '0', .., '9', '\n', ...</li>
+<li><code>bool</code>: boolean values <code>true</code> and <code>false</code>.</li>
+</ul>
+
+<h4>Variable assignments</h4>
+<pre>
+name = value;
+</pre>
+Would be a compiler error if the variable <code>name</code> has not been declared already. Would also be an error if the variable <code>name</code> is declared twice (in the same "scope").
+
+<h4>Variable declaration and assignment</h4>
+Can do both declaration and assignment together.
+<pre>
+type name = value;
 </pre>
 
-<h3>User Input and Output</h3>
-<h4>Console Output</h4>
-<ul>
- <li><pre>cout &lt;&lt; expression &gt;&gt; expression ...</pre></li>
- <li><pre>cout &lt;&lt; "You are " &gt;&gt; age &gt;&gt; " years old!";</pre></li>
- <li><code>endl</code>
-  <ul>
-   <li>A variable that means "end of line"</li>
-   <li>Same as "\n", but more compatible with all operating systems.</li>
-  </ul>
- </li>
- <li><pre>cout &lt;&lt; "You are " &lt;&lt; age &lt;&lt; " years old!" &lt;&lt; endl;</pre></li>
-</ul>
-
-<h4>Helper library (aka Stanford library)</h4>
-<ul>
- <li>Use a helper library for this course to ease presentation and focus on concepts.</li>
- <li>Documentation of the library available at: <a href=http://stanford.edu/~stepp/cppdoc/>http://stanford.edu/~stepp/cppdoc/</a></li>
-</ul>
-
-<h4>Getting Console Input</h4>
-Use the helper library <code>simpio</code>: <pre>#include "simpio.h"</pre>
-<table style="width:100%" border="1">
- <tr>
-  <th>Function name</th>
-  <th>Description</th>
- </tr>
- <tr>
-  <td><code>getInteger("prompt")</code></td>
-  <td><em>repeatedly</em> prompts until an integer is typed; returns it</td>
- </tr>
- <tr>
-  <td><code>getReal("prompt")</code></td>
-  <td><em>repeatedly</em> prompts until a double is typed; returns it</td>
- </tr>
- <tr>
-  <td><code>getLine("prompt")</code></td>
-  <td><em>repeatedly</em> prompts and reads/returns an entire line of text</td>
- </tr>
- <tr>
-  <td><code>getYesOrNo("prompt")</code></td>
-  <td><em>repeatedly</em> prompts for a Yes/No answer; return it as a bool</td>
- </tr>
-</table>
-
-Example:
-<pre>
-string fullName = getLine("Student name? ");
-int age = getInteger("How old are you? ");
-double gpa = getReal("What's your GPA so far? ");
-if (getYesOrNo("Destroy the universe?"))
-{
-  ...
-}
-</pre>
-
-<p>Note: <code>cin</code> is the standard C++ method to get input and
-these helper library functions use it inside them. <code>cin</code> has
-some issues for easy use in our course:
-<ul>
- <li>Does not handle errors well.</li>
- <li>Difficult to get full lines of input.</li>
-</ul>
-
-<h4>Exercise: Opposition vs. Government</h4>
-<p>Write a program to compute who won the no-confidence motion in the Lok Sabha
-<ul>
- <li>Assume that the user enters valid integers</li>
- <li>Example output:
-  <pre>
-Government (votes against the motion)? 325
-Opposition (votes for the motion)? 199
-Government won!
-  </pre>
-</ul>
-
-<p>Code:
-<pre>
-/* This program prints the outcome of a no-confidence motion in the parliament. */
-#include &lt;iostream&gt;
-#include "simpio.h"
-using namespace std;
-int main() {
-  int government = getInteger("Government (votes against the motion)? ");
-  int opposition = getInteger("Opposition (votes for the motion)? ");
-  if (government &gt; opposition) {
-    cout &lt;&lt; "Government won!" &lt;&lt; endl;
-  } else if (opposition &gt; government) {
-    cout &lt;&lt; "Opposition won!" &lt;&lt; endl;
-  } else {
-    cout &lt;&lt; "A tie." &lt;&lt; endl;
-  }
-  return 0;
-}
-</pre>

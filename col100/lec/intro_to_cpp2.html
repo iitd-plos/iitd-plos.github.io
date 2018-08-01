@@ -1,0 +1,399 @@
+<h4>Relational operators</h4>
+<ul>
+<li> <code>&lt;</code>, <code>&gt;</code>: less than, greater than, e.g., <code>1&lt;2</code>, <code>x&lt;2</code>, etc.</li>
+<li><code>==</code>, <code>!=</code>: equal, not-equal, e.g., <code>x!=y</code>, <code>z==2</code>.</li>
+<li><code>&lt;=</code>, <code>&gt;</code>: less than or equal, greater than or equal.</li>
+</ul>
+All relational operational return boolean values: <code>true</code> or </code>false</code>. You can assign these values to variables for example:
+<pre>
+int x = 3;
+int y = 4;
+bool z = (x == y);
+</pre>
+
+<h4>Type interactions</h4>
+<ul>
+<li><code>int/int</code>: <code>int</code></li>
+<li><code>double/double</code>: <code>double</code></li>
+<li><code>int/double</code>: <code>double</code></li>
+</ul>
+In general: expressions always return the most expressive type.
+
+<h4>Exercises</h4>
+<ul>
+<li>What is the type of <code>9/4</code>? What is the value?</li>
+<li>What is the type of <code>9/4.0</code>? What is the value?</li>
+</ul>
+
+<!--<h4>Familiar syntax</h4>
+<pre>
+int x = 42 + 7 * -5;               // variables, types
+double pi = 3.14159;
+char c = 'Q';                      /* two comment styles */
+bool b = true;
+for (int i = 0; i &lt; 10; i++) {     // for loops
+    if (i % 2 == 0) {              // if statements
+        x += i;
+    }
+}
+while (x &gt; 0 && c == 'Q' || b) {   // while loops, logic
+    x = x / 2;
+    if (x == 42) { return 0; }
+}
+fooBar(x, 17, c);                  // function call
+barBaz("this is a string");        // string usage
+</pre>
+-->
+<h3>User Input and Output</h3>
+<h4>Console Output</h4>
+<ul>
+ <li><pre>cout &lt;&lt; expression &gt;&gt; expression ...</pre></li>
+ <li><pre>cout &lt;&lt; "You are " &gt;&gt; age &gt;&gt; " years old!";</pre></li>
+ <li><code>endl</code>
+  <ul>
+   <li>A variable that means "end of line"</li>
+   <li>Same as "\n", but more compatible with all operating systems.</li>
+  </ul>
+ </li>
+ <li><pre>cout &lt;&lt; "You are " &lt;&lt; age &lt;&lt; " years old!" &lt;&lt; endl;</pre></li>
+</ul>
+
+<h4>Helper library (aka Stanford library)</h4>
+<ul>
+ <li>Use a helper library for this course to ease presentation and focus on concepts.</li>
+ <li>Documentation of the library available at: <a href=http://stanford.edu/~stepp/cppdoc/>http://stanford.edu/~stepp/cppdoc/</a></li>
+</ul>
+
+<h4>Getting Console Input</h4>
+Use the helper library <code>simpio</code>: <pre>#include "simpio.h"</pre>
+<table style="width:100%" border="1">
+ <tr>
+  <th>Function name</th>
+  <th>Description</th>
+ </tr>
+ <tr>
+  <td><code>getInteger("prompt")</code></td>
+  <td><em>repeatedly</em> prompts until an integer is typed; returns it</td>
+ </tr>
+ <tr>
+  <td><code>getReal("prompt")</code></td>
+  <td><em>repeatedly</em> prompts until a double is typed; returns it</td>
+ </tr>
+ <tr>
+  <td><code>getLine("prompt")</code></td>
+  <td><em>repeatedly</em> prompts and reads/returns an entire line of text</td>
+ </tr>
+ <tr>
+  <td><code>getYesOrNo("prompt")</code></td>
+  <td><em>repeatedly</em> prompts for a Yes/No answer; return it as a bool</td>
+ </tr>
+</table>
+
+<h4>If/Else in Karel and C++</h4>
+<pre>
+if (condition)
+{
+  statement;
+  statement;
+  ..
+}
+else
+{
+  statement;
+  statement;
+  ..
+}
+statement;
+statement;
+  ..
+</pre>
+Condition must be of type <code>bool</code>.
+
+<p>Example:
+<pre>
+string fullName = getLine("Student name? ");
+int age = getInteger("How old are you? ");
+double gpa = getReal("What's your GPA so far? ");
+if (getYesOrNo("Destroy the universe?"))
+{
+  ...
+}
+</pre>
+
+<p>Note: <code>cin</code> is the standard C++ method to get input and
+these helper library functions use it inside them. <code>cin</code> has
+some issues for easy use in our course:
+<ul>
+ <li>Does not handle errors well.</li>
+ <li>Difficult to get full lines of input.</li>
+</ul>
+
+<h4>While loops in Karel and C++</h4>
+<pre>
+while (condition)
+{
+  statement;
+  statement;
+  ..
+}
+statement;
+statement;
+  ..
+</pre>
+Condition must be of type <code>bool</code>. Repeats the statments in the body until <code>condition</code> is no longer true. Each time, all statements in the body are executed, and <b>then</b> the condition is checked.
+
+<h4>Exercise: Opposition vs. Government</h4>
+<p>Write a program to compute who won the no-confidence motion in the Lok Sabha
+<ul>
+ <li>Assume that the user enters valid integers</li>
+ <li>Example output:
+  <pre>
+Government (votes against the motion)? 325
+Opposition (votes for the motion)? 199
+Government won!
+  </pre>
+</ul>
+
+<p>Code:
+<pre>
+/* This program prints the outcome of a no-confidence motion in the parliament. */
+#include &lt;iostream&gt;
+#include "simpio.h"
+using namespace std;
+int main() {
+  int government = getInteger("Government (votes against the motion)? ");
+  int opposition = getInteger("Opposition (votes for the motion)? ");
+  if (government &gt; opposition) {
+    cout &lt;&lt; "Government won!" &lt;&lt; endl;
+  } else if (opposition &gt; government) {
+    cout &lt;&lt; "Opposition won!" &lt;&lt; endl;
+  } else {
+    cout &lt;&lt; "A tie." &lt;&lt; endl;
+  }
+  return 0;
+}
+</pre>
+
+<h4>Exercise: Sentinel loops</h4>
+<ul>
+<li><b>sentinel</b>: a value that signals the end of user input.</li>
+<li>sentinel loop: repeats until a sentinel value is seen.</li>
+</ul>
+<p>Example: prompt the user for numbers until the user types -1, then output the sum of numbers:
+<code>
+Enter a number: 10
+Enter a number: 20
+Enter a number: 30
+Enter a number: -1
+Sum is: 60
+</code>
+
+<p>Program:
+<pre>
+#include &lt;iostream&gt;
+#include "simpio.h"
+using namespace std;
+int main() {
+  int sum = 0;
+  int num = getInteger("Enter a number: ");
+  while (num != -1)
+  {
+    sum += num;
+    num = getInteger("Enter a number: ");
+  }
+  cout << "Sum is " << sum << endl;
+  return 0;
+}
+</pre>
+
+<p>Precedence rules for arithmetic operators: division (/), multiplication (*), add and subtract.</p>
+
+<h4>Logical operators</h4>
+<ul>
+<li>not (!): e.g., !(2==3), !(x != 2), etc.</li>
+<li>and (&amp;&amp;): e.g., (2==3) &amp;&amp; (x != 2), etc.</li>
+<li>or (||): e.g., (2==3) || (x != 2), etc.</li>
+</ul>
+
+<p>Precedence rules for logical operators: not (!), and (&amp;&amp;), or (||)</p>
+
+<p>Precedence overall: arithmetic &gt; relational &gt; logical
+
+<p>Example
+<pre>
+5 * 7 &gt;= 3 + 5 * (7 - 1) &amp;&amp; 7 &lt;= 11
+</pre>
+<ol>
+<li>(7-1)=6</li>
+<li>5*7=35, 5*6 = 30</li>
+<li>3+30=33</li>
+<li>35&gt;=33 is true</li>
+<li>7&lt;=11 is true</li>
+<li></code>true &amp;&amp; true</code> is <code>true</code></li>
+</ol>
+
+<h3>For loops in Karel and C++</h3>
+<pre>
+for (int i = 0; i &lt; count; i++)
+{
+  statement;
+  statement;
+  ...
+}
+</pre>
+Repeats the statements in the body <code>count</code> times.
+
+<p><code>i = 0</code> is the initializer and is run once before the loop starts</p>
+
+<p><code>i &gt; count</code> is the condition that is checked before entering the loop at every repitition/iteration (including the first entry).</p>
+
+<p><code>i++</code> is run each time the code gets to the end of the 'body'</p>
+
+<pre>
+for (int i = 0; i < 3; i++)
+{
+  cout << "I love COL100" << endl;
+}
+</pre>
+
+<p>Another example: add up the first 100 numbers
+<pre>
+int sum = 0;
+for (int i = 0; i < 100; i++)
+{
+  sum = sum + i;
+}
+cout << "The sum is " << sum << endl;
+</pre>
+
+<p><code>sum = sum + i</code> can also be written as <code>sum += i</code>.</p>
+
+<h4>For a single statement in the body, do not necessarily need braces</h4>
+<pre>
+if (condition)
+  statement;
+else
+{
+  statement;
+  statement;
+  ...
+}
+</pre>
+
+<p>Similarly, for while:
+<pre>
+while (condition)
+  statement;
+</pre>
+
+<h4>If/Else can be stringed together</h4>
+<pre>
+if (condition1)
+{
+  ...
+} else if (condition2)
+{
+  ...
+} else if (condition3)
+{
+  ...
+} else
+{
+  ...
+}
+</pre>
+
+<h4>If/Else can be nested</h4>
+<pre>
+if (condition1)
+{
+  if (condition2)
+  {
+  }
+} else
+{
+  if (condition3)
+  {
+  }
+}
+</code>
+
+<h4>Nested loops</h4>
+A loop placed inside another loop
+<pre>
+for (int i = 0; i < 5; i++)
+{
+  for (int j = 0; j < 10; j++)
+  {
+    cout << "*";
+  }
+  cout << endl;
+}
+</pre>
+
+<p>Output:
+<pre>
+**********
+**********
+**********
+**********
+**********
+</pre>
+The outer loop repeats five times; the inner loop repeats ten times
+
+<h4>Exercise: What is produced by the following code</h4>
+<pre>
+for (int i = 0; i < 5; i++)
+{
+  for (int j = 0; j < i + 1; j++)
+  {
+    cout << "*";
+  }
+  cout << endl;
+}
+</pre>
+
+<h4>Write programs to print the following patterns</h4>
+<p>Pattern 1
+<pre>
+*******
+******
+*****
+****
+***
+**
+*
+</pre>
+
+<p>Pattern 2
+<pre>
+*
+**
+***
+****
+*****
+******
+*******
+</pre>
+
+<p>Pattern 3
+<pre>
+1
+22
+333
+4444
+55555
+666666
+7777777
+</pre>
+
+<p>Pattern 4
+<pre>
+......1
+.....22
+....333
+...4444
+..55555
+.666666
+7777777
+</pre>

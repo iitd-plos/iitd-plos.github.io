@@ -19,5 +19,7 @@ LEC: <a href=lec/intro_to_karel.html>Introduction to Karel</a>. Refers to <a hre
 ==
 LEC: <a href=lec/intro_to_cpp.html>Introduction to C++</a>
 ==
+LEC: <a href=lec/intro_to_cpp2.html>Introduction to C++ continued</a>
+==
 LEC: <a href=lec/functions_and_strings.html>Functions and Strings</a>
 ==
