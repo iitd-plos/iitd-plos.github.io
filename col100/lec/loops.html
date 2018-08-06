@@ -1,0 +1,176 @@
+<h4>While loops in Karel and C++</h4>
+<pre>
+while (condition)
+{
+  statement;
+  statement;
+  ..
+}
+statement;
+statement;
+  ..
+</pre>
+<h4>Exercise: Sentinel loops</h4>
+<ul>
+<li><b>sentinel</b>: a value that signals the end of user input.</li>
+<li>sentinel loop: repeats until a sentinel value is seen.</li>
+</ul>
+<p>Example: prompt the user for numbers until the user types -1, then output the sum of numbers:
+<code>
+Enter a number: 10
+Enter a number: 20
+Enter a number: 30
+Enter a number: -1
+Sum is: 60
+</code>
+
+<p>Program:
+<pre>
+#include &lt;iostream&gt;
+#include "simpio.h"
+using namespace std;
+int main() {
+  int sum = 0;
+  int num = getInteger("Enter a number: ");
+  while (num != -1)
+  {
+    sum += num;
+    num = getInteger("Enter a number: ");
+  }
+  cout << "Sum is " << sum << endl;
+  return 0;
+}
+</pre>
+
+<h3>For loops in Karel and C++</h3>
+<pre>
+for (int i = 0; i &lt; count; i++)
+{
+  statement;
+  statement;
+  ...
+}
+</pre>
+Repeats the statements in the body <code>count</code> times.
+
+<p><code>i = 0</code> is the initializer and is run once before the loop starts</p>
+
+<p><code>i &gt; count</code> is the condition that is checked before entering the loop at every repitition/iteration (including the first entry).</p>
+
+<p><code>i++</code> is run each time the code gets to the end of the 'body'</p>
+
+<pre>
+for (int i = 0; i < 3; i++)
+{
+  cout << "I love COL100" << endl;
+}
+</pre>
+
+<p>Another example: add up the first 100 numbers
+<pre>
+int sum = 0;
+for (int i = 0; i < 100; i++)
+{
+  sum = sum + i;
+}
+cout << "The sum is " << sum << endl;
+</pre>
+
+<p><code>sum = sum + i</code> can also be written as <code>sum += i</code>.</p>
+
+<p>Similarly, for while:
+<pre>
+while (condition)
+  statement;
+</pre>
+
+<h4>Nested loops</h4>
+A loop placed inside another loop
+<pre>
+for (int i = 0; i < 5; i++)
+{
+  for (int j = 0; j < 10; j++)
+  {
+    cout << "*";
+  }
+  cout << endl;
+}
+</pre>
+
+<p>Output:
+<pre>
+**********
+**********
+**********
+**********
+**********
+</pre>
+The outer loop repeats five times; the inner loop repeats ten times
+
+<h4>Exercise: What is produced by the following code</h4>
+<pre>
+for (int i = 0; i < 5; i++)
+{
+  for (int j = 0; j < i + 1; j++)
+  {
+    cout << "*";
+  }
+  cout << endl;
+}
+</pre>
+
+<h4>Write programs to print the following patterns</h4>
+<p>Pattern 1
+<pre>
+*******
+******
+*****
+****
+***
+**
+*
+</pre>
+
+<p>Pattern 2
+<pre>
+*
+**
+***
+****
+*****
+******
+*******
+</pre>
+
+<p>Pattern 3
+<pre>
+1
+22
+333
+4444
+55555
+666666
+7777777
+</pre>
+
+<p>Pattern 4
+<pre>
+......1
+.....22
+....333
+...4444
+..55555
+.666666
+7777777
+</pre>
+
+<p>Pattern 5
+<pre>
+......1
+.....21
+....321
+...4321
+..54321
+.654321
+7654321
+</pre>
