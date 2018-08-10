@@ -25,6 +25,8 @@ LEC: <a href=lec/io_ite.html>I/O, if-then-else, logical ops, precedence rules</a
 ==
 LEC: <a href=lec/loops.html>Loops</a>
 ==
+LEC: <a href=lec/loops2.html>Loops continued</a>
+==
 LEC: <a href=lec/scope_and_parameters.html>Scope and Parameters</a>
 ==
 LEC: <a href=lec/functions_and_strings.html>Functions and Strings</a>
