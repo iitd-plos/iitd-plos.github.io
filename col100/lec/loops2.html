@@ -1,14 +1,4 @@
 <h4>For loops continued</h4>
-<p>Another example: add up the first 100 numbers
-<pre>
-int sum = 0;
-for (int i = 0; i < 100; i++)
-{
-  sum = sum + i;
-}
-cout << "The sum is " << sum << endl;
-</pre>
-
 <p>General form of for-loop:
 <pre>
 for (init-statement; check; step-statement)
@@ -21,6 +11,17 @@ for (init-statement; check; step-statement)
 Show the flowchart: first init-statement executes, followed by check, and so on.  If the check is false at the first entry to the loop, the body is never executed. The init-statement or the step-statement could be empty. Also, point out that the init-statement could be anything, e.g., declaration, assignment, function call, another for-loop, etc. Same for step-statement.
 
 <p>Why do we need the for-loop when we already have the while loop? More structure, better readability. e.g., if we just want to count, for loop has much better readability than the while loop.
+
+<p>Example: add up the first 100 numbers
+<pre>
+int sum = 0;
+for (int i = 0; i < 100; i++)
+{
+  sum = sum + i;
+}
+cout << "The sum is " << sum << endl;
+</pre>
+Show the correspondence of the for-loop with the <code>while</code> loop.
 
 <p><code>sum = sum + i</code> can also be written as <code>sum += i</code>.</p>
 
