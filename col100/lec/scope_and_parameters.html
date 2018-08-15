@@ -213,7 +213,47 @@ int main() {
   return 0;
 }
 </pre>
-
 <h4>Parameters</h4>
-We are working on it now.
+Let us look at use of parameters next.
+<pre>
+int printGreeting(string myname)
+{
+  cout << "Hello " << myname << endl;
+  cout << "I hope you had a great day." << endl;
+  return 0;
+}
+
+int main()
+{
+  string name = readLine("Next name? ");
+  while (name != "")
+  {
+    printGreeting();
+    name = readLine("Next name? ");
+  }
+  return 0;
+}
+</pre>
+What will happen if you execute the following?
+
+<pre>
+int printGreeting(string myname)
+{
+  cout << "Hello " << name << endl;
+  cout << "I hope you had a great day." << endl;
+  return 0;
+}
+
+int main()
+{
+  string name = readLine("Next name? ");
+  while (name != "")
+  {
+    printGreeting();
+    name = readLine("Next name? ");
+  }
+  return 0;
+}
+</pre>
+Note that variable name is local to the scope of the main function. Passing it as a parameter creates a copy of the variable and stores it in my name (inside the scope of the printGreetings function).
 
