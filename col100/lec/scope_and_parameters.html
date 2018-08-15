@@ -177,7 +177,8 @@ void bar()
   cout << w << endl;
 }
 </pre>
-Show how execution proceeds and how <code>foo</code> scope gets activated when statements in <code>foo</code> are getting executed, and how <code>bar</code>'s scope is restored when <code>foo</code> returns from execution.
+Show how execution proceeds and how <code>foo</code> scope gets activated when statements in <code>foo</code> are getting executed, 
+and how <code>bar</code>'s scope is restored when <code>foo</code> returns from execution.
 
 <h4>Revisiting sentinel loops</h4>
 <pre>
@@ -197,7 +198,8 @@ int main() {
 }
 </pre>
 
-<p>Another example: here, <code>num</code> goes out of scope at the end of each loop iteration. At that point, we have already used its value and can discard it.
+<p>Another example: here, <code>num</code> goes out of scope at the end of each loop iteration. At that point, we have already used its 
+value and can discard it.
 <pre>
 int main() {
   int sum = 0;
@@ -216,11 +218,10 @@ int main() {
 <h4>Parameters</h4>
 Let us look at use of parameters next.
 <pre>
-int printGreeting(string myname)
+void printGreeting(string myname)
 {
   cout << "Hello " << myname << endl;
   cout << "I hope you had a great day." << endl;
-  return 0;
 }
 
 int main()
@@ -228,7 +229,7 @@ int main()
   string name = readLine("Next name? ");
   while (name != "")
   {
-    printGreeting();
+    printGreeting(name);
     name = readLine("Next name? ");
   }
   return 0;
@@ -237,11 +238,10 @@ int main()
 What will happen if you execute the following?
 
 <pre>
-int printGreeting(string myname)
+void printGreeting(string myname)
 {
   cout << "Hello " << name << endl;
   cout << "I hope you had a great day." << endl;
-  return 0;
 }
 
 int main()
@@ -249,11 +249,66 @@ int main()
   string name = readLine("Next name? ");
   while (name != "")
   {
-    printGreeting();
+    printGreeting(name);
     name = readLine("Next name? ");
   }
   return 0;
 }
 </pre>
-Note that variable name is local to the scope of the main function. Passing it as a parameter creates a copy of the variable and stores it in my name (inside the scope of the printGreetings function).
+This will result in a compile error! Note that variable <i>name</i> is local to the scope of the main function. Passing it as a parameter 
+creates a copy of the variable and stores it in <i>myname</i> inside the scope of the printGreetings function.
+<br>
+<b>Multiple Arguments </b> <br>
+In general, a function can have multiple arguments.
+<pre>
+void function(type_1 arg_1, type_2 arg_2, ... , type_n arg_n){
+  ..
+  ..
+}<pre>
+
+<b>Exercise:</b>
+Write a function drawBox(height,width) which takes two arguments 'height' and 'width' and draws of a box of the corresponding size. 
+For exmaple, drawBox(3,5) should draw a box as follows:
+<pre>
+*****
+*   *
+*****
+</pre>
+And drawBox(4,4) should draw a box as follows:
+<pre>
+****
+*  *
+*  *
+****
+</pre>
+<h4>Return Types</h4>
+The functions can have a return type.
+
+<pre>
+void addFive(int x) {
+     x = x + 5;
+     cout<< "(Inside addFive): New x is "<< x;
+}
+
+int main() {
+  int x=3;
+  addFive(x);
+  cout<< "(Inside main): New x = "<< x;
+}
+</pre>
+What will the output of the above program? How would you change it to have the desired output?
+
+<pre>
+int addFive(int x) {
+     x = x + 5;
+     cout<< "(Inside addFive): New x is "<< x;
+     return x;
+}
+
+int main() {
+  int x=3;
+  x=addFive(x);
+  cout<< "(Inside main): New x is "<< x;
+}
+</pre>
 
