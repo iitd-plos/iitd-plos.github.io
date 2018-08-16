@@ -186,12 +186,22 @@ and how <code>bar</code>'s scope is restored when <code>foo</code> returns from 
 #include "simpio.h"
 using namespace std;
 int main() {
-  int sum = 0; //sum must be declared outside of the loop! Otherwise it will be redeclared many times
-  int num = getInteger("Enter a number: "); //num must be declared outside of the loop! Otherwise, the loop condition makes no sense.
+  int sum = 0; //sum must be declared outside
+               //of the loop! Otherwise it
+               //will be redeclared many
+               //times
+  int num = getInteger("number? "); //num must
+                                    //be declared
+                                    //outside of
+                                    //the loop!
+                                    //Otherwise,
+                                    //the loop
+                                    //condition
+                                    //makes no sense.
   while (num != -1)
   {
     sum += num;
-    num = getInteger("Enter a number: ");
+    num = getInteger("number? ");
   }
   cout << "Sum is " << sum << endl;
   return 0;
@@ -286,7 +296,8 @@ In general, a function can have multiple arguments.
 ret_type function(type_1 arg_1, type_2 arg_2, ... , type_n arg_n){
   ..
   ..
-}<pre>
+}
+</pre>
 
 <p>Write a function
 <pre>
