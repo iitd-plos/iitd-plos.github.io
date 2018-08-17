@@ -103,12 +103,12 @@ Another example:
 <pre>
 int main()
 {
-  ... some code
-  if (condition) {
-    int w = 4;  //w is created here
-    ... some code
-  } //w goes away here (at the end of its code block)
-  ... some other code
+... some code
+if (condition) {
+int w = 4;  //w is created here
+... some code
+} //w goes away here (at the end of its code block)
+... some other code
 }
 </pre>
 Draw a box around the inner code block to show the <em>scope of <code>w</code></em>.
@@ -117,21 +117,21 @@ Draw a box around the inner code block to show the <em>scope of <code>w</code></
 <pre>
 int main()
 {
-  ... some code
-  if (condition) {
-    int w = 4;  //w is created here
-    ... some code
-    int w = 4; //ERROR!
-  } //w goes away here (at the end of its code block)
-  ... some other code
+... some code
+if (condition) {
+int w = 4;  //w is created here
+... some code
+int w = 4; //ERROR!
+} //w goes away here (at the end of its code block)
+... some other code
 }
 </pre>
 <p>Another example: variables declared in the <code>for</code> construct are assumed to belong to the scope defined by the <code>for</code> loop's body.
 <pre>
 for (int i = 1; i <= 100; i++)
 {
-  int i = 2; //ERROR
-  cout << i << endl;
+int i = 2; //ERROR
+cout << i << endl;
 }
 </pre>
 
@@ -139,12 +139,12 @@ for (int i = 1; i <= 100; i++)
 <pre>
 int main()
 {
-  for (int i = 0; i < 5; i++) { //i ok here
-    int w = 2;                  // w ok here
-  }
-  for (int i = 0; i < 2; i++) { //i ok here
-    int w = 3;                  // w ok here
-  }
+for (int i = 0; i < 5; i++) { //i ok here
+int w = 2;                  // w ok here
+}
+for (int i = 0; i < 2; i++) { //i ok here
+int w = 3;                  // w ok here
+}
 }
 </pre>
 
@@ -152,9 +152,9 @@ int main()
 <p>You <em>can</em> have two variables with the same name in nested scopes (variable shadowing)
 <pre>
 for (int i = 1; i <= 100; i++) {
-  while (...) {
-    int i = 5; //ERROR
-  }
+while (...) {
+int i = 5; //ERROR
+}
 }
 </pre>
 
@@ -162,19 +162,19 @@ for (int i = 1; i <= 100; i++) {
 <pre>
 void foo()
 {
-  int w = 3;
-  for (int i = 0; i < 5; i++) { //i ok here
-    int w = 4;                  // w ok here
-  }
-  for (int i = 0; i < 2; i++) { //i ok here
-    int w = 5;                  // w ok here
-  }
+int w = 3;
+for (int i = 0; i < 5; i++) { //i ok here
+int w = 4;                  // w ok here
+}
+for (int i = 0; i < 2; i++) { //i ok here
+int w = 5;                  // w ok here
+}
 }
 void bar()
 {
-  int w = 2;
-  foo();
-  cout << w << endl;
+int w = 2;
+foo();
+cout << w << endl;
 }
 </pre>
 Show how execution proceeds and how <code>foo</code> scope gets activated when statements in <code>foo</code> are getting executed, 
@@ -186,25 +186,25 @@ and how <code>bar</code>'s scope is restored when <code>foo</code> returns from 
 #include "simpio.h"
 using namespace std;
 int main() {
-  int sum = 0; //sum must be declared outside
-               //of the loop! Otherwise it
-               //will be redeclared many
-               //times
-  int num = getInteger("number? "); //num must
-                                    //be declared
-                                    //outside of
-                                    //the loop!
-                                    //Otherwise,
-                                    //the loop
-                                    //condition
-                                    //makes no sense.
-  while (num != -1)
-  {
-    sum += num;
-    num = getInteger("number? ");
-  }
-  cout << "Sum is " << sum << endl;
-  return 0;
+int sum = 0; //sum must be declared outside
+       //of the loop! Otherwise it
+       //will be redeclared many
+       //times
+int num = getInteger("number? "); //num must
+			    //be declared
+			    //outside of
+			    //the loop!
+			    //Otherwise,
+			    //the loop
+			    //condition
+			    //makes no sense.
+while (num != -1)
+{
+sum += num;
+num = getInteger("number? ");
+}
+cout << "Sum is " << sum << endl;
+return 0;
 }
 </pre>
 
@@ -212,211 +212,19 @@ int main() {
 value and can discard it.
 <pre>
 int main() {
-  int sum = 0;
-  while (true)
-  {
-    int num = getInteger("Enter a number: ");
-    if (num == -1) {
-      break; //immediately exits loop
-    }
-    sum += num;
-  }
-  cout << "Sum is " << sum << endl;
-  return 0;
-}
-</pre>
-<h4>Parameters</h4>
-If the toaster is a method: then the bread slice is a parameter to the toaster. The toaster converts a bread slice into a toasted bread slice. Different inputs (e.g., wheat bread, oat bread, etc.) will provide different outputs. Some inputs are illegal, e.g., cannot give a spoon as an input to a toaster.
-
-<p>Similarly, can provide parameters to methods. The methods use the values of the parameters as inputs to their computation.
-
-Example:
-<pre>
-void printGreeting(string myname)
+int sum = 0;
+while (true)
 {
-  cout << "Hello " << myname << endl;
-  cout << "I hope you had a great day." << endl;
+int num = getInteger("Enter a number: ");
+if (num == -1) {
+break; //immediately exits loop
 }
-
-int main()
-{
-  string name = readLine("Next name? ");
-  while (name != "")
-  {
-    printGreeting(name);
-    name = readLine("Next name? ");
-  }
-  return 0;
+sum += num;
+}
+cout << "Sum is " << sum << endl;
+return 0;
 }
 </pre>
+<b>Parameters </b> <p>
+Continued in the next lecture!
 
-<p>What will happen if you execute the following?
-
-<pre>
-void printGreeting(string myname)
-{
-  cout << "Hello " << name << endl;
-  cout << "I hope you had a great day." << endl;
-}
-
-int main()
-{
-  string name = readLine("Next name? ");
-  while (name != "")
-  {
-    printGreeting(name);
-    name = readLine("Next name? ");
-  }
-  return 0;
-}
-</pre>
-This will result in a compile error! Note that variable <i>name</i> is local to the scope of the main function. Passing it as a parameter 
-creates a copy of the variable and stores it in <i>myname</i> inside the scope of the printGreetings function.
-
-<p>General syntax
-<pre>
-type name(type name, type name, ...)
-{
-  statement1;
-  statement2;
-  ...
-}
-</pre>
-
-<p>Another example:
-<pre>
-printGreeting(5);
-</pre>
-Prints a greeting a certain number of times. What would the method declaration and definition look like.
-
-<br>
-<b>Multiple Arguments </b> <br>
-In general, a function can have multiple arguments.
-<pre>
-ret_type function(type_1 arg_1, type_2 arg_2, ... , type_n arg_n){
-  ..
-  ..
-}
-</pre>
-
-<p>Write a function
-<pre>
-printGreeting("abc", 5);
-</pre>
-Prints greeting to abc 5 times.
-
-<p>Parameter values can be derived from constant values, variables, or arbitrary expressions. Show previous examples where variables are used for parameter values.
-
-<p>Show a run involving main function and printGreeting function for the following code:
-<pre>
-void printGreeting(int times)
-{
-  for (int i = 0; i < times; i++) {
-    cout << "Hello, world!" << endl;
-  }
-}
-int main()
-{
-  int repeats = 5;
-  printGreeting(repeats);
-}
-</pre>
-There will be one variable (box) for <code>repeats</code> in <code>main</code> function. Similarly, there will be one variable (box) for <code>times</code> in <code>printGreeting</code> function. The printGreeting's scope will get created only when control transfers to it, and will get destroyed when control returns from it back to <code>main</code>.
-
-<p><b>Parameters are copies</b>!
-<pre>
-void addFive(int x) {
-     x = x + 5;
-     cout<< "(Inside addFive): New x is "<< x;
-}
-
-int main() {
-  int x=3;
-  addFive(x);
-  cout<< "(Inside main): New x = "<< x;
-}
-</pre>
-What will the output of the above program? How would you change it to have the desired output?
-
-<pre>
-int addFive(int x) {
-     x = x + 5;
-     cout<< "(Inside addFive): New x is "<< x;
-     return x;
-}
-
-int main() {
-  int x=3;
-  x=addFive(x);
-  cout<< "(Inside main): New x is "<< x;
-}
-</pre>
-
-Revisiting function declaration and function call syntax: A method can accept multiple parameters separated by commas; when calling it, you must pass values for each parameter.
-<br>Declaration:
-<pre>
-type name(type name, ..., type name)
-{
-  statements;
-}
-</pre>
-<br>Call:
-<pre>
-name(value, value, ..., value);
-</pre>
-
-<b>Exercise:</b>
-Write a function drawBox(height,width) which takes two arguments 'height' and 'width' and draws of a box of the corresponding size. 
-For example, drawBox(3,5) should draw a box as follows:
-<pre>
-*****
-*   *
-*****
-</pre>
-And drawBox(4,4) should draw a box as follows:
-<pre>
-****
-*  *
-*  *
-****
-</pre>
-
-<p>Potential solution: define one top-level function called <code>drawBox(height, width)</code> and two functions <code>drawLine(width)</code> (for top and bottom lines) and <code>drawSide(width)</code> for middle lines. Show implementation of all three functions.
-
-<h4>Return Values</h4>
-Return values let you give back some information when a method is finished, e.g., toasted bread in our toaster method.
-
-<p>Some examples we have already seen: simpio functions <code>getInteger</code>, <code>getLine</code>, etc.
-
-<h4>Return Types</h4>
-The function declarations specify the type of the return value (just like they specify the type of the parameter values). Types say what is legal and what is illegal.
-
-<p>Example:
-<pre>
-double metersToCm(double meters)
-{
-  return 100*meters;
-}
-
-int main()
-{
-  double meters = getDouble("meters?");
-  double cm = metersToCm(meters);
-  cout << cm << " centimeters." << endl;
-  return 0;
-}
-</pre>
-Show execution: how variables are created, how parameter values are copied, how the <code>metersToCm</code> function uses values in the parameter variables, how return value is copied back.
-
-<p>If a method returns something, you can use it directly in an expression!
-<pre>
-int main()
-{
-  double meters = getDouble("meters?");
-  cout << metersToCm(meters) << " centimeters." << endl;
-  return 0;
-}
-</pre>
-
-<h4>Parameters vs. Return</h4>
-TBD
