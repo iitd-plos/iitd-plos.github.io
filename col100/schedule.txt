@@ -29,5 +29,7 @@ LEC: <a href=lec/loops2.html>Loops continued</a>
 ==
 LEC: <a href=lec/scope_and_parameters.html>Scope and Parameters</a>
 ==
+LEC: <a href=lec/parameters2.html>Parameters (continued)</a>
+==
 LEC: <a href=lec/functions_and_strings.html>Functions and Strings</a>
 ==
