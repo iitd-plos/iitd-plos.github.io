@@ -109,24 +109,10 @@ int main() {
   cout<< "(Inside main): New x = "<< x;
 }
 </pre>
-What will the output of the above program? How would you change it to have the desired output?
-
-<pre>
-int addFive(int x) {
-     x = x + 5;
-     cout<< "(Inside addFive): New x is "<< x;
-     return x;
-}
-
-int main() {
-  int x=3;
-  x=addFive(x);
-  cout<< "(Inside main): New x is "<< x;
-}
-</pre>
-
+What will the output of the above program? How would you change it to have the desired output? We will come to back to this soon when we talk about return values.
+<p>
 Revisiting function declaration and function call syntax: A method can accept multiple parameters separated by commas; when calling it, you must pass values for each parameter.
-<br>Declaration:
+<br><br> Declaration:
 <pre>
 type name(type name, ..., type name)
 {
@@ -154,7 +140,7 @@ And drawBox(4,4) should draw a box as follows:
 ****
 </pre>
 
-<p>Potential solution: define one top-level function called <code>drawBox(height, width)</code> and two functions <code>drawLine(width)</code> (for top and bottom lines) and <code>drawSide(width)</code> for middle lines. Show implementation of all three functions.
+<p>Potential solution: define one top-level function called <code>drawBox(height, width)</code> and two functions <code>drawLine(width)</code> (for top and bottom lines) and <code>drawSide(width)</code> for middle lines. Show implementation of all three functions. We will do this as one of our lab assignment questions!
 
 <h4>Return Values</h4>
 Return values let you give back some information when a method is finished, e.g., toasted bread in our toaster method.
@@ -191,5 +177,80 @@ int main()
 }
 </pre>
 
+
 <h4>Parameters vs. Return</h4>
-TBD
+<ul>
+	<li>Parameters: Send information "in" to the method from the caller. 
+	<li>Return: Send information "out" of the method to the caller. 
+</ul>
+
+Method operates on its parameters and computes a value to be returned (show using a diagram).
+<br><br>
+
+<i>metersToCm</i> Example Above:
+<ul>
+<li>Parameter: value in centimeters
+<li> Return: value in meters (after the doing the rquired computation)
+</ul>
+
+Another Exmaple: <br>
+<pre>
+#include &lt;iostream&gt;
+#include &lt;cmath&gt;
+int main() {
+ int x=-42;
+ int x_abs=abs(x);
+ cout<<"Absolute value of " << x << " = " << x_abs << endl;
+ double y=2.03;
+ double y_rnd=round(y);
+ cout<<"The rounded value of " << y << " = " << y_rnd << endl;
+}
+</pre>
+ Explain parameter/return with respect to <i>abs</i> and <i>round</i> functions.
+ <p>
+ Another example: Returning Boolean values.
+<pre>
+bool checkEven(int number) {
+  if(number % 2 == 0) 
+    return true;
+  else
+    return false;
+}
+
+int main() {
+    n = getInteger("n?");
+    bool is_even=checkEven(n);
+    cout << "The number is even is " << is_even << endl;
+}
+</pre>
+<p>
+Note: Function ends as soon as it encounters a reutrn statement.
+<pre>
+bool checkEven(int number) {
+  if(number % 2 == 0) 
+    return true;
+  else
+    return false;
+  cout << "This line will never be executed!" << endl;
+}
+</pre>
+<p>
+What happens to the last <i>cout</i> statement? It will neven be excuted: why? Talk about the flow of the program and the return statements.
+<p>
+
+Fixing the <i>addFive</i> program: use a return value.
+<pre>
+int addFive(int x) {
+     x = x + 5;
+     cout<< "(Inside addFive): New x is "<< x;
+     return x;
+}
+
+int main() {
+  int x=3;
+  x=addFive(x);
+  cout<< "(Inside main): New x is "<< x;
+}
+</pre>
+<p> What will be the output of the program above?
+
