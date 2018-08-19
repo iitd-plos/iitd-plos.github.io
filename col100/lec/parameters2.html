@@ -223,7 +223,7 @@ int main() {
     cout << "The number is even is " << is_even << endl;
 }
 </pre>
-<p>
+
 Note: Function ends as soon as it encounters a reutrn statement.
 <pre>
 bool checkEven(int number) {
@@ -253,4 +253,16 @@ int main() {
 }
 </pre>
 <p> What will be the output of the program above?
+<p>
+Question: Why use a return statement? Why not simply print in the original function itself? <br>
+Answer: We may need the value for future computations in the caller. See below. 
+<br>
+<pre>
+int main() {
+  int x=3;
+  x=addFive(x);
+  x=2*x;
+  cout<< "(Inside main): New x is "<< x;
+}
+</pre>
 
