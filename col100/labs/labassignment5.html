@@ -1,0 +1,40 @@
+<h3>Understanding Scope</h3>
+Consider the following program:
+<pre>
+#include <iostream>
+#include "simpio.h"
+using namespace std;
+int main()
+{
+  int p2n = 1;
+  int n = getInteger("n?");
+  for (int i = 0; i < n; i++) {
+    int tmp = p2n;
+    cout << "2^" << i << " = " << tmp << endl;
+    p2n = tmp * 2;
+  }
+  cout << "2^n = " << p2n << endl;
+}
+</pre>
+For this program above, what is printed for the following input values of <code>n</code>: 4, 7, 9?
+
+<p>Now, consider the following program:
+<pre>
+#include <iostream>
+#include "simpio.h"
+using namespace std;
+int main()
+{
+  int p2n = 1;
+  int n = getInteger("n?");
+  for (int i = 0; i < n; i++) {
+    int tmp = p2n;
+    cout << "2^" << i << " = " << tmp << endl;
+    int p2n = tmp * 2;
+  }
+  cout << "2^" << n << " = " << p2n << endl;
+}
+</pre>
+For this program above, what is printed for the following input values of <code>n</code>: 4, 7, 9?
+
+<p>What is the difference between the two programs?  Why are the outputs of the two programs so different?
