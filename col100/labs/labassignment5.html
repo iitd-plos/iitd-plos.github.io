@@ -38,3 +38,19 @@ int main()
 For this program above, what is printed for the following input values of <code>n</code>: 4, 7, 9?
 
 <p>What is the difference between the two programs?  Why are the outputs of the two programs so different?
+
+<p>Now consider the following program:
+<pre>
+#include <iostream>
+#include "simpio.h"
+using namespace std;
+int main()
+{
+  int p2n = 1;
+  int n = getInteger("n?");
+  for (int i = 0; i < n; i++)
+    int p2n = p2n * 2;
+  cout << "2^" << n << " = " << p2n << endl;
+}
+</pre>
+Notice that there are no curly braces <code>{ }</code> in the body of the for loop. What is the output that you get for different input values of <code>n</code>? Explain.
