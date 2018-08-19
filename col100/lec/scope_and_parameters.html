@@ -103,12 +103,12 @@ Another example:
 <pre>
 int main()
 {
-... some code
-if (condition) {
-int w = 4;  //w is created here
-... some code
-} //w goes away here (at the end of its code block)
-... some other code
+  ... some code
+  if (condition) {
+    int w = 4;  //w is created here
+    ... some code
+  } //w goes away here (at the end of its code block)
+  ... some other code
 }
 </pre>
 Draw a box around the inner code block to show the <em>scope of <code>w</code></em>.
@@ -117,21 +117,21 @@ Draw a box around the inner code block to show the <em>scope of <code>w</code></
 <pre>
 int main()
 {
-... some code
-if (condition) {
-int w = 4;  //w is created here
-... some code
-int w = 4; //ERROR!
-} //w goes away here (at the end of its code block)
-... some other code
+  ... some code
+  if (condition) {
+    int w = 4;  //w is created here
+    ... some code
+    int w = 4; //ERROR!
+  } //w goes away here (at the end of its code block)
+  ... some other code
 }
 </pre>
 <p>Another example: variables declared in the <code>for</code> construct are assumed to belong to the scope defined by the <code>for</code> loop's body.
 <pre>
 for (int i = 1; i <= 100; i++)
 {
-int i = 2; //ERROR
-cout << i << endl;
+  int i = 2; //ERROR
+  cout << i << endl;
 }
 </pre>
 
@@ -139,12 +139,12 @@ cout << i << endl;
 <pre>
 int main()
 {
-for (int i = 0; i < 5; i++) { //i ok here
-int w = 2;                  // w ok here
-}
-for (int i = 0; i < 2; i++) { //i ok here
-int w = 3;                  // w ok here
-}
+  for (int i = 0; i < 5; i++) { //i ok here
+    int w = 2;                  // w ok here
+  }
+  for (int i = 0; i < 2; i++) { //i ok here
+    int w = 3;                  // w ok here
+  }
 }
 </pre>
 
@@ -152,9 +152,9 @@ int w = 3;                  // w ok here
 <p>You <em>can</em> have two variables with the same name in nested scopes (variable shadowing)
 <pre>
 for (int i = 1; i <= 100; i++) {
-while (...) {
-int i = 5; //ERROR
-}
+  while (...) {
+    int i = 5; //ERROR
+  }
 }
 </pre>
 
@@ -162,19 +162,19 @@ int i = 5; //ERROR
 <pre>
 void foo()
 {
-int w = 3;
-for (int i = 0; i < 5; i++) { //i ok here
-int w = 4;                  // w ok here
-}
-for (int i = 0; i < 2; i++) { //i ok here
-int w = 5;                  // w ok here
-}
+  int w = 3;
+  for (int i = 0; i < 5; i++) { //i ok here
+    int w = 4;                  // w ok here
+  }
+  for (int i = 0; i < 2; i++) { //i ok here
+    int w = 5;                  // w ok here
+  }
 }
 void bar()
 {
-int w = 2;
-foo();
-cout << w << endl;
+  int w = 2;
+  foo();
+  cout << w << endl;
 }
 </pre>
 Show how execution proceeds and how <code>foo</code> scope gets activated when statements in <code>foo</code> are getting executed, 
@@ -186,25 +186,25 @@ and how <code>bar</code>'s scope is restored when <code>foo</code> returns from 
 #include "simpio.h"
 using namespace std;
 int main() {
-int sum = 0; //sum must be declared outside
-       //of the loop! Otherwise it
-       //will be redeclared many
-       //times
-int num = getInteger("number? "); //num must
-			    //be declared
-			    //outside of
-			    //the loop!
-			    //Otherwise,
-			    //the loop
-			    //condition
-			    //makes no sense.
-while (num != -1)
-{
-sum += num;
-num = getInteger("number? ");
-}
-cout << "Sum is " << sum << endl;
-return 0;
+  int sum = 0; //sum must be declared outside
+         //of the loop! Otherwise it
+         //will be redeclared many
+         //times
+  int num = getInteger("number? "); //num must
+  			    //be declared
+  			    //outside of
+  			    //the loop!
+  			    //Otherwise,
+  			    //the loop
+  			    //condition
+  			    //makes no sense.
+  while (num != -1)
+  {
+    sum += num;
+    num = getInteger("number? ");
+  }
+  cout << "Sum is " << sum << endl;
+  return 0;
 }
 </pre>
 
@@ -212,17 +212,17 @@ return 0;
 value and can discard it.
 <pre>
 int main() {
-int sum = 0;
-while (true)
-{
-int num = getInteger("Enter a number: ");
-if (num == -1) {
-break; //immediately exits loop
-}
-sum += num;
-}
-cout << "Sum is " << sum << endl;
-return 0;
+  int sum = 0;
+  while (true)
+  {
+    int num = getInteger("Enter a number: ");
+    if (num == -1) {
+      break; //immediately exits loop
+    }
+    sum += num;
+  }
+  cout << "Sum is " << sum << endl;
+  return 0;
 }
 </pre>
 <b>Parameters </b> <p>
