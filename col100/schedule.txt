@@ -7,8 +7,8 @@ HEADER: Links to notes etc. on future days are <i>tentative only</i>. They are h
 
 HOLIDAY: Sep 03. Janmashtami
 
-SKIP: Aug 23. MINOR1 TESTS
-SKIP: Oct 04. MINOR2 TESTS
+SKIP: Aug 23. No Lecture. Minor1 Tests scheduled.
+SKIP: Oct 04. No Lecture. Minor2 Tests scheduled.
 EVENT: Sep 10. Return of Minor-1 scripts
 EVENT: Oct 22. Return of Minor-2 scripts
 
