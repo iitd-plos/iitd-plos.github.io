@@ -3,7 +3,7 @@ SEMESTER: Sem I, 2018-19
 Start: Jul 23, 2018
 Stop: Nov 15, 2018
 Schedule: Monday, Thursday
-HEADER: Links to notes etc. on future days are <i>tentative only</i>. They are here only to give you an idea what the future will bring.<br>
+HEADER: Links to notes etc. on future days are <i>tentative only</i>. They are here only to give you an idea what the future will bring.<br>Acknowledgements: Much of the course material has been adapted from Stanford's CS106A and Stanford's CS106B courses.
 
 HOLIDAY: Sep 03. Janmashtami
 
