@@ -195,8 +195,13 @@ void cookingTime(string const &dishName, double &minTime, double &maxTime)
 }
 int main()
 {
-  double totalTime = cookingTime("rice") + cookingTime("moongdal");
-  cout << totalTime << endl;
+  double riceMinTime, riceMaxTime, moongdalMinTime, moongdalMaxTime;
+  cookingTime("rice", riceMinTime, riceMaxTime)
+  cookingTime("moongdal", moongdalMinTime, moongdalMaxTime)
+  double totalMinTime = riceMinTime + moongdalMinTime;
+  double totalMaxTime = riceMaxTime + moongdalMaxTime;
+  cout << "min: " << totalMinTime << endl;
+  cout << "max: " << totalMaxTime << endl;
   return 0;
 }
 </pre>
