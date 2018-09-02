@@ -1,0 +1,93 @@
+<h1>Vectors</h1>
+<p>Abstract Data Types (ADTs) example: Vectors. Also called "collections".
+
+<p>Vector: a data structure for representing lists.
+
+<p>Collection: an object that stores data, a.k.a. "data structure"
+<ul>
+<li>the objects stored are called elements</li>
+<li>Also known as ADTs (abstract data types)</li>
+</ul>
+
+<p>Standard Template Library (STL): C++ built-in standard library of collections: <code>vector</code>, <code>map</code>, <code>list</code>, ... Powerful but somewhat hard to use for new coders (messy syntax).
+
+<p>Stanford C++ library (SPL): custom library of collections
+<ul>
+<li>Vector, Grid, Stack, Queue, Set, Map, ...</li>
+<li>Similar to STL, but simpler interface and error messages</li>
+<li>Note the capitalized first letter (unlike STL)</li>
+</ul>
+
+<h2>Vectors (Lists)</h2>
+<pre>
+#include "vector.h"
+</pre>
+<p><b>vector</b> (aka <b>list</b>): a collection of elements with 0-based indexes
+<ul>
+<li>include the type of elements in &lt;&gt; brackets</li>
+</ul> 
+<pre>
+//initialize a vector containing 5 integers
+//        index   0   1   2   3  4V
+Vector<int> nums {42, 17, -6, 0, 28};
+
+Vector<string> names; // {}
+names.add("abc"); //{"abc"}
+names.add("xyz"); //{"abc", "xyz"}
+names.insert(0, "ghi"); //{"ghi", "abc", "xyz"}
+</pre>
+
+<h3>Arrays and comparison with vectors</h3>
+C++ also has the notion of arrays with similar meaning as vectors:
+<pre>
+int nums[5];
+string names[3];
+nums[0] = 32;
+names[1] = "hello";
+</pre>
+Some problems with C++ arrays:
+<ul>
+<li>Arrays have a fixed size and cannot be easily resized
+<ul>
+<li>No way to know the size of the array just from the array variable. (e.g., no <code>num.length()</code>)</li>
+</ul>
+<li>C++ allows you to index out of the array bounds (garbage memory) without necessarily crashing or warning!
+<pre>
+names[7] = "hello"; //this will not crash but will lead to unexpected behaviour
+cout << names[7]; //prints garbage or crashes uncermoniously.
+</pre>
+</li>
+<li>An array does not support many operations that you'd want:
+<ul>
+<li>inserting/deleting elements into the front/middle/back of the array, reversing, sorting the elements, searching for a given value, ...</li>
+</ul>
+</li>
+</ul>
+
+<h3>Vector members</h3>
+<pre>
+v.add(value)
+v += value
+v += v1, v2, ..., vN;
+
+v.clear()
+
+v[i] or v.get(i)
+
+v.insert(i, value);
+
+v.isEmpty();
+
+v.remove(i);
+
+v[i] = value;
+v.set(i, value);
+
+v.subList(start, Length);
+
+v.size()
+
+v.toString()
+
+ostr << v
+</pre>
