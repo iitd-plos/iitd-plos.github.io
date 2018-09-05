@@ -35,7 +35,7 @@ LEC: <a href=lec/call_by_reference.html>Function Parameters</a>
 ==
 LEC: <a href=lec/strings.html>Functions and Strings</a>
 ==
-LEC: <a href=lec/strings.html>Strings continued</a>
+LEC: <a href=lec/strings2.html>Strings continued</a>
 ==
 LEC: <a href=lec/vectors.html>Vectors</a>
 ==
