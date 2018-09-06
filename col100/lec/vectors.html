@@ -65,29 +65,110 @@ cout << names[7]; //prints garbage or crashes uncermoniously.
 </ul>
 
 <h3>Vector members</h3>
+<table style="width:100%" border="1">
+ <tr>
+  <th>Member function name</th>
+  <th>Description</th>
+ </tr>
+  <tr>
+<td><code>v.add(value)</code><br>
+<code>v += value</code><br>
+<code>v += v1, v2, ..., vN;</code><br>
+</td><td>
+appends value(s) at end of vector</td></tr>
+<tr>
+<td><code>v.clear()</code></td>
+<td>removes all elements</td>
+</tr>
+<tr>
+<td>
+<code>v[i]</code> or <code>v.get(i)</code>
+</td>
+<td>
+returns the value at given index
+</td>
+</tr>
+<tr>
+<td><code>v.insert(i, value);</code></td>
+<td>inserts a given value just before the given index, shifting subsequent values to the right.</td>
+</tr>
+<tr>
+<td><code>v.isEmpty()</code></td>
+<td>returns true if the vector contains no elements</td>
+</tr>
+<tr>
+<td><code>v.remove(i)</code></td>
+<td>removes/returns value at given index, shifting subsequent values to the left.</td>
+</tr>
+<tr>
+<td><code>v[i] = value</code> or <code>v.set(i, value);</code></td>
+<td>replaces value at given index</td>
+</tr>
+<tr>
+<td><code>v.subList(start, lentgh);</code></td>
+<td>returns new vector of subrange of indices</td>
+</tr>
+<tr>
+<td><code>v.size()</code></td>
+<td>returns the number of elements in vector</td>
+</tr>
+<tr>
+<td><code>v.toString()</code></td>
+<td>returns a string representation of the vector such as "{1, 3, 70, -8}"</td>
+</tr>
+<tr>
+<td><code>ostr &lt;&lt; v</code></td>
+<td>prints v to given output stream (e.g., <code>cout &lt;&lt; v</code>)</td>
+</tr>
+</table>
+
+<p>Example: Iterating over a vector
 <pre>
-v.add(value)
-v += value
-v += v1, v2, ..., vN;
+Vector<string> names {"ab", "cd", ef"};
 
-v.clear()
+for (int i = 0; i < names.size(); i++) {
+  cout << names[i] << endl; //for loop: ab cd ef
+}
 
-v[i] or v.get(i)
+for (int i = names.size() - 1; i >= 0; i--) {
+  cout << names[i] << endl; //for loop backwards: ef cd ab
+}
 
-v.insert(i, value);
-
-v.isEmpty();
-
-v.remove(i);
-
-v[i] = value;
-v.set(i, value);
-
-v.subList(start, Length);
-
-v.size()
-
-v.toString()
-
-ostr << v
+for (string name : names) {
+  cout << name << endl; //"for-each" loop: ab cd ef
+}
+//cannot edit (insert/delete) in for-each loop.
 </pre>
+
+<p>Another example: insert/remove
+<pre>
+v.insert(2, 42);
+</pre>
+Shifts elements right to make room for the new element<br>
+Old vector
+<pre>
+index  0  1  2  3  4
+value  3  8  9  7  5
+</pre>
+New vector
+<pre>
+index  0  1  2  3  4  5
+value  3  8 42  9  7  5
+</pre>
+
+<p>Similarly,
+<pre>
+v.remove(1);
+</pre>
+Shifts elements left to cover the space left by the removed element.
+Old vector
+<pre>
+index  0  1  2  3  4  5
+value  3  8 42  9  7  5
+</pre>
+New vector
+<pre>
+index  0  1  2  3  4
+value  3 42  9  7  5
+</pre>
+Efficiency? These operations are slower the more elements they need to shift.

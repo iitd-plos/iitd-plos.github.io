@@ -1,0 +1,45 @@
+<h1>Grids</h1>
+<pre>
+#include "grid.h"
+</pre>
+
+<ul>
+<li>For 2-D organizations, e.g., board games like chess</li>
+<li>Good for board games, matrices, images, city maps, etc.</li>
+<li>must specify element type in &lt;&gt; brackets (called a <em><b>template parameter</b></em> or a <em>type parameter</em>)</li>
+</ul>
+<pre>
+//constructing a Grid
+Grid<int> matrix(3, 4);
+matrix[0][0] = 75;
+....
+</pre>
+or
+<pre>
+//constructing a Grid
+Grid<int> matrix = {
+  {75, 61, 83, 71},
+  {94, 89, 98, 100},
+  {63, 54, 51, 49},
+};
+</pre>
+Pictorially, the <code>matrix</code> looks like:
+<pre>
+row/col  0   1   2   3
+ 0      75  61  83  71
+ 1      94  89  98 100
+ 2      63  54  51  49
+</pre>
+
+<h3>Grid members</h3>
+<table style="width:100%" border="1">
+ <tr>
+  <th>Member function name</th>
+  <th>Description</th>
+ </tr>
+<tr>
+<td><code>Grid&lt;type&gt; name(r, c);</code>
+or <code>Grid&lt;type&gt; name;</code></td>
+<td>create grid with given number of rows/columns; empty 0x0 grid if omitted.</td>
+</tr>
+</table>
