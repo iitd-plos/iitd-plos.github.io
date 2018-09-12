@@ -10,14 +10,14 @@
 </ul>
 <pre>
 //constructing a Grid
-Grid<int> matrix(3, 4);
+Grid&lt;int&gt; matrix(3, 4);
 matrix[0][0] = 75;
 ....
 </pre>
 or
 <pre>
 //constructing a Grid
-Grid<int> matrix = {
+Grid&lt;int&gt; matrix = {
   {75, 61, 83, 71},
   {94, 89, 98, 100},
   {63, 54, 51, 49},
@@ -42,4 +42,141 @@ row/col  0   1   2   3
 or <code>Grid&lt;type&gt; name;</code></td>
 <td>create grid with given number of rows/columns; empty 0x0 grid if omitted.</td>
 </tr>
+
+<tr>
+<td><code>g[r][c]</code> or <code>g.get(r, c)</code>
+</td>
+<td>returns value at given row/col.</td>
+</tr>
+
+<tr>
+<td><code>g.fill(value)</code>
+</td>
+<td>set every cell to store the given value.</td>
+</tr>
+
+<tr>
+<td><code>g.inBounds(r, c)</code>
+</td>
+<td>returns true if given position is in the grid.</td>
+</tr>
+
+<tr>
+<td><code>g.numCols()</code> or <code>g.width()</code>
+</td>
+<td>returns number of columns.</td>
+</tr>
+
+<tr>
+<td><code>g.numRows()</code> or <code>g.height()</code>
+</td>
+<td>returns number of rows.</td>
+</tr>
+
+<tr>
+<td><code>g.resize(nRows, nCols)</code>
+</td>
+<td>resizes grid to new size, discarding old contents.</td>
+</tr>
+
+<tr>
+<td><code>g[r][c] = value</code> or <code>g.set(r, c, value)</code>
+</td>
+<td>stores value at given row/col.</td>
+</tr>
+
+<tr>
+<td><code>g.toString()</code>
+</td>
+<td>returns a string representation of the grid such as <code>"{{1, 3}, {-8, 2}, {-3, -4}, {4, 7}}"</code>.</td>
+</tr>
+
+<tr>
+<td><code>cout &lt;&lt; g</code>
+</td>
+<td>prints, e.g., <code>"{{1, 3}, {-8, 2}, {-3, -4}, {4, 7}}"</code>.</td>
+</tr>
+
 </table>
+
+<h3>Looping over a grid</h3>
+<ul>
+<li>Row-major order
+<pre>
+for (int r = 0; i < grid.numRows(); r++) {
+  for (int c = 0; c < grid.numCols(); c++) {
+    //do something with grid[r][c]
+  }
+</pre>
+</li>
+<li>Using for-each loop (also row-major order)
+<pre>
+for (int value : grid) {
+  //do something with value (don't have access to row/col number)
+}
+</pre>
+</li>
+<li>Column-major order
+<pre>
+for (int c = 0; c < grid.numCols(); c++) {
+  for (int r = 0; i < grid.numRows(); r++) {
+    //do something with grid[r][c]
+  }
+</pre>
+</li>
+</ul>
+Show an example grid and show the difference between row-major and column-major orders.
+
+<h3>Grid as a parameter</h3>
+When a grid is passed by value, C++ makes a <u>copy</u> of its contents. Copying is slow, you should pass by reference with &amp;. If the code won't modify the grid, also pass it as <b>const</b>.
+
+<p>Which one is best?
+<ol>
+<li><code>int computeSum(Grid&lt;int&gt; g) { ...}</code></li>
+<li><code>int computeSum(Grid&lt;int&gt; &amp;g) { ...}</code></li>
+<li><code>int computeSum(const Grid&lt;int&gt; g) { ...}</code></li>
+<li><code>int computeSum(const Grid&lt;int&gt; &amp;g) { ...}</code> : Best</li>
+</ol>
+
+<p>Which one is best?
+<ol>
+<li><code>int invert(Grid&lt;double&gt; g) { ...}</code> : will not work</li>
+<li><code>int invert(Grid&lt;double&gt; &amp;g) { ...}</code> : Best</li>
+<li><code>int invert(const Grid&lt;double&gt; g) { ...}</code> : will not work</li>
+<li><code>int invert(const Grid&lt;double&gt; &amp;g) { ...}</code> : will not work</li>
+</ol>
+
+<p>Exercise: Write a function knightCanMove that accepts a grid
+and two row/column pairs <code>(r1, c1)</code>, <code>(r2, c2)</code>
+as parameters, and returns true if there is a knight at chess 
+board square (r1, c1) that can legally move to empty square (r2, c2).
+<ul>
+<li>Recall that a knight makes an "L" shaped move, going 2 squares in one direction and 1 square in the other.</li>
+<li><code>knightCanMove(board, 1, 2, 2, 4)</code> returns <code>true</code>.</li>
+</ul>
+<pre>
+bool knightCanMove(Grid&lt;string&gt; const &amp;board, int r1, int c1, int r2, int c2)
+{
+  if (!board.inBounds(r1, c1) || !board.inBounds(r2, c2)) { 
+    return false; 
+  } 
+  if (board[r1][c1] != "knight" || board[r2][c2] != "") { 
+    return false; 
+  } 
+  int dr = abs(r1 - r2); 
+  int dc = abs(c1 - c2); 
+  if (!((dr == 1 && dc == 2) || (dr == 2 && dc == 1))) { 
+    return false; 
+  } 
+  return true; 
+}
+</pre>
+Another solution:
+<pre>
+bool knightCanMove(Grid<string>& board, int r1, int c1, int r2, int c2) { 
+    int dr = abs(r1 - r2), dc = abs(c1 - c2); 
+    return board.inBounds(r1, c1) && board.inBounds(r2, c2) 
+            && board[r1][c1] == "knight" && board[r2][c2] == "" 
+            && ((dr == 1 && dc == 2) || (dr == 2 && dc == 1)); 
+}
+</pre>
