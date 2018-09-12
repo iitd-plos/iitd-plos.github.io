@@ -104,6 +104,10 @@ if (startsWith(name, "Mr. ")) {
 }
 </pre>
 
+<p>Exercise: implement endsWith() using rfind() and length().
+
+<p>Exercise: implement endsWith() using substr() and length().
+
 <p>Exercise: what's the output?
 <pre>
 void mystery(string a, string &b)
@@ -158,6 +162,24 @@ void nameDiamond(string s)
   }
 }
 </pre>
+
+<p>Another solution
+<pre>
+void nameDiamond(string s)
+{
+  int len = s.length();
+  //print top half of diamond
+  for (int i = 1; i <= len; i++) {
+    cout << s.substr(0, i) << endl;
+  }
+  //print bottom half of diamond
+  for (int i = 1; i < len; i++) {
+    s.replace(i, 1, " ");
+    cout << s.substr(i, len - i) << endl;
+  }
+}
+</pre>
+Question: Will this solution work if the parameter <code>s</code> was pass-by-reference?  What if <code>s</code> was a const reference parameter?
 
 <h4>C vs. C++ strings</h4>
 <ul>

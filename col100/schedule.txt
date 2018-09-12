@@ -37,6 +37,8 @@ LEC: <a href=lec/strings.html>Functions and Strings</a>
 ==
 LEC: <a href=lec/strings2.html>Strings continued</a>
 ==
+LEC: <a href=lec/strings2.html>Strings continued 2</a>
+==
 LEC: <a href=lec/vectors.html>Vectors</a>
 ==
 LEC: <a href=lec/grids.html>Grids</a>
