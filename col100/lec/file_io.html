@@ -86,5 +86,20 @@ while (infile >> word) {
 
 infile.close();
 </pre>
+Now reads each <b>word</b> (removes whitespace). Still declare the variable before the while loop in which the word will be stored. Stll continues until fails to read a new word. Each while loop iteration has a different word. Works with other types (e.g., int or Vector) too. Do not try to mix with <code>getline</code> (recall previous discussion).
 </li>
+</ul>
+
+<p>Writing output
+<ul>
+<li>Use <code>ofstream</code>
+<pre>
+ofstream ofile;
+promptUserForFile(outfile, "File?");
+string word = "Output";
+int x = 3;
+outfile << word << " " << x << endl;
+outfile.close();
+</pre>
+Similar to reading formatted input. Works a lot like <code>cout</code>. Works with (almost) any type. Use <code>ofstream</code> instead of <code>ifstream</code> and <code>&lt;&lt;</code> instead of <code>&gt;&gt;</code>.
 </ul>
