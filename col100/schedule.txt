@@ -43,5 +43,9 @@ LEC: <a href=lec/vectors.html>Vectors</a>
 ==
 LEC: <a href=lec/grids_and_streams.html>Grids, streams</a>
 ==
+LEC: <a href=lec/grids_and_streams.html>Streams (contd.)</a>
+==
 LEC: <a href=lec/file_io.html>File I/O</a>
+==
+LEC: <a href=lec/debugging.html>Debugging</a>
 ==
