@@ -47,7 +47,7 @@ LEC: <a href=lec/grids_and_streams.html>Streams (contd.)</a>
 ==
 LEC: <a href=lec/file_io.html>File I/O</a>
 ==
-LEC: <a href=lec/debugging.html>Debugging</a>, <a href=lec/bigO.html>BigO</a>
+LEC: <a href=lec/bigO.html>BigO</a>
 ==
-LEC: <a href=lec/stacks.html>Stacks</a>, <a href=lec/queues.html>Queues</a>
+LEC: <a href=lec/debugging.html>Debugging</a>, <a href=lec/stacks.html>Stacks</a>, <a href=lec/queues.html>Queues</a>
 ==
