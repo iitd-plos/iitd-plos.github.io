@@ -8,6 +8,7 @@ HEADER: Links to notes etc. on future days are <i>tentative only</i>. They are h
 HOLIDAY: Sep 03. Janmashtami
 
 SKIP: Aug 23. No Lecture. Minor1 Tests scheduled.
+SKIP: Oct 01. No Lecture. Minor2 Tests scheduled.
 SKIP: Oct 04. No Lecture. Minor2 Tests scheduled.
 EVENT: Sep 10. Return of Minor-1 scripts
 EVENT: Oct 22. Return of Minor-2 scripts
@@ -49,5 +50,7 @@ LEC: <a href=lec/file_io.html>File I/O</a>
 ==
 LEC: <a href=lec/bigO.html>BigO</a>
 ==
-LEC: <a href=lec/debugging.html>Debugging</a>, <a href=lec/stacks.html>Stacks</a>, <a href=lec/queues.html>Queues</a>
+LEC: <a href=lec/stacks.html>Stacks</a>, <a href=lec/queues.html>Queues</a>
+==
+LEC: <a href=lec/queues.html>Queues contd.</a>, <a href=lec/debugging.html>Debugging</a>
 ==
