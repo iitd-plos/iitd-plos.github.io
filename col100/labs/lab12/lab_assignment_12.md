@@ -56,8 +56,11 @@
   * Try printing the current value of variable n as follows:  
     ```
     print n
-    ``` or  
-    ```p n```  
+    ``` 
+    or  
+    ```
+    p n
+    ```  
     
   * Is the printed value of n = 1 ?  
     > **NO**, because the command `int n = 1` has not yet been executed.  
