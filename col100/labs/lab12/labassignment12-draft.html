@@ -3,7 +3,7 @@
 <h2><a id="Section_A__Debugging_2"></a>Section A : Debugging</h2>
 <h3><a id="Brief_exercise_on_gdb_3"></a>Brief exercise on gdb</h3>
 <ul>
-    <li>Carefully read this code and download the cpp file ( <a href="fibonacci.cpp">fibonacci.cpp</a> ). Observe that this a problem from the Minor 1 exam. This is code to find the nth fibonacci number (given n).</li>
+<li>Carefully read this code and download the cpp file ( fibonacci.cpp ). Observe that this a problem from the Minor 1 exam. This is code to find the nth fibonacci number (given n).</li>
 </ul>
 <pre><code class="language-cpp"><span class="hljs-number">1</span>  <span class="hljs-preprocessor">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;iostream&gt;</span></span>
 <span class="hljs-number">2</span>  <span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> <span class="hljs-built_in">std</span>;
@@ -62,9 +62,9 @@ nth Fibonacci number is 3
 <li>
 <p>Try printing the current value of variable n as follows:</p>
 <pre><code>print n
-``` or  
-```p n```  
-
+</code></pre>
+<p>or</p>
+<pre><code>p n
 </code></pre>
 </li>
 <li>
@@ -112,9 +112,9 @@ nth Fibonacci number is 3
 </ul>
 </li>
 </ul>
-<h3><a id="Catching_errors_using_gdb_79"></a>Catching errors using gdb</h3>
+<h3><a id="Catching_errors_using_gdb_82"></a>Catching errors using gdb</h3>
 <ul>
-    <li>We try to detect and debug some common kinds of faults that one can run into while programming in C++. Carefully read the code below. ( <a href="faults.cpp">faults.cpp</a> )</li>
+<li>We try to detect and debug some common kinds of faults that one can run into while programming in C++. Carefully read the code below. ( faults.cpp )</li>
 </ul>
 <pre><code>   1 #include &lt;iostream&gt;
    2 using namespace std;
@@ -143,13 +143,13 @@ nth Fibonacci number is 3
 </li>
 </ul>
 <hr>
-<h2><a id="Balanced_Parentheses_107"></a>Balanced Parentheses</h2>
+<h2><a id="Balanced_Parentheses_110"></a>Balanced Parentheses</h2>
 <ul>
 <li>Mr. Thanos likes perfect balance in life, universe and everything and is very particular about it.</li>
 <li>One day, he comes across a string consisting of parentheses, both <code>(</code> and <code>)</code></li>
 <li>He wants to find if the parentheses are balanced, that is every <code>)</code> has a corresponding matching <code>(</code>.</li>
 </ul>
-<h4><a id="Example_113"></a>Example:</h4>
+<h4><a id="Example_116"></a>Example:</h4>
 <p>Consider the following string:</p>
 <pre><code>(()())
 </code></pre>
@@ -164,7 +164,7 @@ nth Fibonacci number is 3
 <li>How can a stack help with maintaining the last encountered unmatched <code>(</code>?</li>
 </ul>
 <hr>
-<h2><a id="Josephus_Problem_133"></a>Josephus Problem</h2>
+<h2><a id="Josephus_Problem_136"></a>Josephus Problem</h2>
 <ul>
 <li>There are <code>n</code> people standing in a circle waiting to be executed. Mr. Trivedi is unfortunately a part of this group.</li>
 <li>The counting out begins at some point in the circle and proceeds around the circle in a fixed direction.</li>
@@ -173,7 +173,7 @@ nth Fibonacci number is 3
 <li>Given the total number of persons <code>n</code> and a number <code>k</code> which indicates that <code>k-1</code> persons are skipped and <code>k-th</code> person is killed in circle.</li>
 <li>The task is to choose the place in the initial circle so that Mr. Trivedi is the last one remaining and so survives.</li>
 </ul>
-<h4><a id="Example_142"></a>Example:</h4>
+<h4><a id="Example_145"></a>Example:</h4>
 <p>Consider <code>n = 5</code> and <code>k = 2</code>. Here, the safe position is 3.</p>
 <p>Initially, the circle can be represented in a linear fashion as follows:</p>
 <pre><code>.1 2 3 4 5
