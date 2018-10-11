@@ -158,23 +158,25 @@ Here, the `)` at the last position, does not have a matching `(`. Hence this is 
 ```cpp
 bool isBalanced ( string input_string )
 {
-	// Return true if parentheses in input_string are balanced, false otherwise
+  // Return true if parentheses in input_string are balanced, false otherwise
 } 
 ```
 
 ---
 
-## Josephus Problem
+## One more minute please!
 
-* There are `n` people standing in a circle waiting to be executed. Mr. Trivedi is unfortunately a part of this group.
-* The counting out begins at a given fixed point in the circle and proceeds around the circle in a fixed direction. 
-* In each step, a certain number of people are skipped and the next person is executed. 
-* The elimination proceeds around the circle (which is becoming smaller and smaller as the executed people are removed), until only the last person remains, who is given freedom. 
-* Given the total number of persons `n` and a number `k` which indicates that `k-1` persons are skipped and `k-th` person is killed in circle. 
-* The task is to choose the place in the initial circle so that Mr. Trivedi is the last one remaining and so survives.
+* There are `n` people of your COL100 class, sitting in a circle, appearing for the minor exam. You, being in the class, are also a part of this group.
+* In the previous examinations, you had to ask the invigilator for an extra minute, to scribble some last minute answers on your sheet, when he or she comes to you for paper collection.
+* In COL100, your instructors have instructed the invigilators to follow a particular strategy to collect the papers, which is outlined below.
+* The collection begins at a given fixed point in the circle and proceeds around the circle in a fixed direction. 
+* In each step, a certain number of people are skipped and the next person's paper is collected. This person is then asked to leave the exam hall. 
+* The collection proceeds around the circle (which is becoming smaller and smaller as the people submit their papers and leave), until only the last person remains, whose paper is collected and the collection process completes. 
+* Given the total number of students `n` and a number `k` which indicates that `k-1` persons are skipped and `k-th` person's paper is collected. 
+* The task is to choose the place in the initial circle so that you are the last one to submit the paper and hence get your extra one minute.
 
 #### Example:
-Consider `n = 5` and `k = 2`. Here, the safe position is 3. 
+Consider `n = 5` and `k = 2`. Here, the last person to submit is at position 3. 
 
 Initially, the circle can be represented in a linear fashion as follows:
 ```
@@ -182,37 +184,37 @@ Initially, the circle can be represented in a linear fashion as follows:
 ```
 Here, the `.` is put before the element from where we begin counting for `k`.
 
-The first person to get killed is `2`. The state changes as follows:
+The first person to submit is `2`. The state changes as follows:
 ```
 1 .3 4 5
 ```
 
-The next person to get killed will be `4`. The state changes as follows:
+The next person to submit will be `4`. The state changes as follows:
 ```
 1 3 .5
 ```
 
-The next person to get killed will be `1`. The state changes as follows:
+The next person to submit will be `1`. The state changes as follows:
 ```
 .3 5
 ```
 
-The next person to get killed will be `5`. The state changes as follows: 
+The next person to submit will be `5`. The state changes as follows: 
 ```
 .3
 ```
 
-Since `3` is the last person to remain, he survives. Hence, the solution is `3`.
+Since `3` is the last person to remain, he submits at the end. Hence, the solution is `3`.
 
-* It appears in the above example as if the men are standing in a queue.
-* What should we do if we wish to execute the person at the front of the queue?
+* It appears in the above example as if the students are standing in a queue.
+* What should we do if we wish to collect the paper from the person at the front of the queue?
 * What should we do if we wish to skip the person at the front of the queue?
-* When do we stop killing people in the queue?
-* You must implement the solution as a function that takes parameters n and k and outputs the safe position:
+* When do we stop collection the papers from the people in the queue?
+* You must implement the solution as a function that takes parameters n and k and outputs the last position:
 
 ```cpp
-int getSafePosition( int n, int k )
+int getLastPosition( int n, int k )
 {
-	// Your code goes here
+  // Your code goes here
 }
 ```
