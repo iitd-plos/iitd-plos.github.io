@@ -2,7 +2,7 @@
 
 ## Section A : Debugging
 ### Brief exercise on gdb
-* Carefully read this code and download the cpp file ( fibonacci.cpp ). Observe that this a problem from the Minor 1 exam. This is code to find the nth fibonacci number (given n).
+* Carefully read this code and download the cpp file ( [fibonacci.cpp](fibonacci.cpp) ). Observe that this a problem from the Minor 1 exam. This is code to find the nth fibonacci number (given n).
  
 ```cpp
 1  #include <iostream>
@@ -81,9 +81,9 @@
   * If **NO**, why? How is this related to the value of n input by you?
 
 ### Catching errors using gdb
-* We try to detect and debug some common kinds of faults that one can run into while programming in C++. Carefully read the code below. ( faults.cpp )
+* We try to detect and debug some common kinds of faults that one can run into while programming in C++. Carefully read the code below. ( [faults.cpp](faults.cpp) )
 
-```
+```cpp
    1 #include <iostream>
    2 using namespace std;
    3 int main()
@@ -105,6 +105,28 @@
 * Enter `r` to run the program again, **NOW**:
   * Do you run into a fault again?
   * If NOT, how did the fault get fixed?
+
+---
+
+## Clone the Queue
+
+* You are provided a queue of strings.
+* Your job is to write code that clones all the strings in the queue and adds them at the back **IN ORDER**
+
+> **Example**  
+> Original Queue :  **FRONT** -> "alpha" | "beta" | "gamma"  <- **BACK**  
+> Required Queue :  **FRONT** -> "alpha" | "beta" | "gamma" | "alpha" | "beta" | "gamma"  <- **BACK**  
+
+* You can **only use additional queues/stacks** to achieve the same.
+* Complete the code that can be downloaded here: [clone.cpp](clone.cpp)
+
+```cpp
+queue<string> clone(queue<string> input_queue)
+{
+    // Modify and return the input_queue after cloning
+    return input_queue;
+}
+```
 
 ---
 
@@ -131,13 +153,21 @@ Here, the `)` at the last position, does not have a matching `(`. Hence this is 
 * He does not need infinity stones, but he might need to use a stack to accomplish this.
 * Can we match a `)` with the **LAST** encountered unmatched `(` as we read the string from left to right?
 * How can a stack help with maintaining the last encountered unmatched `(`?
+* Implement the following function:
+
+```cpp
+bool isBalanced ( string input_string )
+{
+	// Return true if parentheses in input_string are balanced, false otherwise
+} 
+```
 
 ---
 
 ## Josephus Problem
 
 * There are `n` people standing in a circle waiting to be executed. Mr. Trivedi is unfortunately a part of this group.
-* The counting out begins at some point in the circle and proceeds around the circle in a fixed direction. 
+* The counting out begins at a given fixed point in the circle and proceeds around the circle in a fixed direction. 
 * In each step, a certain number of people are skipped and the next person is executed. 
 * The elimination proceeds around the circle (which is becoming smaller and smaller as the executed people are removed), until only the last person remains, who is given freedom. 
 * Given the total number of persons `n` and a number `k` which indicates that `k-1` persons are skipped and `k-th` person is killed in circle. 
@@ -178,3 +208,11 @@ Since `3` is the last person to remain, he survives. Hence, the solution is `3`.
 * What should we do if we wish to execute the person at the front of the queue?
 * What should we do if we wish to skip the person at the front of the queue?
 * When do we stop killing people in the queue?
+* You must implement the solution as a function that takes parameters n and k and outputs the safe position:
+
+```cpp
+int getSafePosition( int n, int k )
+{
+	// Your code goes here
+}
+```
