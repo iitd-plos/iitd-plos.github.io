@@ -17,7 +17,7 @@ on the intended concepts to be learned and not get entangled in several
 syntactic issues that appear in the Standard C++ library.
 
 <p>Example: We have not discussed the concept of an <code>iterator</code>
-in the ADTS. Inserting of an element in a vector using Stanford libraries
+in the ADTs. Inserting of an element in a vector using Stanford libraries
 can be done using the element index; however this requires an iterator in
 the standard C++ library.  There are several other such examples.
 
@@ -25,7 +25,7 @@ the standard C++ library.  There are several other such examples.
 of C++ STL --- the Stanford library nicely hides these ugly details and lets
 us focus on the core concepts of computer science. In many cases, we later
 learn about C++ STL (e.g., streams vs. integerToString()) in any case; but
-this method of first learning an easier API before being exposed to the
+this method of first learning an easier abstraction before being exposed to the
 internal details, is perhaps much easier to grasp for most students.
 </li>
 <li><b>If I already understand C++ STL by reading the online
@@ -43,8 +43,8 @@ in any other context, e.g., programming contests</b>.
 <p>This is not true. As far as we know, you are free to include any libraries
 in programming contests. That is not to say that we recommend using
 Stanford libraries all your life --- as we said earlier, they are only
-intended to provide a more gradual learning curve, and are largely optional
-to use.
+intended to provide a more gradual learning curve in introductory
+CS courses.
 </li>
 <li><b>But if I learn using Stanford libraries, how am I learning about the
 real world?</b>
@@ -57,12 +57,13 @@ of <a href=http://www.cplusplus.com/reference/map/map/>C++ STL <code>map</code><
 
 <p>The member functions in the two different ADTs also have almost a direct
 one-to-one correspondence with each other. However many things are simplified
-in the Stanford ADT.
+in the Stanford ADT. After you learn problem-solving using Stanford ADTs, migrating
+to C++ STL ADTs is fairly easy.
 </li>
 <li><b>Are Stanford libraries superior or advanced in any way to C++ STL?</b>
 <p>No! In fact, it is quite likely the Stanford libraries are slower and
-less general than the C++ STL library. While the Stanford library is perhaps
-the work of 1-5 people over 1-2 yearsas, the C++ STL library is the work of thousands of people
+less general and more buggy than the C++ STL library. While the Stanford library is perhaps
+the work of 1-5 people over 1-2 years, the C++ STL library is the work of thousands of people
 over multiple decades.
 
 <p>We are using Stanford library only for their gentle learning slope for
@@ -70,18 +71,19 @@ students getting introduced to ADTs for the first time.
 </li>
 <li><b>Stanford libraries are discussed in lectures, but sometimes programming assignments are based on C++ STL</b>
 <p>We try to avoid this, but often cannot --- for example, if one of the Stanford library
-ADT is not working well, we request you to use the corresponding STL ADT. In these cases,
+ADT is not working correctly (has bugs), we request you to use the corresponding STL ADT. In these cases,
 we always try and ensure that we provide the required documentation to map from Stanford
-ADT methods to C++ STL methods.
+ADT methods to C++ STL methods. As you may have seen, these mappings are fairly easy
+and straight-forward.
 </li>
 <li><b>Can I use Stanford libraries beyond COL100?</b>
 <p>Yes you can, as long as you obey the License agreement provided in the Stanford libraries. Please note that most software development today happens by "standing on the shoulders
 of others", i.e., by reusing the work of others. A very common method of reusing other
-people's work is to use the libraries written by them. Hopefully using the Stanford libraries
-(and looking inside them) will give you some exposure to this common software engineering
+people's work is to use the libraries written by them. Hopefully, using the Stanford libraries
+(and looking inside them at some point) will give you some exposure to this common software engineering
 practice.
 </li>
 <li><b>Some of my questions are still not answered in this document?</b>
-<p>Please feel free to write to col100-staff@iitd.ac.in if you still have questions or concerns.
+<p>Please feel free to write to col100-staff@iitd.ac.in if you still have unanswered questions or concerns.
 </li>
 </ul>
