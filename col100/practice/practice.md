@@ -20,9 +20,10 @@
 13     }
 14     while (!q.isEmpty()) {
 15         cout << get_queue_length(q) << endl;
-16     }
-17     return 0;
-18 }
+16         cout << q.dequeue() << endl;
+17     }
+18     return 0;
+19 }
 ```
 
   * Now what is the time complexity of the followng program (notice that the argument is now pass-by-value)
@@ -43,9 +44,10 @@
 13     }
 14     while (!q.isEmpty()) {
 15         cout << get_queue_length(q) << endl;
-16     }
-17     return 0;
-18 }
+16         cout << q.dequeue() << endl;
+17     }
+18     return 0;
+19 }
 ```
 
   * And finally, what is the time complexity of the following program (notice that the argument is copied in a local variable before passing-by-reference)
@@ -67,7 +69,8 @@
 14     while (!q.isEmpty()) {
 15         Queue<int> q2 = q;
 16         cout << get_queue_length(q2) << endl;
-17     }
-18     return 0;
-19 }
+17         cout << q.dequeue() << endl;
+18     }
+19     return 0;
+20 }
 ```
