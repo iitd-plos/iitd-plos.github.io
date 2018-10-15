@@ -6,6 +6,8 @@ Schedule: Monday, Thursday
 HEADER: Links to notes etc. on future days are <i>tentative only</i>. They are here only to give you an idea what the future will bring.<br>Acknowledgements: Much of the course material has been adapted from Stanford's CS106A and Stanford's CS106B courses.
 
 HOLIDAY: Sep 03. Janmashtami
+HOLIDAY: Oct 15. Mid-semester break
+HOLIDAY: Oct 18. Mid-semester break
 
 SKIP: Aug 23. No Lecture. Minor1 Tests scheduled.
 SKIP: Oct 01. No Lecture. Minor2 Tests scheduled.
@@ -52,5 +54,7 @@ LEC: <a href=lec/bigO.html>BigO</a>
 ==
 LEC: <a href=lec/stacks.html>Stacks</a>, <a href=lec/queues.html>Queues</a>
 ==
-LEC: <a href=lec/queues.html>Queues contd.</a>, <a href=lec/debugging.html>Debugging</a>, <a href=lec/sets.html>Sets</a>
+LEC: <a href=lec/queues.html>Queues contd.</a>, <a href=lec/debugging.html>Debugging</a>
+==
+LEC: <a href=lec/sets.html>Sets</a>
 ==
