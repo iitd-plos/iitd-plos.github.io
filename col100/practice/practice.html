@@ -21,9 +21,10 @@
 13     }
 14     while (!q.isEmpty()) {
 15         cout &lt;&lt; get_queue_length(q) &lt;&lt; endl;
-16     }
-17     return 0;
-18 }</code></pre>
+16         cout &lt;&lt; q.dequeue() &lt;&lt; endl;
+17     }
+18     return 0;
+19 }</code></pre>
 <ul>
 <li>Now what is the time complexity of the followng program (notice that the argument is now pass-by-value)</li>
 </ul>
@@ -42,9 +43,10 @@
 <span class="dv">13</span>     }
 <span class="dv">14</span>     <span class="kw">while</span> (!q.isEmpty()) {
 <span class="dv">15</span>         cout &lt;&lt; get_queue_length(q) &lt;&lt; endl;
-<span class="dv">16</span>     }
-<span class="dv">17</span>     <span class="kw">return</span> <span class="dv">0</span>;
-<span class="dv">18</span> }</code></pre>
+<span class="dv">16</span>         cout &lt;&lt; q.dequeue() &lt;&lt; endl;
+<span class="dv">17</span>     }
+<span class="dv">18</span>     <span class="kw">return</span> <span class="dv">0</span>;
+<span class="dv">19</span> }</code></pre>
 <ul>
 <li>And finally, what is the time complexity of the following program (notice that the argument is copied in a local variable before passing-by-reference)</li>
 </ul>
@@ -64,6 +66,7 @@
 <span class="dv">14</span>     <span class="kw">while</span> (!q.isEmpty()) {
 <span class="dv">15</span>         Queue&lt;<span class="dt">int</span>&gt; q2 = q;
 <span class="dv">16</span>         cout &lt;&lt; get_queue_length(q2) &lt;&lt; endl;
-<span class="dv">17</span>     }
-<span class="dv">18</span>     <span class="kw">return</span> <span class="dv">0</span>;
-<span class="dv">19</span> }</code></pre>
+<span class="dv">17</span>         cout &lt;&lt; q.dequeue() &lt;&lt; endl;
+<span class="dv">18</span>     }
+<span class="dv">19</span>     <span class="kw">return</span> <span class="dv">0</span>;
+<span class="dv">20</span> }</code></pre>
