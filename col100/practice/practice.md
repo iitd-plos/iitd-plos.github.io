@@ -1,5 +1,5 @@
 ## Practice Questions
-
+<!-- added by sorav -->
 1. **Big_O notation, Time Complexity of a Program**: In this question, we will learn about the time complexity of passing arguments by value and by reference:
 
    * What is the time-complexity of the following program. Assume size of input queue is N
@@ -26,6 +26,7 @@
 ```
 
   * Now what is the time complexity of the followng program (notice that the argument is now pass-by-value)
+
 ```cpp
 1  #include <iostream>
 2  using namespace std;
@@ -48,6 +49,7 @@
 ```
 
   * And finally, what is the time complexity of the following program (notice that the argument is copied in a local variable before passing-by-reference)
+
 ```cpp
 1  #include <iostream>
 2  using namespace std;
