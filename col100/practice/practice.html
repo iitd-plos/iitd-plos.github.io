@@ -1,76 +1,69 @@
-<h2>Practice Questions</h2>
-
-<ol>
-<li><p><strong>Big_O notation, Time Complexity of a Program</strong>: In this question, we will learn about the time complexity of passing arguments by value and by reference:</p>
-
+<h2 id="practice-questions">Practice Questions</h2>
+<!-- added by sorav -->
+<ol style="list-style-type: decimal">
+<li><strong>Big_O notation, Time Complexity of a Program</strong>: In this question, we will learn about the time complexity of passing arguments by value and by reference:</li>
+</ol>
 <ul>
 <li>What is the time-complexity of the following program. Assume size of input queue is N</li>
-</ul></li>
-</ol>
-
-<p><code>
-1  #include &lt;iostream&gt;
-2  using namespace std;
-3  int get_queue_length(Queue&lt;int&gt; const &amp;q)
-4  {
-5     return q.size();
-6  }
-7  int main()
-8  {
-9      cin &gt;&gt; n; <br />
-10     Queue&lt;int&gt; q;
-11     for (int i = 0; i &lt; n; i++) {
-12         q.enqueue(i);
-13     }
-14     while (!q.isEmpty()) {
-15         cout &lt;&lt; get_queue_length(q) &lt;&lt; endl;
-16     }
-17     return 0;
-18 }
-</code></p>
-
-<ul>
-<li><p>Now what is the time complexity of the followng program (notice that the argument is now pass-by-value)
-<code>cpp
-1  #include &lt;iostream&gt;
-2  using namespace std;
-3  int get_queue_length(Queue&lt;int&gt; q)
-4  {
-5     return q.size();
-6  }
-7  int main()
-8  {
-9      cin &gt;&gt; n; <br />
-10     Queue&lt;int&gt; q;
-11     for (int i = 0; i &lt; n; i++) {
-12         q.enqueue(i);
-13     }
-14     while (!q.isEmpty()) {
-15         cout &lt;&lt; get_queue_length(q) &lt;&lt; endl;
-16     }
-17     return 0;
-18 }
-</code></p></li>
-<li><p>And finally, what is the time complexity of the following program (notice that the argument is copied in a local variable before passing-by-reference)
-<code>cpp
-1  #include &lt;iostream&gt;
-2  using namespace std;
-3  int get_queue_length(Queue&lt;int&gt; const &amp;q)
-4  {
-5     return q.size();
-6  }
-7  int main()
-8  {
-9      cin &gt;&gt; n; <br />
-10     Queue&lt;int&gt; q;
-11     for (int i = 0; i &lt; n; i++) {
-12         q.enqueue(i);
-13     }
-14     while (!q.isEmpty()) {
-15         Queue&lt;int&gt; q2 = q;
-16         cout &lt;&lt; get_queue_length(q2) &lt;&lt; endl;
-17     }
-18     return 0;
-19 }
-</code></p></li>
 </ul>
+<pre><code>1  #include &lt;iostream&gt;
+2  using namespace std;
+3  int get_queue_length(Queue&lt;int&gt; const &amp;q)
+4  {
+5     return q.size();
+6  }
+7  int main()
+8  {
+9      cin &gt;&gt; n;   
+10     Queue&lt;int&gt; q;
+11     for (int i = 0; i &lt; n; i++) {
+12         q.enqueue(i);
+13     }
+14     while (!q.isEmpty()) {
+15         cout &lt;&lt; get_queue_length(q) &lt;&lt; endl;
+16     }
+17     return 0;
+18 }</code></pre>
+<ul>
+<li>Now what is the time complexity of the followng program (notice that the argument is now pass-by-value)</li>
+</ul>
+<pre class="sourceCode cpp"><code class="sourceCode cpp"><span class="dv">1</span>  #include &lt;iostream&gt;
+<span class="dv">2</span>  <span class="kw">using</span> <span class="kw">namespace</span> std;
+<span class="dv">3</span>  <span class="dt">int</span> get_queue_length(Queue&lt;<span class="dt">int</span>&gt; q)
+<span class="dv">4</span>  {
+<span class="dv">5</span>     <span class="kw">return</span> q.size();
+<span class="dv">6</span>  }
+<span class="dv">7</span>  <span class="dt">int</span> main()
+<span class="dv">8</span>  {
+<span class="dv">9</span>      cin &gt;&gt; n;   
+<span class="dv">10</span>     Queue&lt;<span class="dt">int</span>&gt; q;
+<span class="dv">11</span>     <span class="kw">for</span> (<span class="dt">int</span> i = <span class="dv">0</span>; i &lt; n; i++) {
+<span class="dv">12</span>         q.enqueue(i);
+<span class="dv">13</span>     }
+<span class="dv">14</span>     <span class="kw">while</span> (!q.isEmpty()) {
+<span class="dv">15</span>         cout &lt;&lt; get_queue_length(q) &lt;&lt; endl;
+<span class="dv">16</span>     }
+<span class="dv">17</span>     <span class="kw">return</span> <span class="dv">0</span>;
+<span class="dv">18</span> }</code></pre>
+<ul>
+<li>And finally, what is the time complexity of the following program (notice that the argument is copied in a local variable before passing-by-reference)</li>
+</ul>
+<pre class="sourceCode cpp"><code class="sourceCode cpp"><span class="dv">1</span>  #include &lt;iostream&gt;
+<span class="dv">2</span>  <span class="kw">using</span> <span class="kw">namespace</span> std;
+<span class="dv">3</span>  <span class="dt">int</span> get_queue_length(Queue&lt;<span class="dt">int</span>&gt; <span class="dt">const</span> &amp;q)
+<span class="dv">4</span>  {
+<span class="dv">5</span>     <span class="kw">return</span> q.size();
+<span class="dv">6</span>  }
+<span class="dv">7</span>  <span class="dt">int</span> main()
+<span class="dv">8</span>  {
+<span class="dv">9</span>      cin &gt;&gt; n;   
+<span class="dv">10</span>     Queue&lt;<span class="dt">int</span>&gt; q;
+<span class="dv">11</span>     <span class="kw">for</span> (<span class="dt">int</span> i = <span class="dv">0</span>; i &lt; n; i++) {
+<span class="dv">12</span>         q.enqueue(i);
+<span class="dv">13</span>     }
+<span class="dv">14</span>     <span class="kw">while</span> (!q.isEmpty()) {
+<span class="dv">15</span>         Queue&lt;<span class="dt">int</span>&gt; q2 = q;
+<span class="dv">16</span>         cout &lt;&lt; get_queue_length(q2) &lt;&lt; endl;
+<span class="dv">17</span>     }
+<span class="dv">18</span>     <span class="kw">return</span> <span class="dv">0</span>;
+<span class="dv">19</span> }</code></pre>
