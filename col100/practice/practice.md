@@ -74,3 +74,70 @@
 19     return 0;
 20 }
 ```
+
+<!-- added by paras -->
+2. **Estimating the Output of a given program**: In this question, we will learn about how to analyze a simple program and product the output for it. 
+
+
+    * What is the output of the given program?
+   
+```cpp
+1  #include <iostream> 
+2  using namespace std; 
+3  
+4  int main() 
+5  { 
+6    int a = 32, *ptr = &a; 
+7    char ch = 'A', &cho = ch; 
+8  
+9    cho += a; 
+10   *ptr += ch; 
+11   cout << a << ", " << ch << endl; 
+12   return 0; 
+13  } 
+```
+   * What will i and j equal after the code below is executed? Explain your answer.
+   
+```cpp
+1  int i = 5;
+2  int j = i++;
+```
+
+<!-- added by paras -->
+3. **Analyze the program**: In this question, you have to analyze the given piece of code at mutiple level. 
+
+
+   * Is the program correct? If yes, what is the output of the given program? If not, what are the errors?
+   
+```cpp
+1 #include <iostream> 
+2 using namespace std; 
+3  
+4 int main() 
+5 { 
+6    const int i = 20; 
+7    const int* const ptr = &i; 
+8    (*ptr)++; 
+9    int j = 15; 
+10   ptr = &j; 
+11   cout << i; 
+12   return 0; 
+13 } 
+```
+
+  * Consider the two code snippets below for printing a vector. Is there any advantage of one vs. the other? Explain.
+
+Option 1:
+
+vector vec;
+/* ... .. ... */
+for (auto itr = vec.begin(); itr != vec.end(); itr++) {
+	itr->print();
+}
+Option 2:
+
+vector vec;
+/* ... .. ... */
+for (auto itr = vec.begin(); itr != vec.end(); ++itr) {
+	itr->print();
+}
