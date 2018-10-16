@@ -96,11 +96,11 @@
 12   return 0; 
 13  } 
 ```
-     * What will i and j equal after the code below is executed? Explain your answer.
+   * What will i and j equal after the code below is executed? Explain your answer.
    
 ```cpp
-1  int i = 5;
-2  int j = i++;
+int i = 5;
+int j = i++;
 ```
 
 <!-- added by paras -->
@@ -125,7 +125,7 @@
 13 } 
 ```
 
-    * Consider the two code snippets below for printing a vector. Is there any advantage of one vs. the other? Explain.
+  * Consider the two code snippets below for printing a vector. Is there any advantage of one vs. the other? Explain.
 
 *Option 1:
 ```cpp
