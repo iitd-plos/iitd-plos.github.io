@@ -76,7 +76,7 @@
 ```
 
 <!-- added by paras -->
-2. **Estimating the Output of a given program**: In this question, we will learn about how to analyze a simple program and product the output for it. 
+2. **Estimating the Output of a given program**: In these questions, we will learn about how to analyze a simple program and produce the output for it. 
 
 **2.1** What is the output of the given program?
    
@@ -103,7 +103,7 @@ int j = i++;
 ```
 
 <!-- added by paras -->
-3. **Analyze the program**: In this question, you have to analyze the given piece of code at mutiple level. 
+3. **Analyze the program**: In these questions, one need to analyze the given piece of code at multiple levels. 
 
 **3.1** Is the program correct? If yes, what is the output of the given program? If not, what are the errors?
    
