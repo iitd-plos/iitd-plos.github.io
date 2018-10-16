@@ -70,3 +70,56 @@
 <span class="dv">18</span>     }
 <span class="dv">19</span>     <span class="kw">return</span> <span class="dv">0</span>;
 <span class="dv">20</span> }</code></pre>
+<!-- added by paras -->
+<ol start="2" style="list-style-type: decimal">
+<li><strong>Estimating the Output of a given program</strong>: In these questions, we will learn about how to analyze a simple program and produce the output for it.</li>
+</ol>
+<p><strong>2.1</strong> What is the output of the given program?</p>
+<pre class="sourceCode cpp"><code class="sourceCode cpp"><span class="dv">1</span>  #include &lt;iostream&gt;
+<span class="dv">2</span>  <span class="kw">using</span> <span class="kw">namespace</span> std;
+<span class="dv">3</span>  
+<span class="dv">4</span>  <span class="dt">int</span> main()
+<span class="dv">5</span>  {
+<span class="dv">6</span>    <span class="dt">int</span> a = <span class="dv">32</span>, *ptr = &amp;a;
+<span class="dv">7</span>    <span class="dt">char</span> ch = &#39;A&#39;, &amp;cho = ch;
+<span class="dv">8</span>  
+<span class="dv">9</span>    cho += a;
+<span class="dv">10</span>   *ptr += ch;
+<span class="dv">11</span>   cout &lt;&lt; a &lt;&lt; <span class="st">&quot;, &quot;</span> &lt;&lt; ch &lt;&lt; endl;
+<span class="dv">12</span>   <span class="kw">return</span> <span class="dv">0</span>;
+<span class="dv">13</span>  }</code></pre>
+<p><strong>2.2</strong> What will i and j equal after the code below is executed? Explain your answer.</p>
+<pre class="sourceCode cpp"><code class="sourceCode cpp"><span class="dt">int</span> i = <span class="dv">5</span>;
+<span class="dt">int</span> j = i++;</code></pre>
+<!-- added by paras -->
+<ol start="3" style="list-style-type: decimal">
+<li><strong>Analyze the program</strong>: In these questions, one need to analyze the given piece of code at multiple levels.</li>
+</ol>
+<p><strong>3.1</strong> Is the program correct? If yes, what is the output of the given program? If not, what are the errors?</p>
+<pre class="sourceCode cpp"><code class="sourceCode cpp"><span class="dv">1</span> #include &lt;iostream&gt;
+<span class="dv">2</span> <span class="kw">using</span> <span class="kw">namespace</span> std;
+<span class="dv">3</span>  
+<span class="dv">4</span> <span class="dt">int</span> main()
+<span class="dv">5</span> {
+<span class="dv">6</span>    <span class="dt">const</span> <span class="dt">int</span> i = <span class="dv">20</span>;
+<span class="dv">7</span>    <span class="dt">const</span> <span class="dt">int</span>* <span class="dt">const</span> ptr = &amp;i;
+<span class="dv">8</span>    (*ptr)++;
+<span class="dv">9</span>    <span class="dt">int</span> j = <span class="dv">15</span>;
+<span class="dv">10</span>   ptr = &amp;j;
+<span class="dv">11</span>   cout &lt;&lt; i;
+<span class="dv">12</span>   <span class="kw">return</span> <span class="dv">0</span>;
+<span class="dv">13</span> }</code></pre>
+<p><strong>3.2</strong> Consider the two code snippets below for printing a vector. Is there any advantage of one vs. the other? Explain.</p>
+<p>Option 1:</p>
+<pre class="sourceCode cpp"><code class="sourceCode cpp">vector vec;
+<span class="co">/* ... .. ... */</span>
+<span class="kw">for</span> (<span class="dt">auto</span> itr = vec.begin(); itr != vec.end(); itr++) {
+    itr-&gt;print();
+}</code></pre>
+<p>Option 2:</p>
+<pre class="sourceCode cpp"><code class="sourceCode cpp">vector vec;
+<span class="co">/* ... .. ... */</span>
+<span class="kw">for</span> (<span class="dt">auto</span> itr = vec.begin(); itr != vec.end(); ++itr) {
+    itr-&gt;print();
+}</code></pre>
+
