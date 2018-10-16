@@ -142,4 +142,3 @@ for (auto itr = vec.begin(); itr != vec.end(); ++itr) {
 	itr->print();
 }
 ```
-make
