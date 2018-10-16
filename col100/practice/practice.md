@@ -79,7 +79,7 @@
 2. **Estimating the Output of a given program**: In this question, we will learn about how to analyze a simple program and product the output for it. 
 
 
-    * What is the output of the given program?
+    2.1 What is the output of the given program?
    
 ```cpp
 1  #include <iostream> 
@@ -96,7 +96,7 @@
 12   return 0; 
 13  } 
 ```
-   * What will i and j equal after the code below is executed? Explain your answer.
+   2.2 What will i and j equal after the code below is executed? Explain your answer.
    
 ```cpp
 int i = 5;
@@ -107,7 +107,7 @@ int j = i++;
 3. **Analyze the program**: In this question, you have to analyze the given piece of code at mutiple level. 
 
 
-   * Is the program correct? If yes, what is the output of the given program? If not, what are the errors?
+   3.1 Is the program correct? If yes, what is the output of the given program? If not, what are the errors?
    
 ```cpp
 1 #include <iostream> 
@@ -125,9 +125,9 @@ int j = i++;
 13 } 
 ```
 
-  * Consider the two code snippets below for printing a vector. Is there any advantage of one vs. the other? Explain.
+  3.2 Consider the two code snippets below for printing a vector. Is there any advantage of one vs. the other? Explain.
 
-*Option 1:
+Option 1:
 ```cpp
 vector vec;
 /* ... .. ... */
@@ -135,7 +135,7 @@ for (auto itr = vec.begin(); itr != vec.end(); itr++) {
 	itr->print();
 }
 ```
-*Option 2:
+Option 2:
 
 ```cpp
 vector vec;
