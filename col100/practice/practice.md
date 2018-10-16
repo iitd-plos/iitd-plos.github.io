@@ -96,7 +96,7 @@
 12   return 0; 
 13  } 
 ```
-   * What will i and j equal after the code below is executed? Explain your answer.
+     * What will i and j equal after the code below is executed? Explain your answer.
    
 ```cpp
 1  int i = 5;
@@ -125,19 +125,22 @@
 13 } 
 ```
 
-  * Consider the two code snippets below for printing a vector. Is there any advantage of one vs. the other? Explain.
+    * Consider the two code snippets below for printing a vector. Is there any advantage of one vs. the other? Explain.
 
-Option 1:
-
+*Option 1:
+```cpp
 vector vec;
 /* ... .. ... */
 for (auto itr = vec.begin(); itr != vec.end(); itr++) {
 	itr->print();
 }
-Option 2:
+```
+*Option 2:
 
+```cpp
 vector vec;
 /* ... .. ... */
 for (auto itr = vec.begin(); itr != vec.end(); ++itr) {
 	itr->print();
 }
+```
