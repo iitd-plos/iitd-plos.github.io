@@ -1,11 +1,11 @@
 <h2 id="practice-questions">Practice Questions</h2>
 <!-- added by sorav -->
-<ol type="1">
-<li><p><strong>Big_O notation, Time Complexity of a Program</strong>: In this question, we will learn about the time complexity of passing arguments by value and by reference:</p>
+<ol style="list-style-type: decimal">
+<li><strong>Big_O notation, Time Complexity of a Program</strong>: In this question, we will learn about the time complexity of passing arguments by value and by reference:</li>
+</ol>
 <ul>
 <li>What is the time-complexity of the following program. Assume size of input queue is N</li>
-</ul></li>
-</ol>
+</ul>
 <pre><code>1  #include &lt;iostream&gt;
 2  using namespace std;
 3  int get_queue_length(Queue&lt;int&gt; const &amp;q)
@@ -28,102 +28,102 @@
 <ul>
 <li>Now what is the time complexity of the followng program (notice that the argument is now pass-by-value)</li>
 </ul>
-<div class="sourceCode" id="cb2"><pre class="sourceCode cpp"><code class="sourceCode cpp"><a class="sourceLine" id="cb2-1" data-line-number="1"><span class="dv">1</span>  <span class="er">#</span>include &lt;iostream&gt;</a>
-<a class="sourceLine" id="cb2-2" data-line-number="2"><span class="dv">2</span>  <span class="kw">using</span> <span class="kw">namespace</span> std;</a>
-<a class="sourceLine" id="cb2-3" data-line-number="3"><span class="dv">3</span>  <span class="dt">int</span> get_queue_length(Queue&lt;<span class="dt">int</span>&gt; q)</a>
-<a class="sourceLine" id="cb2-4" data-line-number="4"><span class="dv">4</span>  {</a>
-<a class="sourceLine" id="cb2-5" data-line-number="5"><span class="dv">5</span>     <span class="cf">return</span> q.size();</a>
-<a class="sourceLine" id="cb2-6" data-line-number="6"><span class="dv">6</span>  }</a>
-<a class="sourceLine" id="cb2-7" data-line-number="7"><span class="dv">7</span>  <span class="dt">int</span> main()</a>
-<a class="sourceLine" id="cb2-8" data-line-number="8"><span class="dv">8</span>  {</a>
-<a class="sourceLine" id="cb2-9" data-line-number="9"><span class="dv">9</span>      cin &gt;&gt; n;   </a>
-<a class="sourceLine" id="cb2-10" data-line-number="10"><span class="dv">10</span>     Queue&lt;<span class="dt">int</span>&gt; q;</a>
-<a class="sourceLine" id="cb2-11" data-line-number="11"><span class="dv">11</span>     <span class="cf">for</span> (<span class="dt">int</span> i = <span class="dv">0</span>; i &lt; n; i++) {</a>
-<a class="sourceLine" id="cb2-12" data-line-number="12"><span class="dv">12</span>         q.enqueue(i);</a>
-<a class="sourceLine" id="cb2-13" data-line-number="13"><span class="dv">13</span>     }</a>
-<a class="sourceLine" id="cb2-14" data-line-number="14"><span class="dv">14</span>     <span class="cf">while</span> (!q.isEmpty()) {</a>
-<a class="sourceLine" id="cb2-15" data-line-number="15"><span class="dv">15</span>         cout &lt;&lt; get_queue_length(q) &lt;&lt; endl;</a>
-<a class="sourceLine" id="cb2-16" data-line-number="16"><span class="dv">16</span>         cout &lt;&lt; q.dequeue() &lt;&lt; endl;</a>
-<a class="sourceLine" id="cb2-17" data-line-number="17"><span class="dv">17</span>     }</a>
-<a class="sourceLine" id="cb2-18" data-line-number="18"><span class="dv">18</span>     <span class="cf">return</span> <span class="dv">0</span>;</a>
-<a class="sourceLine" id="cb2-19" data-line-number="19"><span class="dv">19</span> }</a></code></pre></div>
+<div class="sourceCode"><pre class="sourceCode cpp"><code class="sourceCode cpp"><span class="dv">1</span>  <span class="er">#</span>include &lt;iostream&gt;
+<span class="dv">2</span>  <span class="kw">using</span> <span class="kw">namespace</span> std;
+<span class="dv">3</span>  <span class="dt">int</span> get_queue_length(Queue&lt;<span class="dt">int</span>&gt; q)
+<span class="dv">4</span>  {
+<span class="dv">5</span>     <span class="kw">return</span> q.size();
+<span class="dv">6</span>  }
+<span class="dv">7</span>  <span class="dt">int</span> main()
+<span class="dv">8</span>  {
+<span class="dv">9</span>      cin &gt;&gt; n;   
+<span class="dv">10</span>     Queue&lt;<span class="dt">int</span>&gt; q;
+<span class="dv">11</span>     <span class="kw">for</span> (<span class="dt">int</span> i = <span class="dv">0</span>; i &lt; n; i++) {
+<span class="dv">12</span>         q.enqueue(i);
+<span class="dv">13</span>     }
+<span class="dv">14</span>     <span class="kw">while</span> (!q.isEmpty()) {
+<span class="dv">15</span>         cout &lt;&lt; get_queue_length(q) &lt;&lt; endl;
+<span class="dv">16</span>         cout &lt;&lt; q.dequeue() &lt;&lt; endl;
+<span class="dv">17</span>     }
+<span class="dv">18</span>     <span class="kw">return</span> <span class="dv">0</span>;
+<span class="dv">19</span> }</code></pre></div>
 <ul>
 <li>And finally, what is the time complexity of the following program (notice that the argument is copied in a local variable before passing-by-reference)</li>
 </ul>
-<div class="sourceCode" id="cb3"><pre class="sourceCode cpp"><code class="sourceCode cpp"><a class="sourceLine" id="cb3-1" data-line-number="1"><span class="dv">1</span>  <span class="er">#</span>include &lt;iostream&gt;</a>
-<a class="sourceLine" id="cb3-2" data-line-number="2"><span class="dv">2</span>  <span class="kw">using</span> <span class="kw">namespace</span> std;</a>
-<a class="sourceLine" id="cb3-3" data-line-number="3"><span class="dv">3</span>  <span class="dt">int</span> get_queue_length(Queue&lt;<span class="dt">int</span>&gt; <span class="at">const</span> &amp;q)</a>
-<a class="sourceLine" id="cb3-4" data-line-number="4"><span class="dv">4</span>  {</a>
-<a class="sourceLine" id="cb3-5" data-line-number="5"><span class="dv">5</span>     <span class="cf">return</span> q.size();</a>
-<a class="sourceLine" id="cb3-6" data-line-number="6"><span class="dv">6</span>  }</a>
-<a class="sourceLine" id="cb3-7" data-line-number="7"><span class="dv">7</span>  <span class="dt">int</span> main()</a>
-<a class="sourceLine" id="cb3-8" data-line-number="8"><span class="dv">8</span>  {</a>
-<a class="sourceLine" id="cb3-9" data-line-number="9"><span class="dv">9</span>      cin &gt;&gt; n;   </a>
-<a class="sourceLine" id="cb3-10" data-line-number="10"><span class="dv">10</span>     Queue&lt;<span class="dt">int</span>&gt; q;</a>
-<a class="sourceLine" id="cb3-11" data-line-number="11"><span class="dv">11</span>     <span class="cf">for</span> (<span class="dt">int</span> i = <span class="dv">0</span>; i &lt; n; i++) {</a>
-<a class="sourceLine" id="cb3-12" data-line-number="12"><span class="dv">12</span>         q.enqueue(i);</a>
-<a class="sourceLine" id="cb3-13" data-line-number="13"><span class="dv">13</span>     }</a>
-<a class="sourceLine" id="cb3-14" data-line-number="14"><span class="dv">14</span>     <span class="cf">while</span> (!q.isEmpty()) {</a>
-<a class="sourceLine" id="cb3-15" data-line-number="15"><span class="dv">15</span>         Queue&lt;<span class="dt">int</span>&gt; q2 = q;</a>
-<a class="sourceLine" id="cb3-16" data-line-number="16"><span class="dv">16</span>         cout &lt;&lt; get_queue_length(q2) &lt;&lt; endl;</a>
-<a class="sourceLine" id="cb3-17" data-line-number="17"><span class="dv">17</span>         cout &lt;&lt; q.dequeue() &lt;&lt; endl;</a>
-<a class="sourceLine" id="cb3-18" data-line-number="18"><span class="dv">18</span>     }</a>
-<a class="sourceLine" id="cb3-19" data-line-number="19"><span class="dv">19</span>     <span class="cf">return</span> <span class="dv">0</span>;</a>
-<a class="sourceLine" id="cb3-20" data-line-number="20"><span class="dv">20</span> }</a></code></pre></div>
+<div class="sourceCode"><pre class="sourceCode cpp"><code class="sourceCode cpp"><span class="dv">1</span>  <span class="er">#</span>include &lt;iostream&gt;
+<span class="dv">2</span>  <span class="kw">using</span> <span class="kw">namespace</span> std;
+<span class="dv">3</span>  <span class="dt">int</span> get_queue_length(Queue&lt;<span class="dt">int</span>&gt; <span class="dt">const</span> &amp;q)
+<span class="dv">4</span>  {
+<span class="dv">5</span>     <span class="kw">return</span> q.size();
+<span class="dv">6</span>  }
+<span class="dv">7</span>  <span class="dt">int</span> main()
+<span class="dv">8</span>  {
+<span class="dv">9</span>      cin &gt;&gt; n;   
+<span class="dv">10</span>     Queue&lt;<span class="dt">int</span>&gt; q;
+<span class="dv">11</span>     <span class="kw">for</span> (<span class="dt">int</span> i = <span class="dv">0</span>; i &lt; n; i++) {
+<span class="dv">12</span>         q.enqueue(i);
+<span class="dv">13</span>     }
+<span class="dv">14</span>     <span class="kw">while</span> (!q.isEmpty()) {
+<span class="dv">15</span>         Queue&lt;<span class="dt">int</span>&gt; q2 = q;
+<span class="dv">16</span>         cout &lt;&lt; get_queue_length(q2) &lt;&lt; endl;
+<span class="dv">17</span>         cout &lt;&lt; q.dequeue() &lt;&lt; endl;
+<span class="dv">18</span>     }
+<span class="dv">19</span>     <span class="kw">return</span> <span class="dv">0</span>;
+<span class="dv">20</span> }</code></pre></div>
 <!-- added by paras -->
-<ol start="2" type="1">
+<ol start="2" style="list-style-type: decimal">
 <li><strong>Estimating the Output of a given program</strong>: In these questions, we will learn about how to analyze a simple program and produce the output for it.</li>
 </ol>
 <p><strong>2.1</strong> What is the output of the given program?</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode cpp"><code class="sourceCode cpp"><a class="sourceLine" id="cb4-1" data-line-number="1"><span class="dv">1</span>  <span class="er">#</span>include &lt;iostream&gt; </a>
-<a class="sourceLine" id="cb4-2" data-line-number="2"><span class="dv">2</span>  <span class="kw">using</span> <span class="kw">namespace</span> std; </a>
-<a class="sourceLine" id="cb4-3" data-line-number="3"><span class="dv">3</span>  </a>
-<a class="sourceLine" id="cb4-4" data-line-number="4"><span class="dv">4</span>  <span class="dt">int</span> main() </a>
-<a class="sourceLine" id="cb4-5" data-line-number="5"><span class="dv">5</span>  { </a>
-<a class="sourceLine" id="cb4-6" data-line-number="6"><span class="dv">6</span>    <span class="dt">int</span> a = <span class="dv">32</span>, *ptr = &amp;a; </a>
-<a class="sourceLine" id="cb4-7" data-line-number="7"><span class="dv">7</span>    <span class="dt">char</span> ch = <span class="ch">&#39;A&#39;</span>, &amp;cho = ch; </a>
-<a class="sourceLine" id="cb4-8" data-line-number="8"><span class="dv">8</span>  </a>
-<a class="sourceLine" id="cb4-9" data-line-number="9"><span class="dv">9</span>    cho += a; </a>
-<a class="sourceLine" id="cb4-10" data-line-number="10"><span class="dv">10</span>   *ptr += ch; </a>
-<a class="sourceLine" id="cb4-11" data-line-number="11"><span class="dv">11</span>   cout &lt;&lt; a &lt;&lt; <span class="st">&quot;, &quot;</span> &lt;&lt; ch &lt;&lt; endl; </a>
-<a class="sourceLine" id="cb4-12" data-line-number="12"><span class="dv">12</span>   <span class="cf">return</span> <span class="dv">0</span>; </a>
-<a class="sourceLine" id="cb4-13" data-line-number="13"><span class="dv">13</span>  } </a></code></pre></div>
+<div class="sourceCode"><pre class="sourceCode cpp"><code class="sourceCode cpp"><span class="dv">1</span>  <span class="er">#</span>include &lt;iostream&gt; 
+<span class="dv">2</span>  <span class="kw">using</span> <span class="kw">namespace</span> std; 
+<span class="dv">3</span>  
+<span class="dv">4</span>  <span class="dt">int</span> main() 
+<span class="dv">5</span>  { 
+<span class="dv">6</span>    <span class="dt">int</span> a = <span class="dv">32</span>, *ptr = &amp;a; 
+<span class="dv">7</span>    <span class="dt">char</span> ch = <span class="st">&#39;A&#39;</span>, &amp;cho = ch; 
+<span class="dv">8</span>  
+<span class="dv">9</span>    cho += a; 
+<span class="dv">10</span>   *ptr += ch; 
+<span class="dv">11</span>   cout &lt;&lt; a &lt;&lt; <span class="st">&quot;, &quot;</span> &lt;&lt; ch &lt;&lt; endl; 
+<span class="dv">12</span>   <span class="kw">return</span> <span class="dv">0</span>; 
+<span class="dv">13</span>  } </code></pre></div>
 <p><strong>2.2</strong> What will i and j equal after the code below is executed? Explain your answer.</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode cpp"><code class="sourceCode cpp"><a class="sourceLine" id="cb5-1" data-line-number="1"><span class="dt">int</span> i = <span class="dv">5</span>;</a>
-<a class="sourceLine" id="cb5-2" data-line-number="2"><span class="dt">int</span> j = i++;</a></code></pre></div>
+<div class="sourceCode"><pre class="sourceCode cpp"><code class="sourceCode cpp"><span class="dt">int</span> i = <span class="dv">5</span>;
+<span class="dt">int</span> j = i++;</code></pre></div>
 <!-- added by paras -->
-<ol start="3" type="1">
+<ol start="3" style="list-style-type: decimal">
 <li><strong>Analyze the program</strong>: In these questions, one need to analyze the given piece of code at multiple levels.</li>
 </ol>
 <p><strong>3.1</strong> Is the program correct? If yes, what is the output of the given program? If not, what are the errors?</p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode cpp"><code class="sourceCode cpp"><a class="sourceLine" id="cb6-1" data-line-number="1"><span class="dv">1</span> <span class="er">#</span>include &lt;iostream&gt; </a>
-<a class="sourceLine" id="cb6-2" data-line-number="2"><span class="dv">2</span> <span class="kw">using</span> <span class="kw">namespace</span> std; </a>
-<a class="sourceLine" id="cb6-3" data-line-number="3"><span class="dv">3</span>  </a>
-<a class="sourceLine" id="cb6-4" data-line-number="4"><span class="dv">4</span> <span class="dt">int</span> main() </a>
-<a class="sourceLine" id="cb6-5" data-line-number="5"><span class="dv">5</span> { </a>
-<a class="sourceLine" id="cb6-6" data-line-number="6"><span class="dv">6</span>    <span class="at">const</span> <span class="dt">int</span> i = <span class="dv">20</span>; </a>
-<a class="sourceLine" id="cb6-7" data-line-number="7"><span class="dv">7</span>    <span class="at">const</span> <span class="dt">int</span>* <span class="at">const</span> ptr = &amp;i; </a>
-<a class="sourceLine" id="cb6-8" data-line-number="8"><span class="dv">8</span>    (*ptr)++; </a>
-<a class="sourceLine" id="cb6-9" data-line-number="9"><span class="dv">9</span>    <span class="dt">int</span> j = <span class="dv">15</span>; </a>
-<a class="sourceLine" id="cb6-10" data-line-number="10"><span class="dv">10</span>   ptr = &amp;j; </a>
-<a class="sourceLine" id="cb6-11" data-line-number="11"><span class="dv">11</span>   cout &lt;&lt; i; </a>
-<a class="sourceLine" id="cb6-12" data-line-number="12"><span class="dv">12</span>   <span class="cf">return</span> <span class="dv">0</span>; </a>
-<a class="sourceLine" id="cb6-13" data-line-number="13"><span class="dv">13</span> } </a></code></pre></div>
-<p><strong>3.2</strong> Consider the two code snippets below for printing a vector. Is there any advantage of one vs. the other? Explain.</p>
+<div class="sourceCode"><pre class="sourceCode cpp"><code class="sourceCode cpp"><span class="dv">1</span> <span class="er">#</span>include &lt;iostream&gt; 
+<span class="dv">2</span> <span class="kw">using</span> <span class="kw">namespace</span> std; 
+<span class="dv">3</span>  
+<span class="dv">4</span> <span class="dt">int</span> main() 
+<span class="dv">5</span> { 
+<span class="dv">6</span>    <span class="dt">const</span> <span class="dt">int</span> i = <span class="dv">20</span>; 
+<span class="dv">7</span>    <span class="dt">const</span> <span class="dt">int</span>* <span class="dt">const</span> ptr = &amp;i; 
+<span class="dv">8</span>    (*ptr)++; 
+<span class="dv">9</span>    <span class="dt">int</span> j = <span class="dv">15</span>; 
+<span class="dv">10</span>   ptr = &amp;j; 
+<span class="dv">11</span>   cout &lt;&lt; i; 
+<span class="dv">12</span>   <span class="kw">return</span> <span class="dv">0</span>; 
+<span class="dv">13</span> } </code></pre></div>
+<p><strong>3.2</strong> Consider the two code snippets below for printing a vector. Is there any advantage of one vs. the other? Explain.</p>
 <p>Option 1:</p>
-<div class="sourceCode" id="cb7"><pre class="sourceCode cpp"><code class="sourceCode cpp"><a class="sourceLine" id="cb7-1" data-line-number="1">vector vec;</a>
-<a class="sourceLine" id="cb7-2" data-line-number="2"><span class="co">/* ... .. ... */</span></a>
-<a class="sourceLine" id="cb7-3" data-line-number="3"><span class="cf">for</span> (<span class="kw">auto</span> itr = vec.begin(); itr != vec.end(); itr++) {</a>
-<a class="sourceLine" id="cb7-4" data-line-number="4">    itr-&gt;print();</a>
-<a class="sourceLine" id="cb7-5" data-line-number="5">}</a></code></pre></div>
+<div class="sourceCode"><pre class="sourceCode cpp"><code class="sourceCode cpp">vector vec;
+<span class="co">/* ... .. ... */</span>
+<span class="kw">for</span> (<span class="kw">auto</span> itr = vec.begin(); itr != vec.end(); itr++) {
+    itr-&gt;print();
+}</code></pre></div>
 <p>Option 2:</p>
-<div class="sourceCode" id="cb8"><pre class="sourceCode cpp"><code class="sourceCode cpp"><a class="sourceLine" id="cb8-1" data-line-number="1">vector vec;</a>
-<a class="sourceLine" id="cb8-2" data-line-number="2"><span class="co">/* ... .. ... */</span></a>
-<a class="sourceLine" id="cb8-3" data-line-number="3"><span class="cf">for</span> (<span class="kw">auto</span> itr = vec.begin(); itr != vec.end(); ++itr) {</a>
-<a class="sourceLine" id="cb8-4" data-line-number="4">    itr-&gt;print();</a>
-<a class="sourceLine" id="cb8-5" data-line-number="5">}</a></code></pre></div>
+<div class="sourceCode"><pre class="sourceCode cpp"><code class="sourceCode cpp">vector vec;
+<span class="co">/* ... .. ... */</span>
+<span class="kw">for</span> (<span class="kw">auto</span> itr = vec.begin(); itr != vec.end(); ++itr) {
+    itr-&gt;print();
+}</code></pre></div>
 <!-- added by aman -->
-<ol start="4" type="1">
+<ol start="4" style="list-style-type: decimal">
 <li><strong>Bitwise Operators</strong>: In this question we, will learn about some of the bitwise operators.</li>
 </ol>
 <ul>
@@ -133,23 +133,54 @@
 <li>&lt;&lt; : Binary Left shift operator</li>
 <li>&gt;&gt; : Binary Right shift operator</li>
 </ul>
-<p>Read More at <a href="https://www.geeksforgeeks.org/bitwise-operators-in-c-cpp/">https://www.geeksforgeeks.org/bitwise-operators-in-c-cpp/</a></p>
+<p>Read More at <a href="https://www.geeksforgeeks.org/bitwise-operators-in-c-cpp/" class="uri">https://www.geeksforgeeks.org/bitwise-operators-in-c-cpp/</a></p>
 <p><strong>4.1</strong> Check if two numbers are equal without using arithmetic operators or comparison operators.</p>
 <p><strong>4.2</strong> Divide an integer by 2^k and return the integer quotient. Do not use any arithmetic operator, loops or pow function.</p>
-<div class="sourceCode" id="cb9"><pre class="sourceCode cpp"><code class="sourceCode cpp"><a class="sourceLine" id="cb9-1" data-line-number="1"><span class="dt">int</span> divide(<span class="dt">int</span> n, <span class="dt">int</span> k){</a>
-<a class="sourceLine" id="cb9-2" data-line-number="2">  <span class="co">/* Do not use any arithmetic operators or loops or pow function */</span></a>
-<a class="sourceLine" id="cb9-3" data-line-number="3">}</a></code></pre></div>
+<p><code>cpp   int divide(int n, int k){     /* Do not use any arithmetic operators or loops or pow function */   }</code></p>
 <p><strong>4.3</strong> Find the kth bit of an integer. Return 1 if it is 1 and 0 otherwise. You should not use any loop, or arithmetic operators. Complete the function below. Bit counting is done from the least significant bit and starts from 0. For example, for n = 19, its binary representation is 10011 the second bit is 0 while the first bit is 1 and the zeroth bit is 1.</p>
-<div class="sourceCode" id="cb10"><pre class="sourceCode cpp"><code class="sourceCode cpp"><a class="sourceLine" id="cb10-1" data-line-number="1"><span class="dt">int</span> kthbit(<span class="dt">int</span> n, <span class="dt">int</span> k){</a>
-<a class="sourceLine" id="cb10-2" data-line-number="2">  <span class="co">/* Do not use any loop or arithmetic operators */</span></a>
-<a class="sourceLine" id="cb10-3" data-line-number="3">}</a></code></pre></div>
+<p><code>cpp   int kthbit(int n, int k){     /* Do not use any loop or arithmetic operators */   }</code></p>
 <p><strong>4.4</strong> Find if the number is a power of two, without using any other function call or loop. Complete the if condition below</p>
-<div class="sourceCode" id="cb11"><pre class="sourceCode cpp"><code class="sourceCode cpp"><a class="sourceLine" id="cb11-1" data-line-number="1">  <span class="dt">int</span> main(){</a>
-<a class="sourceLine" id="cb11-2" data-line-number="2">    <span class="dt">int</span> n;</a>
-<a class="sourceLine" id="cb11-3" data-line-number="3">    cin&gt;&gt;n;</a>
-<a class="sourceLine" id="cb11-4" data-line-number="4">    <span class="cf">if</span>(<span class="co">/* ... */</span>)</a>
-<a class="sourceLine" id="cb11-5" data-line-number="5">      cout&lt;&lt;<span class="st">&quot;Number is power of 2&quot;</span>&lt;&lt;endl;</a>
-<a class="sourceLine" id="cb11-6" data-line-number="6">    <span class="cf">else</span></a>
-<a class="sourceLine" id="cb11-7" data-line-number="7">      cout&lt;&lt;<span class="st">&quot;Number is not a power of two&quot;</span>&lt;&lt;endl;</a>
-<a class="sourceLine" id="cb11-8" data-line-number="8">    <span class="cf">return</span> <span class="dv">0</span>;</a>
-<a class="sourceLine" id="cb11-9" data-line-number="9">  }</a></code></pre></div>
+<p><code>cpp     int main(){       int n;       cin&gt;&gt;n;       if(/* ... */)         cout&lt;&lt;&quot;Number is power of 2&quot;&lt;&lt;endl;       else         cout&lt;&lt;&quot;Number is not a power of two&quot;&lt;&lt;endl;       return 0;     }</code></p>
+<p><br> <!-- added by Ankesh --> <strong>5. Analysing an algorithm.</strong></p>
+<p>Given below is a function/algorithm: <em>You'll enjoy foo!</em></p>
+<div class="sourceCode"><pre class="sourceCode cpp"><code class="sourceCode cpp"><span class="dt">int</span> foo(<span class="dt">int</span> a,<span class="dt">int</span> b)
+{
+  <span class="dt">int</span> ans=<span class="dv">1</span>;
+  <span class="dt">int</span> temp=a;
+
+  <span class="kw">while</span>(b)
+  {
+    <span class="kw">if</span>(b&amp;<span class="dv">1</span>)
+      ans*=temp;
+    temp*=temp;
+    b/=<span class="dv">2</span>;
+  }
+
+  <span class="kw">return</span> ans;
+}</code></pre></div>
+<p><strong>5.1</strong> Predict the output for <strong>foo(3,5)</strong>.<br />
+<strong>5.2</strong> What is <strong>foo(a,b)</strong> computing for general a,b&gt;=0, both integers.<br />
+<strong>5.3</strong> What is time complexity of <strong>foo(a,b)</strong> for general a,b&gt;=0, both integers. You should report bigO complexity in terms of a and b.<br />
+<strong>5.4</strong> Can you point out a problem with this code?<br />
+(<strong>Spoiler:</strong> Will this code produce correct results for large a's and b's?)<br />
+<strong>5.5</strong> How can you handle negative b?(Note: You can change <strong>function declaration</strong> to double <strong>foo(int a,int b)</strong>)<br />
+<strong>5.6</strong> Will this logic/algorithm work if <strong>a</strong> were <strong>float</strong> instead of <strong>int</strong>.(Refer to code below)</p>
+<div class="sourceCode"><pre class="sourceCode cpp"><code class="sourceCode cpp"><span class="dt">double</span> foo(<span class="dt">double</span> a,<span class="dt">int</span> b)
+{
+  <span class="dt">double</span> ans=<span class="dv">1</span>;
+  <span class="dt">double</span> temp=a;
+
+  <span class="kw">while</span>(b)
+  {
+    <span class="kw">if</span>(b&amp;<span class="dv">1</span>)
+      ans*=temp;
+    temp*=temp;
+    b/=<span class="dv">2</span>;
+  }
+
+  <span class="kw">return</span> ans;
+}</code></pre></div>
+<p><em>By now, I know you are tired of this foo function - just 1 more to go :p</em></p>
+<p><strong>5.7</strong> This logic/algorithm won't work if <strong>b</strong> were <strong>float</strong> instead of <strong>int</strong>. Why?<br />
+<strong>5.8</strong> <strong>Tough, can be skipped-</strong> Can you suggest some way to handle floating b? This will create a general power function.</p>
+<p><em>End of chapter foo :)</em></p>
