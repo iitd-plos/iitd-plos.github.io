@@ -142,3 +142,49 @@ for (auto itr = vec.begin(); itr != vec.end(); ++itr) {
 	itr->print();
 }
 ```
+
+<!-- added by aman -->
+
+
+
+4. **Bitwise Operators**: In this question we, will learn about some of the bitwise operators.
+
+  * &  : Binary AND operator
+  * \| : Binary OR operator
+  * ^  : Binary XOR operator
+  * << : Binary Left shift operator
+  * \>\> : Binary Right shift operator
+
+  Read More at [https://www.geeksforgeeks.org/bitwise-operators-in-c-cpp/](https://www.geeksforgeeks.org/bitwise-operators-in-c-cpp/)
+
+  **4.1** Check if two numbers are equal without using arithmetic operators or comparison operators.
+  
+  **4.2** Divide an integer by 2^k and return the integer quotient. Do not use any arithmetic operator, loops or pow function.
+
+  ```cpp
+  int divide(int n, int k){
+    /* Do not use any arithmetic operators or loops or pow function */
+  }
+  ```
+
+  **4.3** Find the kth bit of an integer. Return 1 if it is 1 and 0 otherwise. You should not use any loop, or arithmetic operators. Complete the function below. Bit counting is done from the least significant bit and starts from 0. For example, for n = 19, its binary representation is 10011 the second bit is 0 while the first bit is 1 and the zeroth bit is 1.
+  
+  ```cpp
+  int kthbit(int n, int k){
+    /* Do not use any loop or arithmetic operators */
+  }
+  ```
+
+  **4.4** Find if the number is a power of two, without using any other function call or loop. Complete the if condition below
+  
+  ```cpp
+    int main(){
+      int n;
+      cin>>n;
+      if(/* ... */)
+        cout<<"Number is power of 2"<<endl;
+      else
+        cout<<"Number is not a power of two"<<endl;
+      return 0;
+    }
+  ```
