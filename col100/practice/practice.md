@@ -188,3 +188,62 @@ for (auto itr = vec.begin(); itr != vec.end(); ++itr) {
       return 0;
     }
   ```
+
+<br>
+<!-- added by Ankesh -->
+**5. Analysing an algorithm.**
+
+Given below is a function/algorithm: *You'll enjoy foo!*
+
+```cpp
+int foo(int a,int b)
+{
+  int ans=1;
+  int temp=a;
+
+  while(b)
+  {
+    if(b&1)
+      ans*=temp;
+    temp*=temp;
+    b/=2;
+  }
+
+  return ans;
+}
+```
+  **5.1** Predict the output for **foo(3,5)**.  
+  **5.2** What is **foo(a,b)** computing for general a,b>=0, both integers.  
+  **5.3** What is time complexity of **foo(a,b)** for general a,b>=0, both integers. You should report bigO complexity in terms of a and b.  
+  **5.4** Can you point out a problem with this code?  
+          (**Spoiler:** Will this code produce correct results for large a's and b's?)  
+  **5.5** How can you handle negative b?(Note: You can change **function declaration** to double **foo(int a,int b)**)  
+  **5.6** Will this logic/algorithm work if **a** were **float** instead of **int**.(Refer to code below)  
+```cpp
+double foo(double a,int b)
+{
+  double ans=1;
+  double temp=a;
+
+  while(b)
+  {
+    if(b&1)
+      ans*=temp;
+    temp*=temp;
+    b/=2;
+  }
+
+  return ans;
+}
+```
+  *By now, I know you are tired of this foo function - just 1 more to go :p*  
+
+  **5.7** This logic/algorithm won't work if **b** were **float** instead of **int**. Why?  
+  **5.8** **Tough, can be skipped-** Can you suggest some way to handle floating b? This will create a general power function.  
+
+  *End of chapter foo :)*  
+
+
+
+
+
