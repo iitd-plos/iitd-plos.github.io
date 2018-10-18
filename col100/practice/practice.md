@@ -244,6 +244,67 @@ double foo(double a,int b)
   *End of chapter foo :)*  
 
 
+<!-- added by Sourabh -->
+**6.Recursion**
 
+Recursion is a very powerful and an extremely useful tool. It is astonishing that with it's level of functionality,recursion is actually a very simple concept. Recursion formally defined as(source:[wiki/Recursion](https://en.wikipedia.org/wiki/Recursion))
+
+* A class of objects or methods exhibit recursive behavior when they can be defined by two properties: 
+  1. A simple base case (or cases)—a terminating scenario that does not use recursion to produce an answer.
+  2. A set of rules that reduce all other cases toward the base case.
+
+
+Every recurive function has the following general format
+
+``` 
+recfunc(params):
+  if _BaseCondition_ :
+    return _corresponding BaseResult_
+
+  else :
+    solve _corresponding subproblems_
+    return result
+```
+
+
+Now lets work out a example.
+
+* **GCD(a,b)**
+   * Base Condition:  b=0 =>  GCD = a
+   * Recurrence relation: GCD(a,b) = GCD(b,a%b)
+
+```
+int gcd(int a,int b) {
+  int gcd_ab;
+
+  if(b==0) {
+    gcd_ab = a;
+  } else {
+    gcd_ab = gcd(b,a%b);
+  }
+
+  return gcd_ab;
+}
+```
+
+Try the following questions on your own. Identify the base condition and reccurence relation.
+
+1. **Factorial**
+   * Factorial of a non-negtaive integer **n** is denoted by **n!** or **fact(n)** and is defined as the product of all positive integers <= **n**.
+
+2. **Fibonnaci**
+   * Fibonnaci sequence is a sequence of integers following the property that every number is the sum of two numbers preceding it.
+
+3. **Tower of Hanoi**  
+   * The Tower of Hanoi is a mathematical game or puzzle. It consists of three rods and a number of disks of different sizes, which can slide onto any rod. The puzzle starts with the disks in a neat stack in ascending order of size on one rod, the smallest at the top, thus making a conical shape.(source:[wiki/Tower_of_Hanoi](https://en.wikipedia.org/wiki/Tower_of_Hanoi))
+
+   * The objective of the puzzle is to move the entire stack to another rod, obeying the following simple rules: 
+     1. Only one disk can be moved at a time.
+     2. Each move consists of taking the upper disk from one of the stacks and placing it on top of another stack or on an empty rod.
+     3. No disk may be placed on top of a smaller disk.
+   * The question is to print the sequence of moves which acheive the above objective for **n** disks and three towers named **A,B,C**. Every move should be in the format of **move from T1 to T2**  where **T1,T2** are the names of the towers. All the disks are initially at Tower **A**. At the end of all the moves they should be at Tower **B**. Think of **A** as the starting tower, **B** as the final tower and **C** as the supporting tower.
+      * **Hint1:** Try identifying the simplest case which you can solve. Think in terms of number of disks.
+      * **Hint2:** Observe the fact that if you had the solution for movement from **A** to **B**. The same solution is applicable for movement from **A** to **C** by simply swapping **B** and **C** in every move.
+      * **Hint3:** What if you had the solution for **n-1** disks? Can you use that for the solution of n disks?
 
 

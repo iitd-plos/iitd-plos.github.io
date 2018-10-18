@@ -32,43 +32,43 @@
 <span class="dv">2</span>  <span class="kw">using</span> <span class="kw">namespace</span> std;
 <span class="dv">3</span>  <span class="dt">int</span> get_queue_length(Queue&lt;<span class="dt">int</span>&gt; q)
 <span class="dv">4</span>  {
-<span class="dv">5</span>     <span class="kw">return</span> q.size();
+<span class="dv">5</span>     <span class="cf">return</span> q.size();
 <span class="dv">6</span>  }
 <span class="dv">7</span>  <span class="dt">int</span> main()
 <span class="dv">8</span>  {
 <span class="dv">9</span>      cin &gt;&gt; n;   
 <span class="dv">10</span>     Queue&lt;<span class="dt">int</span>&gt; q;
-<span class="dv">11</span>     <span class="kw">for</span> (<span class="dt">int</span> i = <span class="dv">0</span>; i &lt; n; i++) {
+<span class="dv">11</span>     <span class="cf">for</span> (<span class="dt">int</span> i = <span class="dv">0</span>; i &lt; n; i++) {
 <span class="dv">12</span>         q.enqueue(i);
 <span class="dv">13</span>     }
-<span class="dv">14</span>     <span class="kw">while</span> (!q.isEmpty()) {
+<span class="dv">14</span>     <span class="cf">while</span> (!q.isEmpty()) {
 <span class="dv">15</span>         cout &lt;&lt; get_queue_length(q) &lt;&lt; endl;
 <span class="dv">16</span>         cout &lt;&lt; q.dequeue() &lt;&lt; endl;
 <span class="dv">17</span>     }
-<span class="dv">18</span>     <span class="kw">return</span> <span class="dv">0</span>;
+<span class="dv">18</span>     <span class="cf">return</span> <span class="dv">0</span>;
 <span class="dv">19</span> }</code></pre></div>
 <ul>
 <li>And finally, what is the time complexity of the following program (notice that the argument is copied in a local variable before passing-by-reference)</li>
 </ul>
 <div class="sourceCode"><pre class="sourceCode cpp"><code class="sourceCode cpp"><span class="dv">1</span>  <span class="er">#</span>include &lt;iostream&gt;
 <span class="dv">2</span>  <span class="kw">using</span> <span class="kw">namespace</span> std;
-<span class="dv">3</span>  <span class="dt">int</span> get_queue_length(Queue&lt;<span class="dt">int</span>&gt; <span class="dt">const</span> &amp;q)
+<span class="dv">3</span>  <span class="dt">int</span> get_queue_length(Queue&lt;<span class="dt">int</span>&gt; <span class="at">const</span> &amp;q)
 <span class="dv">4</span>  {
-<span class="dv">5</span>     <span class="kw">return</span> q.size();
+<span class="dv">5</span>     <span class="cf">return</span> q.size();
 <span class="dv">6</span>  }
 <span class="dv">7</span>  <span class="dt">int</span> main()
 <span class="dv">8</span>  {
 <span class="dv">9</span>      cin &gt;&gt; n;   
 <span class="dv">10</span>     Queue&lt;<span class="dt">int</span>&gt; q;
-<span class="dv">11</span>     <span class="kw">for</span> (<span class="dt">int</span> i = <span class="dv">0</span>; i &lt; n; i++) {
+<span class="dv">11</span>     <span class="cf">for</span> (<span class="dt">int</span> i = <span class="dv">0</span>; i &lt; n; i++) {
 <span class="dv">12</span>         q.enqueue(i);
 <span class="dv">13</span>     }
-<span class="dv">14</span>     <span class="kw">while</span> (!q.isEmpty()) {
+<span class="dv">14</span>     <span class="cf">while</span> (!q.isEmpty()) {
 <span class="dv">15</span>         Queue&lt;<span class="dt">int</span>&gt; q2 = q;
 <span class="dv">16</span>         cout &lt;&lt; get_queue_length(q2) &lt;&lt; endl;
 <span class="dv">17</span>         cout &lt;&lt; q.dequeue() &lt;&lt; endl;
 <span class="dv">18</span>     }
-<span class="dv">19</span>     <span class="kw">return</span> <span class="dv">0</span>;
+<span class="dv">19</span>     <span class="cf">return</span> <span class="dv">0</span>;
 <span class="dv">20</span> }</code></pre></div>
 <!-- added by paras -->
 <ol start="2" style="list-style-type: decimal">
@@ -86,7 +86,7 @@
 <span class="dv">9</span>    cho += a; 
 <span class="dv">10</span>   *ptr += ch; 
 <span class="dv">11</span>   cout &lt;&lt; a &lt;&lt; <span class="st">&quot;, &quot;</span> &lt;&lt; ch &lt;&lt; endl; 
-<span class="dv">12</span>   <span class="kw">return</span> <span class="dv">0</span>; 
+<span class="dv">12</span>   <span class="cf">return</span> <span class="dv">0</span>; 
 <span class="dv">13</span>  } </code></pre></div>
 <p><strong>2.2</strong> What will i and j equal after the code below is executed? Explain your answer.</p>
 <div class="sourceCode"><pre class="sourceCode cpp"><code class="sourceCode cpp"><span class="dt">int</span> i = <span class="dv">5</span>;
@@ -101,25 +101,25 @@
 <span class="dv">3</span>  
 <span class="dv">4</span> <span class="dt">int</span> main() 
 <span class="dv">5</span> { 
-<span class="dv">6</span>    <span class="dt">const</span> <span class="dt">int</span> i = <span class="dv">20</span>; 
-<span class="dv">7</span>    <span class="dt">const</span> <span class="dt">int</span>* <span class="dt">const</span> ptr = &amp;i; 
+<span class="dv">6</span>    <span class="at">const</span> <span class="dt">int</span> i = <span class="dv">20</span>; 
+<span class="dv">7</span>    <span class="at">const</span> <span class="dt">int</span>* <span class="at">const</span> ptr = &amp;i; 
 <span class="dv">8</span>    (*ptr)++; 
 <span class="dv">9</span>    <span class="dt">int</span> j = <span class="dv">15</span>; 
 <span class="dv">10</span>   ptr = &amp;j; 
 <span class="dv">11</span>   cout &lt;&lt; i; 
-<span class="dv">12</span>   <span class="kw">return</span> <span class="dv">0</span>; 
+<span class="dv">12</span>   <span class="cf">return</span> <span class="dv">0</span>; 
 <span class="dv">13</span> } </code></pre></div>
 <p><strong>3.2</strong> Consider the two code snippets below for printing a vector. Is there any advantage of one vs. the other? Explain.</p>
 <p>Option 1:</p>
 <div class="sourceCode"><pre class="sourceCode cpp"><code class="sourceCode cpp">vector vec;
 <span class="co">/* ... .. ... */</span>
-<span class="kw">for</span> (<span class="kw">auto</span> itr = vec.begin(); itr != vec.end(); itr++) {
+<span class="cf">for</span> (<span class="kw">auto</span> itr = vec.begin(); itr != vec.end(); itr++) {
     itr-&gt;print();
 }</code></pre></div>
 <p>Option 2:</p>
 <div class="sourceCode"><pre class="sourceCode cpp"><code class="sourceCode cpp">vector vec;
 <span class="co">/* ... .. ... */</span>
-<span class="kw">for</span> (<span class="kw">auto</span> itr = vec.begin(); itr != vec.end(); ++itr) {
+<span class="cf">for</span> (<span class="kw">auto</span> itr = vec.begin(); itr != vec.end(); ++itr) {
     itr-&gt;print();
 }</code></pre></div>
 <!-- added by aman -->
@@ -148,15 +148,15 @@
   <span class="dt">int</span> ans=<span class="dv">1</span>;
   <span class="dt">int</span> temp=a;
 
-  <span class="kw">while</span>(b)
+  <span class="cf">while</span>(b)
   {
-    <span class="kw">if</span>(b&amp;<span class="dv">1</span>)
+    <span class="cf">if</span>(b&amp;<span class="dv">1</span>)
       ans*=temp;
     temp*=temp;
     b/=<span class="dv">2</span>;
   }
 
-  <span class="kw">return</span> ans;
+  <span class="cf">return</span> ans;
 }</code></pre></div>
 <p><strong>5.1</strong> Predict the output for <strong>foo(3,5)</strong>.<br />
 <strong>5.2</strong> What is <strong>foo(a,b)</strong> computing for general a,b&gt;=0, both integers.<br />
@@ -170,17 +170,84 @@
   <span class="dt">double</span> ans=<span class="dv">1</span>;
   <span class="dt">double</span> temp=a;
 
-  <span class="kw">while</span>(b)
+  <span class="cf">while</span>(b)
   {
-    <span class="kw">if</span>(b&amp;<span class="dv">1</span>)
+    <span class="cf">if</span>(b&amp;<span class="dv">1</span>)
       ans*=temp;
     temp*=temp;
     b/=<span class="dv">2</span>;
   }
 
-  <span class="kw">return</span> ans;
+  <span class="cf">return</span> ans;
 }</code></pre></div>
 <p><em>By now, I know you are tired of this foo function - just 1 more to go :p</em></p>
 <p><strong>5.7</strong> This logic/algorithm won't work if <strong>b</strong> were <strong>float</strong> instead of <strong>int</strong>. Why?<br />
 <strong>5.8</strong> <strong>Tough, can be skipped-</strong> Can you suggest some way to handle floating b? This will create a general power function.</p>
 <p><em>End of chapter foo :)</em></p>
+<!-- added by Sourabh -->
+<p><strong>6.Recursion</strong></p>
+<p>Recursion is a very powerful and an extremely useful tool. It is astonishing that with it's level of functionality,recursion is actually a very simple concept. Recursion formally defined as(source:<a href="https://en.wikipedia.org/wiki/Recursion">wiki/Recursion</a>)</p>
+<ul>
+<li>A class of objects or methods exhibit recursive behavior when they can be defined by two properties:</li>
+</ul>
+<ol style="list-style-type: decimal">
+<li>A simple base case (or cases)—a terminating scenario that does not use recursion to produce an answer.</li>
+<li>A set of rules that reduce all other cases toward the base case.</li>
+</ol>
+<p>Every recurive function has the following general format</p>
+<pre><code>recfunc(params):
+  if _BaseCondition_ :
+    return _corresponding BaseResult_
+
+  else :
+    solve _corresponding subproblems_
+    return result</code></pre>
+<p>Now lets work out a example.</p>
+<ul>
+<li><strong>GCD(a,b)</strong></li>
+<li>Base Condition: b=0 =&gt; GCD = a</li>
+<li>Recurrence relation: GCD(a,b) = GCD(b,a%b)</li>
+</ul>
+<pre><code>int gcd(int a,int b) {
+  int gcd_ab;
+
+  if(b==0) {
+    gcd_ab = a;
+  } else {
+    gcd_ab = gcd(b,a%b);
+  }
+
+  return gcd_ab;
+}</code></pre>
+<p>Try the following questions on your own. Identify the base condition and reccurence relation.</p>
+<ol style="list-style-type: decimal">
+<li><strong>Factorial</strong></li>
+</ol>
+<ul>
+<li>Factorial of a non-negtaive integer <strong>n</strong> is denoted by <strong>n!</strong> or <strong>fact(n)</strong> and is defined as the product of all positive integers &lt;= <strong>n</strong>.</li>
+</ul>
+<ol start="2" style="list-style-type: decimal">
+<li><strong>Fibonnaci</strong></li>
+</ol>
+<ul>
+<li>Fibonnaci sequence is a sequence of integers following the property that every number is the sum of two numbers preceding it.</li>
+</ul>
+<ol start="3" style="list-style-type: decimal">
+<li><strong>Tower of Hanoi</strong><br />
+</li>
+</ol>
+<ul>
+<li><p>The Tower of Hanoi is a mathematical game or puzzle. It consists of three rods and a number of disks of different sizes, which can slide onto any rod. The puzzle starts with the disks in a neat stack in ascending order of size on one rod, the smallest at the top, thus making a conical shape.(source:<a href="https://en.wikipedia.org/wiki/Tower_of_Hanoi">wiki/Tower_of_Hanoi</a>)</p></li>
+<li>The objective of the puzzle is to move the entire stack to another rod, obeying the following simple rules:
+<ol style="list-style-type: decimal">
+<li>Only one disk can be moved at a time.</li>
+<li>Each move consists of taking the upper disk from one of the stacks and placing it on top of another stack or on an empty rod.</li>
+<li>No disk may be placed on top of a smaller disk.</li>
+</ol></li>
+<li>The question is to print the sequence of moves which acheive the above objective for <strong>n</strong> disks and three towers named <strong>A,B,C</strong>. Every move should be in the format of <strong>move from T1 to T2</strong> where <strong>T1,T2</strong> are the names of the towers. All the disks are initially at Tower <strong>A</strong>. At the end of all the moves they should be at Tower <strong>B</strong>. Think of <strong>A</strong> as the starting tower, <strong>B</strong> as the final tower and <strong>C</strong> as the supporting tower.
+<ul>
+<li><strong>Hint1:</strong> Try identifying the simplest case which you can solve. Think in terms of number of disks.</li>
+<li><strong>Hint2:</strong> Observe the fact that if you had the solution for movement from <strong>A</strong> to <strong>B</strong>. The same solution is applicable for movement from <strong>A</strong> to <strong>C</strong> by simply swapping <strong>B</strong> and <strong>C</strong> in every move.</li>
+<li><strong>Hint3:</strong> What if you had the solution for <strong>n-1</strong> disks? Can you use that for the solution of n disks?</li>
+</ul></li>
+</ul>
