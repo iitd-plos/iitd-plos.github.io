@@ -332,3 +332,26 @@ Given a Vector of numbers, we say that numbers at positions i and j are out of a
 "{1,13,41,5,6}"
 </pre>
 then the number of pairs which are out ascending order is 4.
+
+<!-- added by Vaibhav -->
+**10. Inverse of a Matrix**
+
+Given a Grid of floating point numbers, find its inverse. You need to implement the following function:
+
+```
+int computeInverse(Grid<float> &inverse, Grid<float> &input_grid) {
+  // input_grid is the input matrix
+  // inverse is the grid in which the inverse should be computed
+  // Return 0, if the inverse of the input_grid exists else return -1
+}
+```
+
+Take into consideration, the following points while solving this problem:
+
+1. When does the inverse of an input grid exist and when does it not
+  - Will all grids have an inverse or do they need to be of a particular shape
+  - If yes, is it necessary that all the grids of that particular shape will have inverses, or something more is required
+2. Consider the various algorithms which you have studied, to compute the inverse of a matrix
+  - Using `determinant` and `adjoint` of a matrix
+  - Using matrix transformations. In particular, read about [Row Echelon Form](https://en.wikipedia.org/wiki/Row_echelon_form) of a matrix and how it is used to compute the inverse
+3. What is the time complexity of each of the above methods
