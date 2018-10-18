@@ -311,7 +311,7 @@ Try the following questions on your own. Identify the base condition and reccure
 **7. Merge sorted vectors**
 Write a function mergeSortedVecs(Vector<Vector<int>> vecs) which takes a Vector of Vectors as an argument, where each constitutent Vector is a Vector of integers in the sorted (ascending) order. For example, vecs could be a Vector of the form
 <pre>
-"{{1,3,4,5}, {4,6,24,35},{34,100,101}}"
+"{ {1,3,4,5}, {4,6,24,35},{34,100,101} }"
 </pre>. Note that vecs consists of three sorted Vectors of integers in this case. Your function should compute a single sorted (ascending) Vector of integers obtained by merging the constituent vectors. For example, in the above case, the return answer should be
 <pre>
 "{1,3,4,4,5,6,24,34,35,100,101}"
