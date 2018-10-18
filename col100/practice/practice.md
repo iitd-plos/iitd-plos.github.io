@@ -307,4 +307,18 @@ Try the following questions on your own. Identify the base condition and reccure
       * **Hint2:** Observe the fact that if you had the solution for movement from **A** to **B**. The same solution is applicable for movement from **A** to **C** by simply swapping **B** and **C** in every move.
       * **Hint3:** What if you had the solution for **n-1** disks? Can you use that for the solution of n disks?
 
+<!-- added by Parag -->
+**7. Merge sorted vectors**
+Write a function mergeSortedVecs(Vector<Vector<int>> vecs) which takes a Vector of Vectors as an argument, where each constitutent Vector is a Vector of integers in the sorted (ascending) order. For example, vecs could be a Vector of the form "{{1,3,4,5}, {4,6,24,35},{34,100,101}}". Note that vecs consists of three sorted Vectors of integers in this case. Your function should compute a single sorted (ascending) Vector of integers obtained by merging the constituent vectors. For example, in the above case, the return answer should be {1,3,4,4,5,6,24,34,35,100,101}. Your merge function should take care of duplicates appropriately as shown in the example above (i.e., duplicate elements should be repeated as many times as in the original set of vectors). Write out the function to achieve this functionality. What is the time complexity of your function in terms of the sizes of the original Vectors?
 
+  Note: This is a generalization of the merge function in Minor 2 where you were asked to merge two sorted vectors. This question can be somewhat on the harder side. So you may want to spend time thinking about it before you start implementing. You can also start with writing the pseudocode for a function which merges k given sorted vectors (for some value of k).
+
+<!-- added by Parag -->
+**8. Is this a prime?**
+
+We say a number (greater than equal to two) is prime if it is divisble only by itself and 1. Given a number n (n >=2), write a program to check whether a number is prime or not. How much time does your program take? Can you now write an improved program which runs in time O(square_root_of(n)). For this question, you can assume that integer division takes constant time.
+
+<!-- added by Parag -->
+**9. Order Order**
+
+Given a Vector of numbers, we say that numbers at positions i and j are out of ascending order if (1) i < j and (2) v_i > v_j. Here v_i and v_j denote the elements at positions i and j, respectively in the Vector. Write a function countOutOfOrder(Vector<int> v), which takes as argument a Vector v, and returns the count of the number of pairs which are out of ascending order. You can assume that all the elements in v are unique. What is the time complexity of your program? To take an example, if the vector is {1,13,41,5,6} then the number of pairs which are out ascending order is 4.
