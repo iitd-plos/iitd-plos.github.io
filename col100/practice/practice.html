@@ -298,3 +298,23 @@ Given a Vector of numbers, we say that numbers at positions i and j are out of a
 <ol start="3" style="list-style-type: decimal">
 <li>What is the time complexity of each of the above methods</li>
 </ol>
+<!-- added by Saket -->
+<p><strong>11. Numbers are life</strong></p>
+<p><strong>11.1</strong> Given a number, can you find the sum of it's divisors? Complete the function below</p>
+<pre><code>int DivisorSum(int num) {
+  // num is the input number
+  // return an integer containing sum of divisors
+  // for example - if num = 6 return 1 + 2 + 3 + 6 = 12
+}</code></pre>
+<p><strong>11.2</strong> Now let's try to find prime factorization of an integer. If you have already implemented a function to check if a number is prime, then this is gonna be easy ! (isn't it?) Complete the function below</p>
+<pre><code>vector &lt;int&gt; PrimeFactorization(int num) {
+  // num is the input number
+  // return a vector containing prime factorization of the number
+  // for example - if num = 6 return [2,3]
+  // if num = 24 return [2,2,2,3], if num = 7 return [7]
+}</code></pre>
+<p><strong>11.3</strong> Well now, you know there exists a formula for finding sum of divisors using prime factorization of a number <a href="https://oeis.org/wiki/Sum_of_divisors_function#Formulae_for_the_sum_of_divisors_function">Read Here</a>. So why not modify our DivisorSum to use this formula ?</p>
+<pre><code>int DivisorSum(int num) {
+  vector &lt;int&gt; prime_fact = PrimeFactorization(num);
+  // now use this prime_fact and formula above to compute the sum of divisors
+}</code></pre>
