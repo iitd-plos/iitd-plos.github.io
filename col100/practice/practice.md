@@ -355,3 +355,37 @@ Take into consideration, the following points while solving this problem:
   - Using `determinant` and `adjoint` of a matrix
   - Using matrix transformations. In particular, read about [Row Echelon Form](https://en.wikipedia.org/wiki/Row_echelon_form) of a matrix and how it is used to compute the inverse
 3. What is the time complexity of each of the above methods
+
+
+<!-- added by Saket -->
+**11. Numbers are life**
+
+**11.1** Given a number, can you find the sum of it's divisors? Complete the function below 
+
+```
+int DivisorSum(int num) {
+  // num is the input number
+  // return an integer containing sum of divisors
+  // for example - if num = 6 return 1 + 2 + 3 + 6 = 12
+}
+```
+
+**11.2** Now let's try to find prime factorization of an integer. If you have already implemented a function to check if a number is prime, then this is gonna be easy ! (isn't it?) Complete the function below 
+
+```
+vector <int> PrimeFactorization(int num) {
+  // num is the input number
+  // return a vector containing prime factorization of the number
+  // for example - if num = 6 return [2,3]
+  // if num = 24 return [2,2,2,3], if num = 7 return [7]
+}
+```
+
+**11.3** Well now, you know there exists a formula for finding sum of divisors using prime factorization of a number [Read Here](https://oeis.org/wiki/Sum_of_divisors_function#Formulae_for_the_sum_of_divisors_function). So why not modify our DivisorSum to use this formula ? 
+
+```
+int DivisorSum(int num) {
+  vector <int> prime_fact = PrimeFactorization(num);
+  // now use this prime_fact and formula above to compute the sum of divisors
+}
+```
