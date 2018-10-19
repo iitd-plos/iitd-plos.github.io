@@ -239,7 +239,7 @@ double foo(double a,int b)
   *By now, I know you are tired of this foo function - just 1 more to go :p*  
 
   **5.7** This logic/algorithm won't work if **b** were **float** instead of **int**. Why?  
-  **5.8** **Tough, can be skipped-** Can you suggest some way to handle floating b? This will create a general power function.  
+  **5.8** **Tough, can be skipped-** Can you suggest some way to handle floating b? This will create a general function for task identified in **5.2**.  
 
   *End of chapter foo :)*  
 
