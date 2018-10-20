@@ -389,3 +389,21 @@ int DivisorSum(int num) {
   // now use this prime_fact and formula above to compute the sum of divisors
 }
 ```
+
+
+<!-- added by Sangnie -->
+**12. Anagram Strings**
+
+Given 2 strings, report if they are anagrams of each other. You need to implement the following function:
+
+```
+bool isAnagram(string s1, string s2) {
+  // Return true, if s1 and s2 are anagrams of each other else return false
+}
+```
+
+A string is an anagram of another if it can be formed by rearranging the characters of the original string. For example, dog is an anagram of god, but not of cat. Head over to [Anagram](https://en.wikipedia.org/wiki/Anagram) for more fun examples.
+
+Note:
+1. Ignore case. \"Dog\" is a valid anagram of \"god\".
+2. Consider only strings containing characters from the English alphabet.
