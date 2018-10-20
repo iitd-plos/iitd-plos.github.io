@@ -309,7 +309,7 @@ Try the following questions on your own. Identify the base condition and reccure
 
 <!-- added by Parag -->
 **7. Merge sorted vectors**
-Write a function mergeSortedVecs(Vector<Vector<int>> vecs) which takes a Vector of Vectors as an argument, where each constitutent Vector is a Vector of integers in the sorted (ascending) order. For example, vecs could be a Vector of the form
+Write a function mergeSortedVecs(Vector&lt;Vector&lt;int&gt;&gt; vecs) which takes a Vector of Vectors as an argument, where each constitutent Vector is a Vector of integers in the sorted (ascending) order. For example, vecs could be a Vector of the form
 <pre>
 "{ {1,3,4,5}, {4,6,24,35},{34,100,101} }"
 </pre>. Note that vecs consists of three sorted Vectors of integers in this case. Your function should compute a single sorted (ascending) Vector of integers obtained by merging the constituent vectors. For example, in the above case, the return answer should be
@@ -327,7 +327,7 @@ We say a number (greater than equal to two) is prime if it is divisble only by i
 <!-- added by Parag -->
 **9. Order Order**
 
-Given a Vector of numbers, we say that numbers at positions i and j are out of ascending order if (1) i < j and (2) v_i > v_j. Here v_i and v_j denote the elements at positions i and j, respectively in the Vector. Write a function countOutOfOrder(Vector<int> v), which takes as argument a Vector v, and returns the count of the number of pairs which are out of ascending order. You can assume that all the elements in v are unique. What is the time complexity of your program? To take an example, if the vector is
+Given a Vector of numbers, we say that numbers at positions i and j are out of ascending order if (1) i < j and (2) v_i > v_j. Here v_i and v_j denote the elements at positions i and j, respectively in the Vector. Write a function countOutOfOrder(Vector&lt;int&gt; v), which takes as argument a Vector v, and returns the count of the number of pairs which are out of ascending order. You can assume that all the elements in v are unique. What is the time complexity of your program? To take an example, if the vector is
 <pre>
 "{1,13,41,5,6}"
 </pre>
