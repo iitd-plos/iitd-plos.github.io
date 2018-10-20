@@ -32,43 +32,43 @@
 <span class="dv">2</span>  <span class="kw">using</span> <span class="kw">namespace</span> std;
 <span class="dv">3</span>  <span class="dt">int</span> get_queue_length(Queue&lt;<span class="dt">int</span>&gt; q)
 <span class="dv">4</span>  {
-<span class="dv">5</span>     <span class="kw">return</span> q.size();
+<span class="dv">5</span>     <span class="cf">return</span> q.size();
 <span class="dv">6</span>  }
 <span class="dv">7</span>  <span class="dt">int</span> main()
 <span class="dv">8</span>  {
 <span class="dv">9</span>      cin &gt;&gt; n;   
 <span class="dv">10</span>     Queue&lt;<span class="dt">int</span>&gt; q;
-<span class="dv">11</span>     <span class="kw">for</span> (<span class="dt">int</span> i = <span class="dv">0</span>; i &lt; n; i++) {
+<span class="dv">11</span>     <span class="cf">for</span> (<span class="dt">int</span> i = <span class="dv">0</span>; i &lt; n; i++) {
 <span class="dv">12</span>         q.enqueue(i);
 <span class="dv">13</span>     }
-<span class="dv">14</span>     <span class="kw">while</span> (!q.isEmpty()) {
+<span class="dv">14</span>     <span class="cf">while</span> (!q.isEmpty()) {
 <span class="dv">15</span>         cout &lt;&lt; get_queue_length(q) &lt;&lt; endl;
 <span class="dv">16</span>         cout &lt;&lt; q.dequeue() &lt;&lt; endl;
 <span class="dv">17</span>     }
-<span class="dv">18</span>     <span class="kw">return</span> <span class="dv">0</span>;
+<span class="dv">18</span>     <span class="cf">return</span> <span class="dv">0</span>;
 <span class="dv">19</span> }</code></pre></div>
 <ul>
 <li>And finally, what is the time complexity of the following program (notice that the argument is copied in a local variable before passing-by-reference)</li>
 </ul>
 <div class="sourceCode"><pre class="sourceCode cpp"><code class="sourceCode cpp"><span class="dv">1</span>  <span class="er">#</span>include &lt;iostream&gt;
 <span class="dv">2</span>  <span class="kw">using</span> <span class="kw">namespace</span> std;
-<span class="dv">3</span>  <span class="dt">int</span> get_queue_length(Queue&lt;<span class="dt">int</span>&gt; <span class="dt">const</span> &amp;q)
+<span class="dv">3</span>  <span class="dt">int</span> get_queue_length(Queue&lt;<span class="dt">int</span>&gt; <span class="at">const</span> &amp;q)
 <span class="dv">4</span>  {
-<span class="dv">5</span>     <span class="kw">return</span> q.size();
+<span class="dv">5</span>     <span class="cf">return</span> q.size();
 <span class="dv">6</span>  }
 <span class="dv">7</span>  <span class="dt">int</span> main()
 <span class="dv">8</span>  {
 <span class="dv">9</span>      cin &gt;&gt; n;   
 <span class="dv">10</span>     Queue&lt;<span class="dt">int</span>&gt; q;
-<span class="dv">11</span>     <span class="kw">for</span> (<span class="dt">int</span> i = <span class="dv">0</span>; i &lt; n; i++) {
+<span class="dv">11</span>     <span class="cf">for</span> (<span class="dt">int</span> i = <span class="dv">0</span>; i &lt; n; i++) {
 <span class="dv">12</span>         q.enqueue(i);
 <span class="dv">13</span>     }
-<span class="dv">14</span>     <span class="kw">while</span> (!q.isEmpty()) {
+<span class="dv">14</span>     <span class="cf">while</span> (!q.isEmpty()) {
 <span class="dv">15</span>         Queue&lt;<span class="dt">int</span>&gt; q2 = q;
 <span class="dv">16</span>         cout &lt;&lt; get_queue_length(q2) &lt;&lt; endl;
 <span class="dv">17</span>         cout &lt;&lt; q.dequeue() &lt;&lt; endl;
 <span class="dv">18</span>     }
-<span class="dv">19</span>     <span class="kw">return</span> <span class="dv">0</span>;
+<span class="dv">19</span>     <span class="cf">return</span> <span class="dv">0</span>;
 <span class="dv">20</span> }</code></pre></div>
 <!-- added by paras -->
 <ol start="2" style="list-style-type: decimal">
@@ -86,7 +86,7 @@
 <span class="dv">9</span>    cho += a; 
 <span class="dv">10</span>   *ptr += ch; 
 <span class="dv">11</span>   cout &lt;&lt; a &lt;&lt; <span class="st">&quot;, &quot;</span> &lt;&lt; ch &lt;&lt; endl; 
-<span class="dv">12</span>   <span class="kw">return</span> <span class="dv">0</span>; 
+<span class="dv">12</span>   <span class="cf">return</span> <span class="dv">0</span>; 
 <span class="dv">13</span>  } </code></pre></div>
 <p><strong>2.2</strong> What will i and j equal after the code below is executed? Explain your answer.</p>
 <div class="sourceCode"><pre class="sourceCode cpp"><code class="sourceCode cpp"><span class="dt">int</span> i = <span class="dv">5</span>;
@@ -101,25 +101,25 @@
 <span class="dv">3</span>  
 <span class="dv">4</span> <span class="dt">int</span> main() 
 <span class="dv">5</span> { 
-<span class="dv">6</span>    <span class="dt">const</span> <span class="dt">int</span> i = <span class="dv">20</span>; 
-<span class="dv">7</span>    <span class="dt">const</span> <span class="dt">int</span>* <span class="dt">const</span> ptr = &amp;i; 
+<span class="dv">6</span>    <span class="at">const</span> <span class="dt">int</span> i = <span class="dv">20</span>; 
+<span class="dv">7</span>    <span class="at">const</span> <span class="dt">int</span>* <span class="at">const</span> ptr = &amp;i; 
 <span class="dv">8</span>    (*ptr)++; 
 <span class="dv">9</span>    <span class="dt">int</span> j = <span class="dv">15</span>; 
 <span class="dv">10</span>   ptr = &amp;j; 
 <span class="dv">11</span>   cout &lt;&lt; i; 
-<span class="dv">12</span>   <span class="kw">return</span> <span class="dv">0</span>; 
+<span class="dv">12</span>   <span class="cf">return</span> <span class="dv">0</span>; 
 <span class="dv">13</span> } </code></pre></div>
 <p><strong>3.2</strong> Consider the two code snippets below for printing a vector. Is there any advantage of one vs. the other? Explain.</p>
 <p>Option 1:</p>
 <div class="sourceCode"><pre class="sourceCode cpp"><code class="sourceCode cpp">vector vec;
 <span class="co">/* ... .. ... */</span>
-<span class="kw">for</span> (<span class="kw">auto</span> itr = vec.begin(); itr != vec.end(); itr++) {
+<span class="cf">for</span> (<span class="kw">auto</span> itr = vec.begin(); itr != vec.end(); itr++) {
     itr-&gt;print();
 }</code></pre></div>
 <p>Option 2:</p>
 <div class="sourceCode"><pre class="sourceCode cpp"><code class="sourceCode cpp">vector vec;
 <span class="co">/* ... .. ... */</span>
-<span class="kw">for</span> (<span class="kw">auto</span> itr = vec.begin(); itr != vec.end(); ++itr) {
+<span class="cf">for</span> (<span class="kw">auto</span> itr = vec.begin(); itr != vec.end(); ++itr) {
     itr-&gt;print();
 }</code></pre></div>
 <!-- added by aman -->
@@ -148,15 +148,15 @@
   <span class="dt">int</span> ans=<span class="dv">1</span>;
   <span class="dt">int</span> temp=a;
 
-  <span class="kw">while</span>(b)
+  <span class="cf">while</span>(b)
   {
-    <span class="kw">if</span>(b&amp;<span class="dv">1</span>)
+    <span class="cf">if</span>(b&amp;<span class="dv">1</span>)
       ans*=temp;
     temp*=temp;
     b/=<span class="dv">2</span>;
   }
 
-  <span class="kw">return</span> ans;
+  <span class="cf">return</span> ans;
 }</code></pre></div>
 <p><strong>5.1</strong> Predict the output for <strong>foo(3,5)</strong>.<br />
 <strong>5.2</strong> What is <strong>foo(a,b)</strong> computing for general a,b&gt;=0, both integers.<br />
@@ -170,15 +170,15 @@
   <span class="dt">double</span> ans=<span class="dv">1</span>;
   <span class="dt">double</span> temp=a;
 
-  <span class="kw">while</span>(b)
+  <span class="cf">while</span>(b)
   {
-    <span class="kw">if</span>(b&amp;<span class="dv">1</span>)
+    <span class="cf">if</span>(b&amp;<span class="dv">1</span>)
       ans*=temp;
     temp*=temp;
     b/=<span class="dv">2</span>;
   }
 
-  <span class="kw">return</span> ans;
+  <span class="cf">return</span> ans;
 }</code></pre></div>
 <p><em>By now, I know you are tired of this foo function - just 1 more to go :p</em></p>
 <p><strong>5.7</strong> This logic/algorithm won't work if <strong>b</strong> were <strong>float</strong> instead of <strong>int</strong>. Why?<br />
@@ -252,7 +252,7 @@
 </ul></li>
 </ul>
 <!-- added by Parag -->
-<strong>7. Merge sorted vectors</strong> Write a function mergeSortedVecs(Vector<Vector<int>&gt; vecs) which takes a Vector of Vectors as an argument, where each constitutent Vector is a Vector of integers in the sorted (ascending) order. For example, vecs could be a Vector of the form
+<strong>7. Merge sorted vectors</strong> Write a function mergeSortedVecs(Vector&lt;Vector&lt;int&gt;&gt; vecs) which takes a Vector of Vectors as an argument, where each constitutent Vector is a Vector of integers in the sorted (ascending) order. For example, vecs could be a Vector of the form
 <pre>
 "{ {1,3,4,5}, {4,6,24,35},{34,100,101} }"
 </pre>
@@ -267,7 +267,7 @@
 <p>We say a number (greater than equal to two) is prime if it is divisble only by itself and 1. Given a number n (n &gt;=2), write a program to check whether a number is prime or not. How much time does your program take? Can you now write an improved program which runs in time O(square_root_of(n)). For this question, you can assume that integer division takes constant time.</p>
 <!-- added by Parag -->
 <p><strong>9. Order Order</strong></p>
-Given a Vector of numbers, we say that numbers at positions i and j are out of ascending order if (1) i &lt; j and (2) v_i &gt; v_j. Here v_i and v_j denote the elements at positions i and j, respectively in the Vector. Write a function countOutOfOrder(Vector<int> v), which takes as argument a Vector v, and returns the count of the number of pairs which are out of ascending order. You can assume that all the elements in v are unique. What is the time complexity of your program? To take an example, if the vector is
+Given a Vector of numbers, we say that numbers at positions i and j are out of ascending order if (1) i &lt; j and (2) v_i &gt; v_j. Here v_i and v_j denote the elements at positions i and j, respectively in the Vector. Write a function countOutOfOrder(Vector&lt;int&gt; v), which takes as argument a Vector v, and returns the count of the number of pairs which are out of ascending order. You can assume that all the elements in v are unique. What is the time complexity of your program? To take an example, if the vector is
 <pre>
 "{1,13,41,5,6}"
 </pre>
