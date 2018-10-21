@@ -407,3 +407,11 @@ A string is an anagram of another if it can be formed by rearranging the charact
 Note:
 1. Ignore case. \"Dog\" is a valid anagram of \"god\".
 2. Consider only strings containing characters from the English alphabet.
+
+<!-- added by Anuj Dhawan -->
+**13. Rotating vectors**
+
+Implement a function rotate(vector<int> &vec, int d, int n) that rotates the vector vec of size n by d elements towards right. For example: Input vec = [1, 2, 3, 4, 5, 6, 7], d = 2, n =7, then output will be [6, 7, 1, 2, 3, 4, 5].
+
+**13.1** [Easy] You can use a temporary array of size n.
+**13.2** [Medium] Use constant space i.e O(1) space.
