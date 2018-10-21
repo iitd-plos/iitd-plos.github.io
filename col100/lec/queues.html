@@ -196,3 +196,35 @@ void mirror(Queue&lt;string&gt;& q) {
 <li>Get queue and stack functionality in one data structure!
 </ul>
 Show figure with dequeue.
+
+<h3>Mapping to C++ STL functions</h3>
+<p>Member functions (first Stanford function, then STL function, then description): reference <a href=http://www.cplusplus.com/reference/queue/queue/>http://www.cplusplus.com/reference/queue/queue/</a>:
+<table style="width:100%" border="1">
+<tr>
+<td><code>q.isEmpty()</code></td>
+<td>q.empty()</td>
+<td>returns true if queue has no elements</td>
+</tr>
+<tr>
+<td><code>q.peek()</code></td>
+<td>q.front()</td>
+<td>returns front value without removing it; throws an error if queue is empty</td>
+</tr>
+<tr>
+<td><code>q.dequeue()</code></td>
+<td>q.pop()</td>
+<td>C++ STL version only removes front value (but does not return it); throws an error if queue is empty</td>
+</tr>
+<tr>
+<td><code>q.enqueue(value)</code></td>
+<td>q.push(value)</td>
+<td>places given value on top of queue, increasing its size by one</td>
+</tr>
+<tr>
+<td><code>q.size()</code></td>
+<td>q.size()</td>
+<td>returns number of elements in queue.</td>
+</tr>
+</table>
+
+

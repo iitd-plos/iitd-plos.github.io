@@ -145,3 +145,35 @@ void printSentenceReverse(const string &sentence) {
 </ul>
 </li>
 </ul>
+
+<h3>Mapping to C++ STL functions</h3>
+<p>Member functions (first Stanford function, then STL function, then description): reference <a href=http://www.cplusplus.com/reference/stack/stack/>http://www.cplusplus.com/reference/stack/stack/</a>:
+<table style="width:100%" border="1">
+<tr>
+<td><code>s.isEmpty()</code></td>
+<td>s.empty()</td>
+<td>returns true if stack has no elements</td>
+</tr>
+<tr>
+<td><code>s.peek()</code></td>
+<td>s.top()</td>
+<td>returns top value without removing it; throws an error if stack is empty</td>
+</tr>
+<tr>
+<td><code>s.pop()</code></td>
+<td>s.pop()</td>
+<td>C++ STL version only removes top value (but does not return it); throws an error if stack is empty</td>
+</tr>
+<tr>
+<td><code>s.push(value)</code></td>
+<td>s.push(value)</td>
+<td>places given value on top of stack, increasing its size by one</td>
+</tr>
+<tr>
+<td><code>s.size()</code></td>
+<td>s.size()</td>
+<td>returns number of elements in stack.</td>
+</tr>
+</table>
+
+
