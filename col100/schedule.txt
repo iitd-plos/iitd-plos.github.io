@@ -56,5 +56,5 @@ LEC: <a href=lec/stacks.html>Stacks</a>, <a href=lec/queues.html>Queues</a>
 ==
 LEC: <a href=lec/queues.html>Queues contd.</a>, <a href=lec/debugging.html>Debugging</a>
 ==
-LEC: <a href=lec/sets.html>Sets</a>
+LEC: <a href=lec/sets.html>Sets</a>, <a href=lec/maps.html>Maps</a>
 ==
