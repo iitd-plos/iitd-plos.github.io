@@ -337,3 +337,50 @@ Given a Vector of numbers, we say that numbers at positions i and j are out of a
 <p>Note: A word is defined as a character sequence consists of non-space characters only.</p>
 <p>Example:</p>
 <p>Input: &quot;Hello World&quot; Output: 5</p>
+<!-- added by abhishek -->
+<p><strong>13. [EASY] Common programming pattern: Iterate and delete</strong></p>
+<p>Deleting elements from a linear data structure (e.g. vector, string, list) while iterating is a common programming pattern. Unfortunately, it is very easy to get this seemily easy code wrong.</p>
+<p><em>13.1</em> Consider the following function. What is wrong with it?</p>
+<div class="sourceCode"><pre class="sourceCode cpp"><code class="sourceCode cpp"><span class="co">/* delete every occurrence of char `c` from string `s`</span>
+<span class="co"> * return the modified string */</span>
+string deleteChar(string s, <span class="dt">char</span> c)
+{
+  <span class="dt">int</span> n = s.size();
+  <span class="cf">for</span> (<span class="dt">int</span> i = <span class="dv">0</span>; i &lt; n; ++i) {
+    <span class="cf">if</span> (s.at(i) == c) {
+      <span class="co">/* `s.at(i)` return same value as `s[i]` if i is a valid index i.e. 0 &lt;= i &lt; s.size(),</span>
+<span class="co">        else, it throws the &quot;out_of_range&quot; exception */</span>
+      s.erase(i, <span class="dv">1</span>); <span class="co">// erase element at i</span>
+    }
+  }
+  <span class="cf">return</span> s;
+}</code></pre></div>
+<p><em>13.2</em> Let's say we came up with this &quot;fix&quot;:</p>
+<div class="sourceCode"><pre class="sourceCode cpp"><code class="sourceCode cpp"><span class="co">/* delete every occurrence of char `c` from string `s`</span>
+<span class="co"> * return the modified string */</span>
+string deleteCharV2(string s, <span class="dt">char</span> c)
+{
+  <span class="cf">for</span> (<span class="dt">int</span> i = <span class="dv">0</span>; i &lt; s.size(); ++i) {
+    <span class="cf">if</span> (s.at(i) == c) {
+      s.erase(i, <span class="dv">1</span>); <span class="co">// erase element at i</span>
+    }
+  }
+  <span class="cf">return</span> s;
+}</code></pre></div>
+<p>Is this version correct?</p>
+<p><em>13.3</em> Here are two functions for solving the same problem. Which one do you prefer, which is more efficient? Give reasons for your choice.</p>
+<pre><code>|  **Solution 1**                                    |  **Solution 2**                                  |
+|----------------------------------------------------|--------------------------------------------------|
+|                                                    |                                                  |
+| string deleteCharV3(string&amp; s, char c)             | string deleteCharV4(const string&amp; s, char c)     |
+| {                                                  | {                                                |
+|   int i = 0;                                       |   string ret;                                    |
+|   while (i &lt; s.size()) {                           |   for (int i = 0; i &lt; s.size(); ++i) {           |
+|     if (s.at(i) == c)                              |     if (s.at(i) != c)                            |
+|       s.erase(i, 1); // erase element at i         |       ret += s.at(i); // copy i&#39;th char          |
+|     else i++;                                      |   }                                              |
+|   }                                                |   return ret;                                    |
+|   return s;                                        | }                                                |
+| }                                                  |                                                  |</code></pre>
+<p><small><em>Hint for 13.1:</em> Try running with input (&quot;HelloWorld&quot;, 'o')</small></p>
+<p><small><em>Hint for 13.2:</em> Try running with input (&quot;HelloWorld&quot;, 'l')</small></p>

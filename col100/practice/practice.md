@@ -428,3 +428,66 @@ Example:
 
 Input: "Hello World"
 Output: 5
+
+<!-- added by abhishek -->
+**13. [EASY] Common programming pattern: Iterate and delete**
+
+Deleting elements from a linear data structure (e.g. vector, string, list) while iterating is a common programming pattern.  Unfortunately, it is very easy to get this seemily easy code wrong.
+
+_13.1_ Consider the following function.  What is wrong with it?
+
+```cpp
+/* delete every occurrence of char `c` from string `s`
+ * return the modified string */
+string deleteChar(string s, char c)
+{
+  int n = s.size();
+  for (int i = 0; i < n; ++i) {
+    if (s.at(i) == c) {
+      /* `s.at(i)` return same value as `s[i]` if i is a valid index i.e. 0 <= i < s.size(),
+        else, it throws the "out_of_range" exception */
+      s.erase(i, 1); // erase element at i
+    }
+  }
+  return s;
+}
+```
+
+_13.2_ Let's say we came up with this "fix":
+
+```cpp
+/* delete every occurrence of char `c` from string `s`
+ * return the modified string */
+string deleteCharV2(string s, char c)
+{
+  for (int i = 0; i < s.size(); ++i) {
+    if (s.at(i) == c) {
+      s.erase(i, 1); // erase element at i
+    }
+  }
+  return s;
+}
+```
+Is this version correct?
+
+_13.3_ Here are two functions for solving the same problem.  Which one do you prefer, which is more efficient?  Give reasons for your choice.
+
+```
+|  **Solution 1**                                    |  **Solution 2**                                  |
+|----------------------------------------------------|--------------------------------------------------|
+|                                                    |                                                  |
+| string deleteCharV3(string& s, char c)             | string deleteCharV4(const string& s, char c)     |
+| {                                                  | {                                                |
+|   int i = 0;                                       |   string ret;                                    |
+|   while (i < s.size()) {                           |   for (int i = 0; i < s.size(); ++i) {           |
+|     if (s.at(i) == c)                              |     if (s.at(i) != c)                            |
+|       s.erase(i, 1); // erase element at i         |       ret += s.at(i); // copy i'th char          |
+|     else i++;                                      |   }                                              |
+|   }                                                |   return ret;                                    |
+|   return s;                                        | }                                                |
+| }                                                  |                                                  |
+```
+
+<small>_Hint for 13.1:_ Try running with input ("HelloWorld", 'o')</small>
+
+<small>_Hint for 13.2:_ Try running with input ("HelloWorld", 'l')</small>
