@@ -416,7 +416,6 @@ Implement a function rotate(vector<int> &vec, int d, int n) that rotates the vec
 **13.1** [Easy] You can use a temporary array of size n.
 
 **13.2** [Medium] Use constant space i.e O(1) space.
-Given a string s consists of upper/lower-case alphabets and empty space characters ' ', return the length of last word in the string.
 
 <!-- added by Anuj Dhawan -->
 **14. Last Word**
