@@ -28,101 +28,104 @@
 <ul>
 <li>Now what is the time complexity of the followng program (notice that the argument is now pass-by-value)</li>
 </ul>
-<div class="sourceCode"><pre class="sourceCode cpp"><code class="sourceCode cpp"><span class="dv">1</span>  <span class="er">#</span>include &lt;iostream&gt;
+<pre class="sourceCode cpp"><code class="sourceCode cpp"><span class="dv">1</span>  #include &lt;iostream&gt;
 <span class="dv">2</span>  <span class="kw">using</span> <span class="kw">namespace</span> std;
 <span class="dv">3</span>  <span class="dt">int</span> get_queue_length(Queue&lt;<span class="dt">int</span>&gt; q)
 <span class="dv">4</span>  {
-<span class="dv">5</span>     <span class="cf">return</span> q.size();
+<span class="dv">5</span>     <span class="kw">return</span> q.size();
 <span class="dv">6</span>  }
 <span class="dv">7</span>  <span class="dt">int</span> main()
 <span class="dv">8</span>  {
 <span class="dv">9</span>      cin &gt;&gt; n;   
 <span class="dv">10</span>     Queue&lt;<span class="dt">int</span>&gt; q;
-<span class="dv">11</span>     <span class="cf">for</span> (<span class="dt">int</span> i = <span class="dv">0</span>; i &lt; n; i++) {
+<span class="dv">11</span>     <span class="kw">for</span> (<span class="dt">int</span> i = <span class="dv">0</span>; i &lt; n; i++) {
 <span class="dv">12</span>         q.enqueue(i);
 <span class="dv">13</span>     }
-<span class="dv">14</span>     <span class="cf">while</span> (!q.isEmpty()) {
+<span class="dv">14</span>     <span class="kw">while</span> (!q.isEmpty()) {
 <span class="dv">15</span>         cout &lt;&lt; get_queue_length(q) &lt;&lt; endl;
 <span class="dv">16</span>         cout &lt;&lt; q.dequeue() &lt;&lt; endl;
 <span class="dv">17</span>     }
-<span class="dv">18</span>     <span class="cf">return</span> <span class="dv">0</span>;
-<span class="dv">19</span> }</code></pre></div>
+<span class="dv">18</span>     <span class="kw">return</span> <span class="dv">0</span>;
+<span class="dv">19</span> }</code></pre>
 <ul>
 <li>And finally, what is the time complexity of the following program (notice that the argument is copied in a local variable before passing-by-reference)</li>
 </ul>
-<div class="sourceCode"><pre class="sourceCode cpp"><code class="sourceCode cpp"><span class="dv">1</span>  <span class="er">#</span>include &lt;iostream&gt;
+<pre class="sourceCode cpp"><code class="sourceCode cpp"><span class="dv">1</span>  #include &lt;iostream&gt;
 <span class="dv">2</span>  <span class="kw">using</span> <span class="kw">namespace</span> std;
-<span class="dv">3</span>  <span class="dt">int</span> get_queue_length(Queue&lt;<span class="dt">int</span>&gt; <span class="at">const</span> &amp;q)
+<span class="dv">3</span>  <span class="dt">int</span> get_queue_length(Queue&lt;<span class="dt">int</span>&gt; <span class="dt">const</span> &amp;q)
 <span class="dv">4</span>  {
-<span class="dv">5</span>     <span class="cf">return</span> q.size();
+<span class="dv">5</span>     <span class="kw">return</span> q.size();
 <span class="dv">6</span>  }
 <span class="dv">7</span>  <span class="dt">int</span> main()
 <span class="dv">8</span>  {
 <span class="dv">9</span>      cin &gt;&gt; n;   
 <span class="dv">10</span>     Queue&lt;<span class="dt">int</span>&gt; q;
-<span class="dv">11</span>     <span class="cf">for</span> (<span class="dt">int</span> i = <span class="dv">0</span>; i &lt; n; i++) {
+<span class="dv">11</span>     <span class="kw">for</span> (<span class="dt">int</span> i = <span class="dv">0</span>; i &lt; n; i++) {
 <span class="dv">12</span>         q.enqueue(i);
 <span class="dv">13</span>     }
-<span class="dv">14</span>     <span class="cf">while</span> (!q.isEmpty()) {
+<span class="dv">14</span>     <span class="kw">while</span> (!q.isEmpty()) {
 <span class="dv">15</span>         Queue&lt;<span class="dt">int</span>&gt; q2 = q;
 <span class="dv">16</span>         cout &lt;&lt; get_queue_length(q2) &lt;&lt; endl;
 <span class="dv">17</span>         cout &lt;&lt; q.dequeue() &lt;&lt; endl;
 <span class="dv">18</span>     }
-<span class="dv">19</span>     <span class="cf">return</span> <span class="dv">0</span>;
-<span class="dv">20</span> }</code></pre></div>
+<span class="dv">19</span>     <span class="kw">return</span> <span class="dv">0</span>;
+<span class="dv">20</span> }</code></pre>
 <!-- added by paras -->
 <ol start="2" style="list-style-type: decimal">
 <li><strong>Estimating the Output of a given program</strong>: In these questions, we will learn about how to analyze a simple program and produce the output for it.</li>
 </ol>
 <p><strong>2.1</strong> What is the output of the given program?</p>
-<div class="sourceCode"><pre class="sourceCode cpp"><code class="sourceCode cpp"><span class="dv">1</span>  <span class="er">#</span>include &lt;iostream&gt; 
+<pre class="sourceCode cpp"><code class="sourceCode cpp"><span class="dv">1</span>  #include &lt;iostream&gt; 
 <span class="dv">2</span>  <span class="kw">using</span> <span class="kw">namespace</span> std; 
 <span class="dv">3</span>  
 <span class="dv">4</span>  <span class="dt">int</span> main() 
 <span class="dv">5</span>  { 
 <span class="dv">6</span>    <span class="dt">int</span> a = <span class="dv">32</span>, *ptr = &amp;a; 
-<span class="dv">7</span>    <span class="dt">char</span> ch = <span class="st">&#39;A&#39;</span>, &amp;cho = ch; 
+<span class="dv">7</span>    <span class="dt">char</span> ch = &#39;A&#39;, &amp;cho = ch; 
 <span class="dv">8</span>  
 <span class="dv">9</span>    cho += a; 
 <span class="dv">10</span>   *ptr += ch; 
 <span class="dv">11</span>   cout &lt;&lt; a &lt;&lt; <span class="st">&quot;, &quot;</span> &lt;&lt; ch &lt;&lt; endl; 
-<span class="dv">12</span>   <span class="cf">return</span> <span class="dv">0</span>; 
-<span class="dv">13</span>  } </code></pre></div>
+<span class="dv">12</span>   <span class="kw">return</span> <span class="dv">0</span>; 
+<span class="dv">13</span>  } </code></pre>
 <p><strong>2.2</strong> What will i and j equal after the code below is executed? Explain your answer.</p>
-<div class="sourceCode"><pre class="sourceCode cpp"><code class="sourceCode cpp"><span class="dt">int</span> i = <span class="dv">5</span>;
-<span class="dt">int</span> j = i++;</code></pre></div>
+<pre class="sourceCode cpp"><code class="sourceCode cpp"><span class="dt">int</span> i = <span class="dv">5</span>;
+<span class="dt">int</span> j = i++;</code></pre>
 <!-- added by paras -->
 <ol start="3" style="list-style-type: decimal">
 <li><strong>Analyze the program</strong>: In these questions, one need to analyze the given piece of code at multiple levels.</li>
 </ol>
 <p><strong>3.1</strong> Is the program correct? If yes, what is the output of the given program? If not, what are the errors?</p>
-<div class="sourceCode"><pre class="sourceCode cpp"><code class="sourceCode cpp"><span class="dv">1</span> <span class="er">#</span>include &lt;iostream&gt; 
+<pre class="sourceCode cpp"><code class="sourceCode cpp"><span class="dv">1</span> #include &lt;iostream&gt; 
 <span class="dv">2</span> <span class="kw">using</span> <span class="kw">namespace</span> std; 
 <span class="dv">3</span>  
 <span class="dv">4</span> <span class="dt">int</span> main() 
 <span class="dv">5</span> { 
-<span class="dv">6</span>    <span class="at">const</span> <span class="dt">int</span> i = <span class="dv">20</span>; 
-<span class="dv">7</span>    <span class="at">const</span> <span class="dt">int</span>* <span class="at">const</span> ptr = &amp;i; 
+<span class="dv">6</span>    <span class="dt">const</span> <span class="dt">int</span> i = <span class="dv">20</span>; 
+<span class="dv">7</span>    <span class="dt">const</span> <span class="dt">int</span>* <span class="dt">const</span> ptr = &amp;i; 
 <span class="dv">8</span>    (*ptr)++; 
 <span class="dv">9</span>    <span class="dt">int</span> j = <span class="dv">15</span>; 
 <span class="dv">10</span>   ptr = &amp;j; 
 <span class="dv">11</span>   cout &lt;&lt; i; 
-<span class="dv">12</span>   <span class="cf">return</span> <span class="dv">0</span>; 
-<span class="dv">13</span> } </code></pre></div>
+<span class="dv">12</span>   <span class="kw">return</span> <span class="dv">0</span>; 
+<span class="dv">13</span> } </code></pre>
 <p><strong>3.2</strong> Consider the two code snippets below for printing a vector. Is there any advantage of one vs. the other? Explain.</p>
 <p>Option 1:</p>
-<div class="sourceCode"><pre class="sourceCode cpp"><code class="sourceCode cpp">vector vec;
+<pre class="sourceCode cpp"><code class="sourceCode cpp">vector vec;
 <span class="co">/* ... .. ... */</span>
-<span class="cf">for</span> (<span class="kw">auto</span> itr = vec.begin(); itr != vec.end(); itr++) {
+<span class="kw">for</span> (<span class="dt">auto</span> itr = vec.begin(); itr != vec.end(); itr++) {
     itr-&gt;print();
-}</code></pre></div>
+}</code></pre>
 <p>Option 2:</p>
-<div class="sourceCode"><pre class="sourceCode cpp"><code class="sourceCode cpp">vector vec;
+<pre class="sourceCode cpp"><code class="sourceCode cpp">vector vec;
 <span class="co">/* ... .. ... */</span>
-<span class="cf">for</span> (<span class="kw">auto</span> itr = vec.begin(); itr != vec.end(); ++itr) {
+<span class="kw">for</span> (<span class="dt">auto</span> itr = vec.begin(); itr != vec.end(); ++itr) {
     itr-&gt;print();
-}</code></pre></div>
+}</code></pre>
 <!-- added by aman -->
+
+
+
 <ol start="4" style="list-style-type: decimal">
 <li><strong>Bitwise Operators</strong>: In this question we, will learn about some of the bitwise operators.</li>
 </ol>
@@ -133,7 +136,7 @@
 <li>&lt;&lt; : Binary Left shift operator</li>
 <li>&gt;&gt; : Binary Right shift operator</li>
 </ul>
-<p>Read More at <a href="https://www.geeksforgeeks.org/bitwise-operators-in-c-cpp/" class="uri">https://www.geeksforgeeks.org/bitwise-operators-in-c-cpp/</a></p>
+<p>Read More at <a href="https://www.geeksforgeeks.org/bitwise-operators-in-c-cpp/">https://www.geeksforgeeks.org/bitwise-operators-in-c-cpp/</a></p>
 <p><strong>4.1</strong> Check if two numbers are equal without using arithmetic operators or comparison operators.</p>
 <p><strong>4.2</strong> Divide an integer by 2^k and return the integer quotient. Do not use any arithmetic operator, loops or pow function.</p>
 <p><code>cpp   int divide(int n, int k){     /* Do not use any arithmetic operators or loops or pow function */   }</code></p>
@@ -143,46 +146,39 @@
 <p><code>cpp     int main(){       int n;       cin&gt;&gt;n;       if(/* ... */)         cout&lt;&lt;&quot;Number is power of 2&quot;&lt;&lt;endl;       else         cout&lt;&lt;&quot;Number is not a power of two&quot;&lt;&lt;endl;       return 0;     }</code></p>
 <p><br> <!-- added by Ankesh --> <strong>5. Analysing an algorithm.</strong></p>
 <p>Given below is a function/algorithm: <em>You'll enjoy foo!</em></p>
-<div class="sourceCode"><pre class="sourceCode cpp"><code class="sourceCode cpp"><span class="dt">int</span> foo(<span class="dt">int</span> a,<span class="dt">int</span> b)
+<pre class="sourceCode cpp"><code class="sourceCode cpp"><span class="dt">int</span> foo(<span class="dt">int</span> a,<span class="dt">int</span> b)
 {
   <span class="dt">int</span> ans=<span class="dv">1</span>;
   <span class="dt">int</span> temp=a;
 
-  <span class="cf">while</span>(b)
+  <span class="kw">while</span>(b)
   {
-    <span class="cf">if</span>(b&amp;<span class="dv">1</span>)
+    <span class="kw">if</span>(b&amp;<span class="dv">1</span>)
       ans*=temp;
     temp*=temp;
     b/=<span class="dv">2</span>;
   }
 
-  <span class="cf">return</span> ans;
-}</code></pre></div>
-<p><strong>5.1</strong> Predict the output for <strong>foo(3,5)</strong>.<br />
-<strong>5.2</strong> What is <strong>foo(a,b)</strong> computing for general a,b&gt;=0, both integers.<br />
-<strong>5.3</strong> What is time complexity of <strong>foo(a,b)</strong> for general a,b&gt;=0, both integers. You should report bigO complexity in terms of a and b.<br />
-<strong>5.4</strong> Can you point out a problem with this code?<br />
-(<strong>Spoiler:</strong> Will this code produce correct results for large a's and b's?)<br />
-<strong>5.5</strong> How can you handle negative b?(Note: You can change <strong>function declaration</strong> to double <strong>foo(int a,int b)</strong>)<br />
-<strong>5.6</strong> Will this logic/algorithm work if <strong>a</strong> were <strong>float</strong> instead of <strong>int</strong>.(Refer to code below)</p>
-<div class="sourceCode"><pre class="sourceCode cpp"><code class="sourceCode cpp"><span class="dt">double</span> foo(<span class="dt">double</span> a,<span class="dt">int</span> b)
+  <span class="kw">return</span> ans;
+}</code></pre>
+<p><strong>5.1</strong> Predict the output for <strong>foo(3,5)</strong>.<br /> <strong>5.2</strong> What is <strong>foo(a,b)</strong> computing for general a,b&gt;=0, both integers.<br /> <strong>5.3</strong> What is time complexity of <strong>foo(a,b)</strong> for general a,b&gt;=0, both integers. You should report bigO complexity in terms of a and b.<br /> <strong>5.4</strong> Can you point out a problem with this code?<br /> (<strong>Spoiler:</strong> Will this code produce correct results for large a's and b's?)<br /> <strong>5.5</strong> How can you handle negative b?(Note: You can change <strong>function declaration</strong> to double <strong>foo(int a,int b)</strong>)<br /> <strong>5.6</strong> Will this logic/algorithm work if <strong>a</strong> were <strong>float</strong> instead of <strong>int</strong>.(Refer to code below)</p>
+<pre class="sourceCode cpp"><code class="sourceCode cpp"><span class="dt">double</span> foo(<span class="dt">double</span> a,<span class="dt">int</span> b)
 {
   <span class="dt">double</span> ans=<span class="dv">1</span>;
   <span class="dt">double</span> temp=a;
 
-  <span class="cf">while</span>(b)
+  <span class="kw">while</span>(b)
   {
-    <span class="cf">if</span>(b&amp;<span class="dv">1</span>)
+    <span class="kw">if</span>(b&amp;<span class="dv">1</span>)
       ans*=temp;
     temp*=temp;
     b/=<span class="dv">2</span>;
   }
 
-  <span class="cf">return</span> ans;
-}</code></pre></div>
+  <span class="kw">return</span> ans;
+}</code></pre>
 <p><em>By now, I know you are tired of this foo function - just 1 more to go :p</em></p>
-<p><strong>5.7</strong> This logic/algorithm won't work if <strong>b</strong> were <strong>float</strong> instead of <strong>int</strong>. Why?<br />
-<strong>5.8</strong> <strong>Tough, can be skipped-</strong> Can you suggest some way to handle floating b? This will create a general function for task identified in <strong>5.2</strong>.</p>
+<p><strong>5.7</strong> This logic/algorithm won't work if <strong>b</strong> were <strong>float</strong> instead of <strong>int</strong>. Why?<br /> <strong>5.8</strong> <strong>Tough, can be skipped-</strong> Can you suggest some way to handle floating b? This will create a general function for task identified in <strong>5.2</strong>.</p>
 <p><em>End of chapter foo :)</em></p>
 <!-- added by Sourabh -->
 <p><strong>6.Recursion</strong></p>
@@ -233,8 +229,7 @@
 <li>Fibonnaci sequence is a sequence of integers following the property that every number is the sum of two numbers preceding it.</li>
 </ul>
 <ol start="3" style="list-style-type: decimal">
-<li><strong>Tower of Hanoi</strong><br />
-</li>
+<li><strong>Tower of Hanoi</strong><br /></li>
 </ol>
 <ul>
 <li><p>The Tower of Hanoi is a mathematical game or puzzle. It consists of three rods and a number of disks of different sizes, which can slide onto any rod. The puzzle starts with the disks in a neat stack in ascending order of size on one rod, the smallest at the top, thus making a conical shape.(source:<a href="https://en.wikipedia.org/wiki/Tower_of_Hanoi">wiki/Tower_of_Hanoi</a>)</p></li>
@@ -341,32 +336,32 @@ Given a Vector of numbers, we say that numbers at positions i and j are out of a
 <p><strong>13. [EASY] Common programming pattern: Iterate and delete</strong></p>
 <p>Deleting elements from a linear data structure (e.g. vector, string, list) while iterating is a common programming pattern. Unfortunately, it is very easy to get this seemily easy code wrong.</p>
 <p><em>13.1</em> Consider the following function. What is wrong with it?</p>
-<div class="sourceCode"><pre class="sourceCode cpp"><code class="sourceCode cpp"><span class="co">/* delete every occurrence of char `c` from string `s`</span>
+<pre class="sourceCode cpp"><code class="sourceCode cpp"><span class="co">/* delete every occurrence of char `c` from string `s`</span>
 <span class="co"> * return the modified string */</span>
 string deleteChar(string s, <span class="dt">char</span> c)
 {
   <span class="dt">int</span> n = s.size();
-  <span class="cf">for</span> (<span class="dt">int</span> i = <span class="dv">0</span>; i &lt; n; ++i) {
-    <span class="cf">if</span> (s.at(i) == c) {
+  <span class="kw">for</span> (<span class="dt">int</span> i = <span class="dv">0</span>; i &lt; n; ++i) {
+    <span class="kw">if</span> (s.at(i) == c) {
       <span class="co">/* `s.at(i)` return same value as `s[i]` if i is a valid index i.e. 0 &lt;= i &lt; s.size(),</span>
 <span class="co">        else, it throws the &quot;out_of_range&quot; exception */</span>
       s.erase(i, <span class="dv">1</span>); <span class="co">// erase element at i</span>
     }
   }
-  <span class="cf">return</span> s;
-}</code></pre></div>
+  <span class="kw">return</span> s;
+}</code></pre>
 <p><em>13.2</em> Let's say we came up with this &quot;fix&quot;:</p>
-<div class="sourceCode"><pre class="sourceCode cpp"><code class="sourceCode cpp"><span class="co">/* delete every occurrence of char `c` from string `s`</span>
+<pre class="sourceCode cpp"><code class="sourceCode cpp"><span class="co">/* delete every occurrence of char `c` from string `s`</span>
 <span class="co"> * return the modified string */</span>
 string deleteCharV2(string s, <span class="dt">char</span> c)
 {
-  <span class="cf">for</span> (<span class="dt">int</span> i = <span class="dv">0</span>; i &lt; s.size(); ++i) {
-    <span class="cf">if</span> (s.at(i) == c) {
+  <span class="kw">for</span> (<span class="dt">int</span> i = <span class="dv">0</span>; i &lt; s.size(); ++i) {
+    <span class="kw">if</span> (s.at(i) == c) {
       s.erase(i, <span class="dv">1</span>); <span class="co">// erase element at i</span>
     }
   }
-  <span class="cf">return</span> s;
-}</code></pre></div>
+  <span class="kw">return</span> s;
+}</code></pre>
 <p>Is this version correct?</p>
 <p><em>13.3</em> Here are two functions for solving the same problem. Which one do you prefer, which is more efficient? Give reasons for your choice.</p>
 <pre><code>|  **Solution 1**                                    |  **Solution 2**                                  |
@@ -384,3 +379,80 @@ string deleteCharV2(string s, <span class="dt">char</span> c)
 | }                                                  |                                                  |</code></pre>
 <p><small><em>Hint for 13.1:</em> Try running with input (&quot;HelloWorld&quot;, 'o')</small></p>
 <p><small><em>Hint for 13.2:</em> Try running with input (&quot;HelloWorld&quot;, 'l')</small></p>
+<!-- added by shailja -->
+<p><strong>14. [Easy] Scope: local and global variables</strong> <strong>14.1</strong> Is the program correct? If yes, what is the output of the given program? If not, what are the errors?</p>
+<pre class="sourceCode cpp"><code class="sourceCode cpp"><span class="co">// usage of local variables  </span>
+<span class="dv">1</span> #include&lt;iostream&gt; 
+<span class="dv">2</span> <span class="kw">using</span> <span class="kw">namespace</span> std; 
+<span class="dv">3</span>  
+<span class="dv">4</span> <span class="dt">void</span> func() 
+<span class="dv">5</span> {    
+<span class="dv">6</span> <span class="dt">int</span> age=<span class="dv">18</span>;     
+<span class="dv">7</span> } 
+<span class="dv">8</span>  
+<span class="dv">9</span> <span class="dt">int</span> main() 
+<span class="dv">10</span> { 
+<span class="dv">11</span>    cout&lt;&lt;<span class="st">&quot;Age is: &quot;</span>&lt;&lt;age; 
+<span class="dv">12</span>      
+<span class="dv">13</span>    <span class="kw">return</span> <span class="dv">0</span>; 
+<span class="dv">14</span> } </code></pre>
+<p><strong>14.2</strong> What is the output of the given program?</p>
+<pre class="sourceCode cpp"><code class="sourceCode cpp"><span class="dv">1</span> #include&lt;iostream&gt; 
+<span class="dv">2</span> <span class="kw">using</span> <span class="kw">namespace</span> std; 
+<span class="dv">3</span>  
+<span class="dv">4</span> <span class="dt">void</span> func() 
+<span class="dv">5</span> {    
+<span class="dv">6</span>    <span class="dt">int</span> age=<span class="dv">18</span>;  
+<span class="dv">7</span>    cout&lt;&lt;age; 
+<span class="dv">8</span> } 
+<span class="dv">9</span>  
+<span class="dv">10</span> <span class="dt">int</span> main() 
+<span class="dv">11</span> { 
+<span class="dv">12</span>    cout&lt;&lt;<span class="st">&quot;Age is: &quot;</span>; 
+<span class="dv">13</span>    func(); 
+<span class="dv">14</span>      
+<span class="dv">15</span>    <span class="kw">return</span> <span class="dv">0</span>; 
+<span class="dv">16</span> } </code></pre>
+<p><strong>14.3</strong> What is the output of the given program?</p>
+<pre class="sourceCode cpp"><code class="sourceCode cpp"><span class="dv">1</span> <span class="co">// usage of global variables  </span>
+<span class="dv">2</span> #include&lt;iostream&gt; 
+<span class="dv">3</span> <span class="kw">using</span> <span class="kw">namespace</span> std; 
+<span class="dv">4</span>  
+<span class="dv">5</span> <span class="co">// global variable </span>
+<span class="dv">6</span> <span class="dt">int</span> global = <span class="dv">5</span>; 
+<span class="dv">7</span>  
+<span class="dv">8</span> <span class="co">// global variable accessed from </span>
+<span class="dv">9</span> <span class="co">// within a function </span>
+<span class="dv">10</span> <span class="dt">void</span> display() 
+<span class="dv">11</span> { 
+<span class="dv">12</span>    cout&lt;&lt;global&lt;&lt;endl; 
+<span class="dv">13</span> } 
+<span class="dv">14</span>  
+<span class="dv">15</span> <span class="co">// main function </span>
+<span class="dv">16</span> <span class="dt">int</span> main() 
+<span class="dv">17</span> { 
+<span class="dv">18</span>     display(); 
+<span class="dv">19</span>      
+<span class="dv">20</span>     <span class="co">// changing value of global </span>
+<span class="dv">21</span>     <span class="co">// variable from main function </span>
+<span class="dv">22</span>     global = <span class="dv">10</span>; 
+<span class="dv">23</span>     display(); 
+<span class="dv">24</span> } </code></pre>
+<p><strong>14.4</strong> What if there exists a local variable with the same name as that of global variable inside a function?</p>
+<pre class="sourceCode cpp"><code class="sourceCode cpp"><span class="dv">1</span> <span class="co">// usage of local variables  </span>
+<span class="dv">2</span> <span class="co">// and global variables together </span>
+<span class="dv">3</span> #include&lt;iostream&gt; 
+<span class="dv">4</span> <span class="kw">using</span> <span class="kw">namespace</span> std; 
+<span class="dv">5</span>  
+<span class="dv">6</span> <span class="co">// global variable </span>
+<span class="dv">7</span> <span class="dt">int</span> global = <span class="dv">5</span>; 
+<span class="dv">8</span>  
+<span class="dv">9</span> <span class="co">// main function </span>
+<span class="dv">10</span> <span class="dt">int</span> main() 
+<span class="dv">11</span> {    
+<span class="dv">12</span>     <span class="co">// local variable with same  </span>
+<span class="dv">13</span>     <span class="co">// name as that of global variable </span>
+<span class="dv">14</span>      
+<span class="dv">15</span>     <span class="dt">int</span> global = <span class="dv">2</span>; 
+<span class="dv">16</span>     cout &lt;&lt; global &lt;&lt; endl; 
+<span class="dv">17</span> } </code></pre>
