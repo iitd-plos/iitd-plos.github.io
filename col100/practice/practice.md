@@ -491,3 +491,96 @@ _13.3_ Here are two functions for solving the same problem.  Which one do you pr
 <small>_Hint for 13.1:_ Try running with input ("HelloWorld", 'o')</small>
 
 <small>_Hint for 13.2:_ Try running with input ("HelloWorld", 'l')</small>
+
+<!-- added by shailja -->
+**14. [Easy] Scope: local and global variables**
+**14.1** Is the program correct? If yes, what is the output of the given program? If not, what are the errors?
+
+```cpp
+// usage of local variables  
+1 #include<iostream> 
+2 using namespace std; 
+3  
+4 void func() 
+5 {    
+6 int age=18;     
+7 } 
+8  
+9 int main() 
+10 { 
+11    cout<<"Age is: "<<age; 
+12      
+13    return 0; 
+14 } 
+```
+
+**14.2** What is the output of the given program?
+
+```cpp
+1 #include<iostream> 
+2 using namespace std; 
+3  
+4 void func() 
+5 {    
+6    int age=18;  
+7    cout<<age; 
+8 } 
+9  
+10 int main() 
+11 { 
+12    cout<<"Age is: "; 
+13    func(); 
+14      
+15    return 0; 
+16 } 
+```
+**14.3** What is the output of the given program?
+
+```cpp
+1 // usage of global variables  
+2 #include<iostream> 
+3 using namespace std; 
+4  
+5 // global variable 
+6 int global = 5; 
+7  
+8 // global variable accessed from 
+9 // within a function 
+10 void display() 
+11 { 
+12    cout<<global<<endl; 
+13 } 
+14  
+15 // main function 
+16 int main() 
+17 { 
+18     display(); 
+19      
+20     // changing value of global 
+21     // variable from main function 
+22     global = 10; 
+23     display(); 
+24 } 
+```
+
+**14.4** What if there exists a local variable with the same name as that of global variable inside a function?
+
+```cpp
+1 // usage of local variables  
+2 // and global variables together 
+3 #include<iostream> 
+4 using namespace std; 
+5  
+6 // global variable 
+7 int global = 5; 
+8  
+9 // main function 
+10 int main() 
+11 {    
+12     // local variable with same  
+13     // name as that of global variable 
+14      
+15     int global = 2; 
+16     cout << global << endl; 
+17 } 
+```
