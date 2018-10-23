@@ -584,3 +584,29 @@ _13.3_ Here are two functions for solving the same problem.  Which one do you pr
 16     cout << global << endl; 
 17 } 
 ```
+
+<!-- added by Sruti -->
+**15. Custom Sort**
+Given an array A[], write a function that segregates even and odd numbers. The functions should put all even numbers first, and then odd numbers.
+Example
+Input  = {12, 34, 45, 9, 8, 90, 3}
+Output = {12, 34, 8, 90, 45, 9, 3} 
+
+In the output, the order of numbers can be changed, i.e., in the above example, 34 can come before 12 and 3 can come before 9.
+
+
+<!-- added by Shradha -->
+**16. Longest Subarray With Maximum Sum**
+We define subsequence as any subset of an array. We define a subarray as a contiguous subsequence in an array.
+ Given an array arr[] containing n integers(can be either positive or negative). The problem is to find the length of the subarray having maximum sum. If there exists two or more subarrays with maximum sum then print the length of the longest subarray.
+ 
+ Example:
+ Input : arr[] = {5, -2, -1, 3, -4}
+	Output : 4
+	There are two subarrays with maximum sum:
+	First is {5}
+	Second is {5, -2, -1, 3}
+	Therefore longest one is of length 4.
+	
+Try to do it in O(n).
+
