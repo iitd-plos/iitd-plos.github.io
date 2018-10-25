@@ -46,31 +46,37 @@ map.remove(key)
 <tr>
 <td><code>m.put(key, value)</code></td>
 <td><code>m[key] = value</code></td>
+<td>O(log N)</td>
 <td>Inserts the key-value pair if the key does not already exist; else (if key already exists), overwrites</td>
 </tr>
 <tr>
 <td><code>m[key] = value</code></td>
 <td><code>m[key] = value</code></td>
+<td>O(log N)</td>
 <td>Inserts the key-value pair if the key does not already exist; else (if key already exists), overwrites</td>
 </tr>
 <tr>
 <td><code>m.get(key)</code></td>
 <td><code>m.at(key)</code></td>
+<td>O(log N)</td>
 <td>If key already exists, returns the corresponding value; raises exception if key was not present.</td>
 </tr>
 <tr>
 <td><code>m[key]</code></td>
 <td><code>m[key]</code></td>
+<td>O(log N)</td>
 <td>If key already exists, returns the corresponding value; if key was not present, adds a default value for the key to <code>m</code> and returns it.</td>
 </tr>
 <tr>
 <td><code>m.remove(key)</code></td>
 <td><code>m.erase(key)</code></td>
+<td>O(log N)</td>
 <td>If key exists, removes the key and associated value. Else, no effect.</td>
 </tr>
 <tr>
 <td><code>m.containsKey(key)</code></td>
 <td><code>m.find(key) != m.end()</code></td>
+<td>O(log N)</td>
 <td>Returns true if key exists in m.</td>
 </tr>
 
@@ -97,6 +103,7 @@ while (true) {
     }  
 }   
 </pre>
+Question: what if the user was also interested in the list of words for a given meaning? One option is to loop over maps; another option is to maintain a reverse map; we will look at both options one by one.
 
 <p>Looping over Maps
 <ul>
