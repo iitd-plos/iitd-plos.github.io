@@ -58,5 +58,7 @@ LEC: <a href=lec/queues.html>Queues contd.</a>, <a href=lec/debugging.html>Debug
 ==
 LEC: <a href=lec/sets.html>Sets</a>
 ==
-LEC: <a href=lec/maps.html>Maps</a>
+LEC: <a href=lec/maps.html>Maps</a> (continued during Saturday class)
+==
+LEC: <a href=lec/recursion.html>Recursion</a>
 ==
