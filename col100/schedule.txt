@@ -12,6 +12,7 @@ HOLIDAY: Oct 18. Mid-semester break
 SKIP: Aug 23. No Lecture. Minor1 Tests scheduled.
 SKIP: Oct 01. No Lecture. Minor2 Tests scheduled.
 SKIP: Oct 04. No Lecture. Minor2 Tests scheduled.
+SKIP: Nov 08. No Class day.
 EVENT: Sep 10. Return of Minor-1 scripts
 EVENT: Oct 22. Return of Minor-2 scripts
 
