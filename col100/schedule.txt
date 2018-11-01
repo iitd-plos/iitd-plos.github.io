@@ -62,3 +62,5 @@ LEC: <a href=lec/maps.html>Maps</a> (continued during Saturday class)
 ==
 LEC: <a href=lec/recursion.html>Recursion</a>
 ==
+LEC: <a href=lec/recursion.html>Recursion contd.</a>
+==
