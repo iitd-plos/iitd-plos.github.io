@@ -5,7 +5,16 @@
 <ul>
 <li>You are given a vector array of integers. You can delete any number of elements from this array.</li>
 <li>You have to make all elements in the array <strong><em>equal</em></strong>. Find the <strong><em>minimum</em></strong> number of elements that must be deleted to achieve the same.</li>
+<li>You are NOT supposed to modify given array, just calculate the minimum number of required deletes.</li>
 </ul>
+<blockquote>
+<p><strong><em>Example</em></strong><br>
+Array : {1, 34, 42, 34, 42, 34}<br>
+If we delete all 1s and 42s from the above array  : 3 deletes<br>
+If we delete all 1s and 34s from the above array  : 4 deletes<br>
+If we delete all 34s and 42s from the above array : 5 deletes<br>
+In each of the above cases we end up with equal numbers in the array. Therefore, <strong><em>minimum required deletes = 3</em></strong>.</p>
+</blockquote>
 <pre><code class="language-cpp"><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">getMinimumDeletes</span><span class="hljs-params">( <span class="hljs-built_in">vector</span>&lt;<span class="hljs-keyword">int</span>&gt; &amp;elements )</span>
 </span>{
     <span class="hljs-comment">// Implement this</span>
@@ -15,29 +24,47 @@
 <li>What data structure did you choose to solve the above. Why?</li>
 </ul>
 <hr>
-<h2><a id="Fibonacci_again_18"></a>Fibonacci, again!</h2>
+<h2><a id="Expanding_obscure_vocabulary_27"></a>Expanding obscure vocabulary</h2>
 <ul>
-<li>By now, you should surely know how to find the n-th fibonacci number iteratively ( using loops! ).</li>
-<li>The mathematical expression for n-th fibonacci resembles a <strong>recursive solution</strong>.
-<blockquote>
-<p>F(n) = F(n-1) + F(n-2)</p>
-</blockquote>
-</li>
+<li>You are given:
+<ul>
+<li>collection of characters as a vector array,</li>
+<li>an integer length k</li>
 </ul>
-<pre><code class="language-cpp"><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">getNthFibonacci</span> <span class="hljs-params">(<span class="hljs-keyword">int</span> n)</span>
+</li>
+<li>The objective is to print to stdout (output), all possible strings of length k that can be generated using the array of characters.</li>
+</ul>
+<blockquote>
+<p><strong><em>Example</em></strong><br>
+Array : { ‘a’, ‘b’ }, k = 3<br>
+<strong><em>Output</em></strong><br>
+aaa<br>
+aab<br>
+aba<br>
+abb<br>
+baa<br>
+bab<br>
+bba<br>
+bbb</p>
+</blockquote>
+<ul>
+<li>You can output the strings/words in any order.</li>
+<li>Implement the following function interface:</li>
+</ul>
+<pre><code class="language-cpp"><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">printAllStrings</span><span class="hljs-params">( <span class="hljs-built_in">vector</span>&lt;<span class="hljs-keyword">char</span>&gt; &amp;letters, <span class="hljs-keyword">int</span> k )</span>
 </span>{
-    <span class="hljs-comment">// Evaluate nth fibonacci using a recursive code</span>
+    <span class="hljs-comment">// Print all possible strings</span>
 }
 </code></pre>
 <hr>
-<h2><a id="Subset_Problem_32"></a>Subset Problem</h2>
+<h2><a id="Subset_Problem_57"></a>Subset Problem</h2>
 <ul>
-<li>Given a set of integers, you have to print <strong><em>all the subsets</em></strong> of that set.</li>
+<li>Given a array of integers, you have to print <strong><em>all the subsets</em></strong> of the set of integers in the array.</li>
 <li>Your implementation should ideally be a recursive one.</li>
 </ul>
 <blockquote>
 <p>Example:<br>
-If S = [1,2,3]</p>
+If S = {1,2,3}</p>
 <p>Then the output should be:<br>
 []<br>
 [1]<br>
@@ -57,8 +84,8 @@ If S = [1,2,3]</p>
 }
 </code></pre>
 <hr>
-<h2><a id="Tower_of_Hanoi_60"></a>Tower of Hanoi</h2>
-<h3><a id="Description_62"></a>Description</h3>
+<h2><a id="Tower_of_Hanoi_85"></a>Tower of Hanoi</h2>
+<h3><a id="Description_87"></a>Description</h3>
 <ul>
 <li>We have been given 3 rods:
 <ul>
@@ -76,10 +103,10 @@ If S = [1,2,3]</p>
 </blockquote>
 </li>
 </ul>
-<h3><a id="Constraints_73"></a>Constraints</h3>
+<h3><a id="Constraints_98"></a>Constraints</h3>
 <ul>
 <li>
-<p>Your one move will consist of picking the upper disk from one of the stacks and placing it on top of another stack. i.e.</p>
+<p>Your one move will consist of picking the upper disk from one of the rods and placing it on top of another rod. i.e.</p>
 <blockquote>
 <p>Disk i: From Rod1 to Rod2</p>
 </blockquote>
@@ -88,7 +115,7 @@ If S = [1,2,3]</p>
 </ul>
 </li>
 <li>
-<p>A disk can only be moved if it is the uppermost disk on a stack.</p>
+<p>A disk can only be moved if it is the uppermost disk on a rod.</p>
 </li>
 <li>
 <p>Also, you cannot place a larger disk on the top of a smaller disk.</p>
@@ -97,7 +124,7 @@ If S = [1,2,3]</p>
 <p>You have to print a series of such moves to transfer all the disks from from_rod to to_rod. You may use aux_rod for intermediate steps.</p>
 </li>
 </ul>
-<p>You can also see the animation of the puzzle at:<br>
+<p>You can also see the animation of the puzzle:<br>
 <img src="https://upload.wikimedia.org/wikipedia/commons/6/60/Tower_of_Hanoi_4.gif" alt="Fibonacci solve"><br>
 <a href="https://www.wikipedia.org/">Source: Wikipedia</a></p>
 <p><strong><em>Example</em></strong>:</p>
@@ -116,8 +143,8 @@ Disk 3: From C to B</p>
 <ul>
 <li>Note: There can be multiple correct answers. You can print any of them.</li>
 </ul>
-<pre><code class="language-cpp"><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">towerOfHanoi</span><span class="hljs-params">(<span class="hljs-keyword">int</span> num_of_disks, <span class="hljs-built_in">string</span> from_rod, <span class="hljs-built_in">string</span> to_rod, <span class="hljs-built_in">string</span> aux_node)</span></span>{
-<span class="hljs-comment">// Print a series of moves  </span>
+<pre><code class="language-cpp"><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">towerOfHanoi</span><span class="hljs-params">(<span class="hljs-keyword">int</span> num_of_disks, <span class="hljs-built_in">string</span> from_rod, <span class="hljs-built_in">string</span> to_rod, <span class="hljs-built_in">string</span> aux_rod)</span></span>{
+<span class="hljs-comment">// Print required series of moves to solve the puzzle</span>
 }
 </code></pre>
 
