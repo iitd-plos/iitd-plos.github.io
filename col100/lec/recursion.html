@@ -260,3 +260,321 @@ int power(int base, int exp)
   }
 }
 </pre>
+
+<p>Exercise: write a recursive function convertFromBinary that accepts an a
+string of that number's representation in binary (base 2) and
+returns the base 10 int equivalent. e.g.,
+<pre>
+convertFromBinary("111") returns 7
+convertFromBinary("1100") returns 12
+convertFromBinary("101010") returns 42
+</pre>
+How is this problem self-similar? What is the smallest amount of work? When to stop?
+<pre>
+// Returns the given int's binary representation. 
+// Precondition: n >= 0 
+int convertFromBinary(string binary) {     
+    int length = binary.length();     
+    if (length == 1) {         
+        // base case: binary is same as base 10         
+        return stringToInteger(binary); 
+    } 
+    // recursive case: break number apart 
+    string lastCharacter = binary.substr(length - 1); 
+    string beginning = binary.substr(0, length - 1); 
+    return 2 * convertFromBinary(beginning) + 
+               convertFromBinary(lastCharacter); 
+} 
+</pre>
+
+<p>Exercise: write a recursive function <code>reverseLines</code> that accepts a file input stream and prints the lines of that file in reverse order.
+<br>Example input:
+<pre>
+Hello world
+Hello foo
+Hello bar
+baz hello
+</pre>
+Expected output:
+<pre>
+baz hello
+Hello bar
+Hello foo
+Hello world
+</pre>
+Is this problem self-similar? What is a file that is very easy to reverse? Hint: reversing the lines of a file can be done by (1) reading a line L from the file, (2) printing the rest of the lines in reverse order --- self-similarity, (3) printing the line L.
+<pre>
+void reverseLines(ifstream& input) { 
+    string line; 
+    if (getline(input, line)) { 
+        // recursive case 
+        reverseLines(input); 
+        cout << line << endl; 
+    } 
+} 
+</pre>
+Where is the base-case?
+
+<p>Exercise: write a function <code>crawl</code> that accepts a file name as a parameter and prints information about that file.
+<ul>
+<li>If the name represents a normal file, just print its name</li>
+<li>If the name represents a directory, print its name and information about every file/directory inside it, indented.</li>
+</ul>
+Example:
+<pre>
+courses
+    col100
+        lab2
+            hello_world.cpp
+            order_of_evaluation.cpp
+        lab3
+            if_then_else.cpp
+        minor1.pdf
+        minor2.pdf
+    eel200
+        ...
+</pre>
+
+<p>Assume following functions are available (using SPL's "filelib.h"):
+<table style="width:100%" border="1">
+<tr>
+<td><code>isDirectory("name")</code></td>
+<td>Returns whether the filename represents a directory. Can use <code>stat()</code> method in standard C library but with more complicated syntax and semantics.</td>
+</tr>
+<tr>
+<td><code>listDirectory("name")</code></td>
+<td>returns a Vector&lt;string&gt; with the names of all files contained in the given directory. Can use a combination of <code>opendir/readdir/closedir</code> operations available in standard C library but with more complicated syntax and semantics.</td>
+</tr>
+</table>
+
+<p>How is this problem self-similar? Crawling a directory can be expressed in terms of crawling the subdirectories, albeit with a different indentation.
+<br>Base-case? File
+<pre>
+// Prints information about this file, 
+// and (if it is a directory) any files inside it. 
+void crawl(string filename, string indent) { 
+    cout << indent << getTail(filename) << endl; 
+    if (isDirectory(filename)) { 
+        // recursive case; print contained files/dirs 
+        Vector&lt;string&gt; filelist; 
+        listDirectory(filename, filelist); 
+        for (string subfile : filelist) { 
+            crawl(filename + "/" + subfile, 
+                  indent + "    "); 
+        } 
+    } 
+} 
+</pre>
+
+<p>Exercise: write a function <code>cartesianProduct</code> that takes as input two sets of strings <code>a</code> and <code>b</code> and returns a new set that represents the cartesian product of <code>a</code> and <code>b</code> with each element formed by concatenating the elements in the two individual sets.
+<br>Example:
+<pre>
+a = {"A", "B"};
+b = {"1", "2"};
+Output: {"A1", "A2", "B1", B2"} //order is not important
+</pre>
+<br>How is this problem self-similar?
+<ul>
+<li>If <code>a = a1 U a2</code>, <code>a X b = (a1 X b) U (a2 X b)</code>.</li>
+<li>If <code>a</code> is a singleton set and <code>b = b1 U b2, then <code>a X b = (a X b1) U (a X b2)</code>.</li>
+</ul>
+Base case(s)?
+<ul>
+<li>If <code>a</code> is a singleton set and <code>b</code> is a singleton set, then return a singleton set containing the concatenation of the two elements</li>
+<li>If <code>a</code> is an empty set or <code>b</code> is an empty set, return the empty set</li>
+</ul>
+Assume that <code>setUnion(set1, set2)</code> returns the union of <code>set1</code> and <code>set2</code>.
+<pre>
+Set&lt;string&gt; cartesianProduct(Set&lt;string&gt; a, Set&lt;string&gt; b)
+{
+  if (a.size() == 0 || b.size() == 0) {
+    Set&lt;string&gt; ret;
+    return ret;
+  }
+  if (a.size() == 1 && b.size() == 1) {
+    string e1 = a.first();
+    string e2 = b.first();
+    Set&lt;string&gt; ret;
+    ret.insert(e1 + e2);
+    return ret;
+  }
+  if (a.size() > 1) {
+    string e1 = a.first();
+    Set&lt;string&gt; a1, a2;
+    a1.insert(e1);
+    a2 = a;
+    a2.remove(e1);
+    return setUnion(cartesianProduct(a1, b), cartesianProduct(a2, b));
+  } else {
+    string e1 = b.first();
+    Set&lt;string&gt; b1, b2;
+    b1.insert(e1);
+    b2 = b;
+    b2.remove(e1);
+    return setUnion(cartesianProduct(a, b1), cartesianProduct(a, b2));
+  }
+}
+</pre>
+This does not look like the most efficient solution. Perhaps we can do faster with an iterative solution.  What is the problem with this solution? Multiple output sets will be constructed and copied due to the setUnion operation being called multiple times. Could have done this faster by just writing two nested for-loops. Let's see another example.
+
+<p>Exercise: Write a recursive function <code>fib</code> that accepts an integer <code>N</code> and returns the <code>N</code>th fibonacci number.
+<ul>
+<li>The first two Fibonacci numbers are defined to be 1.</li>
+<li>Every other Fibonacci number is the sum of the two before it.</li>
+</ul>
+<pre>
+fib(1) = 1
+fib(2) = 1
+fib(3) = 2
+fib(4) = 3
+fib(5) = 5
+fib(6) = 8
+fib(7) = 13
+fib(8) = 21
+fib(9) = 34
+...
+</pre>
+How is this problem self-similar? Computing fib(n) can be done easily if we know fib(n-1) and fib(n-2).
+<br>Base cases? n=1,2
+<pre>
+// Returns the nth Fibonacci number. 
+int fib(int n) { 
+    if (n <= 2) { 
+        return 1; 
+    } else { 
+        return fib(n - 1) + fib(n - 2); 
+    } 
+} 
+</pre>
+If you compute <code>fib(6)</code>, how many times is <code>fib(2)</code> called?
+<br>If you compute <code>fib(20)</code>, how many times is <code>fib(16)</code> called?
+<br>For each call to <code>fib(16)</code>, how many times is <code>fib(12)</code> called</br>
+<br>For each call to <code>fib(12)</code>, how many times is <code>fib(8)</code> called</br>
+<br>What could we have done better? e.g., the first time <code>fib(16)</code> gets called, we save the value. For each subsequent evaluation of <code>fib(16)</code>, we just return the cached value.
+
+<h3>Memoization</h3>
+<b>memoization</b>: caching results of previous expensive function calls for speed so tht they do not need to be re-computed.
+<ul>
+<li>Often implemented by storing call results in a collection.</li>
+</ul>
+
+<p>Pseudo-code template:
+<pre>
+cache = {}.       // empty 
+function f(args): 
+    if I have computed f(args) before: 
+        Look up f(args) result in cache. 
+    else: 
+        Actually compute f(args) result. 
+        Store result in cache. 
+    Return result.
+</pre>
+We can create a new variable called <code>cache</code> and pass it as a parameter to our <code>fib</code> function as follows:
+<pre>
+int fib(int n, Map<int, int> &cache) {
+    if (n <= 2) { 
+        return 1; 
+    } else if (cache.containsKey(n)) { 
+        return cache[n]; 
+    } else { 
+        int result = fib(n - 1) + fib(n - 2); 
+        cache[n] = result; 
+        return result; 
+    } 
+} 
+</pre>
+Is this achieving the desired optimization? Can the cache be pass-by-value?
+
+<p>But how to initialize the cache? Should we tell the user that he needs to initialize and pass the cache --- seems ugly!
+
+<p><b>Wrapper functions</b>
+<ul>
+<li>Some recursive functions need extra arguments to implement the recursion</li>
+<li>A <b>wrapper function</b> is a function that does some initial prep work, then fires off a recursive call with the right arguments.</li>
+<li>The recursion is done in the <b>helper</b> function.</li>
+</ul>
+<pre>
+int fibHelper(int n, Map<int, int> &cache) {
+    if (n <= 2) { 
+        return 1; 
+    } else if (cache.containsKey(n)) { 
+        return cache[n]; 
+    } else { 
+        int result = fibHelper(n - 1, cache) + fibHelper(n - 2, cache); 
+        cache[n] = result; 
+        return result; 
+    } 
+} 
+
+int fib(int n)
+{
+  Map&lt;int, int&gt; cache;
+  return fibHelper(n, cache);
+}
+</pre>
+Show the evaluation of <code>fib(6)</code> with memoization.
+
+<h3>Tail recursion</h3>
+<b>Tail recursion</b>: when a recursive call is made as the <u>final</u> action of a recursive function.
+<ul>
+<li>Tail recursion can often be <b>optimized</b> by the compiler. e.g., use <code>g++ -O3 foo.cpp</code>. <code>-O2</code> represents that the compiler should optimize the code with optimization-level 3.</li>
+</ul>
+
+<p>Examples: Is this tail recursive?
+<pre>
+int mystery(int n)
+{
+  if (n < 10) {
+    return n;
+  } else {
+    int a = n/10;
+    int b = n %10;
+    return mystery(a + b);
+  }
+}
+</pre>
+Answer: yes
+
+What about:
+<pre>
+int fact(int n)
+{
+  if (n <= 1) {
+    return 1;
+  } else {
+    return n * fact(n - 1);
+  }
+}
+</pre>
+Answer: no
+
+<p>Can we rewrite factorial so that it becomes tail-recursive? Tail-recursive factorial:
+<pre>
+int factorial_helper(int n, int accum)
+{
+  if (n <= 1) {
+    return accum;
+  } else {
+    return factorial(n - 1, accum * n);
+  }
+}
+
+int factorial(int n)
+{
+  return factorial_helper(n, 1);
+}
+</pre>
+Tail recursive solutions often end up passing partial computations as parameters that would otherwise be computed after the recursive call.
+
+<p>Compare with non-recursive factorial (sometimes looking at the non-recursive version of a function can help you find the tail recursive solution):
+<pre>
+int factorial(int n)
+{
+  int accum = 1;
+  for (int i = 1; i <= n; i++) {
+    accum = accum * i;
+  }
+  return accum;
+}
+</pre>
+The tail-recursive version often looks like a non-recursive version with a variable or a parameter keeping track of the partial computations. The difference is: the loop is replaced by recursive call.
