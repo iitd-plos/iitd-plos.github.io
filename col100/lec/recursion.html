@@ -472,7 +472,7 @@ function f(args):
 </pre>
 We can create a new variable called <code>cache</code> and pass it as a parameter to our <code>fib</code> function as follows:
 <pre>
-int fib(int n, Map<int, int> &cache) {
+int fib(int n, Map&lt;int, int&gt; &cache) {
     if (n <= 2) { 
         return 1; 
     } else if (cache.containsKey(n)) { 
@@ -495,7 +495,7 @@ Is this achieving the desired optimization? Can the cache be pass-by-value?
 <li>The recursion is done in the <b>helper</b> function.</li>
 </ul>
 <pre>
-int fibHelper(int n, Map<int, int> &cache) {
+int fibHelper(int n, Map&lt;int, int&gt; &cache) {
     if (n <= 2) { 
         return 1; 
     } else if (cache.containsKey(n)) { 
