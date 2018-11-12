@@ -67,5 +67,7 @@ LEC: <a href=lec/recursion.html>Recursion contd.</a>
 ==
 LEC: <a href=lec/recursion.html>Recursion contd.</a>
 ==
+LEC: <a href=lec/recursion.html>Recursion contd.</a>
+==
 LEC: <a href=lec/backtracking.html>Exhaustive search and Backtracking</a>
 ==
