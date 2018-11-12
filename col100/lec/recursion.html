@@ -579,3 +579,20 @@ int factorial(int n)
 }
 </pre>
 The tail-recursive version often looks like a non-recursive version with a variable or a parameter keeping track of the partial computations. The difference is: the loop is replaced by recursive call.
+
+<p>Another tail-recursion example: <code>fib(n)</code>
+<pre>
+int fib_helper(int n, int i, int fib_i, int fib_prev)
+{
+  if (i == n) {
+    return fib_i;
+  } else {
+    return fib_helper(n, i + 1, fib_i + fib_prev, fib_i);
+  }
+}
+
+int fib(int n)
+{
+  return fib_helper(n, 1, 1, 0);
+}
+</pre>
