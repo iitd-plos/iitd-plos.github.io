@@ -604,7 +604,7 @@ int fib_helper(int n, int fib_n, int fib_prev)
   if (n == 1) {
     return fib_n;
   } else {
-    return fib_helper(n - 1, fib_i + fib_prev, fib_i);
+    return fib_helper(n - 1, fib_n + fib_prev, fib_n);
   }
 }
 
