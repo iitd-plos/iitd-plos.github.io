@@ -604,10 +604,12 @@ int fib(int n)
   int fib_i = 1;
   int fib_prev = 0;
   while (i != n) {
+    int new_i = i + 1;
     int new_fib_i = fib_i + fib_prev;
     int new_fib_prev = fib_i;
     fib_i = new_fib_i;
     fib_prev = new_fib_prev;
+    i = new_i;
   }
   return fib_i;
 }
