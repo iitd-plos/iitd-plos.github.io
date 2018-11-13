@@ -600,17 +600,16 @@ This implementation is similar to the following non-recursive implementation:
 <pre>
 int fib(int n)
 {
+  intt i = 1;
   int fib_i = 1;
   int fib_prev = 0;
-  for (int i = 1; i <= n; i++) {
-    if (i == n) {
-      return fib_i;
-    }
+  while (i != n) {
     int new_fib_i = fib_i + fib_prev;
     int new_fib_prev = fib_i;
     fib_i = new_fib_i;
     fib_prev = new_fib_prev;
   }
+  return fib_i;
 }
 </pre>
 
@@ -636,10 +635,7 @@ int fib(int n)
 {
   int fib_i = 1;
   int fib_prev = 0;
-  while (n >= 1) {
-    if (n == 1) {
-      return fib_i;
-    }
+  while (n != 1) {
     int new_n = n - 1;
     int new_fib_i = fib_i + fib_prev;
     int new_fib_prev = fib_i;
@@ -647,6 +643,7 @@ int fib(int n)
     fib_prev = new_fib_prev;
     n = new_n;
   }
+  return fib_i;
 }
 </pre>
 
