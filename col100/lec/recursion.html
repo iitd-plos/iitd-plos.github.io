@@ -596,3 +596,21 @@ int fib(int n)
   return fib_helper(n, 1, 1, 0);
 }
 </pre>
+
+<p>Another tail-recursive implementation of <code>fib(n)</code> with fewer arguments to helper function:
+<pre>
+int fib_helper(int n, int fib_n, int fib_prev)
+{
+  if (n == 1) {
+    return fib_n;
+  } else {
+    return fib_helper(n - 1, fib_i + fib_prev, fib_i);
+  }
+}
+
+int fib(int n)
+{
+  return fib_helper(n, 1, 0);
+}
+</pre>
+Notice the similarity of tail-recursive implementation to the non-recursive implementation (that uses loops). In general, any loop can be converted to a tail-recursive implementation.  In fact, some programming languages do not support loops and only support recursion --- typically programmers write tail-recursive implementations of their programs in such languages.
