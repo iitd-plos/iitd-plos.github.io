@@ -78,50 +78,27 @@ void printAllBinary(int numDigits)
 </pre>
 Show the tree of calls (also called the call tree or decision tree). Each node in the tree is a tuple of (digits, soFar). Discuss the meaning of the base case.
 
-<p>Another example: printAllDecimal(int numDigits): need a loop here.
+<p>Notice that un-choosing was not required because we are copying the string representation (due to pass-by-value) on every recursive call. If we instead use pass-by-reference, the code would look something like the following (and it includes un-choosing logic):
+
 <pre>
 void
-printAllDecimalHelper(int digits, string soFar)
+printAllBinaryHelper(int digits, string &soFar)
 {
   if (digits == 0) {
     cout << soFar << endl;
   } else {
-    for (int i = 0; i < 10; i++) {
-      printAllDecimalHelper(digits - 1, soFar + integerToString(i));
-    }
+    soFar = soFar + "0";
+    printAllBinaryHelper(digits - 1, soFar);
+    soFar = soFar.substr(0, soFar.length() - 1);
+    soFar = soFar + "1";
+    printAllBinaryHelper(digits - 1, soFar);
+    soFar = soFar.substr(0, soFar.length() - 1);
   }
 }
 
-void printAllDecimal(int numDigits)
+void printAllBinary(int numDigits)
 {
-  printAllDecimalHelper(numDigits, "");
+  string soFar = "";
+  printAllBinaryHelper(numDigits, soFar);
 }
-</pre>
-Observation: when the set of digit choices available is large, using a loop to enumerate them results in shorter code (this is okay!)
-<br>Note: loop over <b>choices</b>, not decisions.
-<br>If the number of choices is variable, will need to use a loop, e.g., chess game.
-
-<h3>Backtracking</h3>
-Find solution(s) by trying all possible paths and then abandoning them if they are not suitable
-<ul>
-<li> a "brute force" algorithmic technique (tries all paths)</li>
-<li> often implemented recursively. trying all possible paths akin to exhaustive search</li>
-<li>Could involve looking for <b>one</b> solution: if any of the paths found a solution, a solution exists! If none find a solution, no solution exists.</li>
-<li>Could involving finding <b>all</b> solutions</li>
-<li>Idea: it's exhaustive search with conditions</li>
-</ul>
-Examples: anagrams, crosswords, word jumbles, 8 queens, sudoku, escaping from a maze, etc.
-
-<p>A general Pseudo code algorithm for backtracking problems searching for one solution:
-<pre>
-backtrack(decisions):
- - If there are no more decisions to make
-   - if our current solution is valid, return true
-   - else return false
- - else let's handle one decision ourselves and the rest by recursion.
-   For each _valid_ choice C for this decision
-   - _Choose_ C by modifying parameters
-   - Explore the remaining decisions that could follow C. If any of them find a solution return true.
-   - Unchoose C by returning parameters to original state (if necessary)
- - If no solutions were found, return false
 </pre>
