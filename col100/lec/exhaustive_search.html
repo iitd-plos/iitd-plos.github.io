@@ -102,3 +102,28 @@ void printAllBinary(int numDigits)
   printAllBinaryHelper(numDigits, soFar);
 }
 </pre>
+
+<p>Another example: printAllDecimal(int numDigits): need a loop here.
+<pre>
+void
+printAllDecimalHelper(int digits, string soFar)
+{
+  if (digits == 0) {
+    cout << soFar << endl;
+  } else {
+    for (int i = 0; i < 10; i++) {
+      printAllDecimalHelper(digits - 1, soFar + integerToString(i));
+    }
+  }
+}
+
+void printAllDecimal(int numDigits)
+{
+  printAllDecimalHelper(numDigits, "");
+}
+</pre>
+Observation: when the set of digit choices available is large, using a loop to enumerate them results in shorter code (this is okay!)
+<br>Note: loop over <b>choices</b>, not decisions.
+<br>If the number of choices is variable, will need to use a loop, e.g., chess game.
+
+
