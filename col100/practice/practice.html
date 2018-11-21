@@ -32,96 +32,44 @@
 <span class="dv">2</span>  <span class="kw">using</span> <span class="kw">namespace</span> std;
 <span class="dv">3</span>  <span class="dt">int</span> get_queue_length(Queue&lt;<span class="dt">int</span>&gt; q)
 <span class="dv">4</span>  {
-<span class="dv">5</span>     <span class="kw">return</span> q.size();
+<span class="dv">5</span>     <span class="cf">return</span> q.size();
 <span class="dv">6</span>  }
 <span class="dv">7</span>  <span class="dt">int</span> main()
 <span class="dv">8</span>  {
 <span class="dv">9</span>      cin &gt;&gt; n;   
 <span class="dv">10</span>     Queue&lt;<span class="dt">int</span>&gt; q;
-<span class="dv">11</span>     <span class="kw">for</span> (<span class="dt">int</span> i = <span class="dv">0</span>; i &lt; n; i++) {
+<span class="dv">11</span>     <span class="cf">for</span> (<span class="dt">int</span> i = <span class="dv">0</span>; i &lt; n; i++) {
 <span class="dv">12</span>         q.enqueue(i);
 <span class="dv">13</span>     }
-<span class="dv">14</span>     <span class="kw">while</span> (!q.isEmpty()) {
+<span class="dv">14</span>     <span class="cf">while</span> (!q.isEmpty()) {
 <span class="dv">15</span>         cout &lt;&lt; get_queue_length(q) &lt;&lt; endl;
 <span class="dv">16</span>         cout &lt;&lt; q.dequeue() &lt;&lt; endl;
 <span class="dv">17</span>     }
-<span class="dv">18</span>     <span class="kw">return</span> <span class="dv">0</span>;
+<span class="dv">18</span>     <span class="cf">return</span> <span class="dv">0</span>;
 <span class="dv">19</span> }</code></pre></div>
 <ul>
 <li>And finally, what is the time complexity of the following program (notice that the argument is copied in a local variable before passing-by-reference)</li>
 </ul>
 <div class="sourceCode"><pre class="sourceCode cpp"><code class="sourceCode cpp"><span class="dv">1</span>  <span class="er">#</span>include &lt;iostream&gt;
 <span class="dv">2</span>  <span class="kw">using</span> <span class="kw">namespace</span> std;
-<span class="dv">3</span>  <span class="dt">int</span> get_queue_length(Queue&lt;<span class="dt">int</span>&gt; <span class="dt">const</span> &amp;q)
+<span class="dv">3</span>  <span class="dt">int</span> get_queue_length(Queue&lt;<span class="dt">int</span>&gt; <span class="at">const</span> &amp;q)
 <span class="dv">4</span>  {
-<span class="dv">5</span>     <span class="kw">return</span> q.size();
+<span class="dv">5</span>     <span class="cf">return</span> q.size();
 <span class="dv">6</span>  }
 <span class="dv">7</span>  <span class="dt">int</span> main()
 <span class="dv">8</span>  {
 <span class="dv">9</span>      cin &gt;&gt; n;   
 <span class="dv">10</span>     Queue&lt;<span class="dt">int</span>&gt; q;
-<span class="dv">11</span>     <span class="kw">for</span> (<span class="dt">int</span> i = <span class="dv">0</span>; i &lt; n; i++) {
+<span class="dv">11</span>     <span class="cf">for</span> (<span class="dt">int</span> i = <span class="dv">0</span>; i &lt; n; i++) {
 <span class="dv">12</span>         q.enqueue(i);
 <span class="dv">13</span>     }
-<span class="dv">14</span>     <span class="kw">while</span> (!q.isEmpty()) {
+<span class="dv">14</span>     <span class="cf">while</span> (!q.isEmpty()) {
 <span class="dv">15</span>         Queue&lt;<span class="dt">int</span>&gt; q2 = q;
 <span class="dv">16</span>         cout &lt;&lt; get_queue_length(q2) &lt;&lt; endl;
 <span class="dv">17</span>         cout &lt;&lt; q.dequeue() &lt;&lt; endl;
 <span class="dv">18</span>     }
-<span class="dv">19</span>     <span class="kw">return</span> <span class="dv">0</span>;
+<span class="dv">19</span>     <span class="cf">return</span> <span class="dv">0</span>;
 <span class="dv">20</span> }</code></pre></div>
-<!-- added by paras -->
-<ol start="2" style="list-style-type: decimal">
-<li><strong>Estimating the Output of a given program</strong>: In these questions, we will learn about how to analyze a simple program and produce the output for it.</li>
-</ol>
-<p><strong>2.1</strong> What is the output of the given program?</p>
-<div class="sourceCode"><pre class="sourceCode cpp"><code class="sourceCode cpp"><span class="dv">1</span>  <span class="er">#</span>include &lt;iostream&gt; 
-<span class="dv">2</span>  <span class="kw">using</span> <span class="kw">namespace</span> std; 
-<span class="dv">3</span>  
-<span class="dv">4</span>  <span class="dt">int</span> main() 
-<span class="dv">5</span>  { 
-<span class="dv">6</span>    <span class="dt">int</span> a = <span class="dv">32</span>, *ptr = &amp;a; 
-<span class="dv">7</span>    <span class="dt">char</span> ch = <span class="st">&#39;A&#39;</span>, &amp;cho = ch; 
-<span class="dv">8</span>  
-<span class="dv">9</span>    cho += a; 
-<span class="dv">10</span>   *ptr += ch; 
-<span class="dv">11</span>   cout &lt;&lt; a &lt;&lt; <span class="st">&quot;, &quot;</span> &lt;&lt; ch &lt;&lt; endl; 
-<span class="dv">12</span>   <span class="kw">return</span> <span class="dv">0</span>; 
-<span class="dv">13</span>  } </code></pre></div>
-<p><strong>2.2</strong> What will i and j equal after the code below is executed? Explain your answer.</p>
-<div class="sourceCode"><pre class="sourceCode cpp"><code class="sourceCode cpp"><span class="dt">int</span> i = <span class="dv">5</span>;
-<span class="dt">int</span> j = i++;</code></pre></div>
-<!-- added by paras -->
-<ol start="3" style="list-style-type: decimal">
-<li><strong>Analyze the program</strong>: In these questions, one need to analyze the given piece of code at multiple levels.</li>
-</ol>
-<p><strong>3.1</strong> Is the program correct? If yes, what is the output of the given program? If not, what are the errors?</p>
-<div class="sourceCode"><pre class="sourceCode cpp"><code class="sourceCode cpp"><span class="dv">1</span> <span class="er">#</span>include &lt;iostream&gt; 
-<span class="dv">2</span> <span class="kw">using</span> <span class="kw">namespace</span> std; 
-<span class="dv">3</span>  
-<span class="dv">4</span> <span class="dt">int</span> main() 
-<span class="dv">5</span> { 
-<span class="dv">6</span>    <span class="dt">const</span> <span class="dt">int</span> i = <span class="dv">20</span>; 
-<span class="dv">7</span>    <span class="dt">const</span> <span class="dt">int</span>* <span class="dt">const</span> ptr = &amp;i; 
-<span class="dv">8</span>    (*ptr)++; 
-<span class="dv">9</span>    <span class="dt">int</span> j = <span class="dv">15</span>; 
-<span class="dv">10</span>   ptr = &amp;j; 
-<span class="dv">11</span>   cout &lt;&lt; i; 
-<span class="dv">12</span>   <span class="kw">return</span> <span class="dv">0</span>; 
-<span class="dv">13</span> } </code></pre></div>
-<p><strong>3.2</strong> Consider the two code snippets below for printing a vector. Is there any advantage of one vs. the other? Explain.</p>
-<p>Option 1:</p>
-<div class="sourceCode"><pre class="sourceCode cpp"><code class="sourceCode cpp">vector vec;
-<span class="co">/* ... .. ... */</span>
-<span class="kw">for</span> (<span class="kw">auto</span> itr = vec.begin(); itr != vec.end(); itr++) {
-    itr-&gt;print();
-}</code></pre></div>
-<p>Option 2:</p>
-<div class="sourceCode"><pre class="sourceCode cpp"><code class="sourceCode cpp">vector vec;
-<span class="co">/* ... .. ... */</span>
-<span class="kw">for</span> (<span class="kw">auto</span> itr = vec.begin(); itr != vec.end(); ++itr) {
-    itr-&gt;print();
-}</code></pre></div>
 <!-- added by aman -->
 <ol start="4" style="list-style-type: decimal">
 <li><strong>Bitwise Operators</strong>: In this question we, will learn about some of the bitwise operators.</li>
@@ -148,15 +96,15 @@
   <span class="dt">int</span> ans=<span class="dv">1</span>;
   <span class="dt">int</span> temp=a;
 
-  <span class="kw">while</span>(b)
+  <span class="cf">while</span>(b)
   {
-    <span class="kw">if</span>(b&amp;<span class="dv">1</span>)
+    <span class="cf">if</span>(b&amp;<span class="dv">1</span>)
       ans*=temp;
     temp*=temp;
     b/=<span class="dv">2</span>;
   }
 
-  <span class="kw">return</span> ans;
+  <span class="cf">return</span> ans;
 }</code></pre></div>
 <p><strong>5.1</strong> Predict the output for <strong>foo(3,5)</strong>.<br />
 <strong>5.2</strong> What is <strong>foo(a,b)</strong> computing for general a,b&gt;=0, both integers.<br />
@@ -170,15 +118,15 @@
   <span class="dt">double</span> ans=<span class="dv">1</span>;
   <span class="dt">double</span> temp=a;
 
-  <span class="kw">while</span>(b)
+  <span class="cf">while</span>(b)
   {
-    <span class="kw">if</span>(b&amp;<span class="dv">1</span>)
+    <span class="cf">if</span>(b&amp;<span class="dv">1</span>)
       ans*=temp;
     temp*=temp;
     b/=<span class="dv">2</span>;
   }
 
-  <span class="kw">return</span> ans;
+  <span class="cf">return</span> ans;
 }</code></pre></div>
 <p><em>By now, I know you are tired of this foo function - just 1 more to go :p</em></p>
 <p><strong>5.7</strong> This logic/algorithm won't work if <strong>b</strong> were <strong>float</strong> instead of <strong>int</strong>. Why?<br />
@@ -346,26 +294,26 @@ Given a Vector of numbers, we say that numbers at positions i and j are out of a
 string deleteChar(string s, <span class="dt">char</span> c)
 {
   <span class="dt">int</span> n = s.size();
-  <span class="kw">for</span> (<span class="dt">int</span> i = <span class="dv">0</span>; i &lt; n; ++i) {
-    <span class="kw">if</span> (s.at(i) == c) {
+  <span class="cf">for</span> (<span class="dt">int</span> i = <span class="dv">0</span>; i &lt; n; ++i) {
+    <span class="cf">if</span> (s.at(i) == c) {
       <span class="co">/* `s.at(i)` return same value as `s[i]` if i is a valid index i.e. 0 &lt;= i &lt; s.size(),</span>
 <span class="co">        else, it throws the &quot;out_of_range&quot; exception */</span>
       s.erase(i, <span class="dv">1</span>); <span class="co">// erase element at i</span>
     }
   }
-  <span class="kw">return</span> s;
+  <span class="cf">return</span> s;
 }</code></pre></div>
 <p><em>13.2</em> Let's say we came up with this &quot;fix&quot;:</p>
 <div class="sourceCode"><pre class="sourceCode cpp"><code class="sourceCode cpp"><span class="co">/* delete every occurrence of char `c` from string `s`</span>
 <span class="co"> * return the modified string */</span>
 string deleteCharV2(string s, <span class="dt">char</span> c)
 {
-  <span class="kw">for</span> (<span class="dt">int</span> i = <span class="dv">0</span>; i &lt; s.size(); ++i) {
-    <span class="kw">if</span> (s.at(i) == c) {
+  <span class="cf">for</span> (<span class="dt">int</span> i = <span class="dv">0</span>; i &lt; s.size(); ++i) {
+    <span class="cf">if</span> (s.at(i) == c) {
       s.erase(i, <span class="dv">1</span>); <span class="co">// erase element at i</span>
     }
   }
-  <span class="kw">return</span> s;
+  <span class="cf">return</span> s;
 }</code></pre></div>
 <p>Is this version correct?</p>
 <p><em>13.3</em> Here are two functions for solving the same problem. Which one do you prefer, which is more efficient? Give reasons for your choice.</p>
@@ -399,7 +347,7 @@ string deleteCharV2(string s, <span class="dt">char</span> c)
 <span class="dv">10</span> { 
 <span class="dv">11</span>    cout&lt;&lt;<span class="st">&quot;Age is: &quot;</span>&lt;&lt;age; 
 <span class="dv">12</span>      
-<span class="dv">13</span>    <span class="kw">return</span> <span class="dv">0</span>; 
+<span class="dv">13</span>    <span class="cf">return</span> <span class="dv">0</span>; 
 <span class="dv">14</span> } </code></pre></div>
 <p><strong>14.2</strong> What is the output of the given program?</p>
 <div class="sourceCode"><pre class="sourceCode cpp"><code class="sourceCode cpp"><span class="dv">1</span> <span class="er">#</span>include&lt;iostream&gt; 
@@ -416,7 +364,7 @@ string deleteCharV2(string s, <span class="dt">char</span> c)
 <span class="dv">12</span>    cout&lt;&lt;<span class="st">&quot;Age is: &quot;</span>; 
 <span class="dv">13</span>    func(); 
 <span class="dv">14</span>      
-<span class="dv">15</span>    <span class="kw">return</span> <span class="dv">0</span>; 
+<span class="dv">15</span>    <span class="cf">return</span> <span class="dv">0</span>; 
 <span class="dv">16</span> } </code></pre></div>
 <p><strong>14.3</strong> What is the output of the given program?</p>
 <div class="sourceCode"><pre class="sourceCode cpp"><code class="sourceCode cpp"><span class="dv">1</span> <span class="co">// usage of global variables  </span>
