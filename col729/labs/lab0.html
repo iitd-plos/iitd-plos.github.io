@@ -5,7 +5,7 @@
 <p>In this assignment, we will benchmark a few common C/C++ applications and examine the effect of different
 compilers and different compiler optimization passes on program performance.
 
-<h3>Set up</h3>
+<h3>Instructions</h3>
 <ul>
 <li>Install an Ubuntu 18.04 system</li>
 <li>Install GCC and Clang
@@ -15,23 +15,46 @@ sudo apt-get install gcc clang
 </li>
 <li>Install ICC by obtaining the academic license: <a href=https://software.intel.com/en-us/qualify-for-free-software/student>Follow these instructions</a>.
 </li>
+<li>Install SPEC CPU 2017 benchmark suite (please note that this is an IITD-internal link only; this benchmark suite is proprietary so please do not share it outside IIT Delhi)
+<ul>
+<li>Download <a href=http://poorvi.cse.iitd.ac.in/~sbansal/isos/cpu2017-1_0_5.iso>http://poorvi.cse.iitd.ac.in/~sbansal/isos/cpu2017-1_0_5.iso</a></li>
+<li>Follow instructions at <a href=https://www.spec.org/cpu2017/Docs/install-guide-unix.html>https://www.spec.org/cpu2017/Docs/install-guide-unix.html</a> to install and run the CPU 2017 benchmark suite</li>
+<li>Optional: you can use the commands in this file to run any benchmark individually: <a href=cpu2017_cmdlines.sh>cpu2017_cmdlines.sh</a>.</li>
+</ul>
+</li>
+<li><b>Learn about benchmarking</b>: look at the video on "Benchmarking C++ Code" by Bryce Adelstein-Lelbach posted on the <a href=../references.html>references</a> page.</li>
 <li>Build SPEC CPU 2017 benchmarks with GCC, Clang, ICC
+<ul>
+<li>Build with the default versions of GCC/Clang/ICC (on Ubuntu 18.04) for 32-bit and 64-bit x86 architectures.</li>
+<li>Build with different optimization options: -O2, -O3</li>
+<li>Plot your runtime results, make conclusions</li>
+</ul>
+</li>
+<li>For Clang, experiment with different optimization combinations and observe the difference made by each optimization option (or pair of optimization options), etc. We would like to evaluate the depth and detail in which you have performed this investigation
+<ul>
+<li>You can compile a C program to LLVM bitcode using the following command (similar commands should be available for other languages)
 <pre>
-Instructions coming soon . . .
+clang -target i386 -emit-llvm &lt;compiler-options&gt; foo.c
 </pre>
+Please check the clang documentation on your own.
+</li>
+<li>You can link multiple bitcode files into a single bitcode file using the following command
+<pre>
+llvm-link foo.bc bar.bc
+</pre>
+</li>
+<li>You can run optimization passes on the LLVM bitcode using the following command
+<pre>
+opt &lt;optimization-options&gt; foo.bc
+</pre>
+Please check the <code>opt</code> tool's documentation on your own.
+</li>
+<li>Generate code from LLVM bitcode to the target assembly (32-bit or 64-bit x86):
+<pre>
+llc foo.bc
+</pre>
+</ul>
 </li>
 </ul>
 
-<h3>Learn about benchmarking</h3>
-Look at the video on "Benchmarking C++ Code" by Bryce Adelstein-Lelbach posted on the <a href=../references.html>references</a> page.
-
-<h3>Run with different compilers</h3>
-Benchmark the SPEC CPU 2017 suite with different compilers, namely GCC, Clang, ICC. Prepare a report summarizing your benchmarking methodology and results. What are your high-level conclusions?
-
-<p>Instructions coming soon . . .
-
-<h3>Enable/disable different optimizations in LLVM</h3>
-Benchmark the SPEC CPU 2017 suite after enabling/disabling different combinations of optimizations, to see which optimizations matter most on modern hardware/software stacks. What are your conclusions?
-
-<p>Instructions coming soon . . .
-
+<b>Prepare a report summarizing your findings</b>: Your report should be succinct yet insightful. It should talk about the most consequential optimizations (to runtime) and the least consequential optimizations. Do some optimizations depend on each other: which ones? Which compilers are better in what aspects?  What is faster: 32-bit or 64-bit executables?  Why?
