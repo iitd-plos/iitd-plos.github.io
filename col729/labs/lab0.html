@@ -23,36 +23,12 @@ sudo apt-get install gcc clang
 </ul>
 </li>
 <li><b>Learn about benchmarking</b>: look at the video on "Benchmarking C++ Code" by Bryce Adelstein-Lelbach posted on the <a href=../references.html>references</a> page.</li>
+<li>Go through the <a href=https://www.spec.org/cpu2017/Docs/overview.html> SPEC-CPU overview</a> </li>
 <li>Build SPEC CPU 2017 benchmarks with GCC, Clang, ICC
 <ul>
 <li>Build with the default versions of GCC/Clang/ICC (on Ubuntu 18.04) for 32-bit and 64-bit x86 architectures.</li>
 <li>Build with different optimization options: -O2, -O3</li>
 <li>Plot your runtime results, make conclusions</li>
-</ul>
-</li>
-<li>For Clang, experiment with different optimization combinations and observe the difference made by each optimization option (or pair of optimization options), etc. We would like to evaluate the depth and detail in which you have performed this investigation
-<ul>
-<li>You can compile a C program to LLVM bitcode using the following command (similar commands should be available for other languages)
-<pre>
-clang -target i386 -emit-llvm &lt;compiler-options&gt; foo.c
-</pre>
-Please check the clang documentation on your own.
-</li>
-<li>You can link multiple bitcode files into a single bitcode file using the following command
-<pre>
-llvm-link foo.bc bar.bc
-</pre>
-</li>
-<li>You can run optimization passes on the LLVM bitcode using the following command
-<pre>
-opt &lt;optimization-options&gt; foo.bc
-</pre>
-Please check the <code>opt</code> tool's documentation on your own.
-</li>
-<li>Generate code from LLVM bitcode to the target assembly (32-bit or 64-bit x86):
-<pre>
-llc foo.bc
-</pre>
 </ul>
 </li>
 </ul>
