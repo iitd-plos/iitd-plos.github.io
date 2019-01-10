@@ -1,0 +1,58 @@
+<html>
+<head>
+  <title>COL729 Lab 1 : Clang Optimisations</title>
+</head>
+
+<body>
+  <h1><font color="blue">COL729 Lab 1 : LLVM IR and x86 Assembly</font></h1>
+
+  <h2>Due date - 23:55 28 January 2018</h2>
+
+  <p>In this assignment, we will examine the effect of different clang optimisation
+  levels on the generated LLVM IR and x86 Assembly code</p>
+
+  <h3>Instructions</h3>
+
+  <ul>
+    <li>Familiarise yourself with <a href="https://llvm.org/docs/LangRef.html">LLVM
+    IR</a> and x86 Assembly instuction set</li>
+
+    <li style="list-style: none"><br /></li>
+
+    <li>Compile the <a href=examples.zip>following programs</a> using clang to LLVM IR and x86
+    assembly
+
+      <ul>
+        <li>You can compile a C program to LLVM bitcode using the following command
+          <pre> clang -target i386 -emit-llvm &lt;compiler-options&gt; foo.c </pre>
+
+          <ul>
+            <li>Run at different optimisation levels - unoptimised, O1, O2, O3, Ofast, any other
+            flags, etc.</li>
+
+            <li>Please check the clang documentation on your own.</li>
+          </ul><br />
+        </li>
+
+        <li>You can link multiple bitcode files into a single bitcode file using the
+        following command
+          <pre>llvm-link foo.bc bar.bc</pre>
+        </li>
+
+        <li>Generate code from LLVM bitcode to the target assembly (32-bit or 64-bit
+        x86):
+          <pre>llc foo.bc</pre>
+        </li>
+      </ul>
+    </li>
+  </ul>
+  <b>Prepare a report summarizing your findings</b>: Your report should be succinct
+  yet insightful. It should talk about the effect of various optimisations on the
+  generated code at the IR and the Assembly level. 
+  <ul>
+    <li> How are the various optimisation levels different? What kind of optimisations are applied? </li>
+    <li> (Bonus) Provide your own examples that clearly demonstrate optimisations related to branches, vectorisation, etc. </li>
+  </ul>
+
+</body>
+</html>
