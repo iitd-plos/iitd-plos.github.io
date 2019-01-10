@@ -19,12 +19,12 @@
 
     <li style="list-style: none"><br /></li>
 
-    <li>Compile the <a href=examples.zip>following programs</a> using clang to LLVM IR and x86
+    <li>Compile the <a href="examples/">following programs</a> using clang to LLVM IR and x86
     assembly
 
       <ul>
         <li>You can compile a C program to LLVM bitcode using the following command
-          <pre> clang -target i386 -emit-llvm &lt;compiler-options&gt; foo.c </pre>
+          <pre> clang -S -emit-llvm &lt;compiler-options&gt; foo.c </pre>
 
           <ul>
             <li>Run at different optimisation levels - unoptimised, O1, O2, O3, Ofast, any other
