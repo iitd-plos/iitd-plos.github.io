@@ -19,8 +19,8 @@
 
     <li style="list-style: none"><br /></li>
 
-    <li>Compile the <a href="examples.html">following programs</a> using clang to LLVM IR and x86
-    assembly
+    <li>Compile the <a href="examples/">following programs</a> using clang to LLVM IR (bitcode) and 32-bit x86
+    assembly. The provided Makefile already contains some commands to compile to LLVM IR and 32-bit x86; you may want to modify/adapt it for your needs (this is the recommended method).
 
       <ul>
         <li>You can compile a C program to LLVM bitcode using the following command
@@ -38,6 +38,14 @@
         following command
           <pre>llvm-link foo.bc bar.bc</pre>
         </li>
+
+        <li>You can disassemble a bitcode file using the
+        following command
+          <pre>llvm-dis < foo.bc > foo.bc.s</pre>
+        The output disassembly will be available in <code>foo.bc.s</code>.
+        </li>
+
+
 
         <li>Generate code from LLVM bitcode to the target assembly (32-bit or 64-bit
         x86):
