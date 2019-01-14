@@ -23,3 +23,12 @@ int sum(unsigned char *a, int n) {
     }
     return ret;
 }
+
+int sumn(int n)
+{
+  int ret = 0;
+  for (int i = 0; i < n; i++) {
+    ret = ret + i;
+  }
+  return ret;
+}

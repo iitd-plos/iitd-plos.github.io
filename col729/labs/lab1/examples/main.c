@@ -10,6 +10,7 @@ int gcd3(int a, int b);
 bool is_sorted(int *a, int n);
 void add_arrays(int *a, int *b, int *c, int n);
 int sum(unsigned char *a, int n);
+int sumn(int n);
 int print_arg(int argc, char * argv[]);
 int emptyloop(int argc, char **argv);
 unsigned long fibo_iter(unsigned int n);
@@ -35,6 +36,7 @@ int main(int argc, char *argv[])
   printf("\n");
   unsigned char d[5] = {1, 2, 3, 7};
   printf("sum(d) = %d\n", sum(d, 5));
+  printf("sumn(35) = %d\n", sumn(35));
   printf("Running emptyloop... ");
   clock_t start = clock();
   emptyloop(0, NULL);
