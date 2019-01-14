@@ -16,6 +16,10 @@ void add_arrays(int *a, int *b, int *c, int n) {
     }
 }
 
-int main() {
-    return 0;
+int sum(unsigned char *a, int n) {
+    int ret = 0;
+    for (int i = 0; i < n; i++) {
+        ret += a[i];
+    }
+    return ret;
 }
