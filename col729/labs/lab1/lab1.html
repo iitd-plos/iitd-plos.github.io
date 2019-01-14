@@ -15,7 +15,7 @@
 
   <ul>
     <li>Familiarise yourself with <a href="https://llvm.org/docs/LangRef.html">LLVM
-    IR</a> and x86 Assembly instuction set</li>
+    IR</a> and <a href=http://www.cse.iitd.ac.in/~sbansal/os/ref/ia32-2.pdf>x86 Assembly instuction set</a></li>
 
     <li style="list-style: none"><br /></li>
 
@@ -54,13 +54,20 @@
       </ul>
     </li>
   </ul>
+<p>You have been given six programs: <code>gcd</code>, <code>loops</code>, <code>print_arg</code>, <code>emptyloop</code>, <code>fibo_iter</code>, <code>fib</code>. Some of these programs have multiple functions inside them -- you are required to describe all functions in these cases.
+
+<p>For LLVM IR bitcode, you are required to test O0 and O2 optimization levels (see Makefile).
+
+<p>For 32-bit x86, you are required to test O0, O2, and O3 optimization levels (see Makefile).
+
+<p>
   <b>Prepare a report summarizing your findings</b>: Your report should be succinct
-  yet insightful. It should talk about the effect of various optimisations on the
-  generated code at the IR and the Assembly level. 
-  <ul>
-    <li> How are the various optimisation levels different? What kind of optimisations are applied? </li>
-    <li> (Bonus) Provide your own examples that clearly demonstrate optimisations related to branches, vectorisation, etc. </li>
-  </ul>
+  yet insightful. It should have the following information:
+<ul>
+<li>What is the performance difference you observe across different optimizaion levels at bitcode/assembly level?</li>
+<li>For LLVM IR bitcode: Describe the bitcode of each program individually, to explain how the bitcode is achieving the desired logic of the program. Do this for each optimization level. Finally, summarize your impressions about the optimizations performed across O0 and O2 in the IR/bitcode level.</li>
+<li>For x86 assembly: Describe the x86 assembly of each program individually, to explain how the bitcode is achieving the desired logic of the program. Do this for O0 and O2 levels (do not need to do this for O3). Finally, summarize your impressions about the optimizations performed across O0 and O2 at the assembly level.</li>
+</ul>
 
 </body>
 </html>
