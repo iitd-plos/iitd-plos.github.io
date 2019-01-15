@@ -20,7 +20,7 @@
     <li style="list-style: none"><br /></li>
 
     <li>Compile the <a href="examples/">following programs</a> using clang to LLVM IR (bitcode) and 32-bit x86
-    assembly. The provided Makefile already contains some commands to compile to LLVM IR and 32-bit x86; you may want to modify/adapt it for your needs (this is the recommended method).
+    assembly. The provided Makefile already contains some commands to compile to LLVM IR and 32-bit x86; you may want to modify/adapt it for your needs. Also to standardize the results, we will be using clang-3.6 version, 32-bit x86 mode and Haswell chip. The recommended procedure to generate the code is:
 
       <ul>
         <li>You can compile a C program to LLVM bitcode using the following command
@@ -30,7 +30,7 @@
             <li>Run at different optimisation levels - unoptimised, O1, O2, O3, Ofast, any other
             flags, etc.</li>
 
-            <li>Please check the clang documentation on your own.</li>
+            <li>Please check the clang documentation on your own for instructions to run bitcode and flags.</li>
           </ul><br />
         </li>
 
@@ -46,10 +46,18 @@
         </li>
 
 
-
         <li>Generate code from LLVM bitcode to the target assembly (32-bit or 64-bit
         x86):
           <pre>llc foo.bc</pre>
+        </li>
+
+        <li>Generate executable from target assembly using gcc assembler:
+          <pre>gcc foo.s -o foo.out</pre>
+        </li>
+
+        <li>You can disassemble x86 executable using objdump:
+          <pre>objdump -d  < foo.out >  foo.out.dis</pre>
+        The output disassembly will be available in <code>foo.out.dis</code>.
         </li>
       </ul>
     </li>
