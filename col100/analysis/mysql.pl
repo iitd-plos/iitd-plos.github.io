@@ -32,7 +32,7 @@ print "<li>What do I see from these results:\n";
 print "</ol>\n";
 print "<p><b>My inferences and opinions</b>:<ol type=\"a\">\n";
 print "<li>For COL100 (and for all other courses actually), it is very clear that we get two categories of students based on their socio-economic backgrounds; let's call them \"haves\" and \"have-nots\" for lack of a better terminology. This categorization is not just based on this data, but also based on my experience teaching several subjects over the past around ten years at IITD.</li>\n";
-print "<li>A fair treatment should involve: separate handling of these two categories of students; the have-nots should be started with more introductory material, while the haves can be started at a more advanced level. As far as I can tell, all of us agree on this aspect of our intake</li>\n";
+print "<li>A fair treatment should involve separate handling of these two categories of students; the have-nots should be started with more introductory material, while the haves can be started at a more advanced level. As far as I can tell, all of us agree on this aspect of our intake</li>\n";
 print "<li>However, there are several practical issues with this, the most of important of which IMHO is: how do we distinguish the two categories; we need to worry about both precision and also care about being politically and socially correct in our categorization. Doing this practically in a curriculum-wide manner seems too hard to even attempt.</li>\n";
 print "<li>This is the exact same effect that is playing out for COL100 too; but COL100 is definitely not unique in witnessing this effect. The data below shows that MTL100 has the exact same issue, and I would not be surprised at all if all our courses show the same issue.</li>\n";
 print "<li>It just so happens that the two categories are also correlated with their typical class XII subjects; in particular, the haves seem to have more percentage of people who take CS in class XII. But treating these correlations as causal effects is wrong, as seen through MTL data: even though their class XII CS course has nothing to do with MTL100 syllabus, students with prior CS exposure still seem to score higher on MTL100. In my opinion, this indicates that it is not their CS exposure but other issues that have causal effects both on their class XII subjects and their grades in IIT courses.</li>\n";
@@ -41,7 +41,7 @@ print "<ul><li>To use a crude analogy, let's say that in the context of reservat
 print "</li>\n";
 print "<li>Finally: if COL100 is made two-step, IMHO we must also advocate MTL100 (and similarly other courses) to also be made two-step in the same breath. Why should this be a COL100 specific issue? Are we concerned about education in general, or is this some selfish exercise of the CS department?</li>\n";
 print "</ol>\n";
-print "Overall, based on the last two bullets in my opinion, I really do not see why we should advocate a two-step CS introduction for a subset of students.\n";
+print "Overall, based on the last two bullets, in my opinion, I really do not see why we should advocate a two-step CS introduction for an arbitrarily chosen subset of students. If anything, we should at least get rid of the \"prior CS exposure\" requirement, and base it solely on the test.\n";
 foreach my $year (@adm_years_of_interest) {
   print "<h1><u>$year</u></h1>\n";
   draw_histogram_table($year);
