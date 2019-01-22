@@ -20,7 +20,15 @@ my %attr = ( PrintError=>0,  # turn off error reporting via warn()
  
 our $dbh  = DBI->connect($dsn,$username,$password, \%attr);
 #say "Connected to the MySQL database.";
-
+print "<h1>Analysis method and brief perspectives on what I could make of it</h1>\n";
+print "by Sorav Bansal<br>\n";
+print "<p><ol>\n";
+print "<li>There is a clear correlation between prior-CS-exposure and final COL100 grade</li>\n";
+print "<li>Just to be completely sure, I also tried to see the statistics after removing all students who received a D or less (E/F/W/NF) while computing percentages (see columns titled non-weak students). In any case, my perspectives remain same irrespective of whether we consider or do not consider the weak students</li>\n";
+print "<li>However, there is also a clear correlation between prior-CS-exposure and final MTL100 grades.  I randomly picked another first-year course (MTL100) to see if the correlation is unique to COL100 or not.</li>\n";
+print "<li>I do see slightly higher correlations for COL100 (than MTL100), say a few percentage points here or there, but nothing too dramatic.</li>\n";
+print "<li>Based on this, I was wondering: if we need to have two versions of COL100, should we also consider two versions of MTL100?</li>\n";
+print "</ol>\n";
 foreach my $year (@adm_years_of_interest) {
   print "<h1>$year</h1>\n";
   draw_histogram_table($year);
