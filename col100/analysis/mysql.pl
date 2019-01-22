@@ -43,7 +43,6 @@ sub draw_histogram_table
   print "<ul>\n";
   get_student_cs_exposure_data($year, \%cs_exposure_map, \%with_cs_exposure, \%without_cs_exposure);
   get_col100_grades($year, \%col100_grades, \%col100_grade_inv);
-  print "</ul>\n";
 
   my $num_with_cs_exposure = keys %with_cs_exposure;
   my $num_without_cs_exposure = keys %without_cs_exposure;
@@ -69,9 +68,10 @@ sub draw_histogram_table
       }
     }
   }
-  print "Total number of students with grade >= C-: $num_students_ignore_d_and_lower\n";
-  print "Total number of students with grade >= C- and with prior CS exposure: $num_with_cs_exposure_ignore_d_and_lower\n";
-  print "Total number of students with grade >= C- and without prior CS exposure: $num_without_cs_exposure_ignore_d_and_lower\n";
+  print "<li>Total number of students with grade >= C-: $num_students_ignore_d_and_lower</li>\n";
+  print "<li>Total number of students with grade >= C- and with prior CS exposure: $num_with_cs_exposure_ignore_d_and_lower</li>\n";
+  print "<li>Total number of students with grade >= C- and without prior CS exposure: $num_without_cs_exposure_ignore_d_and_lower</li>\n";
+  print "</ul>\n";
 
   print "<table border=\"1\">\n";
   print "<tr bgcolor=yellow><th>Grade</th><th>with prior CS</th><th>without prior CS</th><th>info not available</th><th>Cumulative with CS exposure</th><th>Cumulative without CS exposure</th><th>Cumulative with CS exposure as fraction of all</th><th>Cumulative without CS exposure as fraction of all</th><th>Cumulative with CS exposure as a fraction of non-weak</th><th>Cumulative without CS exposure as a fraction of non-weak</th></tr>\n";
