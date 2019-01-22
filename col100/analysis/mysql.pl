@@ -28,7 +28,7 @@ print "<li>There is a clear correlation between prior-CS-exposure and final COL1
 print "<li>Just to be completely sure, I also tried to see the statistics after removing all students who received a D or less (E/F/W/NF) while computing percentages (see columns titled non-weak students). In any case, the correlations remain largely similar, irrespective of whether we consider the weak students or not.</li>\n";
 print "<li>However, there is also a clear correlation between prior-CS-exposure and final MTL100 grades.  I randomly picked another first-year course (MTL100) to see if the correlation is unique to COL100 or not.</li>\n";
 print "<li>I do see slightly higher correlations for COL100 (than MTL100), say a few percentage points here or there, but nothing significant.</li>\n";
-print "<li>What do I see from these results:\n";
+print "<li>The fact that both MTL100 and COL100 show similar correlations with prior-CS-exposure is clear evidence that the correlations are not causal. MTL100 is just a randomly chosen first-year course, we can try any other course too.</li>\n";
 print "</ol>\n";
 print "<p><b>My inferences and opinions</b>:<ol type=\"a\">\n";
 print "<li>For COL100 (and for all other courses actually), it is very clear that we get two categories of students based on their socio-economic backgrounds; let's call them \"haves\" and \"have-nots\" for lack of a better terminology. This categorization is not just based on this data, but also based on my experience teaching several subjects over the past around ten years at IITD.</li>\n";
