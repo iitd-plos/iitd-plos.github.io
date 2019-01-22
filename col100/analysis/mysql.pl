@@ -28,7 +28,16 @@ print "<li>There is a clear correlation between prior-CS-exposure and final COL1
 print "<li>Just to be completely sure, I also tried to see the statistics after removing all students who received a D or less (E/F/W/NF) while computing percentages (see columns titled non-weak students). In any case, the correlations remain largely similar, irrespective of whether we consider the weak students or not.</li>\n";
 print "<li>However, there is also a clear correlation between prior-CS-exposure and final MTL100 grades.  I randomly picked another first-year course (MTL100) to see if the correlation is unique to COL100 or not.</li>\n";
 print "<li>I do see slightly higher correlations for COL100 (than MTL100), say a few percentage points here or there, but nothing significant.</li>\n";
-print "<li>Based on this, I was wondering: if we need to have two versions of COL100, should we also consider two versions of MTL100?</li>\n";
+print "<li>What do I see from these results:\n";
+print "<ol type=\"2\">\n";
+print "<li>For COL100 (and for all other courses actually), it is very clear that we get two categories of students based on their socio-economic backgrounds; let's call them \"haves\" and \"have-nots\" for lack of a better terminology. (This categorization is not just based on this data, but also based on my experience teaching several subjects over the past 10 years at IITD).</li>\n";
+print "<li>A fair treatment should involve: separate handling of these two categories of students; the have-nots should be started with more introductory material, while the haves can be started at a more advanced level. As far as I can tell, all of us agree on this aspect of our intake</li>\n";
+print "<li>However, there are several practical issues with this, the most of important of which IMHO is: how do we distinguish the two categories; we need to worry about both precision and also care about being politically and socially correct in our categorization. Doing this practically in a curriculum-wide manner seems too hard to even attempt.</li>\n";
+print "<li>This is the exact same effect that is playing out for COL100 too; but COL100 is definitely not unique in witnessing this effect.</li>\n";
+print "<li>It just so happens that the two categories are also correlated with their typical class XII subjects; in particular, the haves seem to have more percentage of people who take CS in class XII. But treating these correlations as causal effects is wrong, as seen through MTL data: even though their class XII CS course has nothing to do with MTL110, they still seem to score higher on MTL110; indicating that it is not their CS exposure but other issues that have causal effect both on their class XII subjects and their grades in IIT courses.</li>\n";
+print "<li>Even if COL100 needs to be two-step, the criteria for deciding who needs one step vs. two steps, cannot be based on their prior CS exposure, as we have just established that prior CS exposure is an incidentally correlated effect and not a cause for their COL100 performance.</li>\n";
+print "<li>Finally: if COL100 is made two-step, I would like to hear why we should also not advocate MTL100 (and other courses) to also be made two-step?</li>\n";
+print "</ol>\n";
 print "</ol>\n";
 foreach my $year (@adm_years_of_interest) {
   print "<h1><u>$year</u></h1>\n";
