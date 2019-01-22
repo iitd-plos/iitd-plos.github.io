@@ -74,7 +74,7 @@ sub draw_histogram_table
   print "</ul>\n";
 
   print "<table border=\"1\">\n";
-  print "<tr bgcolor=yellow><th>Grade</th><th>with prior CS</th><th>without prior CS</th><th>info not available</th><th>Cumulative with CS exposure</th><th>Cumulative without CS exposure</th><th>Cumulative with CS exposure as fraction of all</th><th>Cumulative without CS exposure as fraction of all</th><th>Cumulative with CS exposure as a fraction of non-weak</th><th>Cumulative without CS exposure as a fraction of non-weak</th></tr>\n";
+  print "<tr bgcolor=yellow><th>Grade</th><th>with prior CS</th><th>without prior CS</th><th>info not available</th><th>Cumulative with CS exposure</th><th>Cumulative without CS exposure</th><th>Cumulative with CS exposure as fraction of all</th><th>Cumulative without CS exposure as fraction of all</th><th><b>Cumulative with CS exposure as a fraction of non-weak</b></th><th><b>Cumulative without CS exposure as a fraction of non-weak</b></th></tr>\n";
   my $cum_with_cs_exposure = 0;
   my $cum_without_cs_exposure = 0;
   foreach my $grade (sort cmp_grade (keys %col100_grade_inv)) {
@@ -104,7 +104,7 @@ sub draw_histogram_table
     my $cum_with_cs_exposure_fraction_of_non_weak = ($cum_with_cs_exposure * 100)/$num_with_cs_exposure_ignore_d_and_lower;
     my $cum_without_cs_exposure_fraction_of_non_weak = ($cum_without_cs_exposure * 100)/$num_without_cs_exposure_ignore_d_and_lower;
     #print "$grade : $num_with_cs_exposure_at_grade    $num_without_cs_exposure_at_grade    $num_cs_exposure_info_not_available\n";
-    printf("<tr><td>$grade</td><td>$num_with_cs_exposure_at_grade</td><td>$num_without_cs_exposure_at_grade</td><td>$num_cs_exposure_info_not_available</td><td>$cum_with_cs_exposure</td><td>$cum_without_cs_exposure</td><td>%.2f</td><td>%.2f</td><td>%.2f</td><td>%.2f</td></tr>\n", $cum_with_cs_exposure_fraction, $cum_without_cs_exposure_fraction, $cum_with_cs_exposure_fraction_of_non_weak, $cum_without_cs_exposure_fraction_of_non_weak);
+    printf("<tr><td>$grade</td><td>$num_with_cs_exposure_at_grade</td><td>$num_without_cs_exposure_at_grade</td><td>$num_cs_exposure_info_not_available</td><td>$cum_with_cs_exposure</td><td>$cum_without_cs_exposure</td><td>%.2f</td><td>%.2f</td><td><b>%.2f</b></td><td><b>%.2f</b></td></tr>\n", $cum_with_cs_exposure_fraction, $cum_without_cs_exposure_fraction, $cum_with_cs_exposure_fraction_of_non_weak, $cum_without_cs_exposure_fraction_of_non_weak);
   }
   print "</table>\n";
 }
