@@ -23,6 +23,7 @@ our $dbh  = DBI->connect($dsn,$username,$password, \%attr);
 print "<h1>Analysis method and brief perspectives on what I could make of it</h1>\n";
 print "by Sorav Bansal<br>\n";
 print "<p><ol>\n";
+print "<li>I could only find prior-CS-exposure data for 2014-entry and 2015-entry students.</li>\n";
 print "<li>There is a clear correlation between prior-CS-exposure and final COL100 grade</li>\n";
 print "<li>Just to be completely sure, I also tried to see the statistics after removing all students who received a D or less (E/F/W/NF) while computing percentages (see columns titled non-weak students). In any case, the correlations remain largely similar, irrespective of whether we consider the weak students or not.</li>\n";
 print "<li>However, there is also a clear correlation between prior-CS-exposure and final MTL100 grades.  I randomly picked another first-year course (MTL100) to see if the correlation is unique to COL100 or not.</li>\n";
@@ -30,7 +31,7 @@ print "<li>I do see slightly higher correlations for COL100 (than MTL100), say a
 print "<li>Based on this, I was wondering: if we need to have two versions of COL100, should we also consider two versions of MTL100?</li>\n";
 print "</ol>\n";
 foreach my $year (@adm_years_of_interest) {
-  print "<h1>$year</h1>\n";
+  print "<h1><u>$year</u></h1>\n";
   draw_histogram_table($year);
 }
 
@@ -100,7 +101,7 @@ sub draw_table_for_course
   print "</ul>\n";
 
   print "<table border=\"1\">\n";
-  print "<tr bgcolor=yellow><th>Grade</th><th>Number of students with prior CS exposure</th><th>Number of students without prior CS exposure</th><th>Number of students for whom prior-CS-exposure information was not available</th><th>Cumulative number of students (with grade &gt;= G) with prior CS exposure</th><th>Cumulative number of students (with grade &gt;= G) without prior CS exposure</th><th>Cumulative fraction of students with prior CS exposure and with grade &gt;= G, as a fraction of total number of students with prior CS exposure</th><th>Cumulative fraction of students without CS exposure and with grade &gt;= G as fraction of total number of students without prior CS exposure</th><th><b>Cumulative fraction of students without CS exposure and with grade &gt;= G as fraction of number of non-weak students (i.e. &gt;= D grade in the course) with prior CS exposure</b></th><th><b>Cumulative fraction of students without CS exposure and with grade &gt;= G as fraction of number of non-weak students (i.e. &gt;= D grade in the course) with prior CS exposure</b></th></tr>\n";
+  print "<tr bgcolor=yellow><th>Grade \"<b>G</b>\"</th><th>Number of students with prior CS exposure</th><th>Number of students without prior CS exposure</th><th>Number of students for whom prior-CS-exposure information was not available</th><th>Cumulative number of students (with grade &gt;= G) with prior CS exposure</th><th>Cumulative number of students (with grade &gt;= G) without prior CS exposure</th><th>Cumulative fraction of students with prior CS exposure and with grade &gt;= G, as a fraction of total number of students with prior CS exposure</th><th>Cumulative fraction of students without CS exposure and with grade &gt;= G as fraction of total number of students without prior CS exposure</th><th><b>Cumulative fraction of students without CS exposure and with grade &gt;= G as fraction of number of non-weak students (i.e. &gt;= D grade in the course) with prior CS exposure</b></th><th><b>Cumulative fraction of students without CS exposure and with grade &gt;= G as fraction of number of non-weak students (i.e. &gt;= D grade in the course) with prior CS exposure</b></th></tr>\n";
   my $cum_with_cs_exposure = 0;
   my $cum_without_cs_exposure = 0;
   foreach my $grade (sort cmp_grade (keys %course_grade_inv)) {
