@@ -41,7 +41,7 @@ print "<ul><li>To use a crude analogy, let's say that in the context of reservat
 print "</li>\n";
 print "<li>Finally: if COL100 is made two-step, IMHO we must also advocate MTL100 (and similarly other courses) to also be made two-step in the same breath. Why should this be a COL100 specific issue? Are we concerned about education in general, or is this some selfish exercise of the CS department?</li>\n";
 print "</ol>\n";
-print "Overall, based on the last two bullets, in my opinion, I really do not see why we should advocate a two-step CS introduction for a subset of students. If anything, we should at least get rid of arbitrary requirements like \"prior CS exposure\", and base it solely on a waiver test.\n";
+print "Overall, based on the last two bullets, in my opinion, I really do not see why we should advocate a two-step CS introduction for a subset of students. If anything, we should at least get rid of arbitrary requirements like \"prior CS exposure\", and base it solely on a waiver test. But again, why just COL100?\n";
 foreach my $year (@adm_years_of_interest) {
   print "<h1><u>$year</u></h1>\n";
   draw_histogram_table($year);
