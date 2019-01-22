@@ -20,8 +20,8 @@ my %attr = ( PrintError=>0,  # turn off error reporting via warn()
  
 our $dbh  = DBI->connect($dsn,$username,$password, \%attr);
 #say "Connected to the MySQL database.";
-print "<h1>Analysis of COL100 student grade data vis-a-vis prior CS exposure for COL100 oversight committee</h1>\n";
-print "by Sorav Bansal<br>\n";
+print "<h1>Analysis of COL100 student grade data vis-a-vis prior CS exposure</h1>\n";
+print "by Sorav Bansal (for COL100 Oversight Committee)<br>\n";
 print "<p><ol>\n";
 print "<li>I could only find prior-CS-exposure data for 2014-entry and 2015-entry students.</li>\n";
 print "<li>There is a clear correlation between prior-CS-exposure and final COL100 grade</li>\n";
