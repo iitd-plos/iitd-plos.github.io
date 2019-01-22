@@ -37,25 +37,41 @@ sub draw_histogram_table
   my %with_cs_exposure;
   my %without_cs_exposure;
   my %cs_exposure_map;
-  my %col100_grades;
-  my %col100_grade_inv;
+  my (%col100_grades, %eel100_grades);
+  my (%col100_grade_inv, %eel100_grade_inv);
 
   print "<ul>\n";
   get_student_cs_exposure_data($year, \%cs_exposure_map, \%with_cs_exposure, \%without_cs_exposure);
-  get_col100_grades($year, \%col100_grades, \%col100_grade_inv);
+  get_course_grades('COL100', $year, \%col100_grades, \%col100_grade_inv);
+  get_course_grades('MTL100', $year, \%eel100_grades, \%eel100_grade_inv);
+  print "</ul>\n";
 
   my $num_with_cs_exposure = keys %with_cs_exposure;
   my $num_without_cs_exposure = keys %without_cs_exposure;
 
+  draw_table_for_course('COL100', $num_with_cs_exposure, $num_without_cs_exposure, \%cs_exposure_map, \%col100_grade_inv);
+  draw_table_for_course('MTL100', $num_with_cs_exposure, $num_without_cs_exposure, \%cs_exposure_map, \%eel100_grade_inv);
+}
+
+sub draw_table_for_course
+{
+  my $course = shift;
+  my $num_with_cs_exposure = shift;
+  my $num_without_cs_exposure = shift;
+  my $cs_exposure_map_ref = shift;
+  my %cs_exposure_map = %{$cs_exposure_map_ref};
+  my $course_grade_inv_ref = shift;
+  my %course_grade_inv = %$course_grade_inv_ref;
+
   my $num_students_ignore_d_and_lower = 0;
   my $num_with_cs_exposure_ignore_d_and_lower = 0;
   my $num_without_cs_exposure_ignore_d_and_lower = 0;
-  foreach my $grade (sort cmp_grade (keys %col100_grade_inv)) {
+  foreach my $grade (sort cmp_grade (keys %course_grade_inv)) {
     if ($grade eq "D" || $grade eq "E" || $grade eq "F" || $grade eq "NF" || $grade eq "W") {
       next;
     }
     $num_students_ignore_d_and_lower++;
-    my @students_at_grade = @{$col100_grade_inv{$grade}};
+    my @students_at_grade = @{$course_grade_inv{$grade}};
     foreach my $entrynum (@students_at_grade) {
       if (not defined $cs_exposure_map{$entrynum}) {
         next;
@@ -68,6 +84,8 @@ sub draw_histogram_table
       }
     }
   }
+  print "<h2>$course</h2>\n";
+  print "<ul>\n";
   print "<li>Total number of students with grade >= C-: $num_students_ignore_d_and_lower</li>\n";
   print "<li>Total number of students with grade >= C- and with prior CS exposure: $num_with_cs_exposure_ignore_d_and_lower</li>\n";
   print "<li>Total number of students with grade >= C- and without prior CS exposure: $num_without_cs_exposure_ignore_d_and_lower</li>\n";
@@ -77,8 +95,8 @@ sub draw_histogram_table
   print "<tr bgcolor=yellow><th>Grade</th><th>with prior CS</th><th>without prior CS</th><th>info not available</th><th>Cumulative with CS exposure</th><th>Cumulative without CS exposure</th><th>Cumulative with CS exposure as fraction of all</th><th>Cumulative without CS exposure as fraction of all</th><th><b>Cumulative with CS exposure as a fraction of non-weak</b></th><th><b>Cumulative without CS exposure as a fraction of non-weak</b></th></tr>\n";
   my $cum_with_cs_exposure = 0;
   my $cum_without_cs_exposure = 0;
-  foreach my $grade (sort cmp_grade (keys %col100_grade_inv)) {
-    my @students_at_grade = @{$col100_grade_inv{$grade}};
+  foreach my $grade (sort cmp_grade (keys %course_grade_inv)) {
+    my @students_at_grade = @{$course_grade_inv{$grade}};
     my $num_with_cs_exposure_at_grade = 0;
     my $num_without_cs_exposure_at_grade = 0;
     my $num_cs_exposure_info_not_available = 0;
@@ -146,43 +164,44 @@ sub get_student_cs_exposure_data
   $sth->finish();
 }
 
-sub get_col100_grades
+sub get_course_grades
 {
+  my $course = shift;
   my $year = shift;
-  my $col100_grade_map = shift;
-  my $col100_grade_inv_map = shift;
+  my $course_grade_map = shift;
+  my $course_grade_inv_map = shift;
 
-  my $sql = "SELECT entryno,grade FROM course_grade where coucode='COL100' and regyear='$year'";
+  my $sql = "SELECT entryno,grade FROM course_grade where coucode='$course' and regyear='$year'";
   my $sth = $dbh->prepare($sql);
   # execute the query
   $sth->execute();
   while(my @row = $sth->fetchrow_array()){
      #printf("%s\t%s\n",$row[0],$row[1]);
-     $$col100_grade_map{$row[0]} = $row[1];
+     $$course_grade_map{$row[0]} = $row[1];
   }
-  foreach my $entrynum (keys %$col100_grade_map) {
-    my $grade = $$col100_grade_map{$entrynum};
-    if (not defined $$col100_grade_inv_map{$grade}) {
+  foreach my $entrynum (keys %$course_grade_map) {
+    my $grade = $$course_grade_map{$entrynum};
+    if (not defined $$course_grade_inv_map{$grade}) {
       my @arr = ();
-      $$col100_grade_inv_map{$grade} = \@arr;
+      $$course_grade_inv_map{$grade} = \@arr;
       #print "initing array for $grade\n";
-      #my @arr2 = @$col100_grade_inv_map{$grade};
+      #my @arr2 = @$course_grade_inv_map{$grade};
       #print "arr size $#arr\n";
       #print "arr2 size $#arr2\n";
     }
-    my @arr = @{${$col100_grade_inv_map}{$grade}};
+    my @arr = @{${$course_grade_inv_map}{$grade}};
     #print "arr size $#arr\n";
     #my @new_arr = (@arr, $entrynum);
     push(@arr, $entrynum);
-    #$$col100_grade_inv_map{$grade} = \@new_arr;
-    ${$col100_grade_inv_map}{$grade} = \@arr;
+    #$$course_grade_inv_map{$grade} = \@new_arr;
+    ${$course_grade_inv_map}{$grade} = \@arr;
     #print "pushed $entrynum to $grade. new arr size $#arr\n";
   }
   $sth->finish();
-  my $num_students_in_col100 = keys %$col100_grade_map;
-  print "<li>Total number of students who took COL100: $num_students_in_col100</li>\n";
-  #foreach my $grade (sort cmp_grade (keys %$col100_grade_inv_map)) {
-  #  my @value = @{${$col100_grade_inv_map}{$grade}};
+  my $num_students_in_course = keys %$course_grade_map;
+  print "<li>Total number of students who took $course: $num_students_in_course</li>\n";
+  #foreach my $grade (sort cmp_grade (keys %$course_grade_inv_map)) {
+  #  my @value = @{${$course_grade_inv_map}{$grade}};
   #  my $bucketsize = @value;
   #  print "Number of students with grade $grade: $bucketsize\n";
   #}
