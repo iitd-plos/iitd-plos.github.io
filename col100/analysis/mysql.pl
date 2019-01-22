@@ -8,6 +8,7 @@ use DBI;
 #config params
 #my $adm_year_of_interest = "20182019";
 my @adm_years_of_interest = ("20142015", "20152016");
+my @courses = ('COL100', 'MTL100'); #'ELL100', 'MTL101'
 
 #MySQL database configuration
 my $dsn = "DBI:mysql:academics";
@@ -58,20 +59,26 @@ sub draw_histogram_table
   my %with_cs_exposure;
   my %without_cs_exposure;
   my %cs_exposure_map;
-  my (%col100_grades, %eel100_grades);
-  my (%col100_grade_inv, %eel100_grade_inv);
+  my %course_grades;
+  my %course_grade_inv;
 
   print "<ul>\n";
   get_student_cs_exposure_data($year, \%cs_exposure_map, \%with_cs_exposure, \%without_cs_exposure);
-  get_course_grades('COL100', $year, \%col100_grades, \%col100_grade_inv);
-  get_course_grades('MTL100', $year, \%eel100_grades, \%eel100_grade_inv);
+  foreach my $course (@courses) {
+    my %cgrades;
+    my %cgrade_inv;
+    get_course_grades($course, $year, \%cgrades, \%cgrade_inv);
+    $course_grades{$course} = \%cgrades;
+    $course_grade_inv{$course} = \%cgrade_inv;
+  }
   print "</ul>\n";
 
   my $num_with_cs_exposure = keys %with_cs_exposure;
   my $num_without_cs_exposure = keys %without_cs_exposure;
 
-  draw_table_for_course('COL100', $num_with_cs_exposure, $num_without_cs_exposure, \%cs_exposure_map, \%col100_grade_inv);
-  draw_table_for_course('MTL100', $num_with_cs_exposure, $num_without_cs_exposure, \%cs_exposure_map, \%eel100_grade_inv);
+  foreach my $course (@courses) {
+    draw_table_for_course($course, $num_with_cs_exposure, $num_without_cs_exposure, \%cs_exposure_map, $course_grade_inv{$course});
+  }
 }
 
 sub draw_table_for_course
