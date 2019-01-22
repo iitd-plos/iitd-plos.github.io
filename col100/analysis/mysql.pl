@@ -70,9 +70,9 @@ sub draw_table_for_course
     if ($grade eq "D" || $grade eq "E" || $grade eq "F" || $grade eq "NF" || $grade eq "W") {
       next;
     }
-    $num_students_ignore_d_and_lower++;
     my @students_at_grade = @{$course_grade_inv{$grade}};
     foreach my $entrynum (@students_at_grade) {
+      $num_students_ignore_d_and_lower++;
       if (not defined $cs_exposure_map{$entrynum}) {
         next;
       } elsif ($cs_exposure_map{$entrynum} eq "N") {
