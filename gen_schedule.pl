@@ -133,7 +133,7 @@ sub parse_date {
 		$date = $2;
 		$month = get_month($1);
 		$year = $start_year;
-                print "date = $date, month = $month, year = $year\n";
+                #print "date = $date, month = $month, year = $year\n";
 	} else {
 		die "Unrecognized date string: $str\n";
 	}
