@@ -23,9 +23,16 @@ our $dbh  = DBI->connect($dsn,$username,$password, \%attr);
 #say "Connected to the MySQL database.";
 print "<h1>Analysis of COL100 student grade data vis-a-vis prior CS exposure</h1>\n";
 print "by Sorav Bansal (for COL100 Oversight Committee)<br>\n";
-print "<p><b>Facts</b> (I hope we can agree on them):<ol>\n";
+print "<p><b>Analysis reports prepared by Suban</b><ol>\n";
+print "<li><a href=http://10.10.111.112/plots/CS/>http://10.10.111.112/plots/CS/</a>: this set of analyses seems to purport that prior CS exposure is positively correlated with COL100 grade, and so there may be a causal relation between the two.</li>\n";
+print "<li><a href=http://10.10.111.112/plots/CS/COL100-semI-2018-2019/>http://10.10.111.112/plots/CS/COL100-semI-2018-2019/</a>: this set of results is for COL100 offering in the first semester of 2018-2019; however prior CS exposure data is not used in this analysis; not sure what to make of this.</li>\n";
+print "<li>Some high-level curriculum analyses (I could not find their relevance to our current discussion on COL100):<ol><li>
+    The executive summary of the study conducted by Ravinder Kaur (commissioned by the Director): <a href=http://10.10.111.112/plots/execsummary.pdf>http://10.10.111.112/plots/execsummary.pdf</a></li>
+    <li>Data analysis part of the study: <a href=http://10.10.111.112/plots/quant.pdf>http://10.10.111.112/plots/quant.pdf</a></li><li><a>http://10.10.111.112/plots/jee-regressions/>http://10.10.111.112/plots/jee-regressions/</a></li><li><a href=http://10.10.111.112/plots/regression/reg_log1.pdf>http://10.10.111.112/plots/regression/reg_log1.pdf</a></li></ol></li>\n";
+print "</ol>\n";
+print "<p><b>Facts based on data below</b> (I hope we can agree on them):<ol>\n";
 print "<li>I could only find prior-CS-exposure data for 2014-entry and 2015-entry students.</li>\n";
-print "<li>There is a clear correlation between prior-CS-exposure and final COL100 grade</li>\n";
+print "<li>There is a clear correlation between prior-CS-exposure and final COL100 grade (confirms Suban's results)</li>\n";
 print "<li>Just to be completely sure, I also tried to see the statistics after removing all students who received a D or less (E/F/W/NF) while computing percentages (see columns titled non-weak students). In any case, the correlations remain largely similar, irrespective of whether we consider the weak students or not.</li>\n";
 print "<li>However, there is also a clear correlation between prior-CS-exposure and final MTL100 grades.  I picked another first-year course (MTL100) to see if the correlation is unique to COL100 or not.</li>\n";
 print "<li>I do see slightly higher correlations for COL100 (than MTL100), say a few percentage points here or there, but nothing significant.</li>\n";
