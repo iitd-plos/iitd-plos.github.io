@@ -28,7 +28,7 @@ print "<li><a href=http://10.10.111.112/plots/CS/>http://10.10.111.112/plots/CS/
 print "<li><a href=http://10.10.111.112/plots/CS/COL100-semI-2018-2019/>http://10.10.111.112/plots/CS/COL100-semI-2018-2019/</a>: this set of results is for COL100 offering in the first semester of 2018-2019; however prior CS exposure data is not used in this analysis; not sure what to make of this.</li>\n";
 print "<li>Some high-level curriculum analyses (I could not find their relevance to our current discussion on COL100):<ol type='a'><li>
     The executive summary of the study conducted by Ravinder Kaur (commissioned by the Director): <a href=http://10.10.111.112/plots/execsummary.pdf>http://10.10.111.112/plots/execsummary.pdf</a></li>
-    <li>Data analysis part of the study: <a href=http://10.10.111.112/plots/quant.pdf>http://10.10.111.112/plots/quant.pdf</a></li><li><a>http://10.10.111.112/plots/jee-regressions/>http://10.10.111.112/plots/jee-regressions/</a></li><li><a href=http://10.10.111.112/plots/regression/reg_log1.pdf>http://10.10.111.112/plots/regression/reg_log1.pdf</a></li></ol></li>\n";
+    <li>Data analysis part of the study: <a href=http://10.10.111.112/plots/quant.pdf>http://10.10.111.112/plots/quant.pdf</a></li><li><a href=http://10.10.111.112/plots/jee-regressions/>http://10.10.111.112/plots/jee-regressions/</a></li><li><a href=http://10.10.111.112/plots/regression/reg_log1.pdf>http://10.10.111.112/plots/regression/reg_log1.pdf</a></li></ol></li>\n";
 print "</ol>\n";
 print "<p><b>Facts based on data below</b> (I hope we can agree on them):<ol>\n";
 print "<li>I could only find prior-CS-exposure data for 2014-entry and 2015-entry students (confirmed by Suban).</li>\n";
