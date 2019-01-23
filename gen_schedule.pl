@@ -125,7 +125,7 @@ sub parse_date {
 		$date = $2;
 		$year = $3;
 		$month = get_month($1);
-		if (!(defined $start_year)) {
+		if (!(defined $start_year) || $start_year < $year) {
 		 	$start_year = $year;
 		}
 	} elsif ($str =~ /^(...) (\d\d?)/) {
@@ -133,6 +133,7 @@ sub parse_date {
 		$date = $2;
 		$month = get_month($1);
 		$year = $start_year;
+                print "date = $date, month = $month, year = $year\n";
 	} else {
 		die "Unrecognized date string: $str\n";
 	}

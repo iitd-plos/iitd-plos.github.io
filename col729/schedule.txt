@@ -26,23 +26,17 @@ LEC: <a href=lec/intro.html>Introduction to Interpreters, Compilers, and Program
 ==
 LEC: <a href=lec/runtime_organization.html>Runtime Organization</a>
 ==
-LEC: <a href=lec/runtime_organization.html>Runtime Organization (contd.)</a>
-==
 LEC: <a href=lec/code_generation_intro.html>Introduction to Code Generation</a>
 ==
-LEC: <a href=lec/code_generation.html>Code Generation</a>
-==
-LEC: <a href=lec/code_generation_objects.html>Code Generation for Objects</a>
+LEC: <a href=lec/code_generation.html>Code Generation</a>, <a href=lec/code_generation_objects.html>Code Generation for Objects</a>
 ==
 LEC: <a href=lec/intermediate_language.html>Intermediate Language</a>, <a href=lec/optimization_overview.html>Optimization Overview</a>
 ==
 LEC: <a href=lec/local_optimization.html>Local Optimization</a>
 ==
-LEC: <a href=lec/dataflow_analysis.html>Dataflow analysis</a>
+LEC: <a href=lec/dataflow_analysis.html>Dataflow analysis</a>, <a href=lec/global_constant_propagation.html>Global constant propagation</a>
 ==
-LEC: <a href=lec/global_constant_propagation.html>Global constant propagation</a>
-==
-LEC: <a href=lec/global_constant_propagation.html>Global constant propagation</a> (contd.)
+LEC: <a href=lec/dataflow_analysis_foundations.html>Foundations of Dataflow Analysis</a>
 ==
 LEC: <a href=lec/register_allocation.html>Register allocation</a>
 ==
