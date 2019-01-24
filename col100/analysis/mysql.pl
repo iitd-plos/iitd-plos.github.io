@@ -9,6 +9,8 @@ use DBI;
 #my $adm_year_of_interest = "20182019";
 my @adm_years_of_interest = ("20142015", "20152016", "20162017", "20172018", "20182019");
 my @courses = ('COL100', 'MTL100'); #'ELL100', 'MTL101'
+my %instructors = ( 'COL100-20172018-1', 'Vinay Ribeiro and Rahul Garg', 'COL100-20172018-2', 'Kolin Paul and Maya Ramanath', 'COL100-20162017-1', 'Aaditeshwar Seth', 'COL100-20142015-1', 'Sanjiva Prasad and Amitabha Bagchi' );
+my %webpages = ( 'COL100-20172018-1', 'http://www.cse.iitd.ernet.in/~akashdeep/col100/', 'COL100-20162017-1', 'http://www.cse.iitd.ernet.in/~aseth/col100/col100.html', 'COL100-20142015-1', 'http://www.cse.iitd.ac.in/~mansureh/COL100.htm' );
 
 #MySQL database configuration
 my $dsn = "DBI:mysql:academics";
@@ -50,9 +52,22 @@ print "</li>\n";
 print "<li>Finally: if COL100 is made two-step, IMHO we must also advocate MTL100 (and similarly other courses) to also be considered for making two-step in the same breath. Why should this be a COL100 specific issue?</li>\n";
 print "</ol>\n";
 print "Overall, based on the last two bullets, in my opinion, I really do not see why we should advocate a two-step CS introduction for a subset of students. If anything, we should at least get rid of arbitrary requirements like \"prior CS exposure\", and base it solely on a waiver test. But again, why just COL100?\n";
+
 foreach my $year (@adm_years_of_interest) {
+  my %with_cs_exposure;
+  my %without_cs_exposure;
+  my %cs_exposure_map;
   print "<h1><u>$year</u></h1>\n";
-  draw_histogram_table($year);
+  print "<ul>\n";
+  get_student_cs_exposure_data($year, \%cs_exposure_map, \%with_cs_exposure, \%without_cs_exposure);
+  print "</ul>\n";
+  foreach my $sem ("1", "2") {
+    if ($year eq "20182019" and $sem eq "2") {
+      next;
+    }
+    print "<h1><u>$year Semester $sem</u></h1>\n";
+    draw_histogram_table($year, $sem, \%cs_exposure_map, \%with_cs_exposure, \%without_cs_exposure);
+  }
 }
 
 #say "Disconnecting from the MySQL database.";
@@ -61,20 +76,23 @@ $dbh->disconnect();
 sub draw_histogram_table
 {
   my $year = shift;
+  my $sem = shift;
+  my $cs_exposure_map_ref = shift;
+  my $with_cs_exposure_ref = shift;
+  my $without_cs_exposure_ref = shift;
+  my %cs_exposure_map = %$cs_exposure_map_ref;
+  my %with_cs_exposure = %$with_cs_exposure_ref;
+  my %without_cs_exposure = %$without_cs_exposure_ref;
 
   #there are duplicates in the mysql tables, so use associative arrays (not arrays)
-  my %with_cs_exposure;
-  my %without_cs_exposure;
-  my %cs_exposure_map;
   my %course_grades;
   my %course_grade_inv;
 
   print "<ul>\n";
-  get_student_cs_exposure_data($year, \%cs_exposure_map, \%with_cs_exposure, \%without_cs_exposure);
   foreach my $course (@courses) {
     my %cgrades;
     my %cgrade_inv;
-    get_course_grades($course, $year, \%cgrades, \%cgrade_inv);
+    get_course_grades($course, $year, $sem, \%cgrades, \%cgrade_inv);
     $course_grades{$course} = \%cgrades;
     $course_grade_inv{$course} = \%cgrade_inv;
   }
@@ -203,10 +221,11 @@ sub get_course_grades
 {
   my $course = shift;
   my $year = shift;
+  my $sem = shift;
   my $course_grade_map = shift;
   my $course_grade_inv_map = shift;
 
-  my $sql = "SELECT entryno,grade FROM course_grade where coucode='$course' and regyear='$year'";
+  my $sql = "SELECT entryno,grade FROM course_grade where coucode='$course' and regyear='$year' and regsem='$sem'";
   my $sth = $dbh->prepare($sql);
   # execute the query
   $sth->execute();
@@ -234,7 +253,7 @@ sub get_course_grades
   }
   $sth->finish();
   my $num_students_in_course = keys %$course_grade_map;
-  print "<li>Total number of students who took $course: $num_students_in_course</li>\n";
+  print "<li>Total number of students who took $course in semester $sem: $num_students_in_course</li>\n";
   #foreach my $grade (sort cmp_grade (keys %$course_grade_inv_map)) {
   #  my @value = @{${$course_grade_inv_map}{$grade}};
   #  my $bucketsize = @value;
