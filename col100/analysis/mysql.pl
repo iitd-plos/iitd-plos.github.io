@@ -7,7 +7,7 @@ use DBI;
 
 #config params
 #my $adm_year_of_interest = "20182019";
-my @adm_years_of_interest = ("20142015", "20152016");
+my @adm_years_of_interest = ("20142015", "20152016", "20162017", "20172018", "20182019");
 my @courses = ('COL100', 'MTL100'); #'ELL100', 'MTL101'
 
 #MySQL database configuration
@@ -154,8 +154,8 @@ sub draw_table_for_course
     my $cum_with_cs_exposure_fraction = ($cum_with_cs_exposure * 100)/$num_with_cs_exposure;
     my $cum_without_cs_exposure_fraction = ($cum_without_cs_exposure * 100)/$num_without_cs_exposure;
 
-    my $cum_with_cs_exposure_fraction_of_non_weak = ($cum_with_cs_exposure * 100)/$num_with_cs_exposure_ignore_d_and_lower;
-    my $cum_without_cs_exposure_fraction_of_non_weak = ($cum_without_cs_exposure * 100)/$num_without_cs_exposure_ignore_d_and_lower;
+    my $cum_with_cs_exposure_fraction_of_non_weak = ($num_with_cs_exposure_ignore_d_and_lower == 0) ? 0 : ($cum_with_cs_exposure * 100)/$num_with_cs_exposure_ignore_d_and_lower;
+    my $cum_without_cs_exposure_fraction_of_non_weak = ($num_without_cs_exposure_ignore_d_and_lower == 0) ? 0 : ($cum_without_cs_exposure * 100)/$num_without_cs_exposure_ignore_d_and_lower;
     #print "$grade : $num_with_cs_exposure_at_grade    $num_without_cs_exposure_at_grade    $num_cs_exposure_info_not_available\n";
     printf("<tr><td>$grade</td><td>$num_with_cs_exposure_at_grade</td><td>$num_without_cs_exposure_at_grade</td><td>$num_cs_exposure_info_not_available</td><td>$cum_with_cs_exposure</td><td>$cum_without_cs_exposure</td><td>%.2f</td><td>%.2f</td><td><b>%.2f</b></td><td><b>%.2f</b></td></tr>\n", $cum_with_cs_exposure_fraction, $cum_without_cs_exposure_fraction, $cum_with_cs_exposure_fraction_of_non_weak, $cum_without_cs_exposure_fraction_of_non_weak);
   }
@@ -169,7 +169,7 @@ sub get_student_cs_exposure_data
   my $with_cs_exposure = shift;
   my $without_cs_exposure = shift;
 
-  my $sql = "SELECT id,cs12th FROM student_cgpa where admyear=$year";
+  my $sql = "SELECT id,cs12th FROM student_cgpa_eng_gr_mcm_src where admyear=$year";
   my $sth = $dbh->prepare($sql);
   # execute the query
   $sth->execute();
