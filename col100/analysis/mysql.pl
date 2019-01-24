@@ -9,8 +9,8 @@ use DBI;
 #my $adm_year_of_interest = "20182019";
 my @adm_years_of_interest = ("20142015", "20152016", "20162017", "20172018", "20182019");
 my @courses = ('COL100', 'MTL100'); #'ELL100', 'MTL101'
-my %instructors = ( 'COL100-20172018-1', 'Vinay Ribeiro and Rahul Garg', 'COL100-20172018-2', 'Kolin Paul and Maya Ramanath', 'COL100-20162017-1', 'Aaditeshwar Seth', 'COL100-20142015-1', 'Sanjiva Prasad and Amitabha Bagchi' );
-my %webpages = ( 'COL100-20172018-1', 'http://www.cse.iitd.ernet.in/~akashdeep/col100/', 'COL100-20162017-1', 'http://www.cse.iitd.ernet.in/~aseth/col100/col100.html', 'COL100-20142015-1', 'http://www.cse.iitd.ac.in/~mansureh/COL100.htm' );
+our %instructor = ( 'COL100-20172018-1', 'Vinay Ribeiro and Rahul Garg', 'COL100-20172018-2', 'Kolin Paul and Maya Ramanath', 'COL100-20162017-1', 'Aaditeshwar Seth', 'COL100-20142015-1', 'Sanjiva Prasad and Amitabha Bagchi' );
+our %webpage = ( 'COL100-20172018-1', 'http://www.cse.iitd.ernet.in/~akashdeep/col100/', 'COL100-20162017-1', 'http://www.cse.iitd.ernet.in/~aseth/col100/col100.html', 'COL100-20142015-1', 'http://www.cse.iitd.ac.in/~mansureh/COL100.htm' );
 
 #MySQL database configuration
 my $dsn = "DBI:mysql:academics";
@@ -102,13 +102,15 @@ sub draw_histogram_table
   my $num_without_cs_exposure = keys %without_cs_exposure;
 
   foreach my $course (@courses) {
-    draw_table_for_course($course, $num_with_cs_exposure, $num_without_cs_exposure, \%cs_exposure_map, $course_grade_inv{$course});
+    draw_table_for_course($course, $year, $sem, $num_with_cs_exposure, $num_without_cs_exposure, \%cs_exposure_map, $course_grade_inv{$course});
   }
 }
 
 sub draw_table_for_course
 {
   my $course = shift;
+  my $year = shift;
+  my $sem = shift;
   my $num_with_cs_exposure = shift;
   my $num_without_cs_exposure = shift;
   my $cs_exposure_map_ref = shift;
@@ -137,7 +139,19 @@ sub draw_table_for_course
       }
     }
   }
-  print "<h2>$course</h2>\n";
+  print "<h2>";
+  my $course_id_str = "$course-$year-$sem";
+  if (defined $webpage{$course_id_str}) {
+    print "<a href=\"$webpage{$course_id_str}\">";
+  }
+  print "$course in Semester $sem, $year";
+  if (defined $instructor{$course_id_str}) {
+    print " by $instructor{$course_id_str}";
+  }
+  if (defined $webpage{$course_id_str}) {
+    print "</a>";
+  }
+  print "</h2>\n";
   print "<ul>\n";
   print "<li>Total number of students with grade &gt;= C- (non-weak): $num_students_ignore_d_and_lower</li>\n";
   print "<li>Total number of students with grade &gt;= C- (non-weak) and with prior CS exposure: $num_with_cs_exposure_ignore_d_and_lower</li>\n";
