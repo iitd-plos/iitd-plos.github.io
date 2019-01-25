@@ -9,7 +9,7 @@ use DBI;
 #my $adm_year_of_interest = "20182019";
 my @adm_years_of_interest = ("20142015", "20152016", "20162017", "20172018", "20182019");
 my @courses = ('COL100', 'MTL100'); #'ELL100', 'MTL101'
-our %instructor = ( 'COL100-20142015-2', 'Prem Kalra and Preeti Ranjan Panda', 'COL100-20152016-1', 'Smruti Ranjan Sarangi and K.K. Biswas', 'COL100-20152016-2', 'Prem Kalra and Prem Kalra', 'COL100-20172018-1', 'Vinay Ribeiro and Rahul Garg', 'COL100-20172018-2', 'Kolin Paul and Maya Ramanath', 'COL100-20162017-1', 'Aaditeshwar Seth and Smruti Ranjan Sarangi', 'COL100-20162017-2', 'Huzur Saran and Subodh Kumar', 'COL100-20142015-1', 'Sanjiva Prasad and Amitabha Bagchi' );
+our %instructor = ( 'COL100-20142015-2', 'Prem Kalra and Preeti Ranjan Panda', 'COL100-20152016-1', 'Smruti Ranjan Sarangi and K.K. Biswas', 'COL100-20152016-2', 'Prem Kalra and Preeti Ranjan Panda', 'COL100-20172018-1', 'Vinay Ribeiro and Rahul Garg', 'COL100-20172018-2', 'Kolin Paul and Maya Ramanath', 'COL100-20162017-1', 'Aaditeshwar Seth and Smruti Ranjan Sarangi', 'COL100-20162017-2', 'Huzur Saran and Subodh Kumar', 'COL100-20142015-1', 'Sanjiva Prasad and Amitabha Bagchi' );
 our %webpage = ( 'COL100-20172018-1', 'http://www.cse.iitd.ernet.in/~akashdeep/col100/', 'COL100-20162017-1', 'http://www.cse.iitd.ernet.in/~aseth/col100/col100.html', 'COL100-20142015-1', 'http://www.cse.iitd.ac.in/~mansureh/COL100.htm' );
 
 #MySQL database configuration
