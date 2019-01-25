@@ -57,52 +57,64 @@ foreach my $year (@adm_years_of_interest) {
   my %with_cs_exposure;
   my %without_cs_exposure;
   my %cs_exposure_map;
+  #there are duplicates in the mysql tables, so use associative arrays (not arrays)
+  my %course_grade_inv;
+
   print "<h1><u>$year</u></h1>\n";
   print "<ul>\n";
   get_student_cs_exposure_data($year, \%cs_exposure_map, \%with_cs_exposure, \%without_cs_exposure);
-  print "</ul>\n";
   foreach my $sem ("1", "2") {
     if ($year eq "20182019" and $sem eq "2") {
       next;
     }
-    print "<h1><u>$year Semester $sem</u></h1>\n";
-    draw_histogram_table($year, $sem, \%cs_exposure_map, \%with_cs_exposure, \%without_cs_exposure);
+    get_course_offering_data($year, $sem, \%cs_exposure_map, \%with_cs_exposure, \%without_cs_exposure, \%course_grade_inv);
   }
+  print "</ul>\n";
+  draw_histogram_table($year, \%cs_exposure_map, \%with_cs_exposure, \%without_cs_exposure, \%course_grade_inv);
 }
 
 #say "Disconnecting from the MySQL database.";
 $dbh->disconnect();
 
-sub draw_histogram_table
+sub get_course_offering_data
 {
   my $year = shift;
   my $sem = shift;
   my $cs_exposure_map_ref = shift;
   my $with_cs_exposure_ref = shift;
   my $without_cs_exposure_ref = shift;
+  my $course_grades_inv_ref =  shift;
+  #my %course_grades;
   my %cs_exposure_map = %$cs_exposure_map_ref;
   my %with_cs_exposure = %$with_cs_exposure_ref;
   my %without_cs_exposure = %$without_cs_exposure_ref;
 
-  #there are duplicates in the mysql tables, so use associative arrays (not arrays)
-  my %course_grades;
-  my %course_grade_inv;
-
-  print "<ul>\n";
   foreach my $course (@courses) {
     my %cgrades;
     my %cgrade_inv;
     get_course_grades($course, $year, $sem, \%cgrades, \%cgrade_inv);
-    $course_grades{$course} = \%cgrades;
-    $course_grade_inv{$course} = \%cgrade_inv;
+    #$course_grades{$course} = \%cgrades;
+    ${$course_grades_inv_ref}{$course} = \%cgrade_inv;
   }
-  print "</ul>\n";
+}
+
+sub draw_histogram_table
+{
+  my $year = shift;
+  my $cs_exposure_map_ref = shift;
+  my $with_cs_exposure_ref = shift;
+  my $without_cs_exposure_ref = shift;
+  my $course_grades_inv_ref =  shift;
+  my %cs_exposure_map = %$cs_exposure_map_ref;
+  my %with_cs_exposure = %$with_cs_exposure_ref;
+  my %without_cs_exposure = %$without_cs_exposure_ref;
+
 
   my $num_with_cs_exposure = keys %with_cs_exposure;
   my $num_without_cs_exposure = keys %without_cs_exposure;
 
   foreach my $course (@courses) {
-    draw_table_for_course($course, $year, $sem, $num_with_cs_exposure, $num_without_cs_exposure, \%cs_exposure_map, $course_grade_inv{$course});
+    draw_table_for_course($course, $year, $num_with_cs_exposure, $num_without_cs_exposure, \%cs_exposure_map, ${$course_grades_inv_ref}{$course});
   }
 }
 
@@ -110,7 +122,7 @@ sub draw_table_for_course
 {
   my $course = shift;
   my $year = shift;
-  my $sem = shift;
+  #my $sem = shift;
   my $num_with_cs_exposure = shift;
   my $num_without_cs_exposure = shift;
   my $cs_exposure_map_ref = shift;
@@ -140,16 +152,22 @@ sub draw_table_for_course
     }
   }
   print "<h2>";
-  my $course_id_str = "$course-$year-$sem";
-  if (defined $webpage{$course_id_str}) {
-    print "<a href=\"$webpage{$course_id_str}\">";
-  }
-  print "$course in Semester $sem, $year";
-  if (defined $instructor{$course_id_str}) {
-    print " by $instructor{$course_id_str}";
-  }
-  if (defined $webpage{$course_id_str}) {
-    print "</a>";
+  print "$course in $year: ";
+  for my $sem ("1", "2") {
+    my $course_id_str = "$course-$year-$sem";
+    if (defined $webpage{$course_id_str}) {
+      print "<a href=\"$webpage{$course_id_str}\">";
+    }
+    print "Semester $sem";
+    if (defined $instructor{$course_id_str}) {
+      print " by $instructor{$course_id_str}";
+    }
+    if (defined $webpage{$course_id_str}) {
+      print "</a>";
+    }
+    if ($sem eq "1") {
+      print ", ";
+    }
   }
   print "</h2>\n";
   print "<ul>\n";
@@ -239,7 +257,8 @@ sub get_course_grades
   my $course_grade_map = shift;
   my $course_grade_inv_map = shift;
 
-  my $sql = "SELECT entryno,grade FROM course_grade where coucode='$course' and regyear='$year' and regsem='$sem'";
+  #my $sql = "SELECT entryno,grade FROM course_grade where coucode='$course' and regyear='$year' and regsem='$sem'";
+  my $sql = "SELECT entryno,grade FROM course_grade where coucode='$course' and regyear='$year'";
   my $sth = $dbh->prepare($sql);
   # execute the query
   $sth->execute();
