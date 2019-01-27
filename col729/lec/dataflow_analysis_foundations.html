@@ -237,4 +237,210 @@ V = { x | x is a subset of {d1,d2,d3}}, ^ = set-union
 <li>Another example: meet operator = \intersection, partial order &le; is ? Draw semilattice diagram for this</li>
 </ul>
 
+<p>Summary:
+<ul>
+<li>Three ways to define a semi-lattice:
+<ul>
+<li>Set of values + meet operator
+<ul>
+<li>idempotent: <code>x ^ x = x</code></li>
+<li>commutative: <code>x ^ y = y ^ x</code></li>
+<li>associative: <code>x ^ (y ^ z) = (x ^ y) ^ z</code></li>
+</ul>
+</li>
+<li>Set of values + partial order
+<ul>
+<li>Reflexive: <code> x &le; x</code></li>
+<li>Antisymmetric: <code>if x &le; y and y &le; x then x = y</code></li>
+<li>Transitive: <code>if x &le; y and y &le; z then x &le; z</code></li>
+</ul>
+</li>
+<li>A semi-lattice diagram
+<ul>
+<li>No cycles</li>
+<li>\Top is on top of everything</li>
+<li>\Bottom is at the bottom of everything.</li>
+<li>\Top or \Bottom may not necessarily exist; e.g., if domain is integers, and meet operator is Max, then bottom is \infinity.</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+<p>Another example: semi-lattice with V = {x | such that x is a subset of {d1, d2, d3}}, ^ = \intersection
+
 <p>One element at a time
+<ul>
+<li>A semi-lattice for data flow problems can get quite large; 2^n elements for n var/definitions, for example</li>
+<li>A useful technique
+<ul>
+<li>define semi-lattice for 1 element</li>
+<li>product of semi-lattices for all elements</li>
+</ul>
+</li>
+<li>Example: union of definitions
+<ul>
+<li>For each element d1, lattice is : {} --&gt; {d1}</li>
+<li>Similarly, for d2, lattice is : {} --&gt; {d2}</li>
+<li>Product lattice is: {} --&gt; {d1},  {} --&gt; {d2}, {d1} --&gt; {d1, d2}, {d2} --&gt; {d1, d2}.</li>
+</ul>
+</li>
+<li>Defining product of lattices: &lt;x1,x2&gt; &le; &lt;y1,y2&gt; iff x1&le;y1 and x2&le;y2</li>
+</ul>
+
+<p><b>Descending chain</b>
+<ul>
+<li>Definition: The <b>height</b> of a lattice is the largest number of &gt; relations that will fit in a descending chain:
+<pre>
+x0 &gt; x1 &gt; x2 &gt; ... &gt; ...
+</pre>
+</li>
+<li>Height of lattice in reaching definitions? Number of definitions</li>
+<li>Height of lattice in live variables? Number of variables</li>
+<li>Important property for the algorithm to work: finite descending chains
+<ul>
+<li>if V=integers, and ^=min, then height = \infinity</li>
+<li>Note that it is not necessary for an infinite semi-lattice to have infinite height. example? constant propagation over integers</li>
+</ul>
+</ul>
+
+<h3>Transfer functions</h3>
+<ul>
+<li>A family of transfer functions F</li>
+<li>Basic properties <em>f</em>: V --&gt; V
+<ul>
+<li>Has an identity function, i.e., \Exists f such that f(x) = x for all x.</li>
+<li>Closed under composition, i.e., if f1,f2 \in F, then f1.f2 \in F.</li>
+</ul>
+</li>
+</ul>
+
+<p><b>Monotonicity</b>
+<ul>
+<li>
+A framework (F, V, ^) is monotone iff x &le; y implies f(x) &le; f(y)
+</li>
+<li>
+Equivalently, a framework (F, V, ^) is monotone iff
+<ul>
+<li>f(x^y) &le; f(x)^f(y)</li>
+<li>(meet inputs, then apply f) &le; (apply f individually to inputs, then meet results)</li>
+</ul>
+</li>
+</ul>
+
+<p>Example: reaching definitions: f(x) = Gen \union (x - Kill), ^ = \union
+<ul>
+<li>Definition 1: Let x1 &le; x2 (x1 is a superset of x2); f(x1): Gen \Union (x1 - Kill); f(x2): Gen \Union (x2 - Kill)</li>
+<li>Clearly, f(x1) &le; f(x2) (because f(x1) is a superset of f(x2))</li></li>
+</ul>
+Alternatively,
+<ul>
+<li>Definition 2:
+<ul>
+<li>f(x1^x2) = Gen \union ((x1 \union x2) - Kill)</li>
+<li>f(x1)^f(x2) = (Gen \union (x1 - Kill)) \Union (Gen \Union (x2 - Kill))</li>
+<li>(x1 \union x2) - Kill = (x1 - Kill) \union (x2 - Kill)</li>
+<li>hence monotone; actually <b>distributive</b>, because f(x1^x2)=f(x1)^f(x2)</li>
+</ul>
+</li>
+</ul>
+
+<p>Important: monotone framework does <b>not</b> mean that <code>f(x) &le; x</code>.
+<ul>
+<li>e.g., reaching definition for two definitions in a program, d1 and d2. Suppose f: Gen = {d1}; Kill = {d2}; f({}) = {d1} which is not &le; {}.</li>
+<li>x: {} &ge; {d1} &ge; {d1,d2}; f(x): {d1} &ge; {d1} &ge; {d1}.</li>
+<li>No relationship between f(x) and x!</li>
+</ul>
+
+<p><b>Distributivity</b>: A framework (F, V, ^) is distributive if and only if:
+<ul>
+<li>f(x^y) = f(x)^f(y)</li>
+</ul>
+Meet input, then apply f is <b>equal to</b> apply the transfer function individually and then merge result.
+
+<p>Distributivity implies monotonicity, but not vice-versa.
+
+<h3>Properties of Iterative Algorithm</h3>
+<ul>
+<li>Given:
+<ul>
+<li>^ and monotone data flow framework</li>
+<li>finite descending chain</li>
+<li>THEN converges!</li>
+</ul>
+</li>
+<li>Initialization of interior points to \Top.
+<ul>
+<li>yields <b>Maximum Fixed Point</b> (MFP) solution of equations.
+</ul>
+</li>
+</ul>
+
+<p><b>Behaviour of iterative algorithm (intuitively)</b>:
+For each IN/OUT of an interior program point:
+<ul>
+<li>It's value cannot go up (new value &lt; old value) during algorithm.</li>
+<li>Start with \Top (largest value)</li>
+<li>Proof by induction:
+<ul>
+<li>Apply first transfer function / meet operator &le; old value (\Top)</li>
+<li>Inputs to meet changes (get smaller), reapply
+<ul>
+<li>since input gets smaller, new output &le; old output</li>
+</ul>
+</li>
+<li>Inputs to transfer function changes (get smaller), reapply
+<ul>
+<li>because of monotonicity of transfer function: since input gets smaller, new output &le; old output</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Values do not come down unless some constraints drive them down (ensures "maximum")</li>
+<li>Algorithm iterates until equations are satisfied.</li>
+<li>Therefore, finds the largest solution that satisfies the equations.</li>
+</ul>
+
+<h3>What does the solution mean?</h3>
+IDEAL data flow solution
+<ul>
+<li>Let f1, .., fm: \in F, fi is the transfer function for node i</li>
+<li>For a path p, fp = fn.f(n-1)...(f1), if p is a path through nodes n1,..,nk</li>
+<li>For an empty path p, fp = identity function</li>
+<li>For each node n: ^fp (boundary value) for <u>all possibly executed paths</u> p reaching n.</li>
+<li>example: if (sqr(y) &ge; 0) { x = 0; } else { x = 1; }. Here, the ideal solution is that x = 0 at the end of this program.</li>
+<li>However, determining all possibly executed paths is undecidable.</li>
+</ul>
+
+<p><b>Meet over paths MOP</b> solution:
+<ul>
+<li>Err in the conservative direction</li>
+<li>Meet over paths MOP (over all paths, not just executed paths):
+<ul>
+<li>Assume every edge is traversed</li>
+<li>For each node n: MOP(n) = ^ f(p) for all paths p reaching n</li>
+</ul>
+</li>
+<li>Compare MOP with IDEAL
+<ul>
+<li>MOP includes more paths than IDEAL</li>
+<li>MOP = IDEAL ^ Result(unexecuted paths)</li>
+<li>MOP &le; IDEAL</li>
+<li>MOP is a "smaller" solution, more conservative, <b>safe</b></li>
+</ul>
+</li>
+<li>Data flow solution &le; MOP &le; IDEAL
+<ul>
+<li>because we don't just meet at the end, we meet all the time.</li>
+<li>as close to MOP from below as possible.</li>
+</ul>
+</li>
+</ul>
+
+<p>What is the difference between MOP and MFP of data flow equations? Consider two paths F1.F3 and F2.F3. MOP = F3F1(x) ^ F3F2(x).  MFP (through iterative algo) = F3(F1(x) ^ F2(x)). Therefore
+<ul>
+<li>any FP &le; MFP &le; MOP &le; IDEAL</li>
+<li>FP, MFP, MOP are safe</li>
+<li>If framework is distributive, FP &le; MFP = MOP &le; IDEAL</li>
+</ul>
