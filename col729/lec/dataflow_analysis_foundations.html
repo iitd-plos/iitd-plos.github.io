@@ -361,6 +361,8 @@ Meet input, then apply f is <b>equal to</b> apply the transfer function individu
 
 <p>Distributivity implies monotonicity, but not vice-versa.
 
+<p>Example: the framework for constant propagation is not distributive: example: if (...) { x = 2; y = 3; } else { x = 3; y = 2; }; z = x + y;  f(x)^f(y) = 5; f(x^y) = \Bottom.
+
 <h3>Properties of Iterative Algorithm</h3>
 <ul>
 <li>Given:
