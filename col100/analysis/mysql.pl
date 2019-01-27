@@ -305,7 +305,10 @@ sub get_course_grades
   }
   $sth->finish();
   my $num_students_in_course = keys %$course_grade_map;
-  print "<li>Total number of students who took $course in semester $sem: $num_students_in_course</li>\n";
+  #print "<li>Total number of students who took $course in semester $sem: $num_students_in_course</li>\n";
+  if ($sem eq "1") {
+    print "<li>Total number of students who took $course in $year: $num_students_in_course</li>\n";
+  }
   #foreach my $grade (sort cmp_grade (keys %$course_grade_inv_map)) {
   #  my @value = @{${$course_grade_inv_map}{$grade}};
   #  my $bucketsize = @value;
