@@ -24,7 +24,7 @@ my %attr = ( PrintError=>0,  # turn off error reporting via warn()
 our $dbh  = DBI->connect($dsn,$username,$password, \%attr);
 #say "Connected to the MySQL database.";
 print "<h1>Analysis of COL100 student grade data vis-a-vis prior CS exposure</h1>\n";
-print "by Sorav Bansal (for COL100 Oversight Committee)<br>\n";
+#print "by Sorav Bansal (for COL100 Oversight Committee)<br>\n";
 print "<p><b>Analysis reports prepared by Suban</b><ol>\n";
 print "<li><a href=http://10.10.111.112/plots/CS/>http://10.10.111.112/plots/CS/</a>: this set of analyses seems to purport that prior CS exposure is positively correlated with COL100 grade, and so there may be a causal relation between the two.</li>\n";
 print "<li><a href=http://10.10.111.112/plots/CS/COL100-semI-2018-2019/>http://10.10.111.112/plots/CS/COL100-semI-2018-2019/</a>: this set of results is for COL100 offering in the first semester of 2018-2019; however prior CS exposure data is not used in this analysis; not sure what to make of this.</li>\n";
@@ -32,26 +32,36 @@ print "<li>Some high-level curriculum analyses (I could not find their relevance
     The executive summary of the study conducted by Ravinder Kaur (commissioned by the Director): <a href=http://10.10.111.112/plots/execsummary.pdf>http://10.10.111.112/plots/execsummary.pdf</a></li>
     <li>Data analysis part of the study: <a href=http://10.10.111.112/plots/quant.pdf>http://10.10.111.112/plots/quant.pdf</a></li><li><a href=http://10.10.111.112/plots/jee-regressions/>http://10.10.111.112/plots/jee-regressions/</a></li><li><a href=http://10.10.111.112/plots/regression/reg_log1.pdf>http://10.10.111.112/plots/regression/reg_log1.pdf</a></li></ol></li>\n";
 print "</ol>\n";
-print "<p><b>Facts based on data below</b> (I hope we can agree on them):<ol>\n";
-print "<li>I could only find prior-CS-exposure data for 2014-entry and 2015-entry students (confirmed by Suban).</li>\n";
-print "<li>There is a clear correlation between prior-CS-exposure and final COL100 grade (confirms Suban's results)</li>\n";
-print "<li>Just to be completely sure, I also tried to see the statistics after removing all students who received a D or less (E/F/W/NF) while computing percentages (see columns titled non-weak students). In any case, the correlations remain largely similar, irrespective of whether we consider the weak students or not.</li>\n";
-print "<li>However, there is also a clear correlation between prior-CS-exposure and final MTL100 grades.  I picked another first-year course (MTL100) to see if the correlation is unique to COL100 or not.</li>\n";
-print "<li>I do see slightly higher correlations for COL100 (than MTL100), say a few percentage points here or there, but nothing significant.</li>\n";
-print "<li>The fact that both MTL100 and COL100 show similar correlations with prior-CS-exposure is clear evidence that the correlations are not causal. <b>In fact there is no evidence that prior CS exposure presents a statistically significant advantage to students for COL100 specifically.</b> (something I find surprising).</li>\n";
+print "<p><b>Purpose of the data analysis study</b><ol>\n";
+print "<li>Is it true that prior CS exposure in Class XII presents a significant statistical advantage to students in COL100?  Because we do not have other data to conclusively differentiate causal relations from correlations, we intend to base our analysis on a comparative study of the correlations for COL100 and MTL100 grades; the premise is that if prior CS exposure is presenting an unfair advantage to students in COL100, the correlations should be specific to COL100.</li>\n";
+print "<li>Any other insights to be drawn from the data.</li>\n";
 print "</ol>\n";
-print "<p><b>My (humble) inferences and opinions</b>:<ol type=\"a\">\n";
-print "<li>For COL100 (and for all other courses actually), it is very clear that we get two categories of students based on their socio-economic backgrounds; let's call them \"haves\" and \"have-nots\" for lack of a better terminology. This categorization is not just based on this data, but also based on my experience teaching several subjects over the past around ten years at IITD. Perhaps the haves have better access to resources, teachers, exposure, etc., I cannot say.</li>\n";
-print "<li>A fair treatment should involve separate handling of these two categories of students; the have-nots should be started with more introductory material, while the haves can be started at a more advanced level. As far as I can tell, all of us agree on this aspect of our intake</li>\n";
-print "<li>However, there are several practical issues with this, the most of important of which IMHO is: how do we distinguish the two categories; we need to worry about both precision and also care about being politically and socially correct in our categorization. Doing this practically in a curriculum-wide manner seems too hard to even attempt.</li>\n";
-print "<li>This is the exact same effect that is playing out for COL100 too; but COL100 is definitely not unique in witnessing this effect. The data below shows that MTL100 has the exact same issue, and I would not be surprised at all if more courses show the same issue.</li>\n";
-print "<li>It just so happens that the two categories are also correlated with their typical class XII subjects; in particular, the haves seem to have more percentage of people who take CS in class XII. But treating these correlations as causal effects is wrong, as seen through MTL data: even though their class XII CS course has nothing to do with MTL100 syllabus, students with prior CS exposure still seem to score higher on MTL100. In my opinion, this indicates that it is not their CS exposure but other issues that have causal effects both on their class XII subjects and their grades in IIT courses.</li>\n";
-print "<li>At this point, I will not argue against a two-step COL100. However, if COL100 is made two-step, IMHO the criteria for deciding who needs one step vs. who needs two steps, cannot be based on their prior CS exposure, as we have just established that prior CS exposure is an incidentally correlated effect and not a cause for their COL100 performance.\n";
-print "<ul><li>To use a crude analogy, let's say that in the context of reservation, the government is interested in supporting historically oppressed sections of the society; it also so happens that the oppressed sections of the society have shorter height on average, due to some nutritional correlation; based on this, should the government start making short height as the criteria for reservations? In other words, we should not fall into the trap of trying to cure the symptom and thus overlooking the cause.</li></ul>\n";
-print "</li>\n";
-print "<li>Finally: if COL100 is made two-step, IMHO we must also advocate MTL100 (and similarly other courses) to also be considered for making two-step in the same breath. Why should this be a COL100 specific issue?</li>\n";
-print "</ol>\n";
-print "Overall, based on the last two bullets, in my opinion, I really do not see why we should advocate a two-step CS introduction for a subset of students. If anything, we should at least get rid of arbitrary requirements like \"prior CS exposure\", and base it solely on a waiver test. But again, why just COL100?\n";
+print "<p><b>Method</b><ul>\n";
+print "<li>We have prior CS exposure data for students who entered IITD in 2014, 2015, 2016, 2017, and 2018.</li>\n";
+print "<li>We have grade data for COL100 and MTL100 in first and second semesters of 2014-2015, 2015-2016, 2016-2017, 2017-2018. For 2018-2019, we have grade data only for the first semester.</li>\n";
+print "<li>We try and compare the grades of students with-prior-CS-expsorure with the grades of students without-prior-CS-exposure in both COL100 and MTL100, to try and see if (1) a correlation exists, and (2) if the correlation is specific to COL100. If both conditions are true, this would be significant statistical evidence that COL100 grade is causally correlated to prior CS exposure</li>\n";
+print "</ul>\n";
+print "See some simple conclusions that can be drawn from this data at the end of the page<br>\n";
+#print "<p><b>Facts based on data below</b> (I hope we can agree on them):<ol>\n";
+#print "<li>I could only find prior-CS-exposure data for 2014-entry and 2015-entry students (confirmed by Suban).</li>\n";
+#print "<li>There is a clear correlation between prior-CS-exposure and final COL100 grade (confirms Suban's results)</li>\n";
+#print "<li>Just to be completely sure, I also tried to see the statistics after removing all students who received a D or less (E/F/W/NF) while computing percentages (see columns titled non-weak students). In any case, the correlations remain largely similar, irrespective of whether we consider the weak students or not.</li>\n";
+#print "<li>However, there is also a clear correlation between prior-CS-exposure and final MTL100 grades.  I picked another first-year course (MTL100) to see if the correlation is unique to COL100 or not.</li>\n";
+#print "<li>I do see slightly higher correlations for COL100 (than MTL100), say a few percentage points here or there, but nothing significant.</li>\n";
+#print "<li>The fact that both MTL100 and COL100 show similar correlations with prior-CS-exposure is clear evidence that the correlations are not causal. <b>In fact there is no evidence that prior CS exposure presents a statistically significant advantage to students for COL100 specifically.</b> (something I find surprising).</li>\n";
+#print "</ol>\n";
+#print "<p><b>My (humble) inferences and opinions</b>:<ol type=\"a\">\n";
+#print "<li>For COL100 (and for all other courses actually), it is very clear that we get two categories of students based on their socio-economic backgrounds; let's call them \"haves\" and \"have-nots\" for lack of a better terminology. This categorization is not just based on this data, but also based on my experience teaching several subjects over the past around ten years at IITD. Perhaps the haves have better access to resources, teachers, exposure, etc., I cannot say.</li>\n";
+#print "<li>A fair treatment should involve separate handling of these two categories of students; the have-nots should be started with more introductory material, while the haves can be started at a more advanced level. As far as I can tell, all of us agree on this aspect of our intake</li>\n";
+#print "<li>However, there are several practical issues with this, the most of important of which IMHO is: how do we distinguish the two categories; we need to worry about both precision and also care about being politically and socially correct in our categorization. Doing this practically in a curriculum-wide manner seems too hard to even attempt.</li>\n";
+#print "<li>This is the exact same effect that is playing out for COL100 too; but COL100 is definitely not unique in witnessing this effect. The data below shows that MTL100 has the exact same issue, and I would not be surprised at all if more courses show the same issue.</li>\n";
+#print "<li>It just so happens that the two categories are also correlated with their typical class XII subjects; in particular, the haves seem to have more percentage of people who take CS in class XII. But treating these correlations as causal effects is wrong, as seen through MTL data: even though their class XII CS course has nothing to do with MTL100 syllabus, students with prior CS exposure still seem to score higher on MTL100. In my opinion, this indicates that it is not their CS exposure but other issues that have causal effects both on their class XII subjects and their grades in IIT courses.</li>\n";
+#print "<li>At this point, I will not argue against a two-step COL100. However, if COL100 is made two-step, IMHO the criteria for deciding who needs one step vs. who needs two steps, cannot be based on their prior CS exposure, as we have just established that prior CS exposure is an incidentally correlated effect and not a cause for their COL100 performance.\n";
+#print "<ul><li>To use a crude analogy, let's say that in the context of reservation, the government is interested in supporting historically oppressed sections of the society; it also so happens that the oppressed sections of the society have shorter height on average, due to some nutritional correlation; based on this, should the government start making short height as the criteria for reservations? In other words, we should not fall into the trap of trying to cure the symptom and thus overlooking the cause.</li></ul>\n";
+#print "</li>\n";
+#print "<li>Finally: if COL100 is made two-step, IMHO we must also advocate MTL100 (and similarly other courses) to also be considered for making two-step in the same breath. Why should this be a COL100 specific issue?</li>\n";
+#print "</ol>\n";
+#print "Overall, based on the last two bullets, in my opinion, I really do not see why we should advocate a two-step CS introduction for a subset of students. If anything, we should at least get rid of arbitrary requirements like \"prior CS exposure\", and base it solely on a waiver test. But again, why just COL100?\n";
 
 foreach my $year (@adm_years_of_interest) {
   my %with_cs_exposure;
@@ -75,6 +85,15 @@ foreach my $year (@adm_years_of_interest) {
 
 #say "Disconnecting from the MySQL database.";
 $dbh->disconnect();
+
+print "<h3>Some simple conclusions to be made</h3><ol>\n";
+print "<li>The percentage of students with prior CS exposure in a single batch is 20-28\%, and this seems to be increasing gradually over the years.</li>\n";
+print "<li>Since 2014-2015, all students with prior CS exposure do COL100 only in the second semester.</li>\n";
+print "<li>While for some years, there is a strong correlation between prior-CS-exposure and COL100 grades, similar correlations (sometimes even stronger!) exist between prior-CS-exposure and MTL100 grades<ul>\n";
+print "<li>It seems hard to conclude from this data that COL100 grades are causally related to prior CS exposure. The counter-reasoning is that while MTL100 syllabus has nothing to do with high-school CS syllabus, the correlation still exists between prior CS exposure and MTL100 grades.  This probably suggests that there is perhaps some other socio-economic root cause that is correlated with both their Class XII subjects, and their performance in IIT curriculum.</li>\n";
+print "<li>There seems to be large variations in the correlations across different years: e.g., in 2017-2018, the students without prior CS exposure actually seem to be doing better on A grades than students with prior CS exposure!  This variation across different batches perhaps needs more investigation.</li>\n";
+print "</ul><li>\n";
+print "</ol>\n";
 
 sub get_course_offering_data
 {
