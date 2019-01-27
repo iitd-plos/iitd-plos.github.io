@@ -39,13 +39,13 @@ print "</ol>\n";
 print "<p><b>Method</b><ul>\n";
 print "<li>We have prior CS exposure data for students who entered IITD in 2014, 2015, 2016, 2017, and 2018.</li>\n";
 print "<li>We have grade data for COL100 and MTL100 in first and second semesters of 2014-2015, 2015-2016, 2016-2017, 2017-2018. For 2018-2019, we have grade data only for the first semester.</li>\n";
-print "<li>We try and compare the grades of students with-prior-CS-expsorure with the grades of students without-prior-CS-exposure in both COL100 and MTL100, to try and see if (1) a correlation exists, and (2) if the correlation is specific to COL100. If both conditions are true, this would be significant statistical evidence that COL100 grade is causally correlated to prior CS exposure</li>\n";
+print "<li>We try and compare the grades of students with-prior-CS-expsorure with the grades of students without-prior-CS-exposure in both COL100 and MTL100, to try and see if (1) a correlation exists between prior-CS-exposure and COL100 grades, and (2) whether the correlation is specific to COL100. If both conditions are true, this would be significant statistical evidence that COL100 grade is causally correlated to prior CS exposure.</li>\n";
+print "<li>Just to be completely sure, we also tried to see the statistics after removing all students who received a D or less (E/F/W/NF) while computing percentages (see columns titled non-weak students). Mostly, the correlations remain largely similar, irrespective of whether we consider the weak students or not.</li>\n";
 print "</ul>\n";
 print "See some simple conclusions that can be drawn from this data at the end of the page<br>\n";
 #print "<p><b>Facts based on data below</b> (I hope we can agree on them):<ol>\n";
 #print "<li>I could only find prior-CS-exposure data for 2014-entry and 2015-entry students (confirmed by Suban).</li>\n";
 #print "<li>There is a clear correlation between prior-CS-exposure and final COL100 grade (confirms Suban's results)</li>\n";
-#print "<li>Just to be completely sure, I also tried to see the statistics after removing all students who received a D or less (E/F/W/NF) while computing percentages (see columns titled non-weak students). In any case, the correlations remain largely similar, irrespective of whether we consider the weak students or not.</li>\n";
 #print "<li>However, there is also a clear correlation between prior-CS-exposure and final MTL100 grades.  I picked another first-year course (MTL100) to see if the correlation is unique to COL100 or not.</li>\n";
 #print "<li>I do see slightly higher correlations for COL100 (than MTL100), say a few percentage points here or there, but nothing significant.</li>\n";
 #print "<li>The fact that both MTL100 and COL100 show similar correlations with prior-CS-exposure is clear evidence that the correlations are not causal. <b>In fact there is no evidence that prior CS exposure presents a statistically significant advantage to students for COL100 specifically.</b> (something I find surprising).</li>\n";
@@ -92,7 +92,7 @@ print "<li>Since 2014-2015, all students with prior CS exposure do COL100 only i
 print "<li>While for some years, there is a strong correlation between prior-CS-exposure and COL100 grades, similar correlations (sometimes even stronger!) exist between prior-CS-exposure and MTL100 grades<ul>\n";
 print "<li>It seems hard to conclude from this data that COL100 grades are causally related to prior CS exposure. The counter-reasoning is that while MTL100 syllabus has nothing to do with high-school CS syllabus, the correlation still exists between prior CS exposure and MTL100 grades.  This probably suggests that there is perhaps some other socio-economic root cause that is correlated with both their Class XII subjects, and their performance in IIT curriculum.</li>\n";
 print "<li>There seems to be large variations in the correlations across different years: e.g., in 2017-2018, the students without prior CS exposure actually seem to be doing better on A grades than students with prior CS exposure!  This variation across different batches perhaps needs more investigation.</li>\n";
-print "</ul><li>\n";
+print "</ul></li>\n";
 print "</ol>\n";
 
 sub get_course_offering_data
