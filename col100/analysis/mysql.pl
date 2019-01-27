@@ -86,7 +86,7 @@ foreach my $year (@adm_years_of_interest) {
 #say "Disconnecting from the MySQL database.";
 $dbh->disconnect();
 
-print "<h3>Some simple conclusions to be made</h3><ol>\n";
+print "<h3>Some simple conclusions to be drawn</h3><ol>\n";
 print "<li>The percentage of students with prior CS exposure in a single batch is 20-28\%, and this seems to be increasing gradually over the years.</li>\n";
 print "<li>Since 2014-2015, all students with prior CS exposure do COL100 only in the second semester.</li>\n";
 print "<li>While for some years, there is a strong correlation between prior-CS-exposure and COL100 grades, similar correlations (sometimes even stronger!) exist between prior-CS-exposure and MTL100 grades<ul>\n";
