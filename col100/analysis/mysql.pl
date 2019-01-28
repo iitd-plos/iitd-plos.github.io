@@ -9,8 +9,8 @@ use DBI;
 #my $adm_year_of_interest = "20182019";
 my @adm_years_of_interest = ("20142015", "20152016", "20162017", "20172018", "20182019");
 my @courses = ('COL100', 'MTL100'); #'ELL100', 'MTL101'
-our %instructor = ( 'COL100-20142015-2', 'Prem Kalra and Preeti Ranjan Panda', 'COL100-20152016-1', 'Smruti Ranjan Sarangi and K.K. Biswas', 'COL100-20152016-2', 'Prem Kalra and Preeti Ranjan Panda', 'COL100-20172018-1', 'Vinay Ribeiro and Rahul Garg', 'COL100-20172018-2', 'Kolin Paul and Maya Ramanath', 'COL100-20162017-1', 'Aaditeshwar Seth and Smruti Ranjan Sarangi', 'COL100-20162017-2', 'Huzur Saran and Subodh Kumar', 'COL100-20142015-1', 'Sanjiva Prasad and Amitabha Bagchi' );
-our %webpage = ( 'COL100-20172018-1', 'http://www.cse.iitd.ernet.in/~akashdeep/col100/', 'COL100-20162017-1', 'http://www.cse.iitd.ernet.in/~aseth/col100/col100.html', 'COL100-20142015-1', 'http://www.cse.iitd.ac.in/~mansureh/COL100.htm' );
+our %instructor = ( 'COL100-20142015-2', 'Prem Kalra and Preeti Ranjan Panda', 'COL100-20152016-1', 'Smruti Ranjan Sarangi and K.K. Biswas', 'COL100-20152016-2', 'Prem Kalra and Preeti Ranjan Panda', 'COL100-20172018-1', 'Vinay Ribeiro and Rahul Garg', 'COL100-20172018-2', 'Kolin Paul and Maya Ramanath', 'COL100-20162017-1', 'Aaditeshwar Seth and Smruti Ranjan Sarangi', 'COL100-20162017-2', 'Huzur Saran and Subodh Kumar', 'COL100-20142015-1', 'Sanjiva Prasad and Amitabha Bagchi', 'COL100-20182019-1', 'Parag Singla and Sorav Bansal');
+our %webpage = ( 'COL100-20172018-1', 'http://www.cse.iitd.ernet.in/~akashdeep/col100/', 'COL100-20162017-1', 'http://www.cse.iitd.ernet.in/~aseth/col100/col100.html', 'COL100-20142015-1', 'http://www.cse.iitd.ac.in/~mansureh/COL100.htm', 'COL100-20182019-1', 'http://iitd-plos.github.io/col100' );
 
 #MySQL database configuration
 my $dsn = "DBI:mysql:academics";
@@ -91,7 +91,7 @@ print "<li>The percentage of students with prior CS exposure in a single batch i
 print "<li>Since 2014-2015, all students with prior CS exposure do COL100 only in the second semester.</li>\n";
 print "<li>While for some years, there is a strong correlation between prior-CS-exposure and COL100 grades, similar correlations (sometimes even stronger!) exist between prior-CS-exposure and MTL100 grades<ul>\n";
 print "<li>It seems hard to conclude from this data that COL100 grades are causally related to prior CS exposure. The counter-reasoning is that while MTL100 syllabus has nothing to do with high-school CS syllabus, the correlation still exists between prior CS exposure and MTL100 grades.  This probably suggests that there is perhaps some other socio-economic root cause that is causally related to both their Class XII subjects, and their performance in IIT curriculum.</li>\n";
-print "<li>There seems to be large variations in the correlations across different years: e.g., in 2017-2018, the students without prior CS exposure actually seem to be doing better on A grades than students with prior CS exposure!  This variation across different batches is surprising, and perhaps needs more investigation.</li>\n";
+print "<li>There seem to be large variations in the correlations across different years: e.g., in 2017-2018, the students without prior CS exposure actually seem to be doing better on A grades than students with prior CS exposure!  This variation across different batches is surprising, and perhaps needs more investigation.</li>\n";
 print "</ul></li>\n";
 print "</ol>\n";
 
