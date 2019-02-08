@@ -1,2 +1,2 @@
 run::
-	perl mysql.pl > analysis.html
+	perl mysql.pl > index.html
