@@ -14,7 +14,7 @@ HOLIDAY: Apr 17. Mahavir Jayanti
 HOLIDAY: Apr 19. Good Friday
 HOLIDAY: May 6. Idu'l Fitr
 
-SKIP: Feb 2. MINOR1 TESTS
+SKIP: Feb 4. MINOR1 TESTS
 SKIP: Feb 7. MINOR1 TESTS
 SKIP: Mar 25. MINOR2 TESTS
 SKIP: Mar 28. MINOR2 TESTS
@@ -38,11 +38,15 @@ LEC: <a href=lec/dataflow_analysis.html>Dataflow analysis</a>, <a href=lec/globa
 ==
 LEC: <a href=lec/dataflow_analysis_foundations.html>Foundations of Dataflow Analysis</a>
 ==
-LEC: <a href=lec/register_allocation.html>Register allocation</a>
+LEC: <a href=lec/dataflow_analysis_foundations.html>Foundations of Dataflow Analysis</a> (contd.)
+==
+LEC: <a href=lec/dataflow_analysis_foundations.html>Foundations of Dataflow Analysis</a> (contd.)
 ==
 LEC: <a href=lec/lazy_code_motion.html>Lazy code motion</a>
 ==
 LEC: <a href=lec/lazy_code_motion.html>Lazy code motion</a> (contd.), <a href=lec/phase_ordering_problem.html>Phase ordering problem</a>
+==
+LEC: <a href=lec/register_allocation.html>Register allocation</a>
 ==
 LEC: <a href=lec/loop_transformations.html>Loop transformations</a>, <a href=lec/affine_transformations.html>Affine loop transformations</a>.
 ==
