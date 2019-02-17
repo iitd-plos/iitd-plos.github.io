@@ -83,10 +83,62 @@ A node <code>d</code> dominates <code>n</code> in a graph (<code>d dom n</code>)
 	<li>Initialization to Top for all non-entry blocks: out[b] = set of all blocks</li>
 	<li>Bottom: empty set</li>
 </ul>
-Can do in one reverse postorder pass.
+Can do in one reverse postorder pass (can also do in arbitrary order until we reach fixpoint but that would be slower). Reverse postorder is also called depth-first ordering.
+<h3>Depth-first (or reverse postorder) ordering</h3>
+Here is an algorithm for computing the reverse-postorder:
+<pre>
+void main()
+{
+  foreach (node n : graph) {
+    visited[n] = false;
+  }
+  c = number of nodes in G;
+  search(entrynode);
+}
+
+void search(node n)
+{
+  visited[n] = true;
+  for (s : successors(n)) {
+    if (!visited[s]) {
+      search(s);
+    }
+  }
+  dfn[n] = c;
+  c = c - 1;
+}
+
+//Output: dfn[] contains the depth-first (aka reverse postorder) numbering of each node
+</pre>
+An edge m-&gt;n is a <em>retreating edge</em> iff dfn[m] &gt; dfn[n] (because this means that during the DFS traversal as in the algorithm above, m was reached through n starting from entry, or time taken by search(m) was a sub-interval of the time taken by search(n)).
+
+Notice that there are multiple depth-first orders possible (depending on the order in which the successors are chosen), and each depth-first order may result in a different set of retreating edges.
 
 <h3>Finding back edges</h3>
-Any edge whose destination dominate source.
+Any edge whose destination dominate source. For any flow graph, every back edge is retreating (why?), but not every retreating edge is a back edge.
+
+A flow graph is said to be <em>reducible</em> if all its retreating edges
+in any depth-first spanning tree are also back edges. In other words, all
+depth-first orders have the same set of retreating edges, and all of them
+are back edges.
+
+<p>Example of a non-reducible graph:
+<pre>
+BB1-&gt;BB2
+BB1-&gt;BB3
+BB2-&gt;BB3
+BB3-&gt;BB2
+</pre>
+
+<p>Example of non-reducible graph in general: often if we reverse
+the edges of a regular CFG, we may often end up with a non-reducible
+flow graph. Intuitively: while  typical programs have loops with single
+entries, those loops sometimes have several exits.
+
+<h3>Depth of a reducible graph</h3>
+The <em>depth</em> is the largest number of retreating edges on any
+cycle-free path. For reducible graphs, all retreating edges are back edges.
+Intutively: this is the same as the maximum loop nesting depth of a graph.
 
 <h3>Constructing natural loops</h3>
 Remove <code>d</code> from the graph, find all predecessors of <code>n</code>.
@@ -143,6 +195,70 @@ BB2: a = a+1
 </ul>
 
 <h3>Region-based analysis</h3>
+The iterative data-flow analysis algorithm we have discussed so far is just one
+approach to solving data-flow problems. We discuss another approach
+called region-based analysis. In the iterative-analysis approach, we
+create transfer functions for basic blocks and then find the fixedpoint solution by
+repeated passes over the blocks. Instead of creating transfer functions just for
+individual blocks, a region-based analysis finds transfer functions that summarize the execution of progressively larger regions of the program. Ultimately,
+transfer functions for entire procedures are constructed and then applied, to get
+the desired data-flow values directly.
+While a data-flow framework using an iterative algorithm is specified by
+a semilattice of data-flow values and a family of transfer functions closed under composition, region-based analysis requires more elements. A region-based
+framework includes both a semilattice of data-flow values and a semilattice
+of transfer functions that must possess a meet operator,
+a composition operator, and a closure operator.
+
+A region-based analysis is particularly useful for data-flow problems where
+paths that have cycles may change the data-flow values. The closure operator
+allows the effect of a loop to be summarized more effectively than does
+iterative
+analysis. The technique is also useful for interprocedural analysis, where
+transfer functions associated with a procedure call may be treated
+like the transfer
+functions associated with basic blocks.
+For simplicity, we shall consider only forward data-flow problems in this
+section. We first illustrate how region-based analysis works by
+using the familiar example of reaching definitions.
+
+In region-based analysis, a program is viewed as a hierarchy of regions, which
+are (roughly) portions of a flow graph that have only one point of entry.
+We
+should find this concept of viewing code as a hierarchy of regions intuitive,
+because a block-structured procedure is naturally organized as a hierarchy of
+regions. Each statement in a block-structured program is a region, as control
+flow can only enter at the beginning of a statement. Each level of statement
+nesting corresponds to a level in the region hierarchy. 
+
+Formally, a region of a flow graph is a collection of nodes N and edges E
+such that
+<ol>
+<li>There is a header h in N that dominates all the nodes in N.</li>
+<li>If some node m can reach a node n in N without going through h, then
+m is also in N.</li>
+<li>E is the set of all the control flow edges between nodes n1 and n2
+ in N,
+except (possibly) for some that enter h.</li>
+</ol>
+Clearly, a natural loop represents a region. Also, a basic block represents
+a region; similarly a single statement represents a region.
+
+<p>Example of non-region:
+<pre>
+B1-&gt;B2
+B2-&gt;B3
+B3-&gt;B4
+B1-&gt;B3
+B2-&gt;B4
+</pre>
+The subgraph formed by B2-B3-B4 is not a region, but the entire graph
+is a region.
+
+<p>For the rest of the discussion, let's assume that the CFG is reducible.
+Every non-reducible graph can be converted to a reducible graph by
+duplicating subgraphs, but this may increase the code-size exponentially.
+For our example of a non-reducible graph above
+
 <ul>
 	<li>A <b>region</b>: a group of nodes with a single entry and possibly multiple exits</li>
 	<li>Assume a <b>reducible flow graph</b></li>
@@ -155,6 +271,30 @@ BB2: a = a+1
 	<li><b>Bottom-up analysis</b>: compute transfer function from entry to all exits for each sub-region.</li>
 	<li><b>Top-down analysis</b>: Apply the <em>summary transfer functions</em> (for each sub-region) to compute data flow values of the entire region with its loop's back-edges.</li>
 </ul>
+
+
+<h3>Region hierarchies for reducible flow graphs</h3>
+To construct a hierarchy of regions, we identify the natural loops.
+The process of "parsing" a
+reducible flow graph into its hierarchy of loops begins with every block as a
+region by itself. We call these regions leaf regions. Then, we order the natural
+loops from the inside out, i.e., starting with the innermost loops. To process a
+loop, we replace the entire loop by a node in two steps: 
+
+<ol>
+<li>First, the body of the loop L (all nodes and edges except the back edges to
+the header) is replaced by a node representing a region R. Edges to the
+header of L now enter the node for R. An edge from any exit of loop L is
+replaced by an edge from R to the same destination. However, if the edge
+is a back edge, then it becomes a loop on R. We call R a body region.</li>
+<li>Next, we construct a region R' that represents the entire natural loop L.
+We call R' a loop region. The only difference between R and R' is that
+the latter includes the back edges to the header of loop L. Put another
+way, when R' replaces R in the flow graph, all we have to do is remove
+the edge from R to itself</li>
+</ol>
+Eventually, all natural loops get reduced to single nodes; the top-level
+program is also a single region at a higher-level of hierarchy.
 
 <h3>Example: a semi-lattice of transfer functions</h3>
 <ul>
