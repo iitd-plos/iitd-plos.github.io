@@ -16,7 +16,6 @@ C-code
     int sum =0;
     for (int i = 0; i < 3; i++) {
        sum += *ptr_arr[i];
-      // *ptr_arr[i] = *val;
     }
     result = sum > 0 ? "Pass"  : "Fail";
     return sum;
