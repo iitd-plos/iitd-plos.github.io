@@ -1,4 +1,22 @@
-<h3>Interactions of data-flow analyses</h3>
+<h2>Interactions of data-flow analyses</h2>
+<h3>Deep common sub-expressions</h3>
+Using available-expressions analysis to identify redundant expressions only
+works for expressions that are textually identical. For example, an application of common-subexpression elimination will recognize that t1 in the
+code fragment
+<pre>
+t1 = b + c; a = t1 + d;
+</pre>
+has the same value as does t2 in
+<pre>
+t2 = b + c; e = t2 + d;
+</pre>
+as long as the variables b and c have not been redefined in between. It
+does not, however, recognize that a and e are also the same. It is
+possible to find such "deep" common subexpressions by re-applying common
+subexpression elimination until no new common subexpressions are found
+on one round.
+
+<h3>Multiple-passes do not always help</h3>
 One data-flow analysis can improve the results of another data-flow analysis and vice-versa.
 Classic example: constant propagation and unreachable code elimination: performing constant propagation
 and folding may replace branch predicates with constant boolean values, enabling more code to be identified as unreachable; conversely, eliminating unreachable code can remove non-constant assignments to variables, thus improving the precision of constant-propagation.
@@ -38,4 +56,4 @@ y := 10;
 </pre>
 So, the phase-ordering problem is not simply an ordering problem, but a problem that can get you stuck in a <em>local minimum</em> even if you try all possible orders, as compared to a super-analysis that composes the analyses together.
 
-
+<p>In general, developing such a super-analysis is intractable and so the best-effort solution is to try multiple passes in some sequence and repeatedly, until nothing changes.
