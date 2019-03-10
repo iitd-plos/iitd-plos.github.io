@@ -18,8 +18,6 @@ SKIP: Feb 4. MINOR1 TESTS
 SKIP: Feb 7. MINOR1 TESTS
 SKIP: Mar 25. MINOR2 TESTS
 SKIP: Mar 28. MINOR2 TESTS
-EVENT: Feb 18. Return of Minor-1 scripts
-EVENT: Apr 08. Return of Minor-2 scripts
 
 ==
 LEC: <a href=lec/intro.html>Introduction to Interpreters, Compilers, and Programming Languages</a>
@@ -46,7 +44,21 @@ LEC: <a href=lec/lazy_code_motion.html>Lazy code motion</a>
 ==
 LEC: <a href=lec/lazy_code_motion.html>Lazy code motion</a> (contd.), <a href=lec/phase_ordering_problem.html>Phase ordering problem</a>
 ==
-LEC: <a href=lec/register_allocation.html>Register allocation</a>
+LEC: <a href=lec/loop_transformations.html>Regions</a>
 ==
-LEC: <a href=lec/loop_transformations.html>Loop transformations</a>, <a href=lec/affine_transformations.html>Affine loop transformations</a>.
+LEC: <a href=lec/loop_transformations.html>Regions contd.</a>
+==
+LEC: <a href=lec/loop_transformations.html>Loop transformations</a>
+==
+LEC: <a href=lec/affine_transformations.html>Affine loop transformations</a>.
+==
+LEC: <a href=lec/locality.html>Loop transformations for locality</a>.
+==
+LEC: <a href=lec/parallelism_no_sync.html>Loop transformations for parallelism with no synchronization</a>.
+==
+LEC: <a href=lec/parallelism_constant_sync.html>Loop transformations for parallelism with constant synchronization</a>.
+==
+LEC: <a href=lec/pipelining.html>Loop transformations for pipelining</a>.
+==
+LEC: <a href=lec/register_allocation.html>Register allocation</a>
 ==
