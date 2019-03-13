@@ -1,307 +1,77 @@
-<h3>Matrix-Matrix multiplication</h3>
-Naive implementation
+<h2>Data Reuse</h2>
+From array access functions, we derive two kinds of information:
+<ul>
+<li><em>Data reuse</em>: identify sets of iterations that access the same data or same cache-line.</li>
+<li><em>Data dependence</em>: Two (not necessarily distinct) accesses have a data-dependence if instances of the accesses may refer to the same memory location, and at least one of them is a write; three types: RAW, WAR, WAW
+</ul>
+
+Reuse can further be categorized into <em>self reuse</em> (multiple iterations of the same statement access the same data) or <em>group reuse</em> --- two (potentially same) iterations of different statements access the same data.
+
+<p>Reuse is <em>temporal</em> if exact same data is accessed, and <em>spatial</em> if the same cache-line is accessed.
+
+<p>Example
 <pre>
+float Z[n] ;
 for (i = 0; i &lt; n; i++) {
   for (j = 0; j &lt; n; j++) {
-    //reads C(i,j) (can be register-allocated in the inner-most loop if we know that C, A, and B cannot alias)
-    for (k = 0; k &lt; n; k++) {
-      //reads row i, column k of A into cache. cache hit (i,k-1) was read in previous iteration which was adjacent in memory.
-      //reads row k, column j of B into cache. CACHE MISS (k-1,j) is far away from (k,j) giving little spatial locality
-      C[i,j] = C[i,j] + A[i,k]*B[k,j]
-    }
+    Z[j+1] = (Z[j] + Z[j+1] + Z[j+2])/3;
   }
 }
 </pre>
-Number of memory accesses (cache misses) = n^3 (due to B)
+Here, each of Z[j], Z[j + 1], and Z[j + 2] have self spatial-reuse. They also have self temporal-reuse, because the exact same elements are re-used over and over again (once for each iteration of the outer loop).
+<br>In addition, they have group reuse, both temporal and spatial.
+<br>Even though this loop has 4*n^2 accesses, we only need to bring n/c
+cachelines into the cache; we drop a factor of n due to self-spatial reuse,
+a factor of c due to spatial locality, and factor of 4 due to group reuse.
 
-<p>Blocked (tiled) matrix multiply. Consider A, B, C to be NxX matrices of bxb sub-blocks where b=n/N is the block-size.
+<p>We discuss how to use linear algebra to extract this reuse.
+
+<h3>Self reuse</h3>
+<p>If the data referenced by a static access has k dimensions and the access is nested in a d-depth loop nest, for some d &gt; k, then the same data can
+be reused n^(d-k) times, where n is the number of iterations in each loop.
+The dimensionality of an access corresponds to the <em>rank</em> of the
+coefficient matrix of the access, and we can find which iterations
+refer to the same location by finding the <em>null space</em> of the matrix.
 <pre>
-for (i = 0; i &lt; N; i++) {
-  for (j = 0; j &lt; N; j++) {
-    //reads block at C(i,j) into cache. Likely to have O(b) misses; one for each row in the block
-    for (k = 0; k &lt; N; k++) {
-      //reads row i of block at A(i,k) into cache. Likely to have O(b) misses; one for each row in the block.
-      //reads column j of block at B(k,j) into cache. Likely to have O(b) misses (one for each row in the block). Notice that the access pattern is still column-major, but the memory-load pattern can be row-major.
-      BLOCK_MULTIPLY(C[i,j], A[i,k], B[k,j], b)
-    }
-  }
-}
+Fi + f = Fi' + f
 </pre>
-Number of memory accesses: 2 * N^3 * n/N * n/N (read each block of A and B N^3 times) + 2 * N^2 * n/N *n/N (read and write each block of C once in the second nested loop N^2 times). This transformation is called <em>loop tiling</em>.
-
-<p>The improvement = <code>n^3/N*n^2 = n/N = b</code>.  In general, increasing <code>b</code> sounds like a good idea, but only until all three arrays can fit in the cache. Thus if the cache-size is <code>M</code>, then the maximum block-size we can have is <code>sqrt(M/3)</code> (which is also the maximum speedup we can have).
-
-<h2>Affine loop transformations through a polyhedral framework</h2>
-<ul>
-<li>Focus on techniques for optimizing the class of numerical applications that use arrays as data structures and access them with simple regular patterns, i.e., <em>affine</em> array accesses with respect to surrounding loop indices.</li>
-<li><em>Affine function</em> (or linear function) is a function of one or more variables x1, .., xn, that can be expressed as a sum of a constant plus constant multiples of the variables: sum_i (c_i * x_i) + c0</li>
-<li>A simple example:
+Hence,
 <pre>
-int A[200];
-for (i = 0; i &lt; 100; i++) {
-  A[2*i] = 4;
-}
+F(i - i') = 0
 </pre>
-Here the array address is an affine function of the loop iteration variable <code>i</code>.
-<ul>
-<li>Can perform each iteration in parallel with other iterations in this example</li>
-<li>If there was another access A[j] = 0, then we <em>cannot</em> parallelize this loop because we cannot say if A[2*i] may be the same location (may alias) with A[j]. We have to make a conservative assumption; notice that A[j] is not an affine function of the loop iteration variables.</li>
-<li>Similarly, if our body consists of:
+Thus two iterations refer to the same element if their difference belongs
+to the null space of F. Trivial solution is i=i' (not meaningful); we are
+interested in other non-zero solutions. Discuss <em>fully-ranked</em> matrices.
+
+<h3>Self-spatial reuse</h3>
+Approximation: consider two array elements share a cache-line if and only if they share the same row in a 2-D array; in general, if they differ only in the last dimension for a d-dimension matrix. For this last row, the accesses are anyways cheaper (once every c accessses), so this approximation is meaningful.
+
+<p>Trick: drop the last row of the co-efficient matrix F; if the rank of the resulting truncated matrix is less than the depth of the loop nest, then we can assure spatial locality by making sure that the innermost loop varies only the last coordinate of the array.
+
+<p>Example: A[3,2*i,7*i+j]; if we truncate the last dimension, the rank of the truncated coefficient matrix F is only 1, and hence there is an opportunity for spatial reuse. In this case, if the inner loop iterates on j, then we exploit spatial reuse (but not if the inner loop iterates on i)
+
+<p>General rule for spatial re-use: In order for there to be spatial reuse,
+the vector [0,0,.. . , 0,1] must be in the null space of the truncated matrix.
+The reason is that if this
+vector is in the null space, then when we fix all loop indexes but the innermost
+one, we know that all dynamic accesses during one run through the inner loop
+vary in only the last array index. If the array is stored in row-major order, then these elements are all near one another, perhaps in the same cache line.
+
+<h3>Group Reuse</h3>
+We compute reuse only across accesses with same coefficient matrices. If the
+coefficient matrices are different, then the amount of reuse would be too
+small to be meaningful.
+
+<p>
+Given two accesses &lt;F,f1&gt; and &lt;F,f2&gt;, reuse of the same data
+requires
 <pre>
-A[2*i] = (A[2*i - 1] * 31) % 23;
+F*i1 + f1 = F*i2 + f2
 </pre>
-We cannot parallelize this loop either (even though all accesses are affine) because there are <em>data-dependencies</em> across different iterations of the loop.
-</ul>
-</li>
-</ul>
-We use linear algebra and integer linear programming techniques to reason about these things and optimize for parallelism and locality.
-
-<p>We assume in this discussion that all loop iteration variables have a lower and an upper bound. Also, we assume that the iteration variables increment by 1 in each iteration (if the variable iterates by more than 1, we can introduce a new iteration variable, and write the old iteration variable in terms of the new variable, such that we satisfy this property). The space of the loop iteration variables can be represented as a convex polyhedron (in d-dimensional space, where d is the loop-nest depth and the number of loop iteration variables). We can reason about the relationships between different iterations by reasoning about relationships between points in the polyhedral space.
-
-<p>Two categories of transformations: <em>affine</em> and <em>blocking</em>.
-<ul>
-<li>Affine partitioning splits up the polyhedra of iterations into components that can be potentially executed in parallel, or in general can be reordered with respect to each other.</li>
-<li>Blocking creates a hierarchy of iterations, e.g., blocking in our matrix multiplication example above.</li>
-</ul>
-Linear algebra techniques help determine best affine partitions and blocking.
-
-<p>Loop-level parallelism example:
+or
 <pre>
-for (i = 0; i &lt; n; i++) {
-  Z[i] = X[i] * 2;
-}
+F(i1-i2) = f2-f1
 </pre>
-Each iteration is logically independent of other iterations. If there are M processors, each processor <code>p</code> can execute the following code:
-<pre>
-b = ceil(n/M);
-for (i = b*p; i &gt; min(n,b*(p+1)); i++) {
-  Z[i] = X[i] * 2;
-}
-</pre>
-This type of a program is also called SPMD (single program multiple data) program, i.e., the same code is executed by all the processors but it is parameterized by an identifier (<code>p</code>) unique to each processor. Typically, one processor, known as the <em>master</em> executes all the serial part of the computation, including synchronizing with all the other processors (including itself). In this example, we need <em>barrier synchronization</em>.
-
-<h3>Affine Transform Theory</h3>
-Three spaces
-<ul>
-<li>Iteration space : set of dynamic execution instances in a computation, i.e., the set of combinations of values taken on by loop indices.</li>
-<li>Data space: set of array elements accessed.</li>
-<li>Processor space: set of processors in the system, each assigned a unique id.</li>
-</ul>
-  
-<h2>Matrix Multiplication in depth</h2>
-<pre>
-for (i = 0; i &lt; n; i++) {
-  for (j = 0; j &lt; n; j++) {
-    A[i,j] = 0;
-    for (k = 0; k &lt; n; k++) {
-      A[i,j] += X[i,k]*Y[k,j];
-    }
-  }
-}
-</pre>
-Serial execution of matrix multiplication:
-<ul>
-<li>Show diagram of how arrays X and Y are accessed (row and column major resp.).</li>
-<li>If arrays are in row-major, Y accesses would have zero spatial locality; if in column-major, X accesses would have zero spatial locality. Also re-use distance for Y[k,j] is O(n) which may be much bigger than cache size.</li>
-<li>If <code>c</code> is the umber of cache lines in the cache, and if n columns of Y can survive in cache simultaneously, one iteration of the outer-loop (e.g., i = 0), takes n^2/c cache misses (n^2 elements in Y and spatial locality allows a factor of c).</li>
-<li>If n columns of Y cannot survive in cache simultaneously, one iteration of the outer-loop (e.g., i = 0), takes n^2 cache misses.</li>
-<li>In practice: anywhere between n^2/c and n^2.</li>
-<li>If the entire Y can survive in the cache simultaneously, (and similarly entire X can survive in the cache simultaneously), we get 2*n^2/c cache misses for the whole program.</li>
-<li>If the entire Y cannot survive in the cache simultaneously, but a column of Y can survive in the cache simulaneously, we need to bring the whole Y into cache for every outer iteration of the loop. The number of cache misses is n^2/c + n^3/c -- the first term for X and the second term for Y.</li>
-<li>Worse, if we cannot hold even one column of Y in the cache simultaneously, the number of cache misses is n^2/c + n^3.</li>
-</ul>
-
-<h3>Row-by-row parallelization</h3>
-Scheme: assign <code>n/p</code> rows of A to one processor. With this: each processor needs to access <code>n/p</code> rows of A and X, but the entire Y. Each processor will compute n^2/p elements of A performing n^3/p multiply-and-add operations to do so.
-
-<p>While computation time decreases in proportion to <code>p</code>, the communication cost (total number of cache misses) rises in proportion to <code>p</code>, because Y needs to be loaded in entirety in each processor's cache. The total number of cache misses is n^2/c + p*n^2/c.
-
-<h3>Blocking</h3>
-<pre>
-for (ii = 0; ii &lt; n; ii+=B) {
-  for (jj = 0; jj &lt; n; jj+=B) {
-    for (kk = 0; kk &lt; n; kk+=B) {
-      for (i = ii; i &lt; ii+B; i++) {
-        for (j = jj; j &lt; jj+B; j++) {
-          for (k = kk; k &lt; kk+B; k++) {
-            A[i,j] += X[i,k]*Y[k,j];
-          }
-        }
-      }
-    }
-  }
-}
-</pre>
-We have re-ordered the iteration space significantly, but because the order of iterations does not matter (addition is commutative and associative), this remains correct.
-
-<p>To bring a block of X or Y into the cache, we require B^2/c cache misses. The number of times we need to bring a block into the cache is (n/B)^3. Total number of cache misses = 2n^3/Bc. If B=n, we get 2n^2/c cache accesses; on the other hand if B=100 s.t. all three blocks fit in cache, we can get a significant speedup of O(Bc) [compared to worst-case O(n^3) cache misses].
-
-<p>This blocking can be done at each level of the cache hierarchy with different Bs. e.g., B=8 for L1, 80 for L2, ...
-
-<p>In practice: blocking can improve performance by a factor of 3 on modern machines on a uniprocessor (compute-bound after a point; recall Amdahl's law); for multiprocessors, where a set of blocks are farmed out to each processor, the speedup can be linear in the number of processors.
-
-<h3>Iteration spaces</h3>
-Often, iteration spaces are rectangular, e.g., matrix multiply. For d-depth loop next, each iteration variable has a lower bound and upper bound (potentially as functions of iteration variables at lower depths); we can identify these bounds, and represent the space as a convex polyhedron.
-
-Convex polyhedron: if two points are in the polyhedron, then all points on the line connecting the two points are also in the polyhedron.
-
-Example:
-<pre>
-for (i = 0; i &lt; 9; i++) {
-  for (j = i; j &lt; 7 &amp;&amp; j &lt; i + 4; j++) {
-    A[i,j] = 0; //(0,0),(0,1),(0,2),(0,3),(1,1),(1,2),(1,3),(1,4),(2,2),(2,3),(2,4),(2,5),(3,3),(3,4),(3,5),(3,6),(4,4),(4,5),(4,6),(5,5),(5,6),(6,6)
-  }
-}
-</pre>
-Draw the polygon that represents the iteration space.
-
-<p><b>Execution order of loop nests</b>:
-A sequential execution of the loop nest executes the points in the space in ascending lexicographic order. A vector <b>i</b>=[i1,..in] is &lt; <b>i'</b>=[i'1,..i'n'] iff \exists{m} s.t. m &gt;= 0 and m&lt;min(n,n') and [i1..im]=[i'1..i'm] and i_(m+1)&lt;i'_(m+1).
-
-<p><b>Matrix formulation</b>: The iteration space can be formulated in matrix
-form as:
-<pre>
-{i \in Z^d | Bi + b &gt;= 0}
-</pre>
-<ul>
-<li>B is a dxd integer matrix</li>
-<li>b is an integer vctor of length d</li>
-<li>0 is a vector of d 0s</li>
-</ul>
-
-<p><b>Loop invariant variables</b> (aka symbolic constants). Example:
-<pre>
-for (i = 0; i &lt;= n; i++) {
-  ...
-}
-</pre>
-We need to consider <code>n</code> as another loop iteration variable:
-<pre>
-[ -1 1 ] [ i ]  &gt;= [ 0 ]
-[ 1  0 ] [ n ]        [ 0 ]
-</pre>
-Notice that while <code>n</code> is a loop iteration variable, its only constraint is that it is greater than or equal to <code>i</code>.
-
-<p>This representation of the iteration space has no notion of the order
-in which the iteration space needs to be sweeped. If we can determine that
-the loop iterations are independent (for example), we can completely alter
-the order of sweeping, e.g., by swapping the inner and outer loops of the
-previous example:
-<pre>
-for (j = 0; j &lt;= 6; i++) {
-  for (i = max(j-3, 0); i &lt;= j; j++) {
-    A[i,j] = 0; //(0,0),(0,1),(0,2),(0,3),(1,1),(1,2),(1,3),(1,4),(2,2),(2,3),(2,4),(2,5),(3,3),(3,4),(3,5),(3,6),(4,4),(4,5),(4,6),(5,5),(5,6),(6,6)
-  }
-}
-</pre>
-To do this, we need to first identify the potential values that can be taken
-by <code>j</code>, and then identify the potential values that can be taken by
-<code>i</code> for a given value of <code>j</code>. The is done by <em>projecting</em> the convex polyhedron onto the outer dimension of the space. e.g., the
-projection of the 2D space in the example above onto the <code>j</code> axis
-is the line segment from 0 to 7. When we project a 3-dimensional polyhedron
-to a 2D space, we get a polygon in the 2D space. The concept of projection
-is quite useful in many of our analyses, including loop bound generation.
-
-<p><b>Fourier-Motzkin elimination algorithm</b>:
-<ul>
-<li>Input: A polyhedron S with variables x1..xn, specified through a set of linear constraints (conjunction). One given variable xm is to be eliminated.</li>
-<li>Output: A polyhedron S' with all variables except xm that is the projection of S on dimensions other than <em>m</em>th.</li>
-<li>Algorithm:
-<ul>
-<li>For every pair of lower bound and upper bound on xm in C such that:
-<pre>
-L &lt;= c1*xm
-c2*xm &lt;= U
-</pre>
-create the new constraint:
-<pre>
-c2*L &lt; c1*U
-</pre>
-</li>
-<li>S' is the set of constraints S-C, plus all the constraints generated in the step above.</li>
-</ul>
-</li>
-</ul>
-Discuss the example above with this algorithm.
-
-<p><b>Loop bounds generation</b>: All the inequalities involving the
-<em>innermost</em> loop index variables are written as the variable's lower
-and upper bounds. Then project away the dimension representing
-the innermost loop. In the example above (where i is the outer loop index), by considering
-i as the innermost loop index, we get:
-<pre>
-Li = j-3, 0
-Ui = j
-Lj = 0
-Uj = 7
-</pre>
-Now we can visit the iteration space either "horizontally" (lexicographic in (i, j)) or "vertically" (lexicographic in (j, i)).
-
-<p><b>Changing axes</b>:  we can also define a new variable <code>k = j - i</code> and
-sweep the iteration space in lexicographic order with respect to <code>k</code> and <code>j</code>.
-<pre>
-j-k &gt;= j-3
-j-k &gt;= 0
-j-k &lt;= j
-j &gt;= 0
-j &lt;= 7
-</pre>
-This can be simplified to:
-<pre>
-k &lt;= 3,j
-k &gt;= 0
-j &gt;= 0
-j &lt;= 7
-</pre>
-This can easily be expressed with j as the outer loop index. If we now want to make k as the outer loop index, we can first specify j's bounds in terms of k, and then project out j:
-<pre>
-Lj = 0,k
-Uj = 7
-Lk = 0
-Uk = 3
-</pre>
-We get:
-<pre>
-for (k = 0; k &lt; 3; k++) {
-  for (j = k; j &lt;= 7; j++) {
-    A[j-k,j] = 0;
-  }
-}
-</pre>
-
-<h3>Affine array accesses</h3>
-Array access in a loop is <em>affine</em> if
-<ul>
-<li>The bounds of the loop are expressed as affine expressions of the surrounding loop variables and symbolic constants</li>
-<li>The index for each dimension of the array is also an affine expression of surrounding loop variables and symbolic constants</li>
-
-<p>Formally, we represent an array access in a loop nest that uses a vector of index variables <b>i</b> by the four-tuple <code>T = &lt;<b>F,f,B,b</b>&gt;; it maps a vector <b>i</b> within the bounds
-<pre>
-Bi + b &gt; 0
-</pre>
-to the array element location
-<pre>
-Fi + f
-</pre?
-</ul>
-What are F,f (variables i,j) for
-<ul>
-<li>X[i-1] : F = [1 0], f = [-1 0]^T (transpose)</li>
-<li>Y[i,j]: two accesses. F =
-<pre>
-[1 0]
-[0 1]
-</pre>
-f = [0 0]^T
-</li>
-<li>Y[j,j+1]</li>
-<li>Y[1,2]</li>
-<li>Z[1,i,2*i+j]</li>
-</ul>
-In linearized-array representation, each multi-dimensional array
-access is represented in linearized form, e.g. A[i,j] becomes A[n*i+j] which
-is non-affine (quadratic). To deal with these cases, we
-can convert the linear access into a multidimensional access if
-every access can be decomposed into separate dimensions
-with the guarantee that none of the
-components exceeds its bound. 
+Suppose <b>v</b> is one solution to the equation, then all solutions of
+this equation can be represented as <b>v+w</b> where <b>w</b> is in the
+null-space of F.
