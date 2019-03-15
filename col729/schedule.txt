@@ -54,9 +54,9 @@ LEC: <a href=lec/affine_transformations.html>Affine loop transformations</a>.
 ==
 LEC: <a href=lec/matrix_multiplication.html>Matrix multiplication</a>, <a href=lec/affine_transform_theory.html>Affine transform theory</a>.
 ==
-LEC: <a href=lec/locality.html>Loop transformations for locality</a>.
+LEC: <a href=lec/locality.html>Re-use and locality</a>.
 ==
-LEC: <a href=lec/parallelism_no_sync.html>Loop transformations for parallelism with no synchronization</a>.
+LEC: <a href=lec/array_dependence_analysis.html>Array Dependence Analysis</a>, <a href=lec/parallelism_no_sync.html>Loop transformations for parallelism with no synchronization</a>.
 ==
 LEC: <a href=lec/parallelism_constant_sync.html>Loop transformations for parallelism with constant synchronization</a>.
 ==
