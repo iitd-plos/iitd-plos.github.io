@@ -102,3 +102,41 @@ We get <code>j1=j2</code> and <code>i2 = i1 + 1</code>. Notice however that the 
 <li>Self-spatial reuse is limited by the length of the cacheline</li>
 <li>Group reuse is limited by the number of references in a group sharing the reuse</li>
 </ul>
+
+<h3>Scalar/Loop Pass Interaction</h3>
+Example:
+<pre>
+for (i = 0; i &lt; n; i++) {
+  for (j = 0; j &lt; m; j++) {
+    A[i] += i*B[j];
+  }
+}
+</pre>
+After loop invariant code motion (LICM); in particular, register promotion, this becomes:
+<pre>
+for (i = 0; i &lt; n; i++) {
+  reg = A[i];
+  for (j = 0; j &lt; m; j++) {
+    reg += i*B[j];
+  }
+  A[i] = reg;
+}
+</pre>
+
+<p>However, loop interchange transformation cannot be applied to the latter (while it could be applied to the former). If we apply loop interchange transformation to the former followed by global value numbering (GVN), in particular load partial redundancy elimination (loadPRE), we get:
+<pre>
+for (j = 0; j &lt; m; j++) {
+  for (i = 0; i &lt; n; i++) {
+    A[i] += i*B[j];
+  }
+}
+</pre>
+Performing GVN(LoadPRE) on this, we get
+<pre>
+for (j = 0; j &lt; m; j++) {
+  tmp = B[j]
+  for (i = 0; i &lt; n; i++) {
+    A[i] += i*tmp;
+  }
+}
+</pre>
