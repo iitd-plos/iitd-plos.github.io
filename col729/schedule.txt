@@ -58,7 +58,13 @@ LEC: <a href=lec/locality.html>Re-use and locality</a>.
 ==
 LEC: <a href=lec/array_dependence_analysis.html>Array Dependence Analysis</a>, <a href=lec/parallelism_no_sync.html>Loop transformations for parallelism with no synchronization</a>.
 ==
-LEC: <a href=lec/parallelism_constant_sync.html>Loop transformations for parallelism with constant synchronization</a>.
+LEC: Aho et. al., Section 11.7.1-11.7.3
+==
+LEC: Aho et. al., Section 11.7.4-11.7.8
+==
+LEC: Aho et. al., Section 11.7.8. <a href=affine_transform_examples.html>Some more examples</a>
+==
+LEC: <a href=lec/pipelining.html>Loop transformations with constant synchronization</a>.
 ==
 LEC: <a href=lec/pipelining.html>Loop transformations for pipelining</a>.
 ==
