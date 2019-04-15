@@ -64,7 +64,7 @@ LEC: Aho et. al., Section 11.7.4-11.7.8
 ==
 LEC: Aho et. al., Section 11.7.8. <a href=lec/affine_transform_examples.html>Some more examples</a>
 ==
-LEC: <a href=lec/pipelining.html>Loop transformations with constant synchronization</a>.
+LEC: Section 11.8-11.8.2. <a href=lec/constant_sync.html>Some examples and discussion</a>.
 ==
 LEC: <a href=lec/pipelining.html>Loop transformations for pipelining</a>.
 ==
