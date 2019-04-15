@@ -1,0 +1,105 @@
+<h3>Some examples to practice PDGs and sync-free parallelism</h3>
+<pre>
+for (i = 1; i &lt; n i++) {
+  for (j = 1; j &lt; n; j++) {
+    X[i, j] = f(X[i, j] + X[i - 1, j]); //s1
+  }
+}
+for (i = 0; i &lt; n; i++) {
+  for (j = 1; j &lt; n; j++) {
+    X[i, j] = g(X[i, j] + X[i, j-1]); //s2
+  }
+}
+</pre>
+In this example, when we draw the PDG, we get edges from s1-to-s1,
+s2-to-s2, and s1-to-s2. Thus, we can insert a barrier between the first
+loop nest and the second loop nest. Further, when we apply our
+synchronization-free algorithm to each loop nest, we get
+<pre>
+s1: p = j
+s2: p = i
+</pre>
+which parallelizes both loops appropriately
+
+<p>Now, let's consider the case when the second loop nest accesses Y
+instead of X:
+<pre>
+for (i = 1; i &lt; n; i++) {
+  for (j = 1; j &lt; n; j++) {
+    X[i, j] = f(X[i, j] + X[i - 1, j]); //s1
+  }
+}
+for (i = 0; i &lt; n; i++) {
+  for (j = 1; j &lt; n; j++) {
+    Y[i, j] = g(Y[i, j] + Y[i, j-1]); //s2
+  }
+}
+</pre>
+In this case, simply applying the sync-free parallelism algorithm (without
+constructing the PDG) would result in the following solution
+<pre>
+s1: p = j
+s2: p = i
+</pre>
+and the following generated code:
+<pre>
+for (p = 1; p &lt; n; p++) {
+  for (i = 1; i &lt; n; i++) {
+    X[i, j] = f(X[i, j] + X[i - 1, j]); //s1
+  }
+  for (j = 1; j &lt; n; j++) {
+    Y[i, j] = g(Y[i, j] + Y[i, j-1]); //s2
+  }
+}
+</pre>
+Comment: actually, we could have got <code>2n</code>
+parallelism (instead of <code>n</code> parallelism
+as in the above solution), by spawning separate threads for both s1 and
+s2. Notice that our formulation only works towards finding the maximum
+rank solution for the processor space and does not worry about constants;
+an ideal algorithm should have probably found the following mapping:
+<pre>
+s1: p = j
+s2: p = n + i
+</pre>
+We currently do not worry about finding such solutions, as usually we
+expect <code>n</code> to be much larger than the number of processors.
+
+<p>Another example:
+<pre>
+for (i = 0; i &lt; n; i++) {
+  Z[i] = Z[i] / W[i]; //s1
+  for (j = i; j &lt; n; j++) {
+    X[i,j] = Y[i,j] * Y[i,j]; //s2
+    Z[j] = Z[j] + X[i,j];  //s3
+  }
+}
+</pre>
+In this example, we will also have self edges s3-to-s3 (because there
+are dependencies for different values of <code>i</code> and same values
+of <code>j</code>), in addition to the dependencies specified in the book.
+
+After splitting the instances based on PDG, we get a separate loop nest
+for <code>s2</code> and a separate loop nest for <code>s1</code>
+and <code>s3</code>. The loop nest for <code>s1</code> is fully parallelizable;
+the loop nest for <code>s1</code> and <code>s3</code> looks like the following:
+<pre>
+for (i = 0; i &lt; n; i++) {
+  Z[i] = Z[i] / W[i]; //s1
+  for (j = i; j &lt; n; j++) {
+    Z[j] = Z[j] + X[i,j];  //s3
+  }
+}
+</pre>
+Here, if we consider dependencies
+across <code>s3</code> with itself, we get that each <code>i</code>
+iteration instance of <code>s3</code> must execute on the same processor.
+However, if we consider dependencies across s1 and s3, we get
+that the <code>(i,0)th</code> instance of s1 must execute on the same
+processor as the
+<code>(k,i)th</code> instance of s3 (for any k). This means that each
+<code>j</code> instance of s3 must execute on the same processor (same
+as the <code>j</code>th instance of s1. Hence, all instances of s3 must
+execute on the same processor; from this, we will also get that all instances
+of s1 must execute on the same processor, and hence we will not find
+any parallelism in the remaining loop.
