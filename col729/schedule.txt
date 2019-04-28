@@ -66,7 +66,7 @@ LEC: Aho et. al., Section 11.7.8. <a href=lec/affine_transform_examples.html>Som
 ==
 LEC: Section 11.8-11.8.2. <a href=lec/constant_sync.html>Some examples and discussion</a>.
 ==
-LEC: <a href=lec/pipelining.html>Loop transformations for pipelining</a>.
+LEC: SOR example <a href=lec/pipelining.html>Loop transformations for pipelining</a>.
 ==
-LEC: <a href=lec/register_allocation.html>Register allocation</a>
+LEC: covered till discussing the two fully-permutable transforms of the SOR example
 ==
