@@ -1,0 +1,50 @@
+TITLE: COL718 : High-Performance Computing : Schedule
+SEMESTER: Sem I, 2019-20
+Start: Jul 22, 2019
+Stop: Nov 15, 2019
+Schedule: Tuesday, Wednesday, Friday
+HEADER: Links to notes etc. on future days are <i>tentative only</i>. They are here only to give you an idea what the future will bring.<br>
+
+HOLIDAY: Sep 10. Muharam
+HOLIDAY: Oct 02. Gandhi Jayanti
+HOLIDAY: Oct 04. Semester break
+HOLIDAY: Oct 08. Semester break
+HOLIDAY: Oct 08. Dussehra
+HOLIDAY: Mar 07. Semester break
+HOLIDAY: Nov 12. Guru Nanak's Birthday
+HOLIDAY: Apr 17. Mahavir Jayanti
+HOLIDAY: Apr 19. Good Friday
+HOLIDAY: May 6. Idu'l Fitr
+
+SKIP: Aug 27. MINOR1 TESTS
+SKIP: Aug 28. MINOR1 TESTS
+SKIP: Sep 25. MINOR2 TESTS
+SKIP: Sep 27. MINOR2 TESTS
+
+==
+LEC: <a href=lec/intro.html>Introduction to interactions between computer architecture, compiler, and operating system, and implications on performance, reliability and security.</a>
+==
+LEC: <a href=lec/x86int.html>x86 Integer Instruction Set's evolution</a>
+==
+LEC: <a href=lec/x86fp.html>x86 Floating-Point Instruction Set's evolution</a>
+==
+LEC: <a href=lec/ooo.html>Out-of-order superscalar architecture</a>
+==
+LEC: <a href=lec/cpu_parallel.html>Types of parallelism in a single CPU core</a>
+==
+LEC: <a href=lec/store_buffers.html>Store buffers</a>
+==
+LEC: <a href=lec/speculation.html>Speculation</a>
+==
+LEC: <a href=lec/theory.html>Amdahl's law and Little's law</a>
+==
+LEC: <a href=lec/caching.html>Caching structures</a>
+==
+LEC: <a href=lec/vm.html>Virtual memory</a>
+==
+LEC: <a href=lec/virt.html>Virtualization</a>
+==
+LEC: <a href=lec/prefetching.html>Instruction Prefetching and Trace Caches</a>
+==
+LEC: <a href=lec/compiler.html>Compiler support for exploiting memory hierarchy and parallelism</a>
+==
