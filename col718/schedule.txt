@@ -24,7 +24,11 @@ SKIP: Sep 27. MINOR2 TESTS
 ==
 LEC: <a href=lec/intro.html>Introduction to interactions between computer architecture, compiler, and operating system, and implications on performance, reliability and security.</a>
 ==
-LEC: <a href=lec/x86int.html>x86 Integer Instruction Set's evolution</a>
+LEC: <a href=lec/intro.html>Introduction to interactions between computer architecture, compiler, and operating system, and implications on performance, reliability and security.</a>
+==
+LEC: <a href=lec/intro.html>Introduction to interactions between computer architecture, compiler, and operating system, and implications on performance, reliability and security.</a>
+==
+LEC: Discuss x86 ISA, discuss architecture <a href=lec/basics.html>basics</a>
 ==
 LEC: <a href=lec/x86fp.html>x86 Floating-Point Instruction Set's evolution</a>
 ==
