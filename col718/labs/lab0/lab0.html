@@ -20,71 +20,18 @@
     
     <li>Go to this page for a general overview of what exactly Latency and Throughput of an instruction mean: <a href=
     "https://software.intel.com/en-us/articles/measuring-instruction-latency-and-throughput"></a>.</li>
-<!--
-    <li>Install SPEC CPU 2017 benchmark suite (please note that this is an IITD-internal
-    link only; this benchmark suite is proprietary so please do not share it outside IIT
-    Delhi)
 
-      <ul>
-        <li>Download <a href=
-        "http://poorvi.cse.iitd.ac.in/~sbansal/isos/cpu2017-1_0_5.iso">http://poorvi.cse.iitd.ac.in/~sbansal/isos/cpu2017-1_0_5.iso</a></li>
-
-        <li>Follow instructions at <a href=
-        "https://www.spec.org/cpu2017/Docs/install-guide-unix.html">https://www.spec.org/cpu2017/Docs/install-guide-unix.html</a>
-        to install and run the CPU 2017 benchmark suite</li>
-
-        <li>Optional: you can use the commands in this file to run any benchmark
-        individually: <a href="cpu2017_cmdlines.sh">cpu2017_cmdlines.sh</a>.</li>
-      </ul>
-    </li>
-
-    <li style="list-style: none"><br /></li>
-
-    <li><b>Learn about benchmarking</b>: look at the video on "Benchmarking C++ Code" by
-    Bryce Adelstein-Lelbach posted on the <a href="../../references.html">references</a>
-    page.</li>
-
-    <li>Go through the <a href="https://www.spec.org/cpu2017/Docs/overview.html">SPEC-CPU
-    overview</a></li>
-
-    <li>Build SPEC CPU 2017 <i>SPEC-RATE</i> benchmarks <i>for Integers</i> with GCC,
-    Clang, ICC
-
-      <ul>
-        <li>Build with the unoptimised (may not be default) versions of GCC/Clang/ICC (on
-        Ubuntu 18.04) for 32-bit and 64-bit x86 architectures.</li>
-
-        <li>Build with different optimization options: -O1, -O2, -O3, etc.</li>
-
-        <li>Plot your runtime results, make conclusions
-
-          <ul>
-            <li>Plot Scores or Runtimes vs Optimisation levels</li>
-
-            <li>Make separate plots for each benchmark</li>
-
-            <li>A total of 10 graphs are expected, one per benchmark, containing plots
-            for each compiler (GCC/ICC/Clang 32 and 64-bits)</li>
-          </ul>
-        </li>
-      </ul>
-    </li>
-  </ul>
-  
-  <b>Prepare a report summarizing your findings</b>: Your report should be succinct yet
-  insightful. It should talk about the most consequential optimizations (to runtime) and
-  the least consequential optimizations.<br />
-
-  <ul>
-    <li>Which compilers are better in what aspects?</li>
-
-    <li>Which are faster: 32-bit or 64-bit executables? Why?</li>
-
-    <li>How are the various optimisation levels different? How do these differ accross
-    compilers?</li>
-
-    <li>Does the kind of benchmark influence the results between compilers? Why?</li>
+    
+    <li>Download the latThpt.zip file from the References section of the course webpage.</a></li>
+    <li>First, try to compile the test program and see the latency and throughput of the instructions which are specified in that program.</a></li>
+    <li>The macros for the instructions are defined in 'macro_asm.h' and 'lathpt_gnu.h' file. See them to know
+        for which all operand types/addressing fomats macros are defined. Use new instructions(which are not there in the 
+        test program) to measure the latency and/or throughput of each of them. You could use some instructions which were
+        discussed in the class.</a></li>
+    <li>New instructions might, or might not have suitable macros defined for them. Try to use such instruction(s) for which
+        the macros are defined but not used. If possible, try to use some instruction(s) for which you the macros are not defined.</a></li>
+    <li>Express all your findings to a report. Why do you think two different metrics(latency & throughput) are required to
+        measure the performance? </a></li>    
   </ul>
   </body>
 </html>
--->
