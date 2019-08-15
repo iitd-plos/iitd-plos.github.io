@@ -30,13 +30,17 @@
    
     <li>To write a microbenchmark for measuring the ROB Capacity and MLP, you have to use long-latency instruction seperated by several NOPs.
         As described in the above links, you could use memory load instruction. But, you have to make sure that everytime the load is executed,
-        it is a cache-miss. Only, then you could guarantee that the instruction doesn't committ early and occupies ROB. 
+        it is a cache-miss. Only then, you could guarantee that the instruction doesn't committ early and occupies ROB. 
         You could use CLFLUSH, or may be, non-temporal memory loads to ensure cache-misses everytime.
         Please refer to the manual to know more about CLFLUSH: <a href="https://www.cse.iitd.ernet.in/~sbansal/os/ref/ia32-2.pdf">https://www.cse.iitd.ernet.in/~sbansal/os/ref/ia32-2.pdf</a></li>
     
-    <li>You could use inline assemblies, or intrinsics to write your own microbenchmarks.</a></li>
+    <li>You can use inline assemblies, intrinsics to write your own microbenchmarks.</a></li>
 
-    <li>Express all your findings in a report. Your report should contain all the graphs, reported ROB capacity, degree of MLP, numbers of speculative and non-speculative registers.</a></li>    
+    <li>Express all your findings in a report. Your report should contain all the graphs, reported ROB capacity, degree of MLP, numbers of speculative and non-speculative registers 
+        for all the different machines you have used. </a></li>    
+
+    <li>Submit the report along with your microbenchmarks.</a></li>
+
   </ul>
   </body>
 </html>
