@@ -27,10 +27,7 @@
     
     <li>You have to measure ROB Capacity, Number of Speculative and Non-Speculative Regsters(including floating-point), Degree of MLP for
         different machines like, your laptop, your lab machine and a server machine(you would be given access to a server, if needed)</a></li>
-  
-    <li>Also try to observe that the ROB capacity is statically divided between two threads when hyperthreading is enabled. You could do that by spawning 
-        two threads and executing two copies of your microbenchmark simultaneously.</a></li>
-    
+   
     <li>To write a microbenchmark for measuring the ROB Capacity and MLP, you have to use long-latency instruction seperated by several NOPs.
         As described in the above links, you could use memory load instruction. But, you have to make sure that everytime the load is executed,
         it is a cache-miss. Only, then you could guarantee that the instruction doesn't committ early and occupies ROB. 
