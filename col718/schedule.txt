@@ -3,7 +3,7 @@ SEMESTER: Sem I, 2019-20
 Start: Jul 22, 2019
 Stop: Nov 15, 2019
 Schedule: Tuesday, Wednesday, Friday
-HEADER: Links to notes etc. on future days are <i>tentative only</i>. They are here only to give you an idea what the future will bring.<br>
+HEADER: <h3>Important: This page is not being maintained actively. Please see <a href=references.html>references</a> for information on slides, books, papers, etc. that are used in class.</h3><br>
 
 HOLIDAY: Sep 10. Muharam
 HOLIDAY: Oct 02. Gandhi Jayanti
