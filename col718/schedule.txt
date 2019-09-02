@@ -3,7 +3,7 @@ SEMESTER: Sem I, 2019-20
 Start: Jul 22, 2019
 Stop: Nov 15, 2019
 Schedule: Tuesday, Wednesday, Friday
-HEADER: <h3>Important: This page is not being maintained actively. Please see <a href=references.html>references</a> for information on slides, books, papers, etc. that are used in class.</h3><br>
+HEADER: <h3>Important: This page is not being maintained actively. Please see <a href=references.html>references</a> for information on slides, books, papers, etc. that are used in class, if you do not find them here.</h3><br>
 
 HOLIDAY: Sep 10. Muharam
 HOLIDAY: Oct 02. Gandhi Jayanti
@@ -30,15 +30,37 @@ LEC: <a href=lec/intro.html>Introduction to interactions between computer archit
 ==
 LEC: Discuss x86 ISA, discuss architecture <a href=lec/basics.html>basics</a>
 ==
-LEC: <a href=lec/x86fp.html>x86 Floating-Point Instruction Set's evolution</a>
+LEC: <a href=slides/OOOpipelines.pptx>Out-of-order superscalar architecture</a>
 ==
-LEC: <a href=lec/ooo.html>Out-of-order superscalar architecture</a>
+LEC: <a href=slides/OOOpipelines.pptx>Out-of-order superscalar architecture</a>
 ==
-LEC: <a href=lec/cpu_parallel.html>Types of parallelism in a single CPU core</a>
+LEC: <a href=slides/OOOpipelines.pptx>Out-of-order superscalar architecture</a>
 ==
-LEC: <a href=lec/store_buffers.html>Store buffers</a>
+LEC: <a href=slides/OOOpipelines.pptx>Out-of-order superscalar architecture</a>
 ==
-LEC: <a href=lec/speculation.html>Speculation</a>
+LEC: <a href=slides/OOO-II.pptx>More out-of-order superscalar architecture</a>
+==
+LEC: <a href=slides/OOO-II.pptx>More out-of-order superscalar architecture</a>
+==
+LEC: <a href=slides/OOO-II.pptx>More out-of-order superscalar architecture</a>
+==
+LEC: <a href=slides/OOO-II.pptx>More out-of-order superscalar architecture</a>
+==
+LEC: <a href=https://www.7-cpu.com/cpu/Haswell.html>Haswell architecture specs</a>
+==
+LEC: <a href=ref/vol6iss1_art01.pdf>Simultaneous Multi-threading</a>
+==
+LEC: <a href=ref/vol6iss1_art01.pdf>Simultaneous Multi-threading</a>
+==
+LEC: <a href=ref/vol6iss1_art01.pdf>Simultaneous Multi-threading</a>
+==
+LEC: <a href=ref/vol6iss1_art01.pdf>Simultaneous Multi-threading</a>
+==
+LEC: <a href=https://dl.acm.org/citation.cfm?id=349320>Exploiting superword level parallelism with multimedia instruction sets</a>
+==
+LEC: <a href=https://dl.acm.org/citation.cfm?id=349320>Exploiting superword level parallelism with multimedia instruction sets</a>
+==
+LEC: <a href=https://dl.acm.org/citation.cfm?id=349320>Exploiting superword level parallelism with multimedia instruction sets</a>
 ==
 LEC: <a href=lec/theory.html>Amdahl's law and Little's law</a>
 ==
