@@ -83,7 +83,7 @@ LEC: Polyhedral Optimizations - Compilers (dragon) book, chapter 11, sections 11
 ==
 LEC: Polyhedral Optimizations - Compilers (dragon) book, chapter 11, sections 11.4 - 11.7 (discussed only self reuse, dependency analysis, space-partition constraints, and some primitive affine transforms namely fusion, reindexing, scaling, reversal).
 ==
-LEC: Polyhedral Optimizations - Compilers (dragon) book, chapter 11, sections 11.4 - 11.7 (discussed only self reuse, dependency analysis, space-partition constraints, and some primitive affine transforms namely fusion, reindexing, scaling, reversal).
+LEC: Polyhedral Optimizations - Compilers (dragon) book, chapter 11, sections 11.4 - 11.7 (discussed only self reuse, dependency analysis, space-partition constraints, and some primitive affine transforms namely fusion, reindexing, scaling, reversal). Also discussed true-sharing, false-sharing and performance implications.
 ==
 LEC: ABIs (<a href=lec/abi_slides.pdf>slides</a>), Address space, 32-bit vs. 64 bit register bitwidths, virtual memory tradeoffs for 32-bit and 64-bit, caching tradeoffs for 32-bit and 64-bit and the <a href=https://en.wikipedia.org/wiki/X32_ABI>x32 abi</a>.
 ==
