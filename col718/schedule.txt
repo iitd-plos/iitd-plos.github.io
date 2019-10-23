@@ -89,7 +89,7 @@ LEC: ABIs (<a href=lec/abi_slides.pdf>slides</a>), Address space, 32-bit vs. 64 
 ==
 LEC: ABIs (<a href=lec/abi_slides.pdf>slides</a>), Address space, 32-bit vs. 64 bit register bitwidths, virtual memory tradeoffs for 32-bit and 64-bit, caching tradeoffs for 32-bit and 64-bit and the <a href=https://en.wikipedia.org/wiki/X32_ABI>x32 abi</a>.
 ==
-LEC: <a href=lec/prefetching.html>Instruction Prefetching and Trace Caches</a>
+LEC: <a href=http://www.cse.iitd.ac.in/~sbansal/pubs/hawkeye.pdf>Huge-page support in architecture and OS</a> (<a href=http://www.cse.iitd.ac.in/~sbansal/pubs/HawkEye_Slides.pdf>slides</a>)
 ==
-LEC: <a href=lec/compiler.html>Compiler support for exploiting memory hierarchy and parallelism</a>
+LEC: <a href=http://www.cse.iitd.ac.in/~sbansal/csl862-virt/lec/intro.pdf>Virtualization</a>
 ==
