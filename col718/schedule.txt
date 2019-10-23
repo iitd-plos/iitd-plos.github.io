@@ -63,13 +63,31 @@ LEC: <a href=https://dl.acm.org/citation.cfm?id=349320>Exploiting superword leve
 ==
 LEC: <a href=https://dl.acm.org/citation.cfm?id=349320>Exploiting superword level parallelism with multimedia instruction sets</a>
 ==
-LEC: <a href=lec/theory.html>Amdahl's law and Little's law</a>
+LEC: <a href=https://dl.acm.org/citation.cfm?id=349320>Exploiting superword level parallelism with multimedia instruction sets</a>
 ==
-LEC: <a href=lec/caching.html>Caching structures</a>
+LEC: Memory and Cache organization (H&P 3rd edition, chapter 5, sections 5.1-5.5)
 ==
-LEC: <a href=lec/vm.html>Virtual memory</a>
+LEC: Memory and Cache organization (H&P 3rd edition, chapter 5, sections 5.1-5.5)
 ==
-LEC: <a href=lec/virt.html>Virtualization</a>
+LEC: Memory and Cache organization (H&P 3rd edition, chapter 5, sections 5.1-5.5)
+==
+LEC: Polyhedral Optimizations - Compilers (dragon) book, chapter 11, sections 11.4 - 11.7 (discussed only self reuse, dependency analysis, space-partition constraints, and some primitive affine transforms namely fusion, reindexing, scaling, reversal).
+==
+LEC: Polyhedral Optimizations - Compilers (dragon) book, chapter 11, sections 11.4 - 11.7 (discussed only self reuse, dependency analysis, space-partition constraints, and some primitive affine transforms namely fusion, reindexing, scaling, reversal).
+==
+LEC: Polyhedral Optimizations - Compilers (dragon) book, chapter 11, sections 11.4 - 11.7 (discussed only self reuse, dependency analysis, space-partition constraints, and some primitive affine transforms namely fusion, reindexing, scaling, reversal).
+==
+LEC: Polyhedral Optimizations - Compilers (dragon) book, chapter 11, sections 11.4 - 11.7 (discussed only self reuse, dependency analysis, space-partition constraints, and some primitive affine transforms namely fusion, reindexing, scaling, reversal).
+==
+LEC: Polyhedral Optimizations - Compilers (dragon) book, chapter 11, sections 11.4 - 11.7 (discussed only self reuse, dependency analysis, space-partition constraints, and some primitive affine transforms namely fusion, reindexing, scaling, reversal).
+==
+LEC: Polyhedral Optimizations - Compilers (dragon) book, chapter 11, sections 11.4 - 11.7 (discussed only self reuse, dependency analysis, space-partition constraints, and some primitive affine transforms namely fusion, reindexing, scaling, reversal).
+==
+LEC: Polyhedral Optimizations - Compilers (dragon) book, chapter 11, sections 11.4 - 11.7 (discussed only self reuse, dependency analysis, space-partition constraints, and some primitive affine transforms namely fusion, reindexing, scaling, reversal).
+==
+LEC: ABIs (<a href=lec/abi_slides.pdf>slides</a>), Address space, 32-bit vs. 64 bit register bitwidths, virtual memory tradeoffs for 32-bit and 64-bit, caching tradeoffs for 32-bit and 64-bit and the <a href=https://en.wikipedia.org/wiki/X32_ABI>x32 abi</a>.
+==
+LEC: ABIs (<a href=lec/abi_slides.pdf>slides</a>), Address space, 32-bit vs. 64 bit register bitwidths, virtual memory tradeoffs for 32-bit and 64-bit, caching tradeoffs for 32-bit and 64-bit and the <a href=https://en.wikipedia.org/wiki/X32_ABI>x32 abi</a>.
 ==
 LEC: <a href=lec/prefetching.html>Instruction Prefetching and Trace Caches</a>
 ==
