@@ -91,5 +91,5 @@ LEC: ABIs (<a href=lec/abi_slides.pdf>slides</a>), Address space, 32-bit vs. 64 
 ==
 LEC: <a href=http://www.cse.iitd.ac.in/~sbansal/pubs/hawkeye.pdf>Huge-page support in architecture and OS</a> (<a href=http://www.cse.iitd.ac.in/~sbansal/pubs/HawkEye_Slides.pdf>slides</a>)
 ==
-LEC: <a href=http://www.cse.iitd.ac.in/~sbansal/csl862-virt/lec/intro.pdf>Virtualization</a>
+LEC: <a href=http://www.cse.iitd.ac.in/~sbansal/csl862-virt/lec/intro.pdf>Virtualization</a>, <a href=https://poorvi.cse.iitd.ac.in/~sbansal/col718/VirtualMachines.pptx>another set of slides</a> (IITD-internal link)
 ==
