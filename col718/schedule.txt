@@ -93,3 +93,5 @@ LEC: <a href=http://www.cse.iitd.ac.in/~sbansal/pubs/hawkeye.pdf>Huge-page suppo
 ==
 LEC: <a href=http://www.cse.iitd.ac.in/~sbansal/csl862-virt/lec/intro.pdf>Virtualization</a>, <a href=https://poorvi.cse.iitd.ac.in/~sbansal/col718/VirtualMachines.pptx>another set of slides</a> (IITD-internal link)
 ==
+LEC: <a href=slides/coherence.pptx>Directory coherence</a>
+==
