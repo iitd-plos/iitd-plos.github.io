@@ -1,5 +1,5 @@
-Start: Jan 1, 2019
-Stop: Apr 22, 2019
+Start: Dec 31, 2019
+Stop: Apr 22, 2020
 Schedule: Tuesday, Wednesday, Friday
 
 HOLIDAY: Jan 26. Republic Day
@@ -41,7 +41,7 @@ OSC: chapter 1
 
 ==
 
-LEC: <a href=lec/l2.html>Introduction to UNIX System Calls (2)</a>
+LEC: <a href=lec/l2.html>Introduction to UNIX System Calls (2)</a> (<a href=slides/unix_shell_tutorial.pdf>slides</a>)
 PREP: Read <a href=book.pdf>xv6 chapter 0</a>, <a href=http://linux.die.net/man/7/pipe>pipe</a> man page, <a href=http://www.gnu.org/s/hello/manual/libc/Interrupted-Primitives.html>Interrupted Primitives</a>.
 
 ==
