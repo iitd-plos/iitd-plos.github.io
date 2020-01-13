@@ -35,7 +35,8 @@ DUE: Apr 17
 
 ==
 
-LEC: <a href=lec/l1.html>Introduction to UNIX System Calls</a>
+LEC: <a href=lec/l1.html>Introduction to UNIX System Calls</a> (<a href=slides/intro_lecture.pdf>slides</a>)
+
 PREP: Read <a href=bib/ritchie79evolution.pdf>The Evolution of the Unix Time-Sharing System</a>.
 OSC: chapter 1
 
