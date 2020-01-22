@@ -41,7 +41,7 @@ the processor loads:
 	the code segment (<tt>CS</tt>) register,
 	which includes in bits 0-1 the privilege level
 	at which the exception handler is to run.
-	In PIOS (and most kernels), all exceptions are handled in kernel mode,
+	In most kernels, all exceptions are handled in kernel mode,
 	privilege level 0.</li>
 </ul>
 
@@ -147,14 +147,14 @@ changes these values during its execution.
 	<p>
 	Although the TSS is large
 	and can potentially serve a variety of purposes,
-	PIOS only uses it to define
+	we will use it only to define
 	the kernel stack that the processor should switch to
 	when it transfers from user to kernel mode.
-	Since "kernel mode" in PIOS/Pintos/xv6
+	Since "kernel mode" in most kernels
 	is privilege level 0 on the x86,
 	the processor uses the <tt>ESP0</tt> and <tt>SS0</tt> fields of the TSS
 	to define the kernel stack when entering kernel mode.
-   PIOS/Pintos/xv6 don't use any other TSS fields.
+  We don't use any other TSS fields.
 	</p>
 	</li>
 </ol>
@@ -185,14 +185,14 @@ There are basically two common models:
 	it runs on that process's kernel stack,
 	and it switches stacks whenever it switches between processes.
 
-<li>	The PIOS kernel, in contrast, is an <i>interrupt model</i> kernel,
+<li>	Some kernels, in contrast, is an <i>interrupt model</i> kernel,
 	which means it maintains one kernel stack per <i>physical CPU</i>,
 	irrespective of the number of processes.
 	Kernel code running on a given CPU always runs
 	on that CPU's permanently-assigned kernel stack
 	regardless of what user process is running,
 	and kernel code thus never switches kernel stacks once it has booted.
-	The downside of this simple design is that PIOS kernel code
+	The downside of this simple design is that the kernel code
 	cannot use its stack to maintain any state on behalf
 	of processes that are not currently running:
 	if the kernel is working on behalf of a process
@@ -213,10 +213,11 @@ and encounters a divide instruction that attempts to divide by zero.
 
 <ol>
 <li>	The processor switches to the stack defined by the
-	<tt>SS0</tt> and <tt>ESP0</tt> fields of the TSS,
-	which in PIOS will hold the values
+	<tt>SS0</tt> and <tt>ESP0</tt> fields of the TSS.
+	<!--which in PIOS will hold the values
 	<code>CPU_GDT_KDATA</code> and <code>&cpu->kstackhi</code>,
-	respectively.</li>
+	respectively.-->
+</li>
 
 <li>	The processor pushes the following basic trap frame onto the
 	kernel stack, starting at <code>kstackhi</code>:
@@ -308,7 +309,7 @@ and can enter user mode,
 you will refine it to handle traps
 that user mode code may cause deliberately for various purposes;
 we refer to such traps as <i>software interrupts</i>.
-There are two traps defined by the x86 processor
+<!--There are two traps defined by the x86 processor
 expressly to serve as software interrupts,
 and PIOS defines a third one to serve as its system call mechanism:
 
@@ -347,6 +348,7 @@ and PIOS defines a third one to serve as its system call mechanism:
 	when it wishes to make an explicit system call to the kernel.
 	This is the classic way to perform system calls on the x86.
 </ul>
+-->
 
 We do not want user code to be able to invoke
 <i>just any</i> interrupt vector in the IDT deliberately
@@ -361,4 +363,3 @@ via a software interrupt instruction.
 Most of these vectors are normally set to "privileged" (ring 0),
 but we want the vectors used for software interrupts
 to be set so user mode code can invoke them.
-
