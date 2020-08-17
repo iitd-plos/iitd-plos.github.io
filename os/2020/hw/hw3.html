@@ -54,7 +54,7 @@ $6 = 0x114007
 Q: what is this?
 Q: what is the PPN?
 Q: what does the 7 mean?
-(gdb) print/x (0x80107beb >> 12) & 0xfff
+(gdb) print/x (0x80107beb >> 12) & 0x3ff
 $6 = 0x107
 (gdb) print/x ((int*)0x114000)[0x107]
 $12 = 0x107001
