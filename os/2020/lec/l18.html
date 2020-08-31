@@ -100,21 +100,6 @@ swtch sheet 26
     callee saved, might have caller's live variables
   same format as struct context
 
-swtch sheet 26
-  save current thread's registers and stack
-  load new threads stack and registers
-  saves current registers on current stack, struct context, sheet 20
-  expects new thread's stack to have registers in that format
-  stack diagram:
-    eip *****
-    ebp
-    ebx
-    esi
-    edi
-  Q: why these registers?
-    callee saved, might have caller's live variables
-  same format as struct context
-
 
 </pre>
 
